@@ -3,7 +3,7 @@ name: Build APK
 on:
   push:
     branches: [ main, master ]
-  workflow_dispatch:  # allows manual run from GitHub website
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,12 +22,19 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: '3.24.0'
+          flutter-version: '3.24.5'
+
+      - name: Ensure Android platform project
+        run: |
+          # Fills missing Gradle/Android files without wiping lib/ or pubspec.yaml
+          flutter create . --project-name pgd_physics --org com.pgdphysics.app --platforms=android
+          # Keep our app label if create overwrote something critical
+          test -f pubspec.yaml
 
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Analyze (optional)
+      - name: Analyze (non-blocking)
         run: flutter analyze --no-fatal-infos || true
 
       - name: Build APK (release)
@@ -38,4 +45,4 @@ jobs:
         with:
           name: pgd-physics-apk
           path: build/app/outputs/flutter-apk/app-release.apk
-          retention-days: 14
+          retention-days: 30
