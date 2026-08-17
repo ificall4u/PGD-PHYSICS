@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:pgd_physics/models/course.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
@@ -138,7 +137,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       Icon(Icons.auto_awesome_rounded,
                           size: 18, color: AppTheme.primaryLight),
                       const SizedBox(width: 10),
-                      const Expanded(
+                      Expanded(
                         child: Text(
                           'Ask Nova about selected text',
                           style: TextStyle(
@@ -218,11 +217,6 @@ class _UnitScreenState extends State<UnitScreen> {
                     },
                     child: MarkdownBody(
                       data: widget.unit.content.replaceAll('Tochi', StorageService.getNickname()),
-                      builders: {
-                        'latex': LatexElementBuilder(),
-                      },
-                      inlineSyntaxes: [LatexInlineSyntax()],
-                      blockSyntaxes: [LatexBlockSyntax()],
                       styleSheet: MarkdownStyleSheet(
                         p: TextStyle(
                           fontSize: 16,
@@ -386,7 +380,7 @@ class _UnitScreenState extends State<UnitScreen> {
                           );
                         },
                         icon: Icon(Icons.quiz_outlined, size: 18),
-                        label: const Text('Quick check'),
+                        label: Text('Quick check'),
                       ),
                     ),
                   if (widget.unit.quiz.isNotEmpty) const SizedBox(width: 10),
@@ -416,81 +410,5 @@ class _UnitScreenState extends State<UnitScreen> {
         ],
       ),
     );
-  }
-}
-
-class LatexElementBuilder extends MarkdownElementBuilder {
-  @override
-  Widget? visitElementAfter(md.Element element, TextStyle? preferredStyle) {
-    final raw = element.textContent.trim();
-    final isBlock = element.attributes['block'] == 'true';
-    try {
-      final math = Math.tex(
-        raw,
-        mathStyle: isBlock ? MathStyle.display : MathStyle.text,
-        textStyle: TextStyle(
-          color: AppTheme.textPrimary,
-          fontSize: isBlock ? 17 : 15.5,
-        ),
-      );
-      if (isBlock) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Center(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: math,
-            ),
-          ),
-        );
-      }
-      return math;
-    } catch (_) {
-      return Text(
-        raw,
-        style: preferredStyle?.copyWith(
-          color: AppTheme.accentSoft,
-          fontFamily: 'monospace',
-          fontSize: 14,
-        ),
-      );
-    }
-  }
-}
-
-class LatexInlineSyntax extends md.InlineSyntax {
-  LatexInlineSyntax() : super(r'\$([^\$]+)\$');
-
-  @override
-  bool onMatch(md.InlineParser parser, Match match) {
-    final el = md.Element.text('latex', match[1]!.trim());
-    el.attributes['block'] = 'false';
-    parser.addNode(el);
-    return true;
-  }
-}
-
-class LatexBlockSyntax extends md.BlockSyntax {
-  @override
-  RegExp get pattern => RegExp(r'^\$\$');
-
-  @override
-  md.Node? parse(md.BlockParser parser) {
-    parser.advance();
-    final lines = <String>[];
-    while (!parser.isDone) {
-      final line = parser.current.content;
-      if (line.contains(r'$$')) {
-        final idx = line.indexOf(r'$$');
-        if (idx > 0) lines.add(line.substring(0, idx));
-        parser.advance();
-        break;
-      }
-      lines.add(line);
-      parser.advance();
-    }
-    final el = md.Element.text('latex', lines.join('\n').trim());
-    el.attributes['block'] = 'true';
-    return el;
   }
 }

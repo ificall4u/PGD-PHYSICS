@@ -88,7 +88,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   Navigator.pop(context);
                   Navigator.pop(context);
                 },
-                child: const Text('Back to lesson'),
+                child: Text('Back to lesson'),
               ),
             ),
           ],
@@ -101,8 +101,8 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     if (widget.unit.quiz.isEmpty) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Quick check')),
-        body: const Center(
+        appBar: AppBar(title: Text('Quick check')),
+        body: Center(
           child: Text('No questions for this lesson yet.',
               style: TextStyle(color: AppTheme.textMuted)),
         ),
@@ -116,7 +116,7 @@ class _QuizScreenState extends State<QuizScreen> {
       backgroundColor: AppTheme.background,
       appBar: AppBar(
         actions: const [ThemeToggle()],
-        title: const Text('Quick check'),
+        title: Text('Quick check'),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(3),
           child: LinearProgressIndicator(

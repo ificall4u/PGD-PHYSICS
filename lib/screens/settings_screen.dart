@@ -99,7 +99,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       backgroundColor: AppTheme.background,
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text('Settings'),
       ),
       body: AnimatedBuilder(
         animation: theme,
@@ -376,7 +376,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: _saveKeys,
-                        child: const Text('Save AI keys'),
+                        child: Text('Save AI keys'),
                       ),
                     ),
                   ],
@@ -502,8 +502,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             mode: LaunchMode.externalApplication);
                       }
                     },
-                    icon: const Icon(Icons.open_in_new, size: 16),
-                    label: const Text('Open site'),
+                    icon: Icon(Icons.open_in_new, size: 16),
+                    label: Text('Open site'),
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
                       visualDensity: VisualDensity.compact,

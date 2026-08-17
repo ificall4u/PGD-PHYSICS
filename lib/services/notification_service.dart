@@ -54,7 +54,7 @@ class NotificationService {
     if (!StorageService.notificationsEnabled()) return;
     await init();
 
-    const androidDetails = AndroidNotificationDetails(
+    final androidDetails = AndroidNotificationDetails(
       'study_reminders',
       'Study reminders',
       channelDescription: 'Gentle nudges to continue learning',
@@ -65,11 +65,11 @@ class NotificationService {
       // full custom art needs drawable resources in the Android project.
       styleInformation: BigTextStyleInformation(
         'A short session is enough. Open PGD Physics when you are ready — Nova is here.',
-        contentTitle: '${StorageService.getNickname()}, ready for a little study?',
+        contentTitle: StorageService.getNickname() + ', ready for a little study?',
       ),
     );
 
-    const details = NotificationDetails(android: androidDetails);
+    final details = NotificationDetails(android: androidDetails);
 
     // 7:00 PM local — once per day
     final now = tz.TZDateTime.now(tz.local);

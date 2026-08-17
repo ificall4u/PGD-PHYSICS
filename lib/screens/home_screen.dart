@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     const AppMark(size: 42, showShadow: false),
                     const SizedBox(width: 12),
-                    const Expanded(
+                    Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -279,7 +279,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-,
 
             const SliverToBoxAdapter(child: CreatorFooter()),
           ],
@@ -417,12 +416,12 @@ class _NovaCard extends StatelessWidget {
                     color: AppTheme.primary.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(14),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text('💜', style: TextStyle(fontSize: 24)),
                   ),
                 ),
                 const SizedBox(width: 14),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

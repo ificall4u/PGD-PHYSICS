@@ -66,7 +66,7 @@ Future<bool> showPersonaUnlockDialog(
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(ctx, false),
-                child: const Text('Cancel'),
+                child: Text('Cancel'),
               ),
               TextButton(
                 onPressed: () {

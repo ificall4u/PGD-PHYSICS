@@ -71,7 +71,8 @@ class _DecayPainter extends CustomPainter {
     );
 
     final tp = TextPainter(textDirection: TextDirection.ltr);
-    void label(String s, Offset o, {Color c = AppTheme.textMuted, double fs = 10}) {
+    void label(String s, Offset o, {Color? c, double fs = 10}) {
+      c ??= AppTheme.textMuted;
       tp.text = TextSpan(
           text: s,
           style: TextStyle(color: c, fontSize: fs, fontWeight: FontWeight.w600));

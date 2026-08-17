@@ -30,7 +30,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       if (name.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Text('Please enter a nickname to continue'),
+            content: Text('Please enter a nickname to continue'),
             backgroundColor: AppTheme.surfaceElevated,
             behavior: SnackBarBehavior.floating,
           ),
@@ -199,7 +199,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             curve: Curves.easeOut,
                           );
                         },
-                        child: const Text('Back'),
+                        child: Text('Back'),
                       ),
                   ],
                 ],
@@ -530,7 +530,7 @@ class _ReadyPage extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton(
             onPressed: onCompleteNow,
-            child: const Text('Complete AI settings now'),
+            child: Text('Complete AI settings now'),
           ),
         ),
         const SizedBox(height: 10),
@@ -538,7 +538,7 @@ class _ReadyPage extends StatelessWidget {
           width: double.infinity,
           child: OutlinedButton(
             onPressed: onLater,
-            child: const Text('I\'ll do this later'),
+            child: Text('I\'ll do this later'),
           ),
         ),
       ],

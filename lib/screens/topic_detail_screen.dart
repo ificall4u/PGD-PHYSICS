@@ -32,7 +32,7 @@ class TopicDetailScreen extends StatelessWidget {
         actions: [
           const ThemeToggle(),
           IconButton(
-            icon: const Icon(Icons.auto_awesome_rounded),
+            icon: Icon(Icons.auto_awesome_rounded),
             onPressed: () {
               Navigator.push(
                 context,

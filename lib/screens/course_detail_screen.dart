@@ -24,7 +24,7 @@ class CourseDetailScreen extends StatelessWidget {
         actions: [
           const ThemeToggle(),
           IconButton(
-            icon: const Icon(Icons.auto_awesome_rounded),
+            icon: Icon(Icons.auto_awesome_rounded),
             tooltip: 'Ask Nova about this course',
             onPressed: () {
               Navigator.push(
@@ -116,7 +116,7 @@ class CourseDetailScreen extends StatelessWidget {
           const SizedBox(height: 28),
           Row(
             children: [
-              const Text(
+              Text(
                 'Topics',
                 style: TextStyle(
                   fontSize: 16,

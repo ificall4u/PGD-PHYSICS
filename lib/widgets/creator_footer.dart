@@ -81,7 +81,7 @@ class _CreatorProfileCard extends StatelessWidget {
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: const Text('WhatsApp handle copied: @iam_tochi'),
+          content: Text('WhatsApp handle copied: @iam_tochi'),
           backgroundColor: AppTheme.surfaceElevated,
           behavior: SnackBarBehavior.floating,
           duration: const Duration(seconds: 2),
@@ -102,7 +102,7 @@ class _CreatorProfileCard extends StatelessWidget {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Text('Handle copied — paste in WhatsApp to find @iam_tochi'),
+            content: Text('Handle copied — paste in WhatsApp to find @iam_tochi'),
             backgroundColor: AppTheme.surfaceElevated,
             behavior: SnackBarBehavior.floating,
           ),
@@ -232,8 +232,8 @@ class _CreatorProfileCard extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton.icon(
               onPressed: () => _openWhatsApp(context),
-              icon: const Icon(Icons.chat_rounded, size: 18),
-              label: const Text('Open WhatsApp'),
+              icon: Icon(Icons.chat_rounded, size: 18),
+              label: Text('Open WhatsApp'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF25D366),
                 foregroundColor: Colors.white,

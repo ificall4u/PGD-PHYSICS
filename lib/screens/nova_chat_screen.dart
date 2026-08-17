@@ -130,7 +130,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> {
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text('Copied'),
+        content: Text('Copied'),
         behavior: SnackBarBehavior.floating,
         duration: const Duration(milliseconds: 1200),
         backgroundColor: AppTheme.surfaceElevated,
@@ -311,7 +311,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Cancel'),
+            child: Text('Cancel'),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
@@ -371,7 +371,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> {
           children: [
             Icon(Icons.auto_awesome_rounded, size: 20, color: AppTheme.primaryLight),
             const SizedBox(width: 8),
-            const Text('Nova'),
+            Text('Nova'),
           ],
         ),
         actions: [
@@ -562,7 +562,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> {
                       backgroundColor: AppTheme.primary,
                       foregroundColor: Colors.white,
                     ),
-                    icon: const Icon(Icons.send_rounded),
+                    icon: Icon(Icons.send_rounded),
                   ),
                 ],
               ),

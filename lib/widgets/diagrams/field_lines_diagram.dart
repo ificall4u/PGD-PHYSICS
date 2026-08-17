@@ -59,7 +59,7 @@ class _FieldPainter extends CustomPainter {
       canvas.drawPath(path, linePaint);
     }
 
-    tp.text = const TextSpan(
+    tp.text = TextSpan(
       text: 'Lines leave + and enter −',
       style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
     );
