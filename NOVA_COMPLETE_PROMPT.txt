@@ -1,0 +1,211 @@
+================================================================================
+NOVA — COMPLETE IMPLEMENTATION PROMPT FOR FUTURE APPS
+================================================================================
+Use this document to rebuild or port Nova with the same behaviour as in PGD Physics.
+================================================================================
+
+1. PRODUCT DEFINITION
+---------------------
+- Name: always "Nova" (never "Nova AI").
+- Role: client-side study companion + conversational partner.
+- BYOK: user pastes free-tier API keys; developer runs zero inference backend.
+- Offline-first: lessons, quizzes, progress, theme, and saved chat transcripts work without internet.
+- Live replies need network + at least one provider key.
+- Address the student by their chosen nickname only.
+- Personalities share the name Nova; only teaching style changes.
+
+2. NON-NEGOTIABLE RULES
+-----------------------
+- No app server for chat or keys.
+- Keys stored only on device.
+- Never block access to study content if AI is down or keys are missing.
+- Render Markdown properly (no visible raw ** __ --- junk).
+- Prefer Unicode for powers/indices (x², H₂O, v₀).
+- Multi-provider automatic fallback.
+- Show muted "Powered by {Provider}" under successful text replies.
+- Concise intelligent answer first, then a soft offer to go deeper.
+- Detect conversation vs study mode; stay in personality for casual chat.
+- Always include user gender preference in the system prompt for respectful personalization (do not over-emphasize).
+- AI gender presentation (female / male / neutral) from settings.
+
+3. USER PROFILE (ONBOARDING + SETTINGS)
+---------------------------------------
+Persist:
+- Nickname
+- User gender: female | male | unspecified
+- AI presentation gender: female | male | neutral
+- Personality id
+- Unlocked persona ids (for code-locked styles)
+- Preferred provider: auto | gemini | groq | openrouter | cerebras
+- Provider API keys (masked inputs, show/hide)
+- Theme: system | light | dark
+- Optional notifications flag
+
+Onboarding suggested order:
+1) Nickname
+2) User gender
+3) AI gender
+4) Personality (locked ones require code dialog)
+5) "Nova is ready" → Complete AI settings now (open Settings scrolled to keys) OR later
+Remind user everything is editable in Settings.
+
+4. PERSONA CATALOG
+------------------
+Structure:
+  id, name="Nova", shortLabel, description, systemFlavor, optional unlockCode
+
+Example styles:
+- affectionate_nova — "Warm & devoted" (LOCKED with access code; original fond tutor style)
+- patient_professor
+- study_buddy
+- calm_mentor
+- coach
+- neutral_tutor
+
+Locked persona behaviour:
+- Show lock affordance in UI.
+- On select → dialog for access code (normalize: case-insensitive, ignore spaces/hyphens).
+- On success → persist unlock permanently on device; allow selection.
+- If somehow selected while locked → runtime fallback to an unlocked persona (e.g. patient_professor).
+
+5. SYSTEM PROMPT (EVERY TEXT REQUEST)
+-------------------------------------
+Build dynamically:
+1) "Your name is Nova (never Nova AI)."
+2) Selected systemFlavor (personality).
+3) AI gender presentation line.
+4) User gender line (respectful, light touch).
+5) Always address student as **{nickname}**.
+6) Response style:
+   - Concise intelligent core answer first
+   - Soft deepen prompt (step-by-step / analogy / quick check)
+   - Conversation mode if greeting/venting/casual
+   - Study mode if physics/lesson/confusion
+   - Light Markdown; Unicode math indices
+7) Diagrams:
+   - If student asks for a diagram of a supported topic, include one line: [[diagram:ID]]
+   - List supported IDs from the vector catalog
+   - If no ID fits, explain in words; app may try free-tier image generation separately
+8) Context block: page, course, topic, unit, optional highlighted text (clip ~1200 chars)
+
+Keep prompt reasonably short for latency.
+
+6. MULTI-PROVIDER TEXT ENGINE (BYOK)
+------------------------------------
+Providers (examples):
+- Google Gemini — generateContent + systemInstruction; fast Flash models; model id fallback list
+- Groq — OpenAI-compatible chat completions
+- OpenRouter — OpenAI-compatible; free model ids when possible
+- Cerebras — OpenAI-compatible
+
+Algorithm:
+1) Collect providers with non-empty local keys
+2) Order by user preference, else default (e.g. Gemini → Groq → Cerebras → OpenRouter)
+3) For each: call with ~25–30s timeout
+4) Success with non-empty text → return {text, poweredByLabel}
+5) On rate limit / invalid key / HTTP error / timeout / empty → next provider
+6) No keys → friendly message guiding user to Settings (do not crash)
+7) All network failures → offline-friendly message; study still works
+
+Latency hygiene:
+- Trim history (~last 10 turns)
+- Do not duplicate the current user message in history
+- Cap max output tokens (~1024)
+- Prefer fast models
+
+Settings UI:
+- Separate key fields per provider, masked, visibility toggle
+- Expandable non-technical "How to get your key?" + official URL
+- Preferred provider dropdown including Auto
+- Keys live in app Settings (not only inside the chat screen)
+
+7. CHAT UX
+----------
+- Thread key from context (home / course / topic / unit / page)
+- Persist last N messages locally (e.g. Hive), safe key sanitization, fail soft
+- Welcome message mentions Nova, nickname, and current context
+- Long-press message → bottom sheet: Copy; Edit only if most recent USER message
+- Edit: remove that user message and any following assistant reply; load text into composer; on send regenerate
+- App bar: clear/recycle current thread (confirm), title "Nova", theme toggle
+- Loading: "Nova is thinking…"
+- Assistant bubbles: Markdown body + optional vector diagram cards + optional generated image + Powered by line
+- Selectable text where possible
+
+8. DIAGRAMS (VECTOR FIRST, IMAGE FALLBACK)
+------------------------------------------
+A) Built-in offline vector catalog (Nova chat only; not required on every lesson page):
+   Examples of ids: energy_bands, pn_junction, field_lines, logic_gates, decay_curve,
+   solar_cell, mosfet, axes_curve, spherical_coords, vector_2d, free_body, wave,
+   lens_rays, rc_circuit, rlc_series, transformer, op_amp, binary_wave, bohr_atom,
+   photoelectric, potential_well, fission, fuel_cell
+   - Keyword detect on user text
+   - Parse [[diagram:id]] from model output and strip tags before display
+   - Render CustomPaint / DiagramCard under the reply
+
+B) If user requested a visual and no vector id matched:
+   - Try free-tier image generation:
+     1. Gemini image-capable models with user's Gemini key (responseModalities TEXT+IMAGE; try several model ids)
+     2. Optional key-free public fallback (e.g. Pollinations) best-effort
+   - Show image in bubble; label source
+   - On failure: keep verbal explanation + short honest note
+
+C) Lesson pages may still have a smaller DiagramRegistry for specific units; that is separate from the Nova catalog.
+
+9. IMAGE GENERATION PROMPT STYLE
+--------------------------------
+When generating educational images, instruct: clean textbook schematic, light background,
+simple labels, no photoreal clutter, no watermarks — university teaching quality.
+
+10. STORAGE
+-----------
+- SharedPreferences: profile, keys, theme, progress, unlocks
+- Hive (or equivalent): chat threads
+- Bound chat length (e.g. last 40 messages)
+- clearChatThread only affects one thread
+
+11. THEME & NAVIGATION
+----------------------
+- System theme default; user override light/dark; follow platform when system
+- Soft page transitions
+- Premium study-focused UI; no ASCII schematics in content
+
+12. ACCEPTANCE CHECKLIST
+------------------------
+[ ] Airplane mode: full study path works
+[ ] No keys: clear Settings guidance; no crash
+[ ] One bad key + one good key: fallback succeeds
+[ ] Nickname and genders affect prompt behaviour
+[ ] Locked persona requires code; unlock persists
+[ ] Concise answer + deepen offer on study questions
+[ ] Casual "hey" does not force a lecture
+[ ] Long-press copy/edit; edit regenerates
+[ ] Clear chat current thread only
+[ ] Vector diagram on supported request offline
+[ ] Unsupported diagram request may attempt free image, else words
+[ ] Powered by label on success
+[ ] No raw markdown junk in bubbles
+
+13. MASTER COPY-PASTE PROMPT
+----------------------------
+Implement a client-side BYOK AI tutor named Nova for a mobile study app.
+
+Rules:
+- Name is always "Nova", never "Nova AI".
+- No backend. Users paste free-tier API keys (Gemini, Groq, OpenRouter, Cerebras). Keys stay on device.
+- Offline-first: lessons/quizzes/progress work without network. Only live chat (and optional image gen) need internet.
+- Onboarding + Settings: nickname, user gender, Nova gender presentation, Nova personality styles (all named Nova), preferred provider, API keys with non-technical how-to guides.
+- One personality may be code-locked (e.g. Warm & devoted); unlock dialog; persist unlock; runtime fallback if locked.
+- System prompt every request: identity + personality + genders + nickname + concise-first + soft "want more?" + conversation-vs-study mode + page/course/unit/highlight context + optional [[diagram:ID]] instructions listing supported vector ids.
+- Multi-provider automatic fallback on rate limit, auth error, timeout, or empty response. Show muted "Powered by {Provider}".
+- Chat UX: threaded local history; long-press Copy; Edit only latest user message and delete following assistant reply then regenerate; clear-chat for current thread; Markdown + sanitization + Unicode math indices.
+- Diagrams: offline vector catalog with keyword + tag parsing rendered in chat; if user asks for a figure and no vector matches, try free-tier Gemini image models with user key then optional key-free image fallback; otherwise describe in words.
+- Latency hygiene: trim history, no duplicate user message, modest max tokens, short per-provider timeouts, fast default models.
+- Never block studying if AI is unavailable.
+
+14. ORIGIN
+----------
+Specification matches Nova as implemented in the PGD Physics Flutter app (ABUAD PGD companion), including multi-provider text, persona lock, vector diagram bank, and free image fallback for missing vectors.
+
+================================================================================
+END OF NOVA COMPLETE PROMPT
+================================================================================
