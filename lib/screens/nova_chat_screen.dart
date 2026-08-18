@@ -13,7 +13,7 @@ import 'dart:convert';
 class NovaChatScreen extends StatefulWidget {
   final String currentPage;
   final String? courseTitle;
-  final String? topicTitle;
+  final String? moduleTitle;
   final String? unitTitle;
   final String? problemOrQuestion;
   final String? initialUserMessage;
@@ -22,7 +22,7 @@ class NovaChatScreen extends StatefulWidget {
     super.key,
     required this.currentPage,
     this.courseTitle,
-    this.topicTitle,
+    this.moduleTitle,
     this.unitTitle,
     this.problemOrQuestion,
     this.initialUserMessage,
@@ -42,7 +42,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> with ThemeAware {
   String get _threadKey {
     final parts = [
       widget.courseTitle,
-      widget.topicTitle,
+      widget.moduleTitle,
       widget.unitTitle,
       widget.currentPage,
     ].where((e) => e != null && e.isNotEmpty).join('|');
@@ -86,7 +86,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> with ThemeAware {
     final name = StorageService.getNickname();
     final where = StringBuffer(widget.currentPage);
     if (widget.courseTitle != null) where.write(' — ${widget.courseTitle}');
-    if (widget.topicTitle != null) where.write(' → ${widget.topicTitle}');
+    if (widget.moduleTitle != null) where.write(' → ${widget.moduleTitle}');
     if (widget.unitTitle != null) where.write(' → ${widget.unitTitle}');
     return 'Hey $name…\n\n'
         'I’m **Nova**, right here with you. I can see you’re on **$where**.\n\n'
@@ -230,7 +230,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> with ThemeAware {
         userMessage: userText,
         currentPage: widget.currentPage,
         courseTitle: widget.courseTitle,
-        topicTitle: widget.topicTitle,
+        moduleTitle: widget.moduleTitle,
         unitTitle: widget.unitTitle,
         problemOrQuestion: widget.problemOrQuestion,
         conversationHistory: history,

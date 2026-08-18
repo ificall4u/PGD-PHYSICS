@@ -1,5 +1,17 @@
 # PGD Physics
 
+## Content rewrite (important)
+
+Lesson **prose is being rewritten** from stronger postgraduate prompts.
+
+- **UI / design:** keep as-is (modules, unit reader, Nova, themes).
+- **Shells:** `lib/data/phy*_content.dart` hold module/unit structure with placeholders.
+- **Prompts to upload:** `content_prompts/PHY701/` … `PHY799/`
+- **Author guide:** see **[CONTENT_AUTHORING.md](CONTENT_AUTHORING.md)**
+
+Hierarchy is **Course → Module → Unit** (UI label: **Modules**, not Topics).
+
+
 Flutter study companion for the **ABUAD Postgraduate Diploma in Physics (Electronics)** programme.
 
 Offline-first lessons, quizzes, progress tracking, and **Nova** — a client-side BYOK AI tutor with multi-provider fallback, personalities, on-demand diagrams, and optional free-tier image generation.

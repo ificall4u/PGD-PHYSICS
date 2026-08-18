@@ -3,14 +3,14 @@ import 'package:pgd_physics/theme/app_theme.dart';
 
 class StatsRow extends StatelessWidget {
   final int totalCourses;
-  final int totalTopics;
+  final int totalModules;
   final int totalUnits;
   final int completedUnits;
 
   const StatsRow({
     super.key,
     required this.totalCourses,
-    required this.totalTopics,
+    required this.totalModules,
     required this.totalUnits,
     this.completedUnits = 0,
   });
@@ -26,8 +26,8 @@ class StatsRow extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         _StatChip(
-          label: 'Topics',
-          value: '$totalTopics',
+          label: 'Modules',
+          value: '$totalModules',
           color: AppTheme.accent,
         ),
         const SizedBox(width: 10),

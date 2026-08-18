@@ -15,7 +15,7 @@ class AiService {
   static String _buildSystemPrompt({
     required String currentPage,
     String? courseTitle,
-    String? topicTitle,
+    String? moduleTitle,
     String? unitTitle,
     String? problemOrQuestion,
   }) {
@@ -85,7 +85,7 @@ class AiService {
     buffer.writeln('=== CONTEXT ===');
     buffer.writeln('Page: $currentPage');
     if (courseTitle != null) buffer.writeln('Course: $courseTitle');
-    if (topicTitle != null) buffer.writeln('Topic: $topicTitle');
+    if (moduleTitle != null) buffer.writeln('Module: $moduleTitle');
     if (unitTitle != null) buffer.writeln('Unit: $unitTitle');
     if (problemOrQuestion != null && problemOrQuestion.isNotEmpty) {
       final clip = problemOrQuestion.length > 1200
@@ -152,7 +152,7 @@ class AiService {
     required String userMessage,
     required String currentPage,
     String? courseTitle,
-    String? topicTitle,
+    String? moduleTitle,
     String? unitTitle,
     String? problemOrQuestion,
     List<Map<String, String>>? conversationHistory,
@@ -173,7 +173,7 @@ class AiService {
     final systemPrompt = _buildSystemPrompt(
       currentPage: currentPage,
       courseTitle: courseTitle,
-      topicTitle: topicTitle,
+      moduleTitle: moduleTitle,
       unitTitle: unitTitle,
       problemOrQuestion: problemOrQuestion,
     );

@@ -52,10 +52,10 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
     final project =
         courses.where((c) => c.semester == 'Project').toList();
 
-    final totalTopics =
-        courses.fold<int>(0, (sum, c) => sum + c.totalTopics);
+    final totalModules =
+        courses.fold<int>(0, (sum, c) => sum + c.totalModules);
     final totalUnits = courses.fold<int>(
-        0, (sum, c) => sum + c.topics.fold(0, (s, t) => s + t.totalUnits));
+        0, (sum, c) => sum + c.modules.fold(0, (s, t) => s + t.totalUnits));
 
     return Scaffold(
       body: SafeArea(
@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                 padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
                 child: StatsRow(
                   totalCourses: courses.length,
-                  totalTopics: totalTopics,
+                  totalModules: totalModules,
                   totalUnits: totalUnits,
                   completedUnits: StorageService.completedUnitCount(),
                 ),
@@ -343,14 +343,14 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
     final last = StorageService.getLastLesson();
     if (last == null) return;
     Course? course;
-    Topic? topic;
+    Module? module;
     Unit? unit;
     for (final c in courses) {
       if (c.id == last['courseId']) {
         course = c;
-        for (final tp in c.topics) {
+        for (final tp in c.modules) {
           if (tp.id == last['topicId']) {
-            topic = tp;
+            module = tp;
             for (final u in tp.units) {
               if (u.id == last['unitId']) {
                 unit = u;
@@ -363,11 +363,11 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
         break;
       }
     }
-    if (course != null && topic != null && unit != null) {
+    if (course != null && module != null && unit != null) {
       Navigator.push(
         context,
         AppLessonRoute(
-          page: UnitScreen(course: course!, topic: topic!, unit: unit!),
+          page: UnitScreen(course: course!, module: module!, unit: unit!),
         ),
       );
     }

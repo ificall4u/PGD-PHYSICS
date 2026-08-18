@@ -17,15 +17,15 @@ class CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = AppTheme.courseColor(course.colorHint);
     final unitCount =
-        course.topics.fold<int>(0, (s, t) => s + t.totalUnits);
-    final doneCount = course.topics.fold<int>(
+        course.modules.fold<int>(0, (s, t) => s + t.totalUnits);
+    final doneCount = course.modules.fold<int>(
       0,
       (s, t) =>
           s +
           t.units.where((u) => StorageService.isUnitComplete(u.id)).length,
     );
     final progress = unitCount == 0 ? 0.0 : doneCount / unitCount;
-    final topicCount = course.totalTopics;
+    final moduleCount = course.totalModules;
 
     return Material(
       color: AppTheme.surface,
@@ -138,9 +138,9 @@ class CourseCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 10),
                           Text(
-                            topicCount == 0
+                            moduleCount == 0
                                 ? 'Coming soon'
-                                : '$topicCount topics · $unitCount lessons',
+                                : '$moduleCount modules · $unitCount lessons',
                             style: TextStyle(
                               fontSize: 11,
                               color: AppTheme.textMuted,

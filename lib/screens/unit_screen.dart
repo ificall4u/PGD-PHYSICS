@@ -15,13 +15,13 @@ import 'package:pgd_physics/widgets/diagrams/diagram_registry.dart';
 
 class UnitScreen extends StatefulWidget {
   final Course course;
-  final Topic topic;
+  final Module module;
   final Unit unit;
 
   const UnitScreen({
     super.key,
     required this.course,
-    required this.topic,
+    required this.module,
     required this.unit,
   });
 
@@ -39,10 +39,10 @@ class _UnitScreenState extends State<UnitScreen> with ThemeAware {
     _completed = StorageService.isUnitComplete(widget.unit.id);
     StorageService.setLastLesson(
       courseId: widget.course.id,
-      topicId: widget.topic.id,
+      topicId: widget.module.id,
       unitId: widget.unit.id,
       courseTitle: widget.course.title,
-      topicTitle: widget.topic.title,
+      moduleTitle: widget.module.title,
       unitTitle: widget.unit.title,
     );
   }
@@ -72,7 +72,7 @@ class _UnitScreenState extends State<UnitScreen> with ThemeAware {
         page: NovaChatScreen(
           currentPage: 'Unit: ${widget.unit.title}',
           courseTitle: widget.course.title,
-          topicTitle: widget.topic.title,
+          moduleTitle: widget.module.title,
           unitTitle: widget.unit.title,
           problemOrQuestion:
               '${StorageService.getNickname()} highlighted this from the lesson and wants help with it:\n\n"$text"',
@@ -90,7 +90,7 @@ class _UnitScreenState extends State<UnitScreen> with ThemeAware {
         page: NovaChatScreen(
           currentPage: 'Unit: ${widget.unit.title}',
           courseTitle: widget.course.title,
-          topicTitle: widget.topic.title,
+          moduleTitle: widget.module.title,
           unitTitle: widget.unit.title,
           problemOrQuestion: widget.unit.content.length > 400
               ? '${widget.unit.content.substring(0, 400)}…'
@@ -175,7 +175,7 @@ class _UnitScreenState extends State<UnitScreen> with ThemeAware {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${widget.course.code}  ·  ${widget.topic.title}',
+                    '${widget.course.code}  ·  ${widget.module.title}',
                     style: TextStyle(
                       fontSize: 12,
                       color: AppTheme.textMuted,
@@ -375,7 +375,7 @@ class _UnitScreenState extends State<UnitScreen> with ThemeAware {
                             AppPageRoute(
                               page: QuizScreen(
                                 course: widget.course,
-                                topic: widget.topic,
+                                module: widget.module,
                                 unit: widget.unit,
                               ),
                             ),

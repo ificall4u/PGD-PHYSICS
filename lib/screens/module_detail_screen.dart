@@ -8,14 +8,14 @@ import 'package:pgd_physics/screens/unit_screen.dart';
 import 'package:pgd_physics/screens/nova_chat_screen.dart';
 import 'package:pgd_physics/services/storage_service.dart';
 
-class TopicDetailScreen extends StatelessWidget {
+class ModuleDetailScreen extends StatelessWidget {
   final Course course;
-  final Topic topic;
+  final Module module;
 
-  const TopicDetailScreen({
+  const ModuleDetailScreen({
     super.key,
     required this.course,
-    required this.topic,
+    required this.module,
   });
 
   @override
@@ -32,7 +32,7 @@ class TopicDetailScreen extends StatelessWidget {
       backgroundColor: AppTheme.background,
       appBar: AppBar(
         title: Text(
-          topic.title,
+          module.title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -45,9 +45,9 @@ class TopicDetailScreen extends StatelessWidget {
                 context,
                 AppPageRoute(
                   page: NovaChatScreen(
-                    currentPage: 'Topic: ${topic.title}',
+                    currentPage: 'Module: ${module.title}',
                     courseTitle: course.title,
-                    topicTitle: topic.title,
+                    moduleTitle: module.title,
                   ),
                 ),
               );
@@ -69,7 +69,7 @@ class TopicDetailScreen extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            topic.title,
+            module.title,
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700,
@@ -80,7 +80,7 @@ class TopicDetailScreen extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            topic.summary,
+            module.summary,
             style: TextStyle(
               fontSize: 14,
               color: AppTheme.textSecondary,
@@ -97,7 +97,7 @@ class TopicDetailScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          ...topic.units.asMap().entries.map((entry) {
+          ...module.units.asMap().entries.map((entry) {
             final i = entry.key;
             final unit = entry.value;
             final done = StorageService.isUnitComplete(unit.id);
@@ -116,7 +116,7 @@ class TopicDetailScreen extends StatelessWidget {
                       AppLessonRoute(
                         page: UnitScreen(
                           course: course,
-                          topic: topic,
+                          module: module,
                           unit: unit,
                         ),
                       ),

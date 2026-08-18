@@ -7,13 +7,13 @@ import 'package:pgd_physics/widgets/theme_toggle.dart';
 
 class QuizScreen extends StatefulWidget {
   final Course course;
-  final Topic topic;
+  final Module module;
   final Unit unit;
 
   const QuizScreen({
     super.key,
     required this.course,
-    required this.topic,
+    required this.module,
     required this.unit,
   });
 

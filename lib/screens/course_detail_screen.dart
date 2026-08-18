@@ -4,7 +4,7 @@ import 'package:pgd_physics/theme/app_theme.dart';
 import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
 import 'package:pgd_physics/utils/page_transitions.dart';
-import 'package:pgd_physics/screens/topic_detail_screen.dart';
+import 'package:pgd_physics/screens/module_detail_screen.dart';
 import 'package:pgd_physics/screens/nova_chat_screen.dart';
 
 class CourseDetailScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class CourseDetailScreen extends StatelessWidget {
   Widget _build(BuildContext context) {
     final color = AppTheme.courseColor(course.colorHint);
     final unitCount =
-        course.topics.fold<int>(0, (s, t) => s + t.totalUnits);
+        course.modules.fold<int>(0, (s, t) => s + t.totalUnits);
 
     return Scaffold(
       backgroundColor: AppTheme.background,
@@ -115,7 +115,7 @@ class CourseDetailScreen extends StatelessWidget {
             children: [
               _MetaChip(icon: Icons.schedule_rounded, label: '${course.units} units'),
               const SizedBox(width: 8),
-              _MetaChip(icon: Icons.menu_book_rounded, label: '${course.totalTopics} topics'),
+              _MetaChip(icon: Icons.menu_book_rounded, label: '${course.totalModules} modules'),
               const SizedBox(width: 8),
               _MetaChip(icon: Icons.layers_rounded, label: '$unitCount lessons'),
             ],
@@ -124,7 +124,7 @@ class CourseDetailScreen extends StatelessWidget {
           Row(
             children: [
               Text(
-                'Topics',
+                'Modules',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
@@ -143,7 +143,7 @@ class CourseDetailScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          if (course.topics.isEmpty)
+          if (course.modules.isEmpty)
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -157,9 +157,9 @@ class CourseDetailScreen extends StatelessWidget {
               ),
             )
           else
-            ...course.topics.asMap().entries.map((entry) {
+            ...course.modules.asMap().entries.map((entry) {
               final index = entry.key;
-              final topic = entry.value;
+              final module = entry.value;
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Material(
@@ -173,9 +173,9 @@ class CourseDetailScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         AppPageRoute(
-                          page: TopicDetailScreen(
+                          page: ModuleDetailScreen(
                             course: course,
-                            topic: topic,
+                            module: module,
                           ),
                         ),
                       );
@@ -212,7 +212,7 @@ class CourseDetailScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  topic.title,
+                                  module.title,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14.5,
@@ -222,7 +222,7 @@ class CourseDetailScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 3),
                                 Text(
-                                  topic.summary,
+                                  module.summary,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
@@ -233,7 +233,7 @@ class CourseDetailScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 6),
                                 Text(
-                                  '${topic.totalUnits} lessons',
+                                  '${module.totalUnits} lessons',
                                   style: TextStyle(
                                     fontSize: 11,
                                     color: AppTheme.textMuted,

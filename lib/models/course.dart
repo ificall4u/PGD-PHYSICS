@@ -1,12 +1,14 @@
+/// Curriculum model for PGD Physics.
+/// Hierarchy: Course → Module → Unit (lesson) → QuizQuestion
 class Course {
   final String id;
   final String code; // e.g. PHY 701
   final String title;
   final String description;
-  final String semester; // "First Semester" | "Second Semester"
-  final int units;
-  final List<Topic> topics;
-  final String icon; // emoji or asset key
+  final String semester; // "First Semester" | "Second Semester" | "Project"
+  final int units; // credit units
+  final List<Module> modules;
+  final String icon;
   final ColorHint colorHint;
 
   Course({
@@ -16,19 +18,25 @@ class Course {
     required this.description,
     required this.semester,
     required this.units,
-    required this.topics,
+    required this.modules,
     this.icon = '📘',
     this.colorHint = ColorHint.purple,
   });
 
-  int get totalTopics => topics.length;
-  int get completedTopics => topics.where((t) => t.isCompleted).length;
-  double get progress => totalTopics == 0 ? 0.0 : completedTopics / totalTopics;
+  /// Backward-friendly alias used in a few call sites during migration.
+  List<Module> get topics => modules;
+
+  int get totalModules => modules.length;
+  int get totalTopics => totalModules;
+  int get completedModules => modules.where((m) => m.isCompleted).length;
+  int get completedTopics => completedModules;
+  double get progress =>
+      totalModules == 0 ? 0.0 : completedModules / totalModules;
 }
 
 enum ColorHint { purple, cyan, green, orange, pink }
 
-class Topic {
+class Module {
   final String id;
   final String title;
   final String summary;
@@ -36,7 +44,7 @@ class Topic {
   bool isCompleted;
   bool isLocked;
 
-  Topic({
+  Module({
     required this.id,
     required this.title,
     required this.summary,
@@ -50,10 +58,27 @@ class Topic {
   double get progress => totalUnits == 0 ? 0.0 : completedUnits / totalUnits;
 }
 
+/// Placeholder until full postgraduate content is authored from prompts.
+const kContentPlaceholder = '''
+## Content in progress
+
+This lesson shell is ready for the new postgraduate content.
+
+When the course prompt set is written into this unit, you will see:
+
+- Clear learning goals
+- Intuitive explanations (why before how)
+- Worked ideas and checks
+- Key takeaways
+- A short quiz
+
+Until then, you can still open **Nova** for conversation and study support.
+''';
+
 class Unit {
   final String id;
   final String title;
-  final String content; // Markdown + LaTeX friendly
+  final String content; // Markdown; use mathToPlain on display
   final List<QuizQuestion> quiz;
   final List<String> keyTakeaways;
   bool isCompleted;
@@ -82,6 +107,38 @@ class QuizQuestion {
     required this.question,
     required this.options,
     required this.correctIndex,
-    required this.explanation,
+    this.explanation = '',
   });
+}
+
+/// Build a ready-to-fill unit shell.
+Unit skeletonUnit({
+  required String id,
+  required String title,
+  String? content,
+  List<String> takeaways = const [],
+}) {
+  return Unit(
+    id: id,
+    title: title,
+    content: content ?? kContentPlaceholder,
+    keyTakeaways: takeaways.isEmpty
+        ? const ['Full notes will appear here after content authoring.']
+        : takeaways,
+    quiz: const [],
+  );
+}
+
+Module skeletonModule({
+  required String id,
+  required String title,
+  required String summary,
+  required List<Unit> units,
+}) {
+  return Module(
+    id: id,
+    title: title,
+    summary: summary,
+    units: units,
+  );
 }
