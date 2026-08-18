@@ -164,7 +164,9 @@ class AiService {
       return AiReply(
         text:
             'Hey $nickname 👋\n\nI need at least one free API key to chat with you.\n\n'
-            'Open **Settings → AI providers**, add a key (Gemini is usually easiest), then come back.',
+            'Tap **Open AI settings** below (or go to Settings → AI providers), add a key — Gemini is usually easiest — then come back.
+
+[Open AI settings](pgd://settings/ai)',
         providerId: AiProviderId.gemini,
         poweredByLabel: '',
       );
@@ -243,7 +245,7 @@ class AiService {
       text:
           'I tried every key you saved, $nickname, but none answered successfully.\n\n'
           '${errors.map((e) => '• $e').join('\n')}\n\n'
-          'Check keys in Settings, or wait a minute if you hit a free-tier limit.',
+          'Check keys in [Open AI settings](pgd://settings/ai), or wait a minute if you hit a free-tier limit.',
       providerId: providers.first.id,
       poweredByLabel: '',
     );

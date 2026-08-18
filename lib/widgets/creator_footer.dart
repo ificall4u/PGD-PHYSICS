@@ -73,48 +73,41 @@ class CreatorFooter extends StatelessWidget {
   }
 }
 
-class _CreatorProfileCard extends StatelessWidget {
+class _CreatorProfileCard extends StatefulWidget {
   const _CreatorProfileCard();
 
-  Future<void> _copyHandle(BuildContext context) async {
+  @override
+  State<_CreatorProfileCard> createState() => _CreatorProfileCardState();
+}
+
+class _CreatorProfileCardState extends State<_CreatorProfileCard> {
+  String? _banner;
+
+  Future<void> _copyHandle() async {
     await Clipboard.setData(const ClipboardData(text: '@iam_tochi'));
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('WhatsApp handle copied: @iam_tochi'),
-          backgroundColor: AppTheme.surfaceElevated,
-          behavior: SnackBarBehavior.floating,
-          duration: const Duration(seconds: 2),
-        ),
-      );
-    }
+    if (!mounted) return;
+    setState(() => _banner = 'Copied  @iam_tochi');
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) setState(() => _banner = null);
+    });
   }
 
-  Future<void> _openWhatsApp(BuildContext context) async {
-    // wa.me works with phone numbers; for username-style handles users
-    // often share the @ name — copy + try generic WhatsApp open.
+  Future<void> _openWhatsApp() async {
+    await Clipboard.setData(const ClipboardData(text: '@iam_tochi'));
     final uri = Uri.parse('https://wa.me/');
     try {
-      await Clipboard.setData(const ClipboardData(text: '@iam_tochi'));
-      if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
-      }
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Handle copied — paste in WhatsApp to find @iam_tochi'),
-            backgroundColor: AppTheme.surfaceElevated,
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      }
-    } catch (_) {
-      await _copyHandle(context);
-    }
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } catch (_) {}
+    if (!mounted) return;
+    setState(() => _banner = 'Handle copied — paste in WhatsApp to find @iam_tochi');
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) setState(() => _banner = null);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = AppTheme.c.brightness == Brightness.dark;
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 24),
       padding: const EdgeInsets.fromLTRB(22, 18, 22, 22),
@@ -133,7 +126,6 @@ class _CreatorProfileCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Handle bar
           Container(
             width: 36,
             height: 4,
@@ -142,12 +134,48 @@ class _CreatorProfileCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(2),
             ),
           ),
+          if (_banner != null) ...[
+            const SizedBox(height: 14),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              decoration: BoxDecoration(
+                color: isDark
+                    ? AppTheme.success.withOpacity(0.2)
+                    : const Color(0xFFE6F7EF),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: isDark
+                      ? AppTheme.success.withOpacity(0.45)
+                      : const Color(0xFF86D4B0),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.check_circle_rounded,
+                      size: 18,
+                      color: isDark ? AppTheme.success : const Color(0xFF0F9F6E)),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      _banner!,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: isDark
+                            ? AppTheme.textPrimary
+                            : const Color(0xFF0B3D2E),
+                        height: 1.3,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
           const SizedBox(height: 20),
-
-          // Spinning atom avatar
           const _SpinningAtomAvatar(size: 88),
           const SizedBox(height: 16),
-
           Text(
             'Tochukwu Victor',
             style: TextStyle(
@@ -171,72 +199,60 @@ class _CreatorProfileCard extends StatelessWidget {
             'University of Nigeria, Nsukka',
             style: TextStyle(
               fontSize: 12,
-              color: AppTheme.textMuted,
+              color: AppTheme.textSecondary,
             ),
           ),
           const SizedBox(height: 16),
-
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-            decoration: BoxDecoration(
-              color: AppTheme.surfaceElevated,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppTheme.cardBorder),
-            ),
-            child: Text(
-              'Contact on WhatsApp for consultations — projects, physics tutoring, and related guidance.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 13,
-                height: 1.45,
-                color: AppTheme.textSecondary,
-              ),
+          Text(
+            'Contact on WhatsApp for consultations',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 13,
+              color: AppTheme.textSecondary,
+              height: 1.4,
             ),
           ),
           const SizedBox(height: 14),
-
-          // Copiable handle
           Material(
-            color: AppTheme.primary.withOpacity(0.12),
-            borderRadius: BorderRadius.circular(12),
+            color: AppTheme.surfaceElevated,
+            borderRadius: BorderRadius.circular(14),
             child: InkWell(
-              onTap: () => _copyHandle(context),
-              borderRadius: BorderRadius.circular(12),
+              onTap: _copyHandle,
+              borderRadius: BorderRadius.circular(14),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.copy_rounded,
-                        size: 16, color: AppTheme.primaryLight),
-                    const SizedBox(width: 8),
-                    Text(
-                      '@iam_tochi',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: AppTheme.textPrimary,
-                        letterSpacing: 0.3,
+                    Expanded(
+                      child: Text(
+                        '@iam_tochi',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: AppTheme.textPrimary,
+                        ),
                       ),
                     ),
+                    Icon(Icons.copy_rounded, size: 18, color: AppTheme.primaryLight),
                   ],
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 10),
-
+          const SizedBox(height: 12),
           SizedBox(
             width: double.infinity,
-            child: ElevatedButton.icon(
-              onPressed: () => _openWhatsApp(context),
-              icon: Icon(Icons.chat_rounded, size: 18),
-              label: Text('Open WhatsApp'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF25D366),
-                foregroundColor: Colors.white,
+            child: FilledButton.icon(
+              onPressed: _openWhatsApp,
+              icon: const Icon(Icons.chat_rounded, size: 18),
+              label: const Text('Open WhatsApp'),
+              style: FilledButton.styleFrom(
+                backgroundColor: AppTheme.primary,
+                foregroundColor: AppTheme.textOnPrimary,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
               ),
             ),
           ),
@@ -256,95 +272,45 @@ class _SpinningAtomAvatar extends StatefulWidget {
 
 class _SpinningAtomAvatarState extends State<_SpinningAtomAvatar>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
+  late final AnimationController _c;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 8),
-    )..repeat();
+    _c = AnimationController(vsync: this, duration: const Duration(seconds: 8))
+      ..repeat();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _c.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
+      animation: _c,
+      builder: (context, _) {
         return Transform.rotate(
-          angle: _controller.value * 2 * math.pi,
-          child: child,
+          angle: _c.value * 2 * math.pi,
+          child: Container(
+            width: widget.size,
+            height: widget.size,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  AppTheme.primary.withOpacity(0.25),
+                  AppTheme.surfaceElevated,
+                ],
+              ),
+              border: Border.all(color: AppTheme.primary.withOpacity(0.35)),
+            ),
+            child: Icon(Icons.hub_rounded, size: widget.size * 0.42, color: AppTheme.primaryLight),
+          ),
         );
       },
-      child: Container(
-        width: widget.size,
-        height: widget.size,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(
-            colors: [
-              AppTheme.primary.withOpacity(0.25),
-              AppTheme.accent.withOpacity(0.15),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          border: Border.all(
-            color: AppTheme.primary.withOpacity(0.45),
-            width: 1.5,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: AppTheme.primary.withOpacity(0.2),
-              blurRadius: 20,
-              spreadRadius: 1,
-            ),
-          ],
-        ),
-        child: CustomPaint(
-          painter: _AtomPainter(),
-        ),
-      ),
     );
   }
-}
-
-class _AtomPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final c = Offset(size.width / 2, size.height / 2);
-    final nucleus = Paint()..color = const Color(0xFF7C5CFC);
-    final orbit = Paint()
-      ..color = const Color(0xFFA78BFA).withOpacity(0.85)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.4;
-    final electron = Paint()..color = const Color(0xFF2EE6D6);
-
-    canvas.drawCircle(c, 6, nucleus);
-
-    for (final angle in [0.0, 1.05, 2.1]) {
-      canvas.save();
-      canvas.translate(c.dx, c.dy);
-      canvas.rotate(angle);
-      final rect = Rect.fromCenter(
-        center: Offset.zero,
-        width: size.width * 0.72,
-        height: size.height * 0.32,
-      );
-      canvas.drawOval(rect, orbit);
-      // electron on orbit
-      canvas.drawCircle(Offset(size.width * 0.36, 0), 3.2, electron);
-      canvas.restore();
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

@@ -4,6 +4,7 @@ import 'package:pgd_physics/theme/app_theme.dart';
 import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
 import 'package:pgd_physics/services/ai_service.dart';
+import 'package:pgd_physics/screens/settings_screen.dart';
 import 'package:pgd_physics/services/storage_service.dart';
 import 'package:pgd_physics/widgets/nova_message_body.dart';
 import 'package:pgd_physics/widgets/diagrams/chat_diagram_catalog.dart';
@@ -468,6 +469,32 @@ class _NovaChatScreenState extends State<NovaChatScreen> with ThemeAware {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           NovaMessageBody(text: content, isUser: isUser),
+                          if (!isUser &&
+                              (content.contains('pgd://settings/ai') ||
+                                  content.toLowerCase().contains(
+                                      'settings → ai') ||
+                                  content.toLowerCase().contains(
+                                      'settings -> ai') ||
+                                  content.toLowerCase().contains(
+                                      'add a key'))) ...[
+                            const SizedBox(height: 10),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: FilledButton.tonalIcon(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    AppPageRoute(
+                                      page: const SettingsScreen(
+                                          openAiSection: true),
+                                    ),
+                                  );
+                                },
+                                icon: const Icon(Icons.vpn_key_rounded, size: 18),
+                                label: const Text('Open AI settings'),
+                              ),
+                            ),
+                          ],
                           if (!isUser &&
                               (msg['diagramIds'] ?? '').isNotEmpty)
                             ...msg['diagramIds']!

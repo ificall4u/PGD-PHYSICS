@@ -58,14 +58,16 @@ class _SettingsScreenState extends State<SettingsScreen> with ThemeAware {
     super.didChangeDependencies();
     if (widget.openAiSection && !_didScrollToAi) {
       _didScrollToAi = true;
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await Future<void>.delayed(const Duration(milliseconds: 50));
+        if (!mounted) return;
         final ctx = _aiSectionKey.currentContext;
         if (ctx != null) {
-          Scrollable.ensureVisible(
+          await Scrollable.ensureVisible(
             ctx,
-            duration: const Duration(milliseconds: 180),
+            duration: const Duration(milliseconds: 280),
             curve: Curves.easeOutCubic,
-            alignment: 0.05,
+            alignment: 0.02,
           );
         }
       });
@@ -498,9 +500,28 @@ class _SettingsScreenState extends State<SettingsScreen> with ThemeAware {
                   TextButton.icon(
                     onPressed: () async {
                       final uri = Uri.parse(p.docsUrl);
-                      if (await canLaunchUrl(uri)) {
-                        await launchUrl(uri,
-                            mode: LaunchMode.externalApplication);
+                      try {
+                        final ok = await launchUrl(
+                          uri,
+                          mode: LaunchMode.externalApplication,
+                        );
+                        if (!ok && mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Could not open ${p.docsUrl}'),
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
+                        }
+                      } catch (_) {
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Could not open browser. Visit: ${p.docsUrl}'),
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
+                        }
                       }
                     },
                     icon: Icon(Icons.open_in_new, size: 16),

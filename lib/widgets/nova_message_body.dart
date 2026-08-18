@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/screens/settings_screen.dart';
+import 'package:pgd_physics/utils/page_transitions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Light cleanup so users never see raw markdown junk when models misbehave.
 String sanitizeNovaText(String raw) {
   var t = raw.trim();
-  // Normalize odd separators models sometimes emit
   t = t.replaceAll(RegExp(r'-{3,}'), '—');
   t = t.replaceAll(RegExp(r'_{3,}'), '');
-  // Collapse excessive blank lines
   t = t.replaceAll(RegExp(r'\n{3,}'), '\n\n');
-  // Common unicode-friendly physics substitutions when models emit TeX-ish bits
   const pairs = <String, String>{
     r'\times': '×',
     r'\cdot': '·',
@@ -32,17 +32,61 @@ String sanitizeNovaText(String raw) {
     r'_4': '₄',
     r'_n': 'ₙ',
     r'_i': 'ᵢ',
-    r'\$': '',
   };
   for (final e in pairs.entries) {
     t = t.replaceAll(e.key, e.value);
   }
-  // Strip leftover simple $...$ wrappers after substitutions
+  // Keep markdown links; only strip lone $ math wrappers without nested content issues
   t = t.replaceAllMapped(
-    RegExp(r'\$([^\$]{1,40})\$'),
+    RegExp(r'(?<!\])\$([^\$\n]{1,40})\$'),
     (m) => m.group(1) ?? '',
   );
   return t.trim();
+}
+
+Future<void> openNovaLink(BuildContext context, String text, String? href) async {
+  final link = (href ?? text).trim();
+  if (link.isEmpty) return;
+
+  // Deep link into Settings → AI providers
+  if (link.startsWith('pgd://settings/ai') ||
+      link.contains('settings/ai') ||
+      link.toLowerCase().contains('open ai settings')) {
+    await Navigator.of(context).push(
+      AppPageRoute(page: const SettingsScreen(openAiSection: true)),
+    );
+    return;
+  }
+
+  // Heuristic: plain language about settings in a "link" span
+  final lower = link.toLowerCase();
+  if (lower.contains('settings') &&
+      (lower.contains('ai') || lower.contains('provider') || lower.contains('key'))) {
+    await Navigator.of(context).push(
+      AppPageRoute(page: const SettingsScreen(openAiSection: true)),
+    );
+    return;
+  }
+
+  Uri? uri = Uri.tryParse(link);
+  if (uri != null && !uri.hasScheme) {
+    uri = Uri.tryParse('https://$link');
+  }
+  if (uri == null || !(uri.scheme == 'http' || uri.scheme == 'https')) {
+    return;
+  }
+  try {
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  } catch (_) {
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Could not open link'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+  }
 }
 
 class NovaMessageBody extends StatelessWidget {
@@ -128,7 +172,11 @@ class NovaMessageBody extends StatelessWidget {
       ),
       a: TextStyle(
         color: isUser ? Colors.white : AppTheme.primaryLight,
+        fontWeight: FontWeight.w700,
         decoration: TextDecoration.underline,
+        decorationColor: isUser
+            ? Colors.white.withOpacity(0.7)
+            : AppTheme.primaryLight.withOpacity(0.7),
       ),
       horizontalRuleDecoration: BoxDecoration(
         border: Border(
@@ -146,6 +194,9 @@ class NovaMessageBody extends StatelessWidget {
       selectable: true,
       softLineBreak: true,
       styleSheet: sheet,
+      onTapLink: (text, href, title) {
+        openNovaLink(context, text, href);
+      },
     );
   }
 }
