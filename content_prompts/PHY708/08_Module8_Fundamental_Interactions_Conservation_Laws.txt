@@ -1,0 +1,10 @@
+Execute Module 8: Fundamental Interactions & Quantum Conservation Laws.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Four Fundamental Forces: Strong, Electromagnetic, Weak, and Gravitational interactions compared side-by-side.
+2. Weak Interactions & Neutrinos: Responsible for radioactive beta decay and changing one particle flavor into another.
+3. Quantum Conservation Laws:
+   - Conservation of Charge.
+   - Conservation of Baryon Number (protecting protons from decaying).
+   - Conservation of Lepton Number.
+4. Feynman Diagrams: Simple visual sketch language for particle collisions and decays.

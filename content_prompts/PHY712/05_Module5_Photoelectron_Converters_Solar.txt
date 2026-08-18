@@ -1,0 +1,6 @@
+Execute Module 5: Photovoltaic Solar Cells and Photoelectron Converters.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Photovoltaic Effect: How light particles (photons) strike electrons in silicon and knock them loose to create electric current.
+2. Anatomy of a Solar Cell: $P	ext{-}N$ silicon junctions creating an internal electric field to pull knocked-loose electrons in one direction.
+3. Solar Efficiency Limits: Why single-junction silicon solar cells have a theoretical maximum efficiency limit (Shockley-Queisser limit explained intuitively).

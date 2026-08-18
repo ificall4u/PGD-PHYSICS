@@ -1,0 +1,10 @@
+Execute Module 4: Combinational Logic, Multiplexers, and Demultiplexers.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Combinational Logic: Define logic circuits whose output depends ONLY on current inputs (no memory).
+2. Multiplexers (MUX - Data Selectors):
+   - Use the "railway track switch" analogy: multiple incoming tracks merge into one outgoing track based on a control lever (select lines).
+   - Build a 2-to-1 MUX and 4-to-1 MUX using basic logic gates step-by-step.
+3. Demultiplexers (DEMUX - Data Distributors):
+   - Reverse of MUX: one input directed to one of many outputs based on select signals.
+4. Encoders & Decoders: Explain how 7-segment LED displays work using binary decoders.

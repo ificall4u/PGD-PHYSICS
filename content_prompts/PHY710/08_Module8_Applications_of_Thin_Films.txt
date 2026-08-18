@@ -1,0 +1,6 @@
+Execute Module 8: Applications and Engineering Uses of Thin Films.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Optical Coatings: Anti-reflective coatings on glasses/camera lenses and high-reflection mirrors.
+2. Semiconductor Electronics: Metal interconnects, insulating oxide gates, and barrier layers in microchips.
+3. Energy Applications: Thin-film solar cells, energy-efficient window coatings, and wear-resistant tool coatings (Titanium Nitride).

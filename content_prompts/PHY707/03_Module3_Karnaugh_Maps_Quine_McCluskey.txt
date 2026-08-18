@@ -1,0 +1,10 @@
+Execute Module 3: Circuit Minimization (Karnaugh Maps & Quine-McCluskey).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Goal of Minimization: Explain why simplifying logic circuits saves money, reduces power, and speeds up computing.
+2. Karnaugh Maps (K-Maps):
+   - What is a K-map? A visual grid rearrangement of a truth table where adjacent cells differ by only one binary digit (Gray code).
+   - Grouping Rules: How to circle groups of 2, 4, or 8 adjacent 1s to eliminate redundant variables.
+   - Solving 2-variable, 3-variable, and 4-variable K-maps step-by-step.
+3. Quine-McCluskey (Tabular Method):
+   - When K-maps become too large (5+ variables), explain how the systematic tabular method finds prime implicants algorithmically.

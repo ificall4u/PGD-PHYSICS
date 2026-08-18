@@ -1,0 +1,7 @@
+Execute Module 5: Sputtering Techniques (Subtractive to Additive Transfer).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is Sputtering?: The "atomic sandblasting" analogy—knocking target atoms loose using high-energy argon gas ions.
+2. DC Plasma Sputtering: Igniting a glowing plasma glow discharge to deposit conductive metals.
+3. RF (Radio Frequency) Sputtering: Sputtering insulating ceramic materials using alternating high-frequency electrical fields.
+4. Magnetron Sputtering: Using magnetic fields to trap electrons near the target, making the plasma dense and efficient.

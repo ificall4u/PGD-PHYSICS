@@ -1,0 +1,7 @@
+Execute Module 7: Field-Effect Transistors (FET & MOSFET).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Voltage Control vs Current Control: Contrast FETs (field/voltage controlled) with BJTs (current controlled).
+2. MOSFET Architecture: Metal Gate, Oxide Insulator, and Semiconductor Channel. Use the "field effect bridge" analogy.
+3. Channel Formation & Pinch-off: How gate voltage creates an inversion layer channel; how drain voltage causes pinch-off.
+4. MOSFET as Logic Switch: How MOSFETs form the basic ON/OFF building blocks of modern computer processors.

@@ -1,0 +1,11 @@
+Execute Module 7: Transistor Physical Manufacturing (MOSFET & BJT).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. MOSFET Layer-by-Layer Fabrication:
+   - Substrate preparation $ightarrow$ Shallow Trench Isolation (STI).
+   - Growing ultra-thin Gate Oxide ($SiO_2$) $ightarrow$ Polysilicon Gate patterning.
+   - Self-aligned Source/Drain ion implantation (N-type zones for NMOS).
+2. BJT Layer-by-Layer Fabrication:
+   - Double-diffused NPN structure (Emitter, Base, Collector regions) step-by-step.
+3. CMOS Fabrication Process (N-Well Process):
+   - Building both NMOS and PMOS transistors on a single silicon chip side-by-side.

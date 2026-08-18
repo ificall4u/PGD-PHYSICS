@@ -1,11 +1,4 @@
-# PHY712 — content prompts
+# PHY 712 — Energy Conversion and Storage
 
-Upload the authoring prompt set for **PHY712** into this folder.
-
-Suggested files:
-
-- `00_overview.md` — course goals and module map
-- `M01_....md` — one file per module (or one combined file)
-- `quiz_bank.md` — optional
-
-When ready, fill `lib/data/phy712_content.dart` using **CONTENT_AUTHORING.md**.
+Prompt pack. Shells: `lib/data/phy712_content.dart`.
+Modules: 8. Prose later via CONTENT_AUTHORING.md.

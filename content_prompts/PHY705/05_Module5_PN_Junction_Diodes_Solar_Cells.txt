@@ -1,0 +1,7 @@
+Execute Module 5: PN Junction Diodes and Solar Cells.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. N-type & P-type Doping: Explain doping pure silicon with phosphorus (donors) or boron (acceptors).
+2. PN Junction Formation: What happens when N and P regions touch—diffusion, electron-hole recombination, and the depletion region (the "no-man's land").
+3. Diode Action (The Turnstile): Explain forward bias (lowering the barrier) vs. reverse bias (raising the barrier).
+4. Solar Cells & Photovoltaic Effect: How incoming photons create electron-hole pairs in the depletion region to generate electrical power.

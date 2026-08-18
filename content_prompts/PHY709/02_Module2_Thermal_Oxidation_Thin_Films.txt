@@ -1,0 +1,9 @@
+Execute Module 2: Thermal Oxidation & Insulating Films.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Silicon Dioxide (SiO2) as a Physical Barrier: Explain why SiO2 is the ultimate insulator and protective rust layer for silicon circuits.
+2. Thermal Oxidation ("Baking Silicon"):
+   - Dry Oxidation (silicon + oxygen gas): Slow, dense, high-quality gate oxides.
+   - Wet Oxidation (silicon + steam): Fast growth, ideal for thick protective isolation layers.
+3. Deal-Grove Model Intuition: Explain how oxygen molecules diffuse down through already-formed oxide layers to react with underlying silicon (the "snow cover" analogy).
+4. Chemical Vapor Deposition (CVD): Depositing thin films (polysilicon, silicon nitride) when thermal oxidation isn't applicable.

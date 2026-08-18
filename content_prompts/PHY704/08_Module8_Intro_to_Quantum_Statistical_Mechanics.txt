@@ -1,0 +1,10 @@
+Execute Module 8: Introduction to Quantum Statistical Mechanics.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Classical vs. Quantum Statistics: Maxwell-Boltzmann (distinguishable particles) vs. Quantum (indistinguishable particles).
+2. Fermi-Dirac Statistics:
+   - Particles with half-integer spin (electrons, protons) that obey Pauli exclusion.
+   - Fermi energy level and behavior at absolute zero temperature.
+3. Bose-Einstein Statistics:
+   - Particles with integer spin (photons, bosons) that love to pile into the exact same quantum state.
+   - Bose-Einstein Condensate: The "super-atom" phenomenon at ultra-low temperatures.

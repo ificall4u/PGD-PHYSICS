@@ -1,0 +1,7 @@
+Execute Module 8: Electronic Equipment Design & Signal Conditioning.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Signal Conditioning Pipeline: Sensor $ightarrow$ Filtering $ightarrow$ Amplification $ightarrow$ Analog-to-Digital Conversion.
+2. Noise Reduction & Shielding: Faraday cages, twisted-pair cables, and grounding techniques to block electromagnetic interference.
+3. Printed Circuit Board (PCB) Layout Basics: Thermal management, trace width selection, and component placement for reliable instruments.
+4. Power Supply Design for Test Gear: Regulated linear vs. switching power supplies to ensure steady, clean power for delicate measurement tools.

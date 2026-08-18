@@ -1,0 +1,10 @@
+Execute Module 1: Principles of Measurement, Errors, and Accuracy.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Core Purpose of Measurement: Comparing an unknown physical quantity to a standard reference unit.
+2. Accuracy vs. Precision: The dartboard analogy (hitting the bullseye vs. grouping arrows tightly together).
+3. Types of Measurement Errors:
+   - Systematic Errors (predictable bias, like an uncalibrated scale).
+   - Random Errors (unpredictable noise and environmental fluctuations).
+   - Gross Errors (human mistakes in reading scales).
+4. Error Propagation Intuition: How small uncertainties in individual voltage or current measurements multiply when calculating power.

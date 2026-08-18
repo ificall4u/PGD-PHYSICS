@@ -1,0 +1,8 @@
+Execute Module 5: Sequential Logic & Memory (Flip-Flops).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Memory in Circuits: Explain feedback loops—how feeding an output back into an input allows a circuit to "remember" past events.
+2. SR Latch (Set-Reset): Explain Set, Reset, and the illegal invalid state using cross-coupled NOR/NAND gates.
+3. Clocked Flip-Flops: Introduce the "clock pulse" as a heartbeat that synchronizes state changes.
+4. D Flip-Flop (Data/Delay): The basic 1-bit memory cell used in computer RAM.
+5. JK & T Flip-Flops: Resolving invalid states with JK toggles; T flip-flop as a toggle switch.

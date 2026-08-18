@@ -1,0 +1,7 @@
+Execute Module 5: Neutron Physics, Fission, and Fusion.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Magic of Neutrons: Neutral particles that can glide straight into a positive nucleus without feeling electric repulsion.
+2. Thermal vs. Fast Neutrons: Slowing down neutrons using moderators (like heavy water or graphite).
+3. Nuclear Fission ("Splitting the Atom"): Heavy nuclei like Uranium-235 absorbing a neutron, wobbling like a liquid drop, and splitting into smaller fragments.
+4. Nuclear Fusion ("Power of the Stars"): Squeezing light nuclei (deuterium + tritium) together at millions of degrees to form helium and release massive energy.

@@ -1,0 +1,7 @@
+Execute Module 6: Faraday's Law of Induction & Lenz's Law.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Electromagnetic Induction Discovery: Moving a magnet through a wire loop generates voltage.
+2. Faraday's Law: $\mathcal{E} = -\frac{d\Phi_B}{dt}$ translated symbol-by-symbol into plain English (changing magnetic flux creates an electric force).
+3. Lenz's Law (Nature's Inertia): Why the induced current opposes the change in magnetic flux (energy conservation principle).
+4. Practical Applications: Electric generators, transformers, and induction cooktops.

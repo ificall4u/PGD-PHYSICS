@@ -1,0 +1,7 @@
+Execute Module 4: Quantum Scattering Theory.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is Quantum Scattering?: Imagine throwing a beam of marbles at an unseen target in the dark to deduce the target's shape by where marbles bounce off.
+2. Cross-Sections (Differential vs. Total): Physical area presented by a target to incoming particles.
+3. Born Approximation: High-energy scattering where the incoming wave is only slightly deflected by the potential energy barrier.
+4. Phase Shifts: How a scattering potential shifts the crests and troughs of an incoming quantum wave.

@@ -1,0 +1,12 @@
+Execute Module 8: Maxwell's Equations and Spherical Wave Propagation.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Missing Link: Maxwell's addition of displacement current $\mu_0 \epsilon_0 \frac{\partial E}{\partial t}$ to Ampere's Law.
+2. The Four Maxwell Equations Unified:
+   - Gauss' Law for Electricity
+   - Gauss' Law for Magnetism (no magnetic monopoles)
+   - Faraday's Law
+   - Ampere-Maxwell Law
+   - Translate all 4 equations side-by-side into simple, conversational English.
+3. Electromagnetic Waves: How oscillating electric fields generate magnetic fields, and vice versa, allowing light to travel through empty space.
+4. Introduction to Spherical Waves: Wave fronts expanding outward from a central source like ripples in a pond ($r^{-1}$ drop-off in amplitude).

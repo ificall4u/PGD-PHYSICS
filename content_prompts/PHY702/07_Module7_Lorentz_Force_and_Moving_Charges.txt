@@ -1,0 +1,7 @@
+Execute Module 7: Motion of Charges in Electric and Magnetic Fields.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Lorentz Force Law: $F = q(E + v \times B)$ explained component-by-component.
+2. Motion in Pure Electric Field: Parabolic trajectory (like a ball thrown in gravity).
+3. Motion in Pure Magnetic Field: Circular or helical motion (magnetic force acts as a centripetal force).
+4. Velocity Selector & Mass Spectrometer Applications: Balancing electric and magnetic forces step-by-step.

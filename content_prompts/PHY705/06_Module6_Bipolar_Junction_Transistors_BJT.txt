@@ -1,0 +1,7 @@
+Execute Module 6: Bipolar Junction Transistors (BJT).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. BJT Architecture: Explain NPN and PNP sandwich structures (Emitter, Base, Collector). Use the "faucet valve" analogy.
+2. Current Amplification Mechanism: How a tiny base current controls a large collector current. Derive current gain beta = I_c / I_b.
+3. Operating Regions: Cutoff, Active region (amplification), and Saturation (switch ON).
+4. Common Emitter Configuration: Input/output characteristic curves explained physically without complex math.

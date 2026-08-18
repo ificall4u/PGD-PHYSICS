@@ -1,0 +1,7 @@
+Execute Module 8: Oscillatory Systems & Normal Modes.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Physics of Small Oscillations: Expand potential energy V(q) around a minimum equilibrium point using a Taylor series, proving that ALL small oscillations behave locally like harmonic oscillators.
+2. Coupled Oscillators: Consider two masses connected by three springs. Write the full Lagrangian L = T - V in matrix form.
+3. The Secular Equation: Solve det(V - omega² T) = 0 step-by-step to find natural characteristic frequencies omega_1, omega_2.
+4. Normal Modes & Coordinates: Derive normal coordinates Q_1 and Q_2 physically representing symmetric (in-phase) and anti-symmetric (out-of-phase) motions.

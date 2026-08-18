@@ -1,0 +1,7 @@
+Execute Module 9: Mechanics of Continuous Media & Wave Equations.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Discrete to Continuous Transition: Take a chain of N masses connected by springs and take the continuous limit as N -> infinity and mass spacing dx -> 0.
+2. Lagrangian Density: Define the continuous Lagrangian density L_density step-by-step.
+3. Continuous Euler-Lagrange Equation: Derive the continuous field version of Euler-Lagrange equation.
+4. The 1D Wave Equation: Derive the wave equation d²y/dt² = v² (d²y/dx²) from the continuous Lagrangian density of a vibrating string, establishing physical interpretation of wave speed v.

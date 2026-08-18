@@ -1,0 +1,6 @@
+Execute Module 2: Wind Turbines, Heat Engines, and Ocean Thermal Energy (OTEC).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Wind Energy Conversion: Harnessing the kinetic energy of moving air masses into rotary motion (the Betz limit intuition).
+2. Heat Engines: Moving heat from hot to cold to do useful mechanical work (steam turbines and gas turbines).
+3. Ocean Thermal Energy Conversion (OTEC): Using the temperature difference between warm surface water and deep freezing seawater to boil and condense working fluids.

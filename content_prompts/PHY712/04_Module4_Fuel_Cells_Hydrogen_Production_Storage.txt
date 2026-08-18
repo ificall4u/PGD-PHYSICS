@@ -1,0 +1,6 @@
+Execute Module 4: Fuel Cells and Hydrogen Technologies.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is a Fuel Cell?: "A battery that breathes"—combining hydrogen and oxygen to produce electricity with pure water as the only exhaust.
+2. Hydrogen Production: Splitting water molecules ($H_2O$) into hydrogen and oxygen using electricity (electrolysis).
+3. Hydrogen Storage Challenges: Storing light hydrogen gas as high-pressure gas, liquid at cryogenic temperatures, or trapped inside solid metal hydrides.

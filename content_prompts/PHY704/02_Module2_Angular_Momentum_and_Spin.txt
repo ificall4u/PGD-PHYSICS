@@ -1,0 +1,8 @@
+Execute Module 2: Quantum Angular Momentum & Intrinsic Spin.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Orbital Angular Momentum: Quantized rotation in atomic orbits (L = r x p in quantum terms).
+2. Quantum Spin (Intrinsic Angular Momentum):
+   - Explain spin not as a literal spinning billiard ball, but as an intrinsic "magnetic fingerprint."
+   - Stern-Gerlach Experiment: The famous experiment showing silver atoms splitting into two discrete beams (Spin-Up and Spin-Down).
+3. Addition of Angular Momentum: Coupling electron orbital momentum with spin momentum step-by-step.

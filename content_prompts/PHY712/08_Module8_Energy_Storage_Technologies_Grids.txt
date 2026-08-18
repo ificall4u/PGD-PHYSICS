@@ -1,0 +1,7 @@
+Execute Module 8: Energy Storage Systems and Renewable Grid Balancing.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Mechanical Energy Storage: Pumped hydroelectric storage (pumping water uphill) and flywheel kinetic storage.
+2. Chemical & Electrochemical Storage: Lithium-ion batteries and flow batteries for grid-scale power storage.
+3. Thermal Energy Storage: Storing excess energy as heat in molten salt or sand.
+4. Grid Integration: Balancing intermittent wind and solar generation to maintain continuous power stability.

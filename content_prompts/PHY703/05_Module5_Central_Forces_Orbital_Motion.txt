@@ -1,0 +1,7 @@
+Execute Module 5: Central Forces & Central Potential Problems.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Physical Definition: Define a central force as a force pointing along the line connecting two objects (e.g., gravity between Sun and Earth).
+2. Reduction to One-Body Problem: Derive the concept of reduced mass mu = (m1 * m2) / (m1 + m2) step-by-step.
+3. Conservation Laws in Orbit: Prove that central forces conserve Angular Momentum L, forcing motion to remain in a single 2D plane.
+4. Effective Potential Energy: Derive V_eff(r) = V(r) + L² / (2 mu r²). Explain the physical meaning of the centrifugal barrier term (L² / 2 mu r²) and draw the potential energy curve for gravitational orbits.

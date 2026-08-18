@@ -1,0 +1,9 @@
+Execute Module 2: Electric Fields and Gauss' Law.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Electric Field $E$ Concept: Replacing "action at a distance" with the concept of a field aura surrounding charges.
+2. Electric Flux Intuition: Use the "water flowing through a butterfly net" analogy to explain electric flux $\Phi_E$.
+3. Gauss' Law:
+   - Statement: Total flux through a closed imaginary bubble (Gaussian surface) depends ONLY on the enclosed charge $Q_{enc}$.
+   - Integral equation translate to English: $\oint E \cdot dA = \frac{Q_{enc}}{\epsilon_0}$.
+4. Applications of Gauss' Law: Calculating fields for a point charge, an infinite wire, and a flat sheet of charge step-by-step.

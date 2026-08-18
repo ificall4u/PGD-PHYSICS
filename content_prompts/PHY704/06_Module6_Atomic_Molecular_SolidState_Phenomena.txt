@@ -1,0 +1,6 @@
+Execute Module 6: Quantum Models in Atomic, Molecular, and Solid-State Physics.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Multi-Electron Atoms & The Exclusion Principle: Pauli Exclusion Principle (no two identical fermions can occupy the same quantum state).
+2. Molecular Bonding: Covalent bonds as electron sharing between potential wells (tunneling between nuclei).
+3. Energy Bands in Solids: How bringing trillions of atoms together splits discrete energy levels into continuous valence and conduction energy bands.

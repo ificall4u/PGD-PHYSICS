@@ -1,0 +1,11 @@
+Execute Module 8: Analog-Digital Interfacing (DAC and ADC).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Real World vs. Digital World: Analog continuous signals (sound, temperature) vs. Digital discrete 1s and 0s.
+2. Digital-to-Analog Conversion (DAC):
+   - Binary Weighted Resistor network intuition.
+   - R-2R Ladder network step-by-step derivation (why it only uses two resistor values).
+3. Analog-to-Digital Conversion (ADC):
+   - Flash ADC (parallel comparators) for ultra-fast conversion.
+   - Successive Approximation Register (SAR) ADC using the "binary search / balance scale" analogy.
+4. Sampling & Quantization: Nyquist-Shannon sampling theorem explained physically without overwhelming math.

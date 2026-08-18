@@ -1,0 +1,6 @@
+Execute Module 3: Calculus of Variations & Hamilton's Principle of Least Action.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Path Optimization Intuition: Explain the core philosophical transition from Newtonian forces (push-pull at a single instant) to Action Principles (nature picking the optimal path over time). Use Fermat's Principle of Least Time for light in optics as a physical metaphor.
+2. The Action Integral: Define Action S = integral(L dt) in plain English. Explain what the Lagrangian L = T - V represents physically.
+3. Deriving Euler-Lagrange Equations: Perform the full variation delta(S) = 0 from scratch. Show every step of integration by parts, explain the boundary condition delta(q(t1)) = delta(q(t2)) = 0, and derive d/dt(dL/dq_dot) - dL/dq = 0.

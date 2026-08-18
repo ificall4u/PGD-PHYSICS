@@ -1,0 +1,7 @@
+Execute Module 1: Electrical Conduction in Metals and Semiconductors.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Free Electron Model (Drude Model): Explain electrical conduction as a "sea of electrons" bouncing off stationary atomic ions inside a copper wire.
+2. Ohm's Law from First Principles: Derive conductivity sigma = n * e^2 * tau / m intuitively. Translate every variable (n, e, tau, m) into plain English.
+3. Energy Band Theory Intuition: Use the "theater seating" analogy to explain energy levels, forbidden energy gaps, valence bands, and conduction bands.
+4. Metals vs. Semiconductors vs. Insulators: Contrast their band structures visually and conceptually. Define intrinsic semiconductors (pure silicon) and charge carriers (electrons and holes).

@@ -1,0 +1,10 @@
+Execute Module 4: Cathode Ray Oscilloscope (C.R.O.) and Digital Storage Oscilloscopes.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is an Oscilloscope?: The "heart rate monitor" analogy—graphing voltage (vertical axis) against time (horizontal axis).
+2. Cathode Ray Tube (CRT) Anatomy:
+   - Electron Gun: Boiling off electrons and accelerating them toward a screen.
+   - Deflection Plates: Using electrostatic fields to bend the electron beam up/down and left/right.
+   - Phosphor Screen: Converting electron impacts into visible light spots.
+3. Timebase Generator & Triggering: How the scope sweeps the beam smoothly from left to right to "freeze" repeating waves on screen.
+4. Digital Storage Oscilloscopes (DSOs): Sampling analog signals into digital memory for modern analysis.

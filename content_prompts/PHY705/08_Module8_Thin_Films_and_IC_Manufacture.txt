@@ -1,0 +1,7 @@
+Execute Module 8: Thin Films and Integrated Circuit (IC) Fabrication.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is a Thin Film?: Deposition of atomic/molecular layers on substrates (PVD/CVD processes explained simply).
+2. Photolithography (Micro-printing): How light masks transfer circuit patterns onto silicon wafers like photographic developing.
+3. Doping & Etching: Ion implantation, thermal diffusion, and wet/dry etching to etch wire tracks and transistor zones.
+4. IC Assembly: From raw silicon crystal growth (Czochralski process) to millions of transistors on a single microchip.

@@ -1,0 +1,11 @@
+Execute Module 6: Registers and Counters.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Shift Registers: How flip-flops chain together to pass data bits sequentially (serial to parallel conversion).
+2. Asynchronous (Ripple) Counters:
+   - Chain of T flip-flops where each stage clocks the next.
+   - Explain propagation delay ("ripple effect") and why it limits high-speed operations.
+3. Synchronous Counters:
+   - All flip-flops share a single, simultaneous clock signal.
+   - Trace count sequences (Up, Down, Modulo-N) step-by-step.
+4. Real-world applications: Digital clocks, timers, and event counters.

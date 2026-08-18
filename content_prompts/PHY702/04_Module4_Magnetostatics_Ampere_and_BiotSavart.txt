@@ -1,0 +1,9 @@
+Execute Module 4: Magnetostatics and Magnetic Fields.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Permanent Magnets vs. Moving Charges: How electric currents create magnetic fields (Oersted's discovery).
+2. Biot-Savart Law: Calculating magnetic fields $B$ from tiny wire segments.
+3. Ampere's Law:
+   - The "hula hoop around a current" analogy.
+   - $\oint B \cdot dl = \mu_0 I_{enc}$ explained in plain English.
+4. Magnetic Fields in Matter: Diamagnetism, Paramagnetism, and Ferromagnetism (aligned atomic magnetic dipoles).

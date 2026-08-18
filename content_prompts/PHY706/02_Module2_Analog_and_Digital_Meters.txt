@@ -1,0 +1,9 @@
+Execute Module 2: Analog and Digital Measuring Meters.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Galvanometer Core: How magnetic fields and moving coils convert current into physical needle deflection (d'Arsonval movement).
+2. Ammeters and Voltmeters:
+   - Shunt resistors (adding parallel paths to measure large currents).
+   - Multiplier resistors (adding series resistance to measure high voltages).
+3. Digital Multimeters (DMMs): How Analog-to-Digital Converters (ADCs) turn continuous physical voltages into discrete numbers on a digital display.
+4. Meter Loading Effect: Why a voltmeter must have ultra-high resistance so it doesn't "steal" signal from the circuit it is measuring.

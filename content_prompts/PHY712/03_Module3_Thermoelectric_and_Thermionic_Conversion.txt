@@ -1,0 +1,6 @@
+Execute Module 3: Direct Solid-State Heat-to-Electricity Conversion.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Thermoelectric Conversion (Seebeck Effect): Heating one side of a semiconductor bar to force electrons to flow toward the cold side.
+2. Thermoelectric Cooling (Peltier Effect): Running electricity through a junction to pump heat from one side to the other.
+3. Thermionic Emission: "Boiling electrons off a hot metal plate" across a vacuum gap to generate electric current.

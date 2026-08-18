@@ -1,0 +1,7 @@
+Execute Module 4: Photoelectric, Thermionic, and Secondary Electronic Emission.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Work Function: Explain the energy required for an electron to escape a metal surface as a "ticket price."
+2. Photoelectric Emission: Light hitting metal releasing electrons. Explain Einstein's photon model and E = h*f - phi.
+3. Thermionic Emission: Heating metal to boil off electrons (Edison effect / Richardson-Dushman intuition).
+4. Secondary Emission & Applications: High-energy electron impact knocking out secondary electrons. Discuss practical applications (photomultipliers, electron tubes).

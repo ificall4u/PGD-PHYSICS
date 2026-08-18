@@ -1,0 +1,7 @@
+Execute Module 1: Vacuum Fundamentals and Pressure Regimes.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is a Vacuum?: The absence of gas particles rather than an active "sucking" force.
+2. Pressure Units & Measurement: Atmospheric pressure down to Ultra-High Vacuum (UHV) in Torr and Pascals explained physically.
+3. Mean Free Path: The "crowded room" analogy—how far a gas molecule travels before bumping into another molecule.
+4. Flow Regimes: Viscous flow (crowded traffic) vs. Molecular flow (isolated molecules bouncing off chamber walls).

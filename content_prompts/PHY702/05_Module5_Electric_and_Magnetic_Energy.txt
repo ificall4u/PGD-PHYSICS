@@ -1,0 +1,6 @@
+Execute Module 5: Electric and Magnetic Energy Storage.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Energy Stored in Electric Fields: Work done to bring charges together; energy storage in capacitors ($u_E = \frac{1}{2}\epsilon_0 E^2$).
+2. Energy Stored in Magnetic Fields: Building up current against self-induced electromotive force; energy storage in inductors ($u_B = \frac{1}{2\mu_0} B^2$).
+3. Energy Density in Fields: Visualizing fields not just as mathematical lines, but as elastic media storing real physical energy.

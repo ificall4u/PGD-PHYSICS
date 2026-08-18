@@ -1,0 +1,9 @@
+Execute Module 7: Elementary Particles and the Standard Model.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Beyond Protons and Neutrons: The subatomic zoo and fundamental building blocks.
+2. Matter Particles (Fermions):
+   - Quarks: Up, Down, Charm, Strange, Top, Bottom (protons = Up-Up-Down, neutrons = Up-Down-Down).
+   - Leptons: Electrons, Muons, Taus, and their elusive Neutrino companions.
+3. Force Carriers (Bosons): Photons, $W/Z$ bosons, Gluons, and the Higgs Boson.
+4. Matter vs. Antimatter: Identical mass, opposite charges.

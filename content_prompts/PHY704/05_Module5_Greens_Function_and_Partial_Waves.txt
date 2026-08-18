@@ -1,0 +1,8 @@
+Execute Module 5: Green's Function & Partial Wave Analysis.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Impulse-Response Intuition (Green's Functions):
+   - Analogy: Striking a bell with a tiny hammer to find how it rings, then reconstructing any complex sound from those tiny strikes.
+   - Solving inhomogeneous Schrödinger differential equations using Green's functions.
+2. Partial Wave Method: Breaking down a complex scattered 3D wave into spherical harmonics (l = 0 s-waves, l = 1 p-waves).
+3. Optical Theorem: Connecting total scattering cross-section to the forward scattering amplitude.

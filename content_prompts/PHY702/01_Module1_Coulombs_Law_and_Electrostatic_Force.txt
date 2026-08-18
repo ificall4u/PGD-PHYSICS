@@ -1,0 +1,9 @@
+Execute Module 1: Coulomb's Law and Electrostatic Forces.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Physical Intuition of Electric Charge: What is electric charge? Positive and negative charge pairs, attraction and repulsion rules.
+2. Coulomb's Law Intuition:
+   - Force dependent on charge magnitudes ($q_1, q_2$) and inverse square distance ($r^2$).
+   - Analogy: Sound intensity or light brightness spreading out on a sphere.
+3. Derivation and Translation of Coulomb's Law Equation: $F = k_e \frac{|q_1 q_2|}{r^2}$. Translate every symbol ($F, k_e, q, r$) into plain English.
+4. Vector Direction of Forces: Superposition principle—adding forces from multiple charges step-by-step.

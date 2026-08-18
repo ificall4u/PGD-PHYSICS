@@ -1,0 +1,11 @@
+Execute Module 7: Operational Amplifiers (Op-Amps) in Instrumentation.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Op-Amp Concept: The "electric lever"—a tiny high-gain amplifier that boosts weak sensor signals.
+2. Golden Rules of Ideal Op-Amps:
+   - Rule 1: Zero current flows into the input terminals (infinite input resistance).
+   - Rule 2: Negative feedback adjusts the output to keep both input terminal voltages equal.
+3. Key Op-Amp Circuits:
+   - Inverting and Non-Inverting Amplifiers.
+   - Summing Amplifiers and Differential Amplifiers (subtracting noise from sensor signals).
+   - Integrators and Differentiators for dynamic signal analysis.

@@ -1,0 +1,8 @@
+Execute Module 4: Semiconductor Doping (Diffusion & Ion Implantation).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Purpose of Doping: Adding tiny impurities (phosphorus or boron) into silicon to create N-type (extra electrons) or P-type (extra holes) regions.
+2. Thermal Diffusion ("Soaking in Dye"): High-temperature ovens where impurity gas seeps into bare silicon surfaces. Explain depth profile and junction depth intuitively.
+3. Ion Implantation ("Firehosing Impurity Atoms"):
+   - Accelerating charged dopant ions at high speeds to shoot them directly into specific depths in the silicon crystal.
+   - Crystal Damage & Thermal Annealing: Fixing damaged crystal lattices by briefly baking the wafer to let silicon atoms settle back into place.

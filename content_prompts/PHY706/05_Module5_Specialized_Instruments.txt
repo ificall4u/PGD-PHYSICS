@@ -1,0 +1,8 @@
+Execute Module 5: Semiconductor Testers, X-Y Plotters, and Signal Generators.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Semiconductor Testers & Curve Tracing:
+   - Graphing current versus voltage ($I-V$ curves) to test diodes and transistors.
+   - Detecting blown or leaky components instantly.
+2. X-Y Plotters: Plotting one variable against another (e.g., pressure vs. temperature) instead of graphing against time.
+3. Function Generators: Creating sine, square, and triangle waveforms to feed test signals into circuits.

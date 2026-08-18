@@ -1,0 +1,7 @@
+Execute Module 6: Transducers and Sensor Applications.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is a Transducer?: The ultimate translator—converting real-world physical phenomena (heat, force, light, sound) into electrical voltage or current.
+2. Resistive Transducers: Strain gauges (stretching wire changes resistance) and Thermistors/RTDs (temperature changes resistance).
+3. Capacitive & Inductive Transducers: Linear Variable Differential Transformers (LVDTs) for measuring microscopic physical displacements.
+4. Piezoelectric & Optical Transducers: Crystals that produce voltage when squeezed, and photodiodes that produce current when struck by light.

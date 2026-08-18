@@ -1,0 +1,7 @@
+Execute Module 3: Vacuum Heating Techniques.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Why Heat Material in a Vacuum?: Lowering boiling points and preventing chemical contamination (oxidation).
+2. Resistive Heating: Passing high current through a boat or basket (filament) to melt source materials.
+3. Induction Heating: Using high-frequency electromagnetic fields to heat conductive materials without contact.
+4. Electron-Bombardment Heating (E-Beam): Firing a focused beam of high-energy electrons directly into a target crucible like a magnifying glass burning paper.

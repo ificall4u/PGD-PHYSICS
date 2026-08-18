@@ -1,0 +1,8 @@
+Execute Module 2: Vacuum Pumps and Pressure Gauges.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Roughing Pumps: Rotary vane and scroll pumps for initial pump-down (bringing high pressure down to medium vacuum).
+2. High & Ultra-High Vacuum Pumps: Turbomolecular pumps (jet-engine blades kicking gas molecules out) and Ion/Getter pumps (trapping gas electrically).
+3. Pressure Gauges (Thermal vs. Ionization):
+   - Pirani Gauges: Heat loss from a wire to measure medium vacuum.
+   - Hot-Cathode & Cold-Cathode Ionization Gauges: Knocking electrons off gas molecules to measure ultra-deep vacuum.

@@ -1,0 +1,7 @@
+Execute Module 2: Energy Barriers and Charge Motion in Fields.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Physical Meaning of Energy Barriers: Use a "hill vs. ball" analogy to explain potential energy barriers V(x) and work functions.
+2. Motion in Electric Fields: Explain drift velocity and electron acceleration under an applied electric field (E-field).
+3. Motion in Magnetic Fields: Explain the Lorentz force (F = q * v x B) using the analogy of a curved ball path or steering wheel.
+4. Cyclotron Motion: Explain why charges move in circular or helical paths when traveling perpendicular to a magnetic field.

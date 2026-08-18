@@ -1,0 +1,7 @@
+Execute Module 1: Conservative Forces, Work, and Potential Energy.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Work & Energy Intuition: Explain what "work" physically means when a force pushes or pulls an object. Derive work W = integral(F . dx) from basic force pushing over distance.
+2. Conservative vs Non-Conservative Forces: Contrast gravity and springs (conservative) with friction and air resistance (path-dependent). Use the analogy of a round-trip hike.
+3. Potential Energy Wells: Derive scalar potential energy V(x) from conservative force F = -dV/dx. Explain the physical meaning of the negative sign (restoring nature).
+4. Equilibrium & Stability: Explain stable, unstable, and neutral equilibrium using the physical analogy of a marble in a bowl, on a hill, or on a flat table. Derive d²V/dx² criteria from scratch.

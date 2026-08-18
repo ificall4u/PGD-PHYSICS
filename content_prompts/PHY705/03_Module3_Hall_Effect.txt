@@ -1,0 +1,6 @@
+Execute Module 3: The Hall Effect & Charge Carrier Diagnostics.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Hall Effect Intuition: Explain a current-carrying semiconductor slab in a perpendicular magnetic field using the "crowded hallway" analogy where charges get pushed to one side.
+2. Hall Voltage Derivation: Balance the magnetic Lorentz force with the opposing electric force to derive the Hall voltage V_H step-by-step.
+3. Carrier Concentration & Sign Determination: Explain how measuring V_H reveals whether the dominant carriers are negative electrons (N-type) or positive holes (P-type).

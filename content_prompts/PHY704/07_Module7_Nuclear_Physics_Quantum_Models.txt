@@ -1,0 +1,7 @@
+Execute Module 7: Quantum Models in Nuclear Physics.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Nuclear Forces & Potential Wells: Strong nuclear force modeled as a deep, narrow square well potential.
+2. Alpha Decay & Quantum Tunneling:
+   - Gamow Theory of Alpha Decay: How alpha particles escape the nucleus by "ghosting" through energy barriers they classically shouldn't cross.
+3. The Nuclear Shell Model: Magic numbers and energy levels inside the atomic nucleus.

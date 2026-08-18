@@ -1,0 +1,7 @@
+Execute Module 6: Hamiltonian Mechanics & Phase Space.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Motivation: Why transition from Lagrangian L(q, q_dot, t) to Hamiltonian H(q, p, t)? Explain position-velocity space vs position-momentum space.
+2. Legendre Transformation: Derive the Hamiltonian H = sum(p_i * q_i_dot) - L step-by-step showing all partial derivatives.
+3. Hamilton's Canonical Equations: Derive q_dot = dH/dp and p_dot = -dH/dq from scratch. Explain the physical symmetry between coordinate and momentum.
+4. Phase Space Geometry: Define Phase Space (q, p). Trace trajectories for a simple harmonic oscillator (circles/ellipses in phase space) and explain Liouville's theorem (phase space density conservation).

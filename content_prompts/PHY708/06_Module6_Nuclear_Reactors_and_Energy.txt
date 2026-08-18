@@ -1,0 +1,10 @@
+Execute Module 6: Nuclear Reactors and Power Generation.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Self-Sustaining Chain Reaction: One neutron splits a nucleus, releasing 2-3 more neutrons to continue the domino effect.
+2. Criticality ($k$ factor): Subcritical, critical, and supercritical states explained intuitively.
+3. Anatomy of a Nuclear Reactor:
+   - Fuel rods (Uranium).
+   - Control rods (boron/cadmium absorbers as "brakes").
+   - Coolant and heat exchangers turning steam into electricity.
+4. Reactor Safety Principles: Passive safety systems and containment barriers.

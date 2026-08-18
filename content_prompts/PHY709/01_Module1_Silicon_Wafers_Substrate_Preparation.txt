@@ -1,0 +1,7 @@
+Execute Module 1: Silicon Substrates & Wafer Preparation.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. From Sand to Pure Silicon: Explain how ordinary beach sand (quartz / SiO2) is chemically purified into Electronic Grade Silicon (EGS) with 99.9999999% purity.
+2. Single-Crystal Growth (Czochralski Method): The "honey-dipper" analogy—dipping a seed crystal into liquid silicon to pull a giant single-crystal ingot (boule).
+3. Wafer Ingot Slicing & Polishing: Slicing the ingot into micro-thin wafers using wire saws and polishing them to a mirror finish (Chemical Mechanical Planarization - CMP).
+4. Cleanroom Standards: Why microchips must be built in cleanrooms millions of times cleaner than an operating theater (dust particles vs. microscopic circuit lines).

@@ -1,0 +1,9 @@
+Execute Module 1: Mathematical Formulation of Quantum Mechanics.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Quantum State Vectors (|psi>): Explain state vectors intuitively as a list of potential outcomes/possibilities rather than a single fixed location.
+2. Linear Operators as Actions:
+   - What is an operator? An action or measurement performed on a state vector (e.g., measuring energy or momentum).
+   - Eigenstates and Eigenvalues explained physically: the definite outcomes you get when you perform a measurement.
+3. The Wavefunction psi(x): Interpreting |psi(x)|^2 as Born's probability density rule.
+4. The Schrödinger Equation: Translate i*hbar*d/dt|psi> = H|psi> into conversational English as "how the list of possibilities evolves smoothly over time." 

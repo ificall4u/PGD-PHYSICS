@@ -1,0 +1,6 @@
+Execute Module 7: Thin Film Characterization & Measurement.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Film Thickness Measurement: Optical interference, stylus profilometry (scratching with a diamond tip), and quartz crystal monitors.
+2. Electrical Characterization: Four-point probe resistivity measurements.
+3. Structural & Surface Analysis: Atomic Force Microscopy (AFM - feeling surface bumps with a microscopic needle) and X-ray Diffraction (XRD - crystal lattice structure).

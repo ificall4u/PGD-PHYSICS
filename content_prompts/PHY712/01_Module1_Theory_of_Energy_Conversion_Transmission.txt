@@ -1,0 +1,7 @@
+Execute Module 1: Fundamentals of Energy Conversion & Transmission.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is Energy Conversion?: Energy cannot be created or destroyed; it only changes forms (First Law of Thermodynamics).
+2. The Efficiency Limit ("Energy Tolls"): Every time energy changes form, some is lost as waste heat (Second Law of Thermodynamics).
+3. Forms of Energy: Mechanical, thermal, electrical, chemical, and radiant energy.
+4. Transmission Losses: Why we step up voltage for long-distance electricity transmission to prevent heat loss in wires.

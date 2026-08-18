@@ -1,0 +1,6 @@
+Execute Module 4: Substrate Preparation and Physical Vapor Deposition (PVD).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Substrate Cleaning Pipelines: Ultrasonic baths, solvent degreasing, and plasma etching to remove microscopic oils and dust.
+2. The Physical Vapor Deposition (PVD) Concept: Turning solid material into vapor, flying across a vacuum, and condensing onto a surface.
+3. Thermal Evaporation Setup: Step-by-step physical walkthrough of source material, shutter, substrate holder, and film thickness monitor (Quartz Crystal Microbalance).

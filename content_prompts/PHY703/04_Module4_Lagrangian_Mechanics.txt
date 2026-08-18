@@ -1,0 +1,7 @@
+Execute Module 4: Lagrangian Mechanics & Applications.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Lagrangian Recipe: Outline the universal 4-step framework: (1) Choose generalized coordinates, (2) Write Kinetic Energy T, (3) Write Potential Energy V, (4) Apply Euler-Lagrange equations.
+2. Step-by-Step Application 1: Simple Harmonic Oscillator (Mass-Spring). Derive L = 1/2 m q_dot² - 1/2 k q² and show it yields Newton's 2nd Law m q_ddot + k q = 0.
+3. Step-by-Step Application 2: Simple Pendulum. Transform Cartesian (x, y) into angle theta. Derive L = 1/2 m L² theta_dot² - m g L (1 - cos(theta)) and obtain the equation of motion.
+4. Generalized Momenta & Cyclic Coordinates: Define p_j = dL/dq_j_dot. Explain symmetry and Noether's principle intuitively: if a coordinate does not appear in L, its corresponding momentum is conserved.

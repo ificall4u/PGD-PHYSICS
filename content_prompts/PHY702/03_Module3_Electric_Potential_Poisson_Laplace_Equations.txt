@@ -1,0 +1,9 @@
+Execute Module 3: Electric Potential, Poisson, and Laplace Equations.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Electric Potential (Voltage): Explain potential energy vs. electric potential using topographic hill/elevation analogies.
+2. Relationship Between Electric Field and Potential: $E = -\nabla V$ explained physically (electric field points down the steepest slope of the voltage hill).
+3. Poisson and Laplace Equations:
+   - Derive $\nabla^2 V = -\frac{\rho}{\epsilon_0}$ (Poisson) and $\nabla^2 V = 0$ (Laplace in charge-free regions).
+   - Translate Laplace's equation in plain English: "The voltage at any point is the average of the voltages around it."
+4. Boundary Value Problems: Uniqueness theorem and method of images explained visually.

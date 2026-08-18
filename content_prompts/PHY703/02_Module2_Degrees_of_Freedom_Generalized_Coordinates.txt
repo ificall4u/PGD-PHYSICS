@@ -1,0 +1,7 @@
+Execute Module 2: Degrees of Freedom & Generalized Coordinates.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Degrees of Freedom (DoF): Explain DoF as "how many independent directions an object can move." Compare a free bead in 3D space (3 DoF) to a bead sliding on a wire (1 DoF).
+2. Constraints: Define holonomic vs non-holonomic constraints with real-world examples (a pendulum on a rigid rod vs a rolling coin that cannot slip).
+3. Generalized Coordinates: Explain why standard Cartesian coordinates (x, y, z) are inconvenient when constraints exist. Define generalized coordinates q_1, q_2, ..., q_N.
+4. Configuration Space: Explain what configuration space means physically—a mathematical space where a single point represents the complete position state of the entire physical system.

@@ -1,0 +1,12 @@
+Execute Module 1: Fundamental Logic Gates & Truth Tables.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Binary State Intuition: Explain how circuits represent information using two states—HIGH voltage (ON / 1) and LOW voltage (OFF / 0)—using simple light switch analogies.
+2. Basic Logic Gates (AND, OR, NOT):
+   - AND Gate: Two switches in series powering a light bulb (both must be ON).
+   - OR Gate: Two switches in parallel powering a light bulb (either can be ON).
+   - NOT Gate: Inverter switch (flips ON to OFF and vice versa).
+3. Derived Logic Gates (NAND, NOR, XOR, XNOR):
+   - NAND & NOR: Inverted output gates. Explain why NAND is considered a "universal gate."
+   - XOR (Exclusive-OR): The stair-switch analogy (light turns ON when switches disagree).
+4. Truth Tables: Construct truth tables step-by-step for each gate, explaining input-output pairs in plain English.

@@ -1,0 +1,11 @@
+Execute Module 2: Boolean Algebra & De Morgan's Laws.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Physical Logic Rules: Explain Boolean constants (0 and 1) and variables as open or closed switches.
+2. Fundamental Laws of Boolean Algebra:
+   - Identity, Null, Idempotent, and Inverse laws explained using circuit analogies (e.g., A AND 1 = A, A OR 1 = 1).
+3. Distributive, Associative, and Commutative Laws: Show how logic expressions can be simplified without changing the circuit behavior.
+4. De Morgan's Laws:
+   - Law 1: NOT (A AND B) = (NOT A) OR (NOT B)
+   - Law 2: NOT (A OR B) = (NOT A) AND (NOT B)
+   - Use plain-English scenarios (e.g., "Not having both pie AND cake means either no pie OR no cake") to make this intuitive.

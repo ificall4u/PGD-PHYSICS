@@ -1,0 +1,9 @@
+Execute Module 3: Watt-meters and Q-meters.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Measuring Electrical Power (Watt-meters):
+   - Real Power vs. Reactive Power.
+   - Electrodynamometer mechanism: Current coils and voltage coils working together to physically calculate power.
+2. The Quality Factor ($Q$) of Circuits:
+   - What is $Q$? The ratio of energy stored to energy lost per cycle in an oscillating circuit (the "purity" of an inductor or capacitor).
+3. The Q-Meter Circuit: Using resonant circuits at high frequencies to measure the $Q$ factor of coils and capacitors.

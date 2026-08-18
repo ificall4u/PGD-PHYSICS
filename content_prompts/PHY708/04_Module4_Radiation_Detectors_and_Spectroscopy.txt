@@ -1,0 +1,7 @@
+Execute Module 4: Radiation Detectors and Subatomic Measurement.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. How Do We "See" Subatomic Radiation?: Detecting ionization trails left behind by high-energy particles.
+2. Gas-Filled Detectors (Geiger-Müller Counters): High voltage ionizing gas atoms to produce measurable electric clicks.
+3. Scintillation Detectors: Radiation hitting crystals to produce tiny flashes of light converted into electrical signals.
+4. Gamma Spectroscopy: Reading the energy "fingerprints" of different radioactive isotopes.

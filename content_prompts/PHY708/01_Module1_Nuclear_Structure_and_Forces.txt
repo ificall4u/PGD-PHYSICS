@@ -1,0 +1,9 @@
+Execute Module 1: Nuclear Structure and Subatomic Forces.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is the Atomic Nucleus?: Protons and neutrons (nucleons) packed into a dense core.
+2. Size and Mass Scales: Visualizing the nucleus as a marble in the center of a football stadium (the atom).
+3. The Strong Nuclear Force ("Nuclear Glue"):
+   - Why don't positively charged protons fly apart?
+   - Ultra-short range nature of the strong force vs. electrostatic repulsion.
+4. The Deuteron (Heavy Hydrogen Nucleus): The simplest multi-nucleon system consisting of 1 proton + 1 neutron.

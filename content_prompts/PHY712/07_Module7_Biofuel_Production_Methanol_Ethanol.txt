@@ -1,0 +1,6 @@
+Execute Module 7: Biofuel Production (Ethanol & Methanol).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Biofuel Fermentation: Yeast and bacteria breaking down sugars from corn, sugarcane, or cellulosic plant fibers into ethanol.
+2. Methanol Production: Converting biomass gasification synthesis gas ($CO + H_2$) into liquid methanol fuel.
+3. Energy Return on Investment (EROI): Calculating how much energy it takes to grow, harvest, and distill crops versus how much fuel energy is produced.

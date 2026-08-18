@@ -1,0 +1,10 @@
+Execute Module 3: Quantum Perturbation Theory.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Concept of Perturbation: Using the "plucking a guitar string" or "slightly bumpy road" analogy to approximate complex systems.
+2. Time-Independent Perturbation Theory (Non-Degenerate & Degenerate):
+   - Splitting a Hamiltonian into a simple known part H0 plus a small tweak V.
+   - First-order energy corrections derived step-by-step.
+3. Time-Dependent Perturbation Theory:
+   - External forces that change with time (e.g., hitting an atom with a pulse of light).
+   - Fermi's Golden Rule: Calculating transition rates between quantum states.

@@ -1,0 +1,11 @@
+Execute Module 5: Etching Processes (Subtractive Manufacturing).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is Etching?: Removing exposed materials through chemical or physical means while photoresist stencils protect the rest.
+2. Wet Chemical Etching:
+   - Dipping wafers into liquid acid baths.
+   - Isotropic etching (carving equally in all directions, causing undercutting under the stencil).
+3. Dry Plasma Etching (Reactive Ion Etching - RIE):
+   - Microscopic "sandblasting" with reactive gas plasma.
+   - Anisotropic etching (carving straight vertical walls with zero undercut).
+4. Selective Etching: Choosing chemical recipes that eat oxide rapidly while leaving pure silicon untouched.

@@ -1,0 +1,9 @@
+Execute Module 3: Radioactive Decay and Spectroscopy.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Why Are Some Nuclei Unstable?: The balance between nuclear glue and electric repulsion.
+2. Three Major Decay Modes:
+   - Alpha Decay: Ejecting a heavy helium nucleus (2 protons + 2 neutrons).
+   - Beta Decay: A neutron converting into a proton (or vice versa) with a neutrino/antineutrino.
+   - Gamma Decay: Dropping down from an excited state by emitting a high-energy light photon.
+3. Half-Life Intuition: The "popping popcorn" analogy—we cannot predict when a single atom decays, but we know statistically how long it takes for half to pop.

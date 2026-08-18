@@ -1,0 +1,6 @@
+Execute Module 6: Epitaxial Growth Processes.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is Epitaxy?: Growing atomic layers that perfectly match the underlying crystal pattern of the substrate (like laying Lego bricks).
+2. Molecular Beam Epitaxy (MBE): Spraying individual beams of atoms in ultra-high vacuum to build custom material structures layer-by-single-atom-layer.
+3. Chemical Vapor Deposition (CVD) & MOCVD: Using reactive precursor gases to grow high-purity single-crystal semiconductor films.

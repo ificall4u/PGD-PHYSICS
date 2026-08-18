@@ -1,0 +1,12 @@
+Execute Module 3: Photolithography & Pattern Transfer.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. The Stencil-Painting Analogy: Explain photolithography as using light and liquid stencils to project microscopic patterns onto silicon.
+2. Photoresist Chemistry:
+   - Positive Photoresist: Exposed regions become soft and wash away.
+   - Negative Photoresist: Exposed regions become tough and stay behind.
+3. The Lithography Pipeline:
+   - Spin coating photoresist evenly across the wafer.
+   - Photomask alignment and UV light exposure.
+   - Chemical developing to reveal pattern openings.
+4. Optical Resolution Limits: Why blue/UV/EUV (Extreme Ultraviolet) light is required to print lines smaller than a virus.

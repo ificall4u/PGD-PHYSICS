@@ -1,0 +1,10 @@
+Execute Module 6: Physical Fabrication of Diodes and Light Emitting Diodes (LEDs).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Step-by-Step PN Junction Diode Fabrication:
+   - Starting with a P-type silicon wafer substrate.
+   - Thermal oxidation $ightarrow$ Photolithography window opening $ightarrow$ N-type doping (diffusion/implantation) $ightarrow$ Metal contact deposition.
+2. LED Fabrication:
+   - Why silicon cannot emit light efficiently (indirect bandgap).
+   - Compound semiconductors: Gallium Arsenide (GaAs) and Gallium Nitride (GaN) crystal epitaxy.
+   - Creating active light-emitting quantum wells and adding transparent top electrodes.

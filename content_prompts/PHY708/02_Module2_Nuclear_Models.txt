@@ -1,0 +1,10 @@
+Execute Module 2: Nuclear Models (Liquid Drop vs. Shell Model).
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Why Do We Need Models?: The nucleus is too complex to solve purely from scratch, so we use physical analogies.
+2. The Liquid Drop Model:
+   - Visualizing the nucleus as an incompressible drop of liquid with surface tension.
+   - Weizsäcker Semi-Empirical Mass Formula explained intuitively (volume, surface, Coulomb, and asymmetry terms).
+3. The Nuclear Shell Model:
+   - Visualizing nucleons filling discrete energy levels like electrons in an atom.
+   - Magic Numbers (2, 8, 20, 28, 50, 82, 126): Why nuclei with these exact numbers of protons or neutrons are exceptionally stable.

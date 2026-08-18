@@ -1,0 +1,9 @@
+Execute Module 8: Interconnect Metallization, Wafer Dicing, and Chip Packaging.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Metallization & Interconnects:
+   - Wiring together millions of transistors using aluminum and copper metal tracks.
+   - Multi-layer metal stacks separated by inter-layer dielectrics (ILD).
+2. Chemical Mechanical Planarization (CMP): Smoothing out uneven metal and oxide layers between wiring levels like sanding down drywall.
+3. Wafer Dicing & Inspection: Diamond-saw slicing of wafers into individual raw microchip dies.
+4. Packaging & Wire Bonding: Mounting dies onto ceramic/plastic leadframes, connecting gold/copper wire bonds, and sealing into final protective packages.

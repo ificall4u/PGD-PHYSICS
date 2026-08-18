@@ -1,0 +1,10 @@
+Execute Module 7: Physical Implementation & Logic Families.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. What is a Logic Family?: How logic gates are physically built out of transistors, resistors, and diodes.
+2. DTL (Diode-Transistor Logic) & TTL (Transistor-Transistor Logic): Historical evolution, bipolar junction transistor switching.
+3. CMOS (Complementary Metal-Oxide-Semiconductor):
+   - P-channel and N-channel MOSFET pairs.
+   - Why CMOS dominates modern microprocessors: near-zero static power consumption!
+4. NMOS & ECL (Emitter-Coupled Logic): Ultra-high-speed specialized logic families.
+5. Key Electrical Metrics: Noise margins, propagation delay, and power dissipation explained intuitively.

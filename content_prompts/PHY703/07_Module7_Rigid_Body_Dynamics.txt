@@ -1,0 +1,7 @@
+Execute Module 7: Rigid Body Dynamics & Generalized Motion.
+
+Provide a ground-up, step-by-step masterclass covering:
+1. Continuous Rigid Bodies: Explain what a "rigid body" is physically (an infinite collection of particles with fixed relative distances).
+2. Center of Mass & Moment of Inertia: Derive Center of Mass R_cm and rotational inertia I = integral(r² dm) from basic summation of discrete mass points.
+3. The Inertia Tensor: Define the 3x3 Inertia Tensor matrix step-by-step, explaining principal axes and moments of inertia physically.
+4. Euler's Equations of Motion: Derive Euler's rotational equations for rigid body rotation in a rotating body frame from torque N = dL/dt.
