@@ -67,7 +67,7 @@ class _PgdPhysicsAppState extends State<PgdPhysicsApp>
 
   void _onThemeChanged() {
     _syncSystemUi(_theme.isEffectivelyDark);
-    setState(() {});
+    // ListenableBuilder rebuilds MaterialApp; avoid extra setState lag
   }
 
   @override

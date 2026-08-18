@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
 import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/utils/page_transitions.dart';
@@ -60,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
           slivers: [
             // ── Top bar ──────────────────────────────────────────────
             SliverToBoxAdapter(
@@ -130,14 +129,14 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                             fontSize: 26,
                             fontWeight: FontWeight.w700,
                           ),
-                    ).animate().fadeIn(duration: 400.ms).slideY(begin: 0.15),
+                    ),
                     const SizedBox(height: 6),
                     Text(
                       _greetingSubtitle(),
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: AppTheme.textSecondary,
                           ),
-                    ).animate().fadeIn(delay: 80.ms),
+                    ),
                     const SizedBox(height: 16),
                     _ActionChips(
                       courses: courses,
@@ -151,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                       onBrowse: () {
                         // scroll is natural; chips already list courses below
                       },
-                    ).animate().fadeIn(delay: 120.ms),
+                    ),
                   ],
                 ),
               ),
@@ -383,6 +382,7 @@ class _NovaCard extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
+        splashFactory: InkSplash.splashFactory,
         borderRadius: BorderRadius.circular(18),
         child: Ink(
           decoration: BoxDecoration(

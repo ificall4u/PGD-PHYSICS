@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
 import 'package:pgd_physics/widgets/app_mark.dart';
 import 'package:pgd_physics/screens/home_screen.dart';
@@ -17,7 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 2300), _goHome);
+    // Short splash so the app feels ready quickly
+    Future.delayed(const Duration(milliseconds: 700), _goHome);
   }
 
   void _goHome() {
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: child,
           );
         },
-        transitionDuration: const Duration(milliseconds: 650),
+        transitionDuration: const Duration(milliseconds: 180),
       ),
     );
   }
@@ -46,15 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const AppMark(size: 92)
-                .animate()
-                .fadeIn(duration: 520.ms, curve: Curves.easeOut)
-                .scale(
-                  begin: const Offset(0.88, 0.88),
-                  end: const Offset(1, 1),
-                  duration: 620.ms,
-                  curve: Curves.easeOutBack,
-                ),
+            const AppMark(size: 92),
             const SizedBox(height: 28),
             Text(
               'PGD Physics',
@@ -64,10 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: AppTheme.textPrimary,
                 letterSpacing: -0.6,
               ),
-            )
-                .animate()
-                .fadeIn(delay: 280.ms, duration: 500.ms)
-                .slideY(begin: 0.18, end: 0, delay: 280.ms, duration: 500.ms),
+            ),
             const SizedBox(height: 8),
             Text(
               'ABUAD  ·  Learn with Nova',
@@ -77,9 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: AppTheme.textMuted,
                 letterSpacing: 0.25,
               ),
-            )
-                .animate()
-                .fadeIn(delay: 480.ms, duration: 500.ms),
+            ),
             const SizedBox(height: 52),
             SizedBox(
               width: 26,
@@ -89,9 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: AppMark.brandPurple.withOpacity(0.75),
                 backgroundColor: AppTheme.surfaceElevated,
               ),
-            )
-                .animate()
-                .fadeIn(delay: 750.ms, duration: 400.ms),
+            ),
           ],
         ),
       ),

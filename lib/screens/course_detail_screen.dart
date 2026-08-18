@@ -48,7 +48,7 @@ class CourseDetailScreen extends StatelessWidget {
         ],
       ),
       body: ListView(
-        physics: const BouncingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
         children: [
           // Header card
@@ -165,6 +165,7 @@ class CourseDetailScreen extends StatelessWidget {
                 child: Material(
                   color: AppTheme.surface,
                   borderRadius: BorderRadius.circular(14),
+                  clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     borderRadius: BorderRadius.circular(14),
                     onTap: () {

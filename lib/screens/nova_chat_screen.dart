@@ -133,7 +133,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> with ThemeAware {
       SnackBar(
         content: Text('Copied'),
         behavior: SnackBarBehavior.floating,
-        duration: const Duration(milliseconds: 1200),
+        duration: const Duration(milliseconds: 800),
         backgroundColor: AppTheme.surfaceElevated,
       ),
     );
@@ -337,11 +337,7 @@ class _NovaChatScreenState extends State<NovaChatScreen> with ThemeAware {
   void _scrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!_scrollController.hasClients) return;
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 280),
-        curve: Curves.easeOut,
-      );
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
     });
   }
 

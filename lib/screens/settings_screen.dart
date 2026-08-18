@@ -63,7 +63,7 @@ class _SettingsScreenState extends State<SettingsScreen> with ThemeAware {
         if (ctx != null) {
           Scrollable.ensureVisible(
             ctx,
-            duration: const Duration(milliseconds: 400),
+            duration: const Duration(milliseconds: 180),
             curve: Curves.easeOutCubic,
             alignment: 0.05,
           );

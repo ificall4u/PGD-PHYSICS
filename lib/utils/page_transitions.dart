@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
-/// Soft, study-friendly transitions — snappy enough for one-tap navigation.
+/// Fast study-friendly transitions (feels instant on phone).
 class AppPageRoute<T> extends PageRouteBuilder<T> {
   final Widget page;
 
   AppPageRoute({required this.page})
       : super(
           pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: const Duration(milliseconds: 200),
-          reverseTransitionDuration: const Duration(milliseconds: 180),
+          transitionDuration: const Duration(milliseconds: 140),
+          reverseTransitionDuration: const Duration(milliseconds: 120),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             final curved = CurvedAnimation(
               parent: animation,
-              curve: Curves.easeOutCubic,
-              reverseCurve: Curves.easeInCubic,
+              curve: Curves.easeOut,
+              reverseCurve: Curves.easeIn,
             );
             return FadeTransition(
-              opacity: curved,
+              opacity: Tween<double>(begin: 0.96, end: 1).animate(curved),
               child: SlideTransition(
                 position: Tween<Offset>(
-                  begin: const Offset(0.03, 0),
+                  begin: const Offset(0.02, 0),
                   end: Offset.zero,
                 ).animate(curved),
                 child: child,
@@ -35,19 +35,19 @@ class AppLessonRoute<T> extends PageRouteBuilder<T> {
   AppLessonRoute({required this.page})
       : super(
           pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: const Duration(milliseconds: 220),
-          reverseTransitionDuration: const Duration(milliseconds: 180),
+          transitionDuration: const Duration(milliseconds: 150),
+          reverseTransitionDuration: const Duration(milliseconds: 120),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             final curved = CurvedAnimation(
               parent: animation,
-              curve: Curves.easeOutCubic,
-              reverseCurve: Curves.easeInCubic,
+              curve: Curves.easeOut,
+              reverseCurve: Curves.easeIn,
             );
             return FadeTransition(
-              opacity: curved,
+              opacity: Tween<double>(begin: 0.96, end: 1).animate(curved),
               child: SlideTransition(
                 position: Tween<Offset>(
-                  begin: const Offset(0, 0.02),
+                  begin: const Offset(0, 0.015),
                   end: Offset.zero,
                 ).animate(curved),
                 child: child,

@@ -41,7 +41,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with ThemeAware {
     }
     if (_page < 4) {
       _pageController.nextPage(
-        duration: const Duration(milliseconds: 320),
+        duration: const Duration(milliseconds: 120),
         curve: Curves.easeOutCubic,
       );
     } else {
@@ -196,7 +196,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with ThemeAware {
                       TextButton(
                         onPressed: () {
                           _pageController.previousPage(
-                            duration: const Duration(milliseconds: 280),
+                            duration: const Duration(milliseconds: 100),
                             curve: Curves.easeOut,
                           );
                         },

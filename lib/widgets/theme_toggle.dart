@@ -23,7 +23,7 @@ class ThemeToggle extends StatelessWidget {
             messenger?.showSnackBar(
               SnackBar(
                 content: Text('Theme: ${controller.label}'),
-                duration: const Duration(milliseconds: 900),
+                duration: const Duration(milliseconds: 450),
                 behavior: SnackBarBehavior.floating,
               ),
             );
