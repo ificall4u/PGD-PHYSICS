@@ -4,12 +4,24 @@
 
 Lesson **prose is being rewritten** from stronger postgraduate prompts.
 
-- **UI / design:** keep as-is (modules, unit reader, Nova, themes).
-- **Shells:** `lib/data/phy*_content.dart` hold module/unit structure with placeholders.
-- **Prompts to upload:** `content_prompts/PHY701/` … `PHY799/`
-- **Author guide:** see **[CONTENT_AUTHORING.md](CONTENT_AUTHORING.md)**
+### For AI app builders — start here
 
-Hierarchy is **Course → Module → Unit** (UI label: **Modules**, not Topics).
+1. Read **[CONTENT_AUTHORING.md](CONTENT_AUTHORING.md)** end-to-end (mandatory workflow).
+2. Read **[content_prompts/README.md](content_prompts/README.md)** for the course index.
+3. Execute **one course at a time**. Inside a course, execute **one prompt file at a time** in numeric order (`00_Master` → `01_Module` → `02_…`).
+4. After each module prompt: run the **per-prompt checklist** in CONTENT_AUTHORING.md. Do not advance until it passes.
+5. After each course: run the **course completion audit**. Do not start the next course until the audit passes.
+6. **Do not change app design/UI** — only fill `lib/data/phy*_content.dart` (and diagram registry if a real vector figure is required).
+
+| Resource | Purpose |
+|----------|---------|
+| [CONTENT_AUTHORING.md](CONTENT_AUTHORING.md) | Full rules, order, checklists, math/diagram policy |
+| [content_prompts/](content_prompts/) | Master + module prompts per course |
+| `lib/data/phy*_content.dart` | Module/unit shells to fill |
+
+Hierarchy is **Course → Module → Unit** (UI label: **Modules**).
+
+**Quality bar:** no ASCII schematics; no SVG/code-block “diagrams”; clean Markdown (no `**`/`__` junk); correct superscripts/subscripts (prefer Unicode); postgraduate depth per each course’s master prompt.
 
 
 Flutter study companion for the **ABUAD Postgraduate Diploma in Physics (Electronics)** programme.

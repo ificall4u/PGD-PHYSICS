@@ -1,22 +1,26 @@
 # Content prompts (source of truth for rewrite)
 
-Each `PHY###` folder holds the **master + module prompts**. App module/unit shells live in `lib/data/phy###_content.dart` (placeholder bodies only).
+**AI builders:** follow **[../CONTENT_AUTHORING.md](../CONTENT_AUTHORING.md)** strictly.
 
-| Folder | Course title in app | Modules (approx.) |
-|--------|---------------------|-------------------|
-| PHY701 | Mathematical Methods in Physics | 7 |
-| PHY702 | Electromagnetism | 8 |
-| PHY703 | Classical Mechanics | 9 |
-| PHY704 | Quantum Mechanics | 8 |
-| PHY705 | Solid State and Electronic Devices | 8 |
-| PHY706 | Electronics Instrumentation | 8 |
-| PHY707 | Digital Electronics | 8 |
-| PHY708 | Nuclear and Particle Physics | 8 |
-| PHY709 | Electronic Devices and Fabrication | 8 |
-| PHY710 | Vacuum Science and Thin Films | 8 |
-| PHY712 | Energy Conversion and Storage | 8 |
-| PHY799 | Research Project (shell only; no prompt pack yet) | — |
+- One course folder at a time.
+- Inside a course: `00_Master_System_Prompt.txt` first, then `01_`, `02_`, … in order.
+- Gate each module with the per-prompt checklist; audit the whole course before the next folder.
 
-Authoring rules: **CONTENT_AUTHORING.md** at repo root.
+| Folder | Course title in app |
+|--------|---------------------|
+| PHY701 | Mathematical Methods in Physics |
+| PHY702 | Electromagnetism |
+| PHY703 | Classical Mechanics |
+| PHY704 | Quantum Mechanics |
+| PHY705 | Solid State and Electronic Devices |
+| PHY706 | Electronics Instrumentation |
+| PHY707 | Digital Electronics |
+| PHY708 | Nuclear and Particle Physics |
+| PHY709 | Electronic Devices and Fabrication |
+| PHY710 | Vacuum Science and Thin Films |
+| PHY712 | Energy Conversion and Storage |
+| PHY799 | Research Project (shell; prompts may be incomplete) |
 
-**Do not** write full postgraduate prose until instructed — structure is ready for fills.
+App shells: `lib/data/phyXXX_content.dart` (placeholder bodies until authored).
+
+**Do not redesign the UI.** Fill content only.
