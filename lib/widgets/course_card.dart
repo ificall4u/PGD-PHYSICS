@@ -28,13 +28,16 @@ class CourseCard extends StatelessWidget {
     final topicCount = course.totalTopics;
 
     return Material(
-      color: Colors.transparent,
+      color: AppTheme.surface,
+      borderRadius: BorderRadius.circular(18),
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(18),
+        splashColor: color.withOpacity(0.12),
+        highlightColor: color.withOpacity(0.06),
         child: Ink(
           decoration: BoxDecoration(
-            color: AppTheme.surface,
             borderRadius: BorderRadius.circular(18),
             border: Border.all(color: AppTheme.cardBorder),
           ),

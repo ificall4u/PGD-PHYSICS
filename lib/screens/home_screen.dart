@@ -211,10 +211,7 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                             page: CourseDetailScreen(course: course),
                           ),
                         ),
-                      ).animate().fadeIn(
-                            delay: (80 * index).ms,
-                            duration: 350.ms,
-                          ),
+                      ),
                     );
                   },
                   childCount: firstSemester.length,
@@ -240,10 +237,7 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                             page: CourseDetailScreen(course: course),
                           ),
                         ),
-                      ).animate().fadeIn(
-                            delay: (80 * index).ms,
-                            duration: 350.ms,
-                          ),
+                      ),
                     );
                   },
                   childCount: secondSemester.length,
@@ -270,10 +264,7 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                               page: CourseDetailScreen(course: course),
                             ),
                           ),
-                        ).animate().fadeIn(
-                              delay: (80 * index).ms,
-                              duration: 350.ms,
-                            ),
+                        ),
                       );
                     },
                     childCount: project.length,
