@@ -41,7 +41,7 @@ Course buildPhy706() {
         summary: 'Watt-meters and Q-meters',
         units: [
           skeletonUnit(id: 'phy706-m3-u1', title: 'Measuring Electrical Power (Watt-meters)'),
-          skeletonUnit(id: 'phy706-m3-u2', title: 'The Quality Factor ($Q$) of Circuits'),
+          skeletonUnit(id: 'phy706-m3-u2', title: 'The Quality Factor (\$Q\$) of Circuits'),
           skeletonUnit(id: 'phy706-m3-u3', title: 'The Q-Meter Circuit'),
         ],
       ),

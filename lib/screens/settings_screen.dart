@@ -314,7 +314,7 @@ class _SettingsScreenState extends State<SettingsScreen> with ThemeAware {
                     ),
                   ),
                   value: StorageService.notificationsEnabled(),
-                  activeThumbColor: AppTheme.primary,
+                  activeColor: AppTheme.primary,
                   onChanged: (v) async {
                     await NotificationService.setEnabled(v);
                     setState(() {});
@@ -417,7 +417,7 @@ class _SettingsScreenState extends State<SettingsScreen> with ThemeAware {
                   style: TextStyle(fontSize: 12.5, color: AppTheme.textMuted, height: 1.35),
                 ),
                 value: StorageService.floatingNovaEnabled(),
-                activeThumbColor: AppTheme.primary,
+                activeColor: AppTheme.primary,
                 onChanged: (v) async {
                   await StorageService.setFloatingNovaEnabled(v);
                   setState(() {});

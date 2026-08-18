@@ -6,9 +6,9 @@ String mathToPlain(String input) {
   s = s.replaceAllMapped(RegExp(r'\$\$([\s\S]*?)\$\$'), (m) {
     return _texToPlain(m.group(1) ?? '');
   });
-  // Inline $ ... $ ($$ blocks already removed)
-  s = s.replaceAllMapped(RegExp(r'\$([^\$
-]+?)\$'), (m) {
+
+  // Inline $ ... $
+  s = s.replaceAllMapped(RegExp(r'\$([^\$\n]+?)\$'), (m) {
     return _texToPlain(m.group(1) ?? '');
   });
 
@@ -17,12 +17,11 @@ String mathToPlain(String input) {
 
 String _texToPlain(String raw) {
   var t = raw.trim();
-  // Remove common wrappers
   t = t.replaceAll(RegExp(r'\\left|\\right'), '');
-  t = t.replaceAll(RegExp(r'\\[,\;\!]'), ' ');
-  t = t.replaceAllMapped(RegExp(r'\\mathrm\{([^}]*)\}'), (m) => m.group(1) ?? '');
-  t = t.replaceAllMapped(RegExp(r'\\text\{([^}]*)\}'), (m) => m.group(1) ?? '');
-  t = t.replaceAllMapped(RegExp(r'\\mathbf\{([^}]*)\}'), (m) => m.group(1) ?? '');
+  t = t.replaceAll(RegExp(r'\\[,;!]'), ' ');
+  t = t.replaceAllMapped(RegExp(r'\\mathrm\{([^{}]*)\}'), (m) => m.group(1) ?? '');
+  t = t.replaceAllMapped(RegExp(r'\\text\{([^{}]*)\}'), (m) => m.group(1) ?? '');
+  t = t.replaceAllMapped(RegExp(r'\\mathbf\{([^{}]*)\}'), (m) => m.group(1) ?? '');
 
   const map = {
     r'\infty': '∞',
@@ -80,7 +79,6 @@ String _texToPlain(String raw) {
     t = t.replaceAll(k, v);
   });
 
-  // \frac{a}{b} → (a)/(b)
   for (var i = 0; i < 8; i++) {
     final next = t.replaceAllMapped(
       RegExp(r'\\frac\{([^{}]+)\}\{([^{}]+)\}'),
@@ -90,14 +88,11 @@ String _texToPlain(String raw) {
     t = next;
   }
 
-  // ^{...} and ^x
   t = t.replaceAllMapped(RegExp(r'\^\{([^}]+)\}'), (m) => _toSuper(m.group(1) ?? ''));
   t = t.replaceAllMapped(RegExp(r'\^([A-Za-z0-9+\-])'), (m) => _toSuper(m.group(1) ?? ''));
-  // _{...} and _x
   t = t.replaceAllMapped(RegExp(r'_\{([^}]+)\}'), (m) => _toSub(m.group(1) ?? ''));
   t = t.replaceAllMapped(RegExp(r'_([A-Za-z0-9+\-])'), (m) => _toSub(m.group(1) ?? ''));
 
-  // \int_0^\infty already partially handled
   t = t.replaceAll(r'\,', ' ');
   t = t.replaceAll(r'\;', ' ');
   t = t.replaceAll(r'\ ', ' ');

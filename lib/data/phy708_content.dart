@@ -72,7 +72,7 @@ Course buildPhy708() {
         summary: 'Nuclear Reactors and Power Generation',
         units: [
           skeletonUnit(id: 'phy708-m6-u1', title: 'The Self-Sustaining Chain Reaction'),
-          skeletonUnit(id: 'phy708-m6-u2', title: 'Criticality ($k$ factor)'),
+          skeletonUnit(id: 'phy708-m6-u2', title: 'Criticality (\$k\$ factor)'),
           skeletonUnit(id: 'phy708-m6-u3', title: 'Anatomy of a Nuclear Reactor'),
           skeletonUnit(id: 'phy708-m6-u4', title: 'Reactor Safety Principles'),
         ],

@@ -29,7 +29,7 @@ Course buildPhy702() {
         title: 'Electric Fields and Gauss\' Law',
         summary: 'Electric Fields and Gauss\' Law',
         units: [
-          skeletonUnit(id: 'phy702-m2-u1', title: 'Electric Field $E$ Concept'),
+          skeletonUnit(id: 'phy702-m2-u1', title: 'Electric Field \$E\$ Concept'),
           skeletonUnit(id: 'phy702-m2-u2', title: 'Electric Flux Intuition'),
           skeletonUnit(id: 'phy702-m2-u3', title: 'Gauss\' Law'),
           skeletonUnit(id: 'phy702-m2-u4', title: 'Applications of Gauss\' Law'),

@@ -43,7 +43,7 @@ class _UnitScreenState extends State<UnitScreen> with ThemeAware {
       topicId: widget.module.id,
       unitId: widget.unit.id,
       courseTitle: widget.course.title,
-      moduleTitle: widget.module.title,
+      topicTitle: widget.module.title,
       unitTitle: widget.unit.title,
     );
   }

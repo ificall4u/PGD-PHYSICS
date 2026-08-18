@@ -1,3 +1,4 @@
+import 'package:pgd_physics/utils/page_transitions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pgd_physics/theme/app_theme.dart';

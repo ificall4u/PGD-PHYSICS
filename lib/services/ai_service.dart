@@ -165,9 +165,7 @@ class AiService {
         text:
             'Hey $nickname 👋\n\nI need at least one free API key to chat with you.\n\n'
             'Tap **Open AI settings** below (or go to Settings → AI providers), '
-            'add a key — Gemini is usually easiest — then come back.
-
-'
+            'add a key — Gemini is usually easiest — then come back.\n\n'
             '[Open AI settings](pgd://settings/ai)',
         providerId: AiProviderId.gemini,
         poweredByLabel: '',
