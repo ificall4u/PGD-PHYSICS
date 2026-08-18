@@ -78,13 +78,21 @@ class _PgdPhysicsAppState extends State<PgdPhysicsApp>
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'PGD Physics',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: _theme.themeMode,
-      home: const SplashScreen(),
+    // Rebuild every theme change so screens using AppTheme.* static colors refresh immediately
+    return ListenableBuilder(
+      listenable: _theme,
+      builder: (context, _) {
+        final dark = _theme.isEffectivelyDark;
+        AppTheme.apply(dark);
+        return MaterialApp(
+          title: 'PGD Physics',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: _theme.themeMode,
+          home: const SplashScreen(),
+        );
+      },
     );
   }
 }

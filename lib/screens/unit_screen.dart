@@ -4,6 +4,8 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:pgd_physics/models/course.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/theme/theme_aware.dart';
+import 'package:pgd_physics/utils/math_plain.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
 import 'package:pgd_physics/utils/page_transitions.dart';
 import 'package:pgd_physics/screens/nova_chat_screen.dart';
@@ -27,7 +29,7 @@ class UnitScreen extends StatefulWidget {
   State<UnitScreen> createState() => _UnitScreenState();
 }
 
-class _UnitScreenState extends State<UnitScreen> {
+class _UnitScreenState extends State<UnitScreen> with ThemeAware {
   bool _completed = false;
   String? _selection;
 
@@ -216,7 +218,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       });
                     },
                     child: MarkdownBody(
-                      data: widget.unit.content.replaceAll('Tochi', StorageService.getNickname()),
+                      data: mathToPlain(widget.unit.content.replaceAll('Tochi', StorageService.getNickname())),
                       styleSheet: MarkdownStyleSheet(
                         p: TextStyle(
                           fontSize: 16,

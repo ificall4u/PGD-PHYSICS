@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pgd_physics/models/course.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
 import 'package:pgd_physics/utils/page_transitions.dart';
 import 'package:pgd_physics/screens/topic_detail_screen.dart';
@@ -13,6 +14,12 @@ class CourseDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return ThemeAwareBuilder(builder: (context) {
+      return _build(context);
+    });
+  }
+
+  Widget _build(BuildContext context) {
     final color = AppTheme.courseColor(course.colorHint);
     final unitCount =
         course.topics.fold<int>(0, (s, t) => s + t.totalUnits);

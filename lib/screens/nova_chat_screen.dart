@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
 import 'package:pgd_physics/services/ai_service.dart';
 import 'package:pgd_physics/services/storage_service.dart';
@@ -31,7 +32,7 @@ class NovaChatScreen extends StatefulWidget {
   State<NovaChatScreen> createState() => _NovaChatScreenState();
 }
 
-class _NovaChatScreenState extends State<NovaChatScreen> {
+class _NovaChatScreenState extends State<NovaChatScreen> with ThemeAware {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   final List<Map<String, String>> _messages = [];

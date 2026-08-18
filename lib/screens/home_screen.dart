@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/utils/page_transitions.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
 import 'package:pgd_physics/widgets/app_mark.dart';
@@ -26,7 +27,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with ThemeAware {
   @override
   void initState() {
     super.initState();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pgd_physics/models/course.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/services/storage_service.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
 
@@ -20,7 +21,7 @@ class QuizScreen extends StatefulWidget {
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _QuizScreenState extends State<QuizScreen> with ThemeAware {
   int _current = 0;
   int? _selected;
   bool _revealed = false;

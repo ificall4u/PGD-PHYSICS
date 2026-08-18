@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/theme/theme_controller.dart';
 import 'package:pgd_physics/services/storage_service.dart';
 import 'package:pgd_physics/services/persona_catalog.dart';
@@ -18,7 +19,7 @@ class SettingsScreen extends StatefulWidget {
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class _SettingsScreenState extends State<SettingsScreen> with ThemeAware {
   final ScrollController _scrollController = ScrollController();
   final GlobalKey _aiSectionKey = GlobalKey();
   bool _didScrollToAi = false;

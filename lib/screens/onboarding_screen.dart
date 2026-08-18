@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/widgets/app_mark.dart';
 import 'package:pgd_physics/services/storage_service.dart';
 import 'package:pgd_physics/services/persona_catalog.dart';
@@ -15,7 +16,7 @@ class OnboardingScreen extends StatefulWidget {
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends State<OnboardingScreen> with ThemeAware {
   final _pageController = PageController();
   final _nameController = TextEditingController();
   int _page = 0;
