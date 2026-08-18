@@ -6,8 +6,8 @@ Course buildPhy705() {
   return Course(
     id: 'phy-705',
     code: 'PHY 705',
-    title: 'Solid State and Electronic Devices',
-    description: 'Conduction, barriers, Hall effect, emission, junctions, BJT, FET, and IC manufacture.',
+    title: 'Introductory Solid State Electronics',
+    description: 'Conduction, barriers, Hall effect, emission, diodes, BJT, FET, solar cells and IC introduction.',
     semester: 'First Semester',
     units: 3,
     icon: '🔷',

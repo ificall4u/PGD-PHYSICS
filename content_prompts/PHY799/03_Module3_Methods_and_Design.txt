@@ -1,0 +1,7 @@
+Execute Module 3: Methods and project design.
+
+Provide a complete masterclass covering:
+1. Experimental vs computational vs design/fabrication project structures.
+2. Measurement, uncertainty, and reproducibility (instrumentation discipline when measuring).
+3. Vacuum, electronics, or materials methods only at the accuracy of standard references — no invented recipes.
+4. Ethics, safety, and data recording habits (confirm lab rules with ABUAD supervisors).

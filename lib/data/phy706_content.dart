@@ -6,8 +6,8 @@ Course buildPhy706() {
   return Course(
     id: 'phy-706',
     code: 'PHY 706',
-    title: 'Electronics Instrumentation',
-    description: 'Measurement, meters, oscilloscopes, sensors, op-amps, and equipment design.',
+    title: 'Electrical Measurement and Instrumentation',
+    description: 'Errors, meters, CRO, transducers, operational amplifiers and equipment design introduction.',
     semester: 'Second Semester',
     units: 3,
     icon: '🔌',

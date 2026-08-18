@@ -19,8 +19,13 @@
 | PHY709 | Electronic Devices and Fabrication |
 | PHY710 | Vacuum Science and Thin Films |
 | PHY712 | Energy Conversion and Storage |
-| PHY799 | Research Project (shell; prompts may be incomplete) |
+| PHY799 | PGD Research Project (master + 4 modules) |
 
 App shells: `lib/data/phyXXX_content.dart` (placeholder bodies until authored).
 
 **Do not redesign the UI.** Fill content only.
+
+## Textbooks
+
+Each course `00_Master_System_Prompt.txt` embeds ABUAD-recommended and bridge textbooks.
+Content writers must follow those sources (see CONTENT_AUTHORING.md §10).

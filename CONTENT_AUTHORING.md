@@ -234,3 +234,37 @@ and you execute **this** workflow without redesigning the app.
 | Nova (not lesson prose) | `lib/services/ai_service.dart` |
 
 **Design stays dope. Content gets rigorous. One prompt → verify → next prompt → course audit → next course.**
+
+## 10. Textbooks and source authority (mandatory)
+
+Each `content_prompts/PHY###/00_Master_System_Prompt.txt` lists **PRIMARY**, **ALTERNATIVE**, and **BRIDGE** textbooks.
+
+Content authors must:
+
+1. Treat those books (plus the ABUAD synopsis in the master prompt) as the authority for definitions, derivations, and device behaviour.
+2. **Not** invent laws, “typical values,” or fab recipes from memory when the primary text covers the topic.
+3. **Not** use random websites or blogs as primary sources.
+4. Use **BRIDGE** sources only to fill pre-PGD gaps (usually Young & Freedman and early chapters of the primary text).
+5. For PHY 708 / 710 / 712 / 799, follow the standard references named in those master prompts (Krane, O’Hanlon/Mattox, Twidell & Weir, Craft of Research, etc.).
+
+### Official ABUAD course titles (outline)
+
+| Code | Title |
+|------|--------|
+| PHY 701 | Mathematical Methods |
+| PHY 703 | Analytical Mechanics |
+| PHY 705 | Introductory Solid State Electronics |
+| PHY 707 | Digital Electronics |
+| PHY 709 | Electronics Devices Design and Fabrication |
+| PHY 702 | Electromagnetism |
+| PHY 704 | Quantum Physics |
+| PHY 706 | Electrical Measurement and Instrumentation |
+| PHY 708 | Nuclear and Particle Physics |
+| PHY 710 | Vacuum Physics and Thin Film Technology |
+| PHY 712 | Energy Conservation and Storage |
+| PHY 799 | PGD Research Project |
+
+### Diagrams (reminder)
+
+Prompt for or register **vector** figures only when they aid study. No ASCII schematics, no SVG-in-code-blocks.
+

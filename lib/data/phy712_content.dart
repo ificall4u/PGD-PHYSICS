@@ -6,8 +6,8 @@ Course buildPhy712() {
   return Course(
     id: 'phy-712',
     code: 'PHY 712',
-    title: 'Energy Conversion and Storage',
-    description: 'Conversion pathways, renewables, electrochemical systems, solar, bioenergy and storage grids.',
+    title: 'Energy Conservation and Storage',
+    description: 'Conversion pathways, renewables, fuel cells, hydrogen, solar and bioenergy.',
     semester: 'Second Semester',
     units: 3,
     icon: '🔋',

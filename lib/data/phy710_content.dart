@@ -6,8 +6,8 @@ Course buildPhy710() {
   return Course(
     id: 'phy-710',
     code: 'PHY 710',
-    title: 'Vacuum Science and Thin Films',
-    description: 'Vacuum regimes, pumps, evaporation, sputtering, epitaxy, characterization and applications.',
+    title: 'Vacuum Physics and Thin Film Technology',
+    description: 'Vacuum systems, deposition, sputtering, epitaxy, characterization and applications.',
     semester: 'Second Semester',
     units: 3,
     icon: '🖥️',

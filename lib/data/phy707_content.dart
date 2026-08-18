@@ -7,7 +7,7 @@ Course buildPhy707() {
     id: 'phy-707',
     code: 'PHY 707',
     title: 'Digital Electronics',
-    description: 'Logic gates through Boolean algebra, sequential systems, families, and data converters.',
+    description: 'Logic gates, Boolean algebra, sequential logic, families and data converters.',
     semester: 'First Semester',
     units: 3,
     icon: '▣',

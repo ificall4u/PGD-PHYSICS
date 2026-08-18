@@ -1,0 +1,7 @@
+Execute Module 2: Literature survey and physics background.
+
+Provide a complete masterclass covering:
+1. How to read and organize prior work without plagiarism.
+2. Building a background section from standard textbooks and peer-reviewed literature (not random web pages).
+3. Identifying the gap your project addresses.
+4. Keeping equations and device physics accurate to primary domain texts.

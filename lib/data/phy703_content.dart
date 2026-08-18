@@ -6,8 +6,8 @@ Course buildPhy703() {
   return Course(
     id: 'phy-703',
     code: 'PHY 703',
-    title: 'Classical Mechanics',
-    description: 'From potentials and constraints to Lagrangian, Hamiltonian, rigid bodies and continuous media.',
+    title: 'Analytical Mechanics',
+    description: 'Conservative systems, Lagrange and Hamilton formulations, rigid bodies, oscillations and continuous media.',
     semester: 'First Semester',
     units: 3,
     icon: '⚙️',

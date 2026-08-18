@@ -7,7 +7,7 @@ Course buildPhy702() {
     id: 'phy-702',
     code: 'PHY 702',
     title: 'Electromagnetism',
-    description: 'Electrostatics through Maxwell equations and electromagnetic waves — module shells for postgraduate rewrite.',
+    description: 'Coulomb to Maxwell: electrostatics, magnetostatics, induction, Maxwell equations and spherical waves.',
     semester: 'Second Semester',
     units: 3,
     icon: '⚡',

@@ -7,7 +7,7 @@ Course buildPhy708() {
     id: 'phy-708',
     code: 'PHY 708',
     title: 'Nuclear and Particle Physics',
-    description: 'Nuclear structure, decay, detectors, fission/fusion, reactors, and fundamental interactions.',
+    description: 'Nuclear structure, decay, detectors, fission, fusion, reactors and elementary particles.',
     semester: 'Second Semester',
     units: 3,
     icon: '☢',

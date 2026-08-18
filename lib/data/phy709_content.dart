@@ -6,8 +6,8 @@ Course buildPhy709() {
   return Course(
     id: 'phy-709',
     code: 'PHY 709',
-    title: 'Electronic Devices and Fabrication',
-    description: 'Wafer to packaged device: oxidation, lithography, doping, etch, transistors, interconnects.',
+    title: 'Electronics Devices Design and Fabrication',
+    description: 'Micro-circuits, doping and fabrication of junctions, LEDs and transistors.',
     semester: 'First Semester',
     units: 3,
     icon: '🏭',

@@ -6,8 +6,8 @@ Course buildPhy704() {
   return Course(
     id: 'phy-704',
     code: 'PHY 704',
-    title: 'Quantum Mechanics',
-    description: 'State vectors, angular momentum, perturbation, scattering, and quantum statistical ideas.',
+    title: 'Quantum Physics',
+    description: 'State vectors, angular momentum, perturbation theory, scattering and selected applications.',
     semester: 'Second Semester',
     units: 3,
     icon: 'ℏ',

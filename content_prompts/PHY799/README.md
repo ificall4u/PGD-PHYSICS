@@ -1,11 +1,13 @@
-# PHY799 — content prompts
+# PHY 799 — PGD Research Project
 
-Upload the authoring prompt set for **PHY799** into this folder.
+Official ABUAD outline: supervised research in contemporary physics; detailed report at completion.
 
-Suggested files:
+| File | Module |
+|------|--------|
+| `00_Master_System_Prompt.txt` | Supervision + source rules |
+| `01_Module1_Choosing_Topic_and_Question.txt` | Topic and question |
+| `02_Module2_Literature_and_Background.txt` | Literature |
+| `03_Module3_Methods_and_Design.txt` | Methods |
+| `04_Module4_Results_Analysis_Writing.txt` | Results and report |
 
-- `00_overview.md` — course goals and module map
-- `M01_....md` — one file per module (or one combined file)
-- `quiz_bank.md` — optional
-
-When ready, fill `lib/data/phy799_content.dart` using **CONTENT_AUTHORING.md**.
+Fill `lib/data/phy799_content.dart` via CONTENT_AUTHORING.md.

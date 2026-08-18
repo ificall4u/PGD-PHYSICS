@@ -1,0 +1,7 @@
+Execute Module 1: Choosing a topic and research question.
+
+Provide a complete, practical masterclass covering:
+1. What counts as a suitable PGD Physics (Electronics) project under ABUAD-style supervision.
+2. Narrowing from an area to a specific, answerable research question.
+3. Feasibility: equipment, time, safety, and supervisor fit (confirm local constraints with the department).
+4. Writing a short problem statement grounded in prior literature (Craft of Research habits; domain facts from standard physics texts only).

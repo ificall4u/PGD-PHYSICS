@@ -6,8 +6,8 @@ Course buildPhy701() {
   return Course(
     id: 'phy-701',
     code: 'PHY 701',
-    title: 'Mathematical Methods in Physics',
-    description: 'Graduate mathematical methods: ODEs, transforms, PDEs, special functions, distributions, Fourier analysis, complex methods and Green functions.',
+    title: 'Mathematical Methods',
+    description: 'Methods of ODEs and PDEs, Laplace and Fourier methods, special functions, residues and Green functions for physical applications.',
     semester: 'First Semester',
     units: 3,
     icon: '∫',
