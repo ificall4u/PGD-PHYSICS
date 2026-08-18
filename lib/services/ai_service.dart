@@ -164,9 +164,11 @@ class AiService {
       return AiReply(
         text:
             'Hey $nickname 👋\n\nI need at least one free API key to chat with you.\n\n'
-            'Tap **Open AI settings** below (or go to Settings → AI providers), add a key — Gemini is usually easiest — then come back.
+            'Tap **Open AI settings** below (or go to Settings → AI providers), '
+            'add a key — Gemini is usually easiest — then come back.
 
-[Open AI settings](pgd://settings/ai)',
+'
+            '[Open AI settings](pgd://settings/ai)',
         providerId: AiProviderId.gemini,
         poweredByLabel: '',
       );
@@ -454,6 +456,18 @@ class AiService {
     }
     throw _ProviderException('HTTP ${response.statusCode}');
   }
+}
+
+class AiReply {
+  final String text;
+  final AiProviderId providerId;
+  final String poweredByLabel;
+
+  const AiReply({
+    required this.text,
+    required this.providerId,
+    required this.poweredByLabel,
+  });
 }
 
 class _ProviderException implements Exception {

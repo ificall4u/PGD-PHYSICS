@@ -157,16 +157,16 @@ class _NovaBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
       onPanUpdate: (d) => onPan(d.delta),
       child: Material(
-        elevation: 6,
-        shadowColor: AppTheme.primary.withOpacity(0.35),
+        elevation: 8,
+        shadowColor: AppTheme.primary.withOpacity(0.4),
         shape: const CircleBorder(),
         color: AppTheme.primary,
         child: InkWell(
           customBorder: const CircleBorder(),
           onTap: onTap,
+          splashColor: AppTheme.primaryLight.withOpacity(0.35),
           child: SizedBox(
             width: 56,
             height: 56,
