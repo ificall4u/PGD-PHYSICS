@@ -1,0 +1,8 @@
+Execute Module 1: Ordinary Differential Equations & Linear Operators. 
+
+Provide an exhaustive, fully derived masterclass covering:
+1. Physical Foundations: Derive 1st and 2nd-order ODEs from basic physical systems (Newtonian mechanics, harmonic oscillators, damping).
+2. Linear Independence & Phase Space: Derive the Wronskian determinant from scratch. Prove Abel's Identity step-by-step showing every derivative and integration.
+3. Linear Differential Operators: Formally define function spaces L²[a,b], inner products, and weight functions w(x).
+4. Sturm-Liouville Theory: Cast general 2nd-order ODEs into self-adjoint Sturm-Liouville form. 
+5. Rigorous Proofs: Provide complete, un-truncated step-by-step proofs showing that S-L eigenvalues are strictly real and that eigenfunctions with distinct eigenvalues are orthogonal under the weighted inner product.

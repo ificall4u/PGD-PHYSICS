@@ -1,0 +1,7 @@
+Execute Module 4: Special Functions of Mathematical Physics.
+
+Provide an exhaustive, fully derived masterclass covering:
+1. Bessel Functions: Derive Bessel's differential equation from cylindrical symmetry, solve via the Frobenius series method, and derive J_ν(x).
+2. Legendre Polynomials: Derive Legendre's differential equation from spherical geometry, derive Rodrigues' Formula, and prove orthogonality.
+3. Hermite & Laguerre Polynomials: Derive their governing ODEs, physical origin in quantum mechanics (Harmonic Oscillator and Hydrogen Atom), generating functions, and recurrence relations.
+4. Gamma & Beta Functions: Formally define the Gamma function Γ(z), derive Γ(z+1) = zΓ(z), link to factorials, and establish the relationship with the Beta function B(p,q).

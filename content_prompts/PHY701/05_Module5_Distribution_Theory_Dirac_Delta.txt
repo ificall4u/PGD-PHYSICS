@@ -1,0 +1,10 @@
+Execute Module 5: Distribution Theory & The Dirac Delta Function.
+
+Provide an exhaustive, fully derived masterclass covering:
+1. Rigorous Definition: Define the Dirac delta as a generalized function/distribution acting on a test function space D(ℝ) with compact support.
+2. Limit Representations: Show how the delta function arises as the limit of sequence functions (Gaussian, Lorentzian, rectangular pulse, sinc function).
+3. Operational Identities: Derive and prove:
+   - Scaling property: δ(ax) = (1/|a|) δ(x)
+   - Composition property: δ(g(x)) for simple roots
+   - Derivative identities via integration by parts
+4. Fourier Representation: Derive the continuous integral representation of δ(x - x').

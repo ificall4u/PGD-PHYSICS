@@ -1,0 +1,7 @@
+Execute Module 6: Fourier Series & Continuous Fourier Transforms.
+
+Provide an exhaustive, fully derived masterclass covering:
+1. Trigonometric & Complex Fourier Series: Derive the complex exponential Fourier series coefficients c_n from real sines/cosines over period 2L.
+2. The Continuous Limit: Take the period L → ∞ to transition from discrete Fourier series to the continuous Fourier Transform pair.
+3. Operational Theorems: Derive shift theorems, differentiation in frequency domain, and the continuous Convolution Theorem.
+4. Energy Conservation: Prove Parseval's and Plancherel's theorems step-by-step.

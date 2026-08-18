@@ -1,0 +1,8 @@
+Execute Module 2: Laplace Transforms & Operational Calculus.
+
+Provide an exhaustive, fully derived masterclass covering:
+1. Physical Intuition: Explain domain transformation from time domain to frequency domain using a physical system analogy.
+2. Definition & Convergence: Define the unilateral Laplace transform, Region of Convergence (ROC), and conditions for existence.
+3. Derivative & Integral Theorems: Derive the Laplace transforms for 1st, 2nd, and Nth derivatives step-by-step using integration by parts.
+4. Convolution Theorem: Formally derive the convolution integral in the Laplace domain from first principles.
+5. Inversion Mechanics: Explain the Bromwich integral, complex frequency plane, and inversion via Cauchy's Residue Theorem.

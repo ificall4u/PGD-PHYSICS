@@ -1,0 +1,7 @@
+Execute Module 7: Complex Analysis, Residue Calculus, and Green's Functions.
+
+Provide an exhaustive, fully derived masterclass covering:
+1. Cauchy's Residue Theorem: State and prove Cauchy's Theorem and the Residue Theorem for isolated poles of order m.
+2. Contour Integration: Demonstrate a complete, step-by-step evaluation of a real improper integral using a semicircular contour and Jordan's Lemma.
+3. Impulse Response Theory: Define the Green's function G(x, x') as the fundamental solution to L_x G(x, x') = δ(x - x').
+4. Construction Rules: Prove the continuity and derivative jump conditions across x = x' for a general 1D Sturm-Liouville differential operator and construct G(x, x') explicitly.

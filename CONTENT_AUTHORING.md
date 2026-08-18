@@ -96,3 +96,14 @@ Does not embed course prose offline. It uses BYOK APIs + page context. Content q
 - [ ] Module summaries are one or two sentences  
 - [ ] IDs unique across the app  
 - [ ] UI still shows **Modules** on course pages  
+
+
+## PHY 701 reference structure
+
+The file `content_prompts/PHY701/` is the **template** for other courses:
+
+1. `00_Master_System_Prompt.txt` — pedagogy for the whole course  
+2. `01_Module1_…` … `07_Module7_…` — one prompt per module  
+3. App modules/units in `lib/data/phy701_content.dart` match each **numbered section** inside those prompts as a **unit shell** (title only + placeholder body)
+
+When authoring: expand each unit shell into full Markdown + takeaways + quiz without changing IDs unless necessary.

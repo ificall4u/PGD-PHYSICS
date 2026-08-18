@@ -1,0 +1,7 @@
+Execute Module 3: Partial Differential Equations (PDEs) & Boundary Value Problems.
+
+Provide an exhaustive, fully derived masterclass covering:
+1. Classification: Derive the discriminant (B² - 4AC) to classify second-order linear PDEs into Elliptic, Parabolic, and Hyperbolic types. Explain the physical nature of each (equilibrium, diffusion, wave propagation).
+2. Separation of Variables: Walk through a complete, step-by-step separation of variables for the wave equation or heat equation in rectangular coordinates.
+3. Curvilinear Coordinates: Transform the Laplacian operator ∇² into cylindrical (r, θ, z) and spherical (r, θ, φ) coordinates showing all metric coefficient derivations.
+4. Boundary Conditions: Explicitly contrast Dirichlet, Neumann, and Robin boundary conditions with physical examples.
