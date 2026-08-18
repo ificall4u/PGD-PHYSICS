@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
 import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/utils/page_transitions.dart';
@@ -210,7 +211,20 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                             page: CourseDetailScreen(course: course),
                           ),
                         ),
-                      ),
+                      )
+                          .animate()
+                          .fadeIn(
+                            begin: 0.7,
+                            duration: 320.ms,
+                            curve: Curves.easeOut,
+                            delay: (40 * index).ms,
+                          )
+                          .slideY(
+                            begin: 0.04,
+                            duration: 320.ms,
+                            curve: Curves.easeOutCubic,
+                            delay: (40 * index).ms,
+                          ),
                     );
                   },
                   childCount: firstSemester.length,
@@ -236,7 +250,20 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                             page: CourseDetailScreen(course: course),
                           ),
                         ),
-                      ),
+                      )
+                          .animate()
+                          .fadeIn(
+                            begin: 0.7,
+                            duration: 320.ms,
+                            curve: Curves.easeOut,
+                            delay: (40 * index).ms,
+                          )
+                          .slideY(
+                            begin: 0.04,
+                            duration: 320.ms,
+                            curve: Curves.easeOutCubic,
+                            delay: (40 * index).ms,
+                          ),
                     );
                   },
                   childCount: secondSemester.length,
@@ -263,7 +290,20 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
                               page: CourseDetailScreen(course: course),
                             ),
                           ),
-                        ),
+                        )
+                            .animate()
+                            .fadeIn(
+                              begin: 0.7,
+                              duration: 320.ms,
+                              curve: Curves.easeOut,
+                              delay: (40 * index).ms,
+                            )
+                            .slideY(
+                              begin: 0.04,
+                              duration: 320.ms,
+                              curve: Curves.easeOutCubic,
+                              delay: (40 * index).ms,
+                            ),
                       );
                     },
                     childCount: project.length,

@@ -29,13 +29,17 @@ class CourseCard extends StatelessWidget {
 
     return Material(
       color: AppTheme.surface,
+      elevation: 0,
+      shadowColor: Colors.transparent,
       borderRadius: BorderRadius.circular(18),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(18),
-        splashColor: color.withOpacity(0.12),
-        highlightColor: color.withOpacity(0.06),
+        // Instant press feedback — ripple starts on finger-down, not after a delay
+        splashFactory: InkRipple.splashFactory,
+        splashColor: color.withOpacity(0.18),
+        highlightColor: color.withOpacity(0.08),
         child: Ink(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
@@ -57,7 +61,7 @@ class CourseCard extends StatelessWidget {
                   child: Center(
                     child: Text(
                       course.icon,
-                      style: TextStyle(fontSize: 24),
+                      style: const TextStyle(fontSize: 24),
                     ),
                   ),
                 ),

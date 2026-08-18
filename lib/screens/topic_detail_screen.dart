@@ -109,6 +109,7 @@ class TopicDetailScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(14),
+                  splashFactory: InkRipple.splashFactory,
                   onTap: () {
                     Navigator.push(
                       context,

@@ -168,6 +168,7 @@ class CourseDetailScreen extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
                     borderRadius: BorderRadius.circular(14),
+                    splashFactory: InkRipple.splashFactory,
                     onTap: () {
                       Navigator.push(
                         context,
