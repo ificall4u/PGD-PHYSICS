@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/widgets/nova_floating.dart';
 import 'package:pgd_physics/widgets/app_mark.dart';
 import 'package:pgd_physics/screens/home_screen.dart';
 import 'package:pgd_physics/screens/onboarding_screen.dart';
@@ -40,6 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    NovaContext.currentPage = 'Splash';
     return Scaffold(
       backgroundColor: AppTheme.background,
       body: Center(

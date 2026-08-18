@@ -4,6 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:pgd_physics/models/course.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/widgets/nova_floating.dart';
 import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/utils/math_plain.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
@@ -102,6 +103,12 @@ class _UnitScreenState extends State<UnitScreen> with ThemeAware {
 
   @override
   Widget build(BuildContext context) {
+    NovaContext.set(
+      page: 'Unit: ${widget.unit.title}',
+      course: widget.course.title,
+      module: widget.module.title,
+      unit: widget.unit.title,
+    );
     final color = AppTheme.courseColor(widget.course.colorHint);
     final hasSelection = _selection != null && _selection!.trim().isNotEmpty;
 

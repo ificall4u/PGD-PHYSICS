@@ -401,7 +401,31 @@ class _SettingsScreenState extends State<SettingsScreen> with ThemeAware {
                 ),
               ),
               const SizedBox(height: 16),
-              const CreatorFooter(),
+              
+            _sectionLabel('Nova floating button'),
+            Card(
+              child: SwitchListTile(
+                title: Text(
+                  'Show floating Nova',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: AppTheme.textPrimary,
+                  ),
+                ),
+                subtitle: Text(
+                  'Draggable chat bubble on every screen. Tap to open a mini Nova panel you can expand or shrink.',
+                  style: TextStyle(fontSize: 12.5, color: AppTheme.textMuted, height: 1.35),
+                ),
+                value: StorageService.floatingNovaEnabled(),
+                activeColor: AppTheme.primary,
+                onChanged: (v) async {
+                  await StorageService.setFloatingNovaEnabled(v);
+                  setState(() {});
+                },
+              ),
+            ),
+            const SizedBox(height: 16),
+            const CreatorFooter(),
             ],
           );
         },

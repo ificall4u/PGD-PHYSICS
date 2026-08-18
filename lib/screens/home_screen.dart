@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/widgets/nova_floating.dart';
 import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/utils/page_transitions.dart';
 import 'package:pgd_physics/widgets/theme_toggle.dart';
@@ -45,6 +46,11 @@ class _HomeScreenState extends State<HomeScreen> with ThemeAware {
 
   @override
   Widget build(BuildContext context) {
+    NovaContext.set(page: 'Home');
+    // clear lesson context on home
+    NovaContext.courseTitle = null;
+    NovaContext.moduleTitle = null;
+    NovaContext.unitTitle = null;
     final firstSemester =
         courses.where((c) => c.semester == 'First Semester').toList();
     final secondSemester =

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +13,8 @@ class StorageService {
   static Future<void> init() async {
     _box = await Hive.openBox('pgd_physics');
     _prefs = await SharedPreferences.getInstance();
+    floatingNovaListenable.value =
+        _prefs.getBool('floating_nova_enabled') ?? true;
   }
 
 
@@ -232,6 +235,17 @@ class StorageService {
 
   static Future<void> setNotificationsEnabled(bool v) async {
     await _prefs.setBool('notifications_enabled', v);
+  }
+
+  // ── Floating Nova ──────────────────────────────────────────
+  static final ValueNotifier<bool> floatingNovaListenable = ValueNotifier(true);
+
+  static bool floatingNovaEnabled() =>
+      _prefs.getBool('floating_nova_enabled') ?? true;
+
+  static Future<void> setFloatingNovaEnabled(bool v) async {
+    await _prefs.setBool('floating_nova_enabled', v);
+    floatingNovaListenable.value = v;
   }
 
   // ── Nova chat history (offline re-read) ──────────────────────

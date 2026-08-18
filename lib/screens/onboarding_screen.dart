@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
+import 'package:pgd_physics/widgets/nova_floating.dart';
 import 'package:pgd_physics/theme/theme_aware.dart';
 import 'package:pgd_physics/widgets/app_mark.dart';
 import 'package:pgd_physics/services/storage_service.dart';
@@ -75,6 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with ThemeAware {
 
   @override
   Widget build(BuildContext context) {
+    NovaContext.currentPage = 'Onboarding';
     return Scaffold(
       backgroundColor: AppTheme.background,
       body: SafeArea(

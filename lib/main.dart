@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pgd_physics/theme/app_theme.dart';
 import 'package:pgd_physics/theme/theme_controller.dart';
 import 'package:pgd_physics/screens/splash_screen.dart';
+import 'package:pgd_physics/widgets/nova_floating.dart';
 import 'package:pgd_physics/services/storage_service.dart';
 import 'package:pgd_physics/services/notification_service.dart';
 
@@ -90,6 +91,9 @@ class _PgdPhysicsAppState extends State<PgdPhysicsApp>
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: _theme.themeMode,
+          builder: (context, child) {
+            return NovaFloatingHost(child: child ?? const SizedBox.shrink());
+          },
           home: const SplashScreen(),
         );
       },
