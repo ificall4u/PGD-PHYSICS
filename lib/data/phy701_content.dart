@@ -615,16 +615,366 @@ Where did the boundary conditions enter the orthogonality proof?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy701-m2',
         title: 'Laplace Transforms & Operational Calculus',
-        summary: 'Laplace Transforms & Operational Calculus',
+        summary:
+            'Unilateral Laplace transform, ROC, derivative/integral theorems, convolution, and inversion ideas.',
         units: [
-          skeletonUnit(id: 'phy701-m2-u1', title: 'Physical Intuition'),
-          skeletonUnit(id: 'phy701-m2-u2', title: 'Definition & Convergence'),
-          skeletonUnit(id: 'phy701-m2-u3', title: 'Derivative & Integral Theorems'),
-          skeletonUnit(id: 'phy701-m2-u4', title: 'Convolution Theorem'),
-          skeletonUnit(id: 'phy701-m2-u5', title: 'Inversion Mechanics'),
+          Unit(
+            id: 'phy701-m2-u1',
+            title: 'Physical intuition: time domain to s-domain',
+            content: r'''
+## Learning goal
+
+Understand the unilateral Laplace transform as a systematic change of representation: from functions of time to functions of a complex frequency s, motivated by linear circuits and damped oscillators.
+
+## Why it matters
+
+Many PGD physics and electronics problems are linear constant-coefficient ODEs in time. The Laplace transform turns differentiation in t into multiplication by s, so the ODE becomes algebra, then one returns to time by inversion.
+
+## A physical system
+
+Take the series RL circuit with resistance R, inductance L, and applied voltage v(t) for t >= 0. Current i(t) obeys
+
+L di/dt + R i = v(t)
+
+With zero initial current this is a first-order linear ODE. Solving in the time domain needs an integrating factor. Solving after a Laplace transform uses algebra in the s-domain and inversion at the end.
+
+## What the transform does (intuition)
+
+Think of a signal f(t) that is zero for t < 0 (switched on at t = 0). The unilateral Laplace transform builds a weighted average of f against exponential probes e^{-st}:
+
+F(s) = integral from 0 to infinity of f(t) e^{-st} dt
+
+- If s = sigma is real and positive, e^{-sigma t} damps the future; the integral emphasizes early times more when sigma is large.
+- If s = sigma + i omega, the factor e^{-i omega t} oscillates while e^{-sigma t} still damps. So s encodes both decay/growth (real part) and oscillation (imaginary part).
+
+That is the frequency domain for Laplace: not only pure sinusoids (Fourier), but exponentially weighted sinusoids suited to transients.
+
+## Domain language
+
+- Time domain: f(t), t >= 0, differential equations, initial conditions.
+- s-domain: F(s), algebraic equations, initial conditions appear as extra terms when derivatives transform.
+
+## Check yourself
+
+Why is the unilateral transform (integral from 0 to infinity) more natural for circuits switched on at t = 0 than a bilateral integral from -infinity to infinity?
+''',
+            keyTakeaways: [
+              'Laplace maps time-domain linear ODEs into algebraic equations in s.',
+              'The factor e^{-st} probes both exponential growth/decay and oscillation.',
+              'Unilateral transforms match initial-value problems with t >= 0.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m2-u1-q1',
+                question:
+                    'In F(s) = integral of f(t) e^{-st} dt from 0 to infinity, the real part of s mainly controls',
+                options: [
+                  'Only the units of f',
+                  'Exponential weighting (growth or decay) in the integrand',
+                  'Whether f is a vector',
+                  'The value of f at infinity only',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'Writing s = sigma + i omega, e^{-st} = e^{-sigma t} e^{-i omega t}; sigma sets the exponential weight.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m2-u2',
+            title: 'Definition, existence, and region of convergence',
+            content: r'''
+## Learning goal
+
+State the unilateral Laplace transform precisely, and explain the region of convergence (ROC) with a worked exponential example.
+
+## Definition
+
+For a function f(t) defined for t >= 0 (and typically taken as 0 for t < 0 in applications), the unilateral Laplace transform is
+
+F(s) = L{f}(s) = integral from 0 to infinity of f(t) e^{-st} dt
+
+whenever the integral converges. Here s is complex.
+
+## Existence (sufficient condition)
+
+A practical sufficient condition: if there exist constants M > 0 and alpha such that
+
+|f(t)| <= M e^{alpha t} for all t >= 0
+
+(exponential order alpha), and f is piecewise continuous on finite intervals, then the integral converges absolutely whenever Re(s) > alpha.
+
+## Region of convergence (ROC)
+
+The set of s for which the integral converges is the ROC. For many elementary signals the ROC is a half-plane Re(s) > sigma_0.
+
+### Example: f(t) = e^{at} (t >= 0, a real)
+
+F(s) = integral_0^infinity e^{at} e^{-st} dt = integral_0^infinity e^{-(s-a)t} dt
+
+If Re(s - a) > 0, i.e. Re(s) > a,
+
+F(s) = 1/(s - a)
+
+ROC: Re(s) > a. Outside that half-plane the integral diverges even though the algebraic expression 1/(s-a) exists as a formula. The transform is the integral, not merely the closed form.
+
+### Example: unit step u(t) = 1 for t >= 0
+
+This is e^{at} with a = 0, so L{u} = 1/s with ROC Re(s) > 0.
+
+## Linearity
+
+L{c1 f + c2 g} = c1 F + c2 G on the intersection of ROCs (with care at boundaries).
+
+## Check yourself
+
+If f(t) = e^{2t} for t >= 0, can you use F(s) = 1/(s-2) at s = 0? Why or why not?
+''',
+            keyTakeaways: [
+              'L{f}(s) equals the integral from 0 to infinity of f(t) e^{-st} dt when it converges.',
+              'Exponential order of f determines a half-plane ROC.',
+              'Closed forms are valid only inside the ROC of the defining integral.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m2-u2-q1',
+                question: 'For f(t) = e^{at} (t >= 0, a real), the ROC of L{f} is',
+                options: [
+                  'The entire complex plane',
+                  'Re(s) > a',
+                  'Re(s) < a',
+                  'Only pure imaginary s',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'The integral of e^{-(s-a)t} from 0 to infinity converges when Re(s - a) > 0.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m2-u3',
+            title: 'Derivative and integral theorems',
+            content: r'''
+## Learning goal
+
+Derive the Laplace transforms of f', f'', and higher derivatives using integration by parts, and state the integral theorem.
+
+## First derivative
+
+Assume f and f' are of exponential order so boundary terms at infinity vanish in the ROC.
+
+L{f'} = integral_0^infinity f'(t) e^{-st} dt
+
+Integrate by parts with u = e^{-st}, dv = f'(t) dt, so du = -s e^{-st} dt, v = f(t):
+
+= [f(t) e^{-st}]_0^infinity + s integral_0^infinity f(t) e^{-st} dt
+
+At infinity: f(t) e^{-st} -> 0 in the ROC.
+At 0: f(0).
+
+So L{f'} = 0 - f(0) + s F(s) = s F(s) - f(0)
+
+## Second derivative
+
+Apply the same rule to f':
+
+L{f''} = s L{f'} - f'(0) = s(s F - f(0)) - f'(0) = s^2 F(s) - s f(0) - f'(0)
+
+## nth derivative
+
+By induction:
+
+L{f^{(n)}} = s^n F(s) - s^{n-1} f(0) - s^{n-2} f'(0) - ... - f^{(n-1)}(0)
+
+Initial conditions enter as polynomial terms in s.
+
+## Integral theorem
+
+Let g(t) = integral_0^t f(tau) d tau. Then g' = f and g(0) = 0, so
+
+L{g'} = s L{g} = F(s)  =>  L{g} = F(s)/s
+
+## Check yourself
+
+For the ODE y' + gamma y = 0 with y(0) = y0, write the Laplace transform of both sides using the derivative theorem.
+''',
+            keyTakeaways: [
+              'L{f\'} = s F(s) - f(0); initial data appear automatically.',
+              'L{f\'\'} = s^2 F - s f(0) - f\'(0).',
+              'L{integral_0^t f} = F(s)/s when the integral starts at 0.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m2-u3-q1',
+                question: 'L{f\'} equals',
+                options: [
+                  'F(s)/s',
+                  's F(s) - f(0)',
+                  's F(s) + f(0)',
+                  'dF/ds',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'Integration by parts yields s F(s) - f(0) when the boundary term at infinity vanishes.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m2-u3-q2',
+                question: 'L{f\'\'} uses which initial values?',
+                options: [
+                  'Only f at infinity',
+                  'f(0) and f\'(0)',
+                  'Only F(0)',
+                  'None',
+                ],
+                correctIndex: 1,
+                explanation: 'L{f\'\'} = s^2 F - s f(0) - f\'(0).',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m2-u4',
+            title: 'Convolution theorem',
+            content: r'''
+## Learning goal
+
+Define convolution on the half-line and derive that the Laplace transform turns convolution into multiplication.
+
+## Convolution for causal signals
+
+For functions that vanish for negative arguments,
+
+(f * g)(t) = integral_0^t f(tau) g(t - tau) d tau
+
+## Theorem
+
+L{f * g} = F(s) G(s)
+
+on an appropriate intersection of ROCs.
+
+## Derivation
+
+L{f * g} = integral_0^infinity [integral_0^t f(tau) g(t-tau) d tau] e^{-st} dt
+
+Change the region to tau from 0 to infinity and t from tau to infinity:
+
+= integral_0^infinity f(tau) [integral_tau^infinity g(t-tau) e^{-st} dt] d tau
+
+Substitute u = t - tau:
+
+inner integral = e^{-s tau} G(s)
+
+Hence L{f * g} = G(s) integral_0^infinity f(tau) e^{-s tau} d tau = F(s) G(s)
+
+## Why physicists care
+
+A linear time-invariant system with impulse response h(t) produces y = h * x. In the s-domain, Y(s) = H(s) X(s).
+
+## Check yourself
+
+If G(s) = 1 in the distributional sense corresponding to a delta at 0, what is f * g?
+''',
+            keyTakeaways: [
+              '(f * g)(t) = integral_0^t f(tau) g(t-tau) d tau for causal signals.',
+              'L{f * g} = F(s) G(s).',
+              'LTI systems: output transform equals product of transfer function and input transform.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m2-u4-q1',
+                question: 'The Laplace transform of a convolution f * g is',
+                options: [
+                  'F(s) + G(s)',
+                  'F(s) G(s)',
+                  'F(s)/G(s)',
+                  'F\'(s) G\'(s)',
+                ],
+                correctIndex: 1,
+                explanation: 'The convolution theorem states L{f * g} = F G.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m2-u5',
+            title: 'Inversion: Bromwich integral and residues',
+            content: r'''
+## Learning goal
+
+State the Bromwich inversion integral, interpret the complex s-plane, and explain why residues recover elementary inverse transforms.
+
+## Inversion formula
+
+Under suitable conditions, if F(s) = L{f}, then
+
+f(t) = (1/(2 pi i)) integral from (gamma - i infinity) to (gamma + i infinity) of F(s) e^{st} ds
+
+The path is a vertical line Re(s) = gamma lying inside the ROC, to the right of singularities of F that affect the integral. This is the Bromwich contour.
+
+## Complex frequency plane
+
+Poles of F(s) mark natural behaviours e^{s0 t} in the inverse. For a simple pole at s0 with residue R, the contribution is proportional to R e^{s0 t}.
+
+- Pole on the negative real axis: pure exponential decay.
+- Complex conjugate poles: damped or growing oscillation.
+- Pole at the origin: step-like constant term.
+
+## Inversion by residues
+
+For t > 0 one closes the Bromwich line with a large arc in the left half-plane when F(s) e^{st} decays on that arc. Then
+
+f(t) = sum of residues of [F(s) e^{st}] at poles to the left of the Bromwich line
+
+for the usual rational transforms in ODE problems.
+
+### Example pattern
+
+F(s) = 1/(s - a) with ROC Re(s) > a has a single pole at s = a. Residue of F(s) e^{st} at s = a is e^{at}. Hence f(t) = e^{at} for t > 0.
+
+## Partial fractions first
+
+In circuit and oscillator problems one almost always: (1) solve for Y(s) algebraically, (2) partial fractions, (3) invert term by term using a short table. Residue calculus justifies the table.
+
+## Check yourself
+
+Why must the Bromwich line sit to the right of the poles you enclose when closing to the left for t > 0?
+''',
+            keyTakeaways: [
+              'Bromwich inversion integrates F(s) e^{st} along a vertical line in the ROC.',
+              'Residues of F(s) e^{st} at poles give the time-domain modes.',
+              'Partial fractions plus tables implement residue inversion for rational F.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m2-u5-q1',
+                question: 'The Bromwich contour is',
+                options: [
+                  'Any circle around the origin',
+                  'A vertical line Re(s) = gamma inside the ROC',
+                  'The real axis only',
+                  'A path that must avoid the ROC',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'Inversion integrates along a vertical line in the region of convergence.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m2-u5-q2',
+                question:
+                    'A simple pole of F at s0 contributes a time factor proportional to',
+                options: [
+                  'e^{s0 t}',
+                  't^{s0}',
+                  'log t only',
+                  '1/s0 independent of t',
+                ],
+                correctIndex: 0,
+                explanation:
+                    'Residue of F(s) e^{st} at s0 produces a multiple of e^{s0 t}.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
