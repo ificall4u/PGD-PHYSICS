@@ -977,15 +977,390 @@ Why must the Bromwich line sit to the right of the poles you enclose when closin
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy701-m3',
         title: 'Partial Differential Equations (PDEs) & Boundary Value Problems',
-        summary: 'Partial Differential Equations (PDEs) & Boundary Value Problems',
+        summary:
+            'Classification of second-order PDEs, separation of variables, Laplacian in curvilinear coordinates, Dirichlet/Neumann/Robin conditions.',
         units: [
-          skeletonUnit(id: 'phy701-m3-u1', title: 'Classification'),
-          skeletonUnit(id: 'phy701-m3-u2', title: 'Separation of Variables'),
-          skeletonUnit(id: 'phy701-m3-u3', title: 'Curvilinear Coordinates'),
-          skeletonUnit(id: 'phy701-m3-u4', title: 'Boundary Conditions'),
+          Unit(
+            id: 'phy701-m3-u1',
+            title: 'Classification: elliptic, parabolic, hyperbolic',
+            content: r'''
+## Learning goal
+
+Classify a second-order linear PDE by its discriminant and connect each type to a physical regime: equilibrium, diffusion, or wave propagation.
+
+## General second-order linear PDE in two variables
+
+A(x,y) u_xx + B(x,y) u_xy + C(x,y) u_yy + lower-order terms = 0
+
+Here subscripts denote partial derivatives: u_xx = ∂²u/∂x², and so on. The principal part is the second-order piece with coefficients A, B, C.
+
+## Discriminant
+
+Define
+
+Δ = B² − 4AC
+
+Classification at a point (where the coefficients are evaluated):
+
+- **Hyperbolic** if Δ > 0
+- **Parabolic** if Δ = 0
+- **Elliptic** if Δ < 0
+
+This mirrors the conic-section classification of Ax² + Bxy + Cy² + … = 0.
+
+## Canonical physical examples
+
+### Wave equation (hyperbolic)
+
+u_tt = c² u_xx
+
+Rewrite: c² u_xx − u_tt = 0. Take x as one variable and t as the other: A = c², B = 0, C = −1.
+
+Δ = 0 − 4(c²)(−1) = 4c² > 0 → hyperbolic.
+
+Physics: finite propagation speed, sharp signals, characteristics carry initial data.
+
+### Heat (diffusion) equation (parabolic)
+
+u_t = κ u_xx
+
+As a second-order equation in (x,t): only u_xx appears among second derivatives, so A = κ, B = 0, C = 0 (if t is the “y” variable and we count only pure second derivatives in the principal part in the standard two-variable form treating t like y with no u_tt).
+
+Standard placement: A = κ, B = 0, C = 0 → Δ = 0 → parabolic.
+
+Physics: smoothing, infinite formal propagation in the ideal model, approach to equilibrium.
+
+### Laplace equation (elliptic)
+
+u_xx + u_yy = 0
+
+A = 1, B = 0, C = 1 → Δ = −4 < 0 → elliptic.
+
+Physics: equilibrium (steady temperature, electrostatic potential in free space), boundary values determine the interior, no marching in a time-like direction.
+
+## Why the names matter
+
+You do not solve these three classes with the same instincts:
+
+- Hyperbolic: initial-value problems on a time-like direction, domains of dependence.
+- Parabolic: initial data plus boundary data in space, smooth forward in time.
+- Elliptic: boundary-value problems on a closed domain; no “initial time.”
+
+## Check yourself
+
+Classify u_xx + 2u_xy + u_yy = 0 using Δ = B² − 4AC.
+''',
+            keyTakeaways: [
+              'Discriminant Δ = B² − 4AC classifies second-order linear PDEs.',
+              'Hyperbolic (Δ > 0) ~ waves; parabolic (Δ = 0) ~ diffusion; elliptic (Δ < 0) ~ equilibrium.',
+              'The type guides what data (initial vs boundary) the problem needs.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m3-u1-q1',
+                question: 'The wave equation u_tt = c² u_xx is',
+                options: [
+                  'Elliptic',
+                  'Parabolic',
+                  'Hyperbolic',
+                  'Not second order',
+                ],
+                correctIndex: 2,
+                explanation:
+                    'With A = c², B = 0, C = −1 one gets Δ = 4c² > 0 (hyperbolic).',
+              ),
+              QuizQuestion(
+                id: 'phy701-m3-u1-q2',
+                question: 'Laplace’s equation u_xx + u_yy = 0 is',
+                options: [
+                  'Hyperbolic',
+                  'Parabolic',
+                  'Elliptic',
+                  'First order only',
+                ],
+                correctIndex: 2,
+                explanation: 'A = C = 1, B = 0 gives Δ = −4 < 0 (elliptic).',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m3-u2',
+            title: 'Separation of variables for the heat equation',
+            content: r'''
+## Learning goal
+
+Carry out a complete separation-of-variables solution for the one-dimensional heat equation on a finite rod with homogeneous Dirichlet ends, including eigenvalues and the Fourier sine series for the initial data.
+
+## Problem
+
+Solve
+
+∂u/∂t = κ ∂²u/∂x²,    0 < x < L,    t > 0
+
+u(0,t) = 0,    u(L,t) = 0
+
+u(x,0) = f(x)
+
+with κ > 0 constant.
+
+## Product assumption
+
+Seek nontrivial products u(x,t) = X(x) T(t). Substitute:
+
+X T′ = κ X″ T
+
+Divide by κ X T (where nonzero):
+
+T′/(κ T) = X″/X = −λ
+
+(the separation constant is written −λ so that spatial eigenfunctions oscillate under Dirichlet conditions).
+
+## Spatial eigenvalue problem
+
+X″ + λ X = 0,    X(0) = 0,    X(L) = 0
+
+This is a regular Sturm–Liouville problem (Module 1).
+
+- If λ ≤ 0, only the trivial solution satisfies both boundary conditions (standard check).
+- If λ > 0, write λ = μ². Then X = A cos(μx) + B sin(μx).
+  X(0) = 0 ⇒ A = 0.
+  X(L) = 0 ⇒ B sin(μL) = 0 ⇒ μL = nπ for n = 1, 2, 3, …
+  So λ_n = (nπ/L)²,    X_n(x) = sin(nπx/L)
+
+## Time factors
+
+T′ + κ λ T = 0 ⇒ T_n(t) = e^{−κ (nπ/L)² t}
+
+## Superposition
+
+u(x,t) = Σ_{n=1}^∞ b_n sin(nπx/L) e^{−κ (nπ/L)² t}
+
+## Initial condition
+
+u(x,0) = f(x) = Σ b_n sin(nπx/L)
+
+So b_n are Fourier sine coefficients on (0, L):
+
+b_n = (2/L) ∫_0^L f(x) sin(nπx/L) dx
+
+## Reading the physics
+
+Each mode n decays at rate κ (nπ/L)². Higher spatial frequencies die faster — diffusion smooths fine detail first.
+
+## Check yourself
+
+If the rod is insulated at both ends (Neumann: u_x(0,t) = u_x(L,t) = 0), what changes in the spatial eigenvalue problem?
+''',
+            keyTakeaways: [
+              'Separation u = X(x)T(t) splits the heat equation into X″ + λX = 0 and T′ + κλT = 0.',
+              'Dirichlet ends on [0, L] give λ_n = (nπ/L)² and sin(nπx/L) modes.',
+              'Coefficients b_n come from the Fourier sine series of f(x).',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m3-u2-q1',
+                question:
+                    'For u_t = κ u_xx with u(0,t) = u(L,t) = 0, the decay rate of mode n is',
+                options: [
+                  'κ n π / L',
+                  'κ (nπ/L)²',
+                  '(nπ/L)/κ',
+                  'Independent of n',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'T_n(t) = exp(−κ λ_n t) with λ_n = (nπ/L)².',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m3-u3',
+            title: 'Laplacian in cylindrical and spherical coordinates',
+            content: r'''
+## Learning goal
+
+Write ∇² in cylindrical and spherical coordinates and see how scale factors (metric coefficients) produce the familiar radial pieces.
+
+## Cartesian reminder
+
+∇²u = u_xx + u_yy + u_zz
+
+## Orthogonal curvilinear idea
+
+In orthogonal coordinates (q1, q2, q3) with scale factors h1, h2, h3 (so a physical displacement satisfies ds² = h1² dq1² + h2² dq2² + h3² dq3²),
+
+∇²u = (1/(h1 h2 h3)) Σ_i ∂/∂qi [ (h1 h2 h3 / h_i²) ∂u/∂qi ]
+
+(Boas / vector-calculus standard form for orthogonal systems.)
+
+## Cylindrical coordinates (r, θ, z)
+
+x = r cos θ,    y = r sin θ,    z = z
+
+Scale factors: h_r = 1,    h_θ = r,    h_z = 1
+
+Product h_r h_θ h_z = r.
+
+Then
+
+∇²u = (1/r) ∂/∂r ( r ∂u/∂r ) + (1/r²) ∂²u/∂θ² + ∂²u/∂z²
+
+### Where the factors come from (sketch)
+
+The θ direction stretches with r, so the physical gradient component in θ is (1/r) ∂u/∂θ. Divergence of a radial flux picks up a 1/r ∂(r · )/∂r structure from the area of cylindrical shells. Together they yield (1/r) ∂(r ∂u/∂r)/∂r for the radial part of the Laplacian.
+
+## Spherical coordinates (r, θ, φ)
+
+Use the physics convention: r ≥ 0, polar angle θ ∈ [0, π], azimuth φ ∈ [0, 2π].
+
+Scale factors: h_r = 1,    h_θ = r,    h_φ = r sin θ
+
+Product h_r h_θ h_φ = r² sin θ.
+
+Then
+
+∇²u = (1/r²) ∂/∂r ( r² ∂u/∂r ) + (1/(r² sin θ)) ∂/∂θ ( sin θ ∂u/∂θ ) + (1/(r² sin² θ)) ∂²u/∂φ²
+
+## Why this matters for PHY 701
+
+Separation of variables in these coordinates produces Bessel (cylindrical radial), Legendre (polar θ), and spherical Bessel / spherical harmonic structure — the special functions of Module 4.
+
+## Check yourself
+
+In cylindrical coordinates, if u depends only on r, what does ∇²u reduce to?
+''',
+            keyTakeaways: [
+              'Orthogonal curvilinear Laplacians are built from scale factors h_i.',
+              'Cylindrical: ∇²u = (1/r)∂/∂r(r ∂u/∂r) + (1/r²)∂²u/∂θ² + ∂²u/∂z².',
+              'Spherical: radial piece (1/r²)∂/∂r(r² ∂u/∂r) plus angular Legendre/Fourier pieces.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m3-u3-q1',
+                question: 'In cylindrical coordinates the scale factor h_θ equals',
+                options: [
+                  '1',
+                  'r',
+                  'r sin θ',
+                  '1/r',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'Arc length in the θ direction is r dθ, so h_θ = r.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m3-u3-q2',
+                question:
+                    'The radial part of ∇² in spherical coordinates involves',
+                options: [
+                  '(1/r) ∂/∂r (r ∂u/∂r) only as in 2D polar without the extra r',
+                  '(1/r²) ∂/∂r (r² ∂u/∂r)',
+                  '∂²u/∂r² with no first-derivative term ever',
+                  'Only ∂u/∂r',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'With h_θ h_φ ∝ r², the radial contribution is (1/r²)∂/∂r(r² ∂u/∂r).',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m3-u4',
+            title: 'Dirichlet, Neumann, and Robin boundary conditions',
+            content: r'''
+## Learning goal
+
+State Dirichlet, Neumann, and Robin conditions clearly and match each to a physical example on the boundary of a domain.
+
+## Dirichlet condition
+
+The value of the unknown is prescribed on the boundary ∂Ω:
+
+u = g    on ∂Ω
+
+### Physical examples
+
+- Fixed temperature on the surface of a body.
+- Electrostatic potential specified on a conducting surface held at fixed voltage (idealized).
+- Transverse displacement of a string fixed at an end: u(0,t) = 0.
+
+## Neumann condition
+
+The normal derivative is prescribed:
+
+∂u/∂n = h    on ∂Ω
+
+where n is the outward unit normal.
+
+### Physical examples
+
+- Specified heat flux through a surface (Fourier’s law: flux ∝ −∇u).
+- Insulated boundary: ∂u/∂n = 0 (no heat flow through the wall).
+- In electrostatics, specifying normal derivative relates to surface charge in appropriate formulations.
+
+## Robin (mixed) condition
+
+A linear combination of value and normal derivative is prescribed:
+
+α u + β ∂u/∂n = γ    on ∂Ω
+
+with α, β not both zero.
+
+### Physical example
+
+Newton’s law of cooling: heat flux out of the body proportional to the difference between surface temperature and exterior temperature u_ext,
+
+−κ ∂u/∂n = h_c (u − u_ext)
+
+which rearranges to a Robin condition relating u and ∂u/∂n.
+
+## Well-posedness intuition
+
+- Elliptic problems (Laplace/Poisson) need boundary data of Dirichlet, Neumann, or Robin type on the closed boundary; pure Neumann data require a compatibility condition (e.g. total flux matches sources).
+- Parabolic problems need boundary data in space for all t > 0 plus initial data at t = 0.
+- Hyperbolic wave problems need two pieces of initial data in time (u and u_t) plus boundary conditions in space.
+
+## Check yourself
+
+A rod with one end held at 0 °C and the other end insulated mixes which two boundary types?
+''',
+            keyTakeaways: [
+              'Dirichlet: u prescribed on the boundary.',
+              'Neumann: ∂u/∂n prescribed (insulation is the homogeneous case).',
+              'Robin: αu + β ∂u/∂n prescribed (e.g. Newton cooling).',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m3-u4-q1',
+                question: 'An insulated thermal boundary is modeled by',
+                options: [
+                  'Dirichlet u = 0 only',
+                  'Neumann ∂u/∂n = 0',
+                  'Requiring u infinite',
+                  'Dropping the PDE',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'No heat flux through the boundary means vanishing normal derivative of temperature.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m3-u4-q2',
+                question: 'Newton cooling at a surface is typically a',
+                options: [
+                  'Pure Dirichlet condition with no derivative',
+                  'Robin condition mixing u and ∂u/∂n',
+                  'Condition only at t = infinity',
+                  'Hyperbolic characteristic condition only',
+                ],
+                correctIndex: 1,
+                explanation:
+                    'Flux proportional to (u − u_ext) yields a linear relation between u and ∂u/∂n.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
