@@ -1,35 +1,52 @@
 # Content writing progress
 
-Workflow: `CONTENT_AUTHORING.md` · one course · one module prompt · checklist · next.
+Workflow: `CONTENT_AUTHORING.md` · one course · one module · checklist · course audit · next course.
 
-## Roadmap (this agent)
+## Roadmap
 
 | Step | Action | Status |
 |------|--------|--------|
-| R0–R3 | Rules + PHY701 Modules 01–02 | Done |
-| R4 | PHY 701 · Module 03 PDEs & BVPs | **Done** |
-| R5 | PHY 701 · Module 04 Special functions | Pending ← next |
-| R6 | PHY 701 · Module 05 Dirac delta | Pending |
-| R7 | PHY 701 · Module 06 Fourier | Pending |
-| R8 | PHY 701 · Module 07 Complex / Green | Pending |
-| R9 | PHY 701 · Course audit | Pending |
-| R10+ | PHY 703 → 702 → 704 → … | Pending |
+| R0 | Read authoring rules | Done |
+| R1–R8 | PHY 701 Modules 01–07 | **Done** |
+| R9 | PHY 701 course audit | **Done** |
+| R10 | PHY 703 Module 01 (next) | Pending |
 
 ## Course checklist
 
-| Course | Modules written | Audit |
-|--------|-----------------|-------|
-| PHY 701 Mathematical Methods | **3 / 7** | — |
-| PHY 703–799 (remaining) | 0 | — |
+| Course | Modules | Audit |
+|--------|---------|-------|
+| PHY 701 Mathematical Methods | **7 / 7** | **Passed** |
+| PHY 703 Analytical Mechanics | 0 / 9 | — |
+| PHY 702 Electromagnetism | 0 / 8 | — |
+| PHY 704 Quantum Physics | 0 / 8 | — |
+| PHY 705 Intro Solid State Electronics | 0 / 8 | — |
+| PHY 707 Digital Electronics | 0 / 8 | — |
+| PHY 709 Devices Design & Fabrication | 0 / 8 | — |
+| PHY 706 Measurement & Instrumentation | 0 / 8 | — |
+| PHY 710 Vacuum & Thin Films | 0 / 8 | — |
+| PHY 708 Nuclear & Particle | 0 / 8 | — |
+| PHY 712 Energy Conservation & Storage | 0 / 8 | — |
+| PHY 799 PGD Research Project | 0 / 4 | — |
 
-## Session log
+## PHY 701 course audit
 
-### Sessions 1–2
-- M01 ODEs/S–L · M02 Laplace
+| Check | Result |
+|-------|--------|
+| All module prompts 01–07 reflected in units | Yes |
+| No skeletonModule / placeholder left in phy701 | Yes |
+| Master pedagogy (intuition, steps, Boas-aligned) | Yes |
+| No ASCII/SVG code diagrams | Yes |
+| Quizzes + takeaways present | Yes |
+| UI files untouched | Yes |
+| Dart structure braces balanced | Yes (170/170) |
 
-### Session 3 — PHY 701 Module 03
-- Prompt: `03_Module3_PDEs_Boundary_Value_Problems.txt`
-- Units: classification (Δ); heat equation separation; cylindrical/spherical ∇²; Dirichlet/Neumann/Robin
-- Checklist: 4/4 objectives; no m3 placeholders; no ASCII diagrams; quizzes; UI untouched
+### Module map
+1. ODEs & Sturm–Liouville (5 units)
+2. Laplace transforms (5)
+3. PDEs & BVPs (4)
+4. Special functions (4)
+5. Dirac delta (4)
+6. Fourier series & transforms (4)
+7. Residues & Green’s functions (4)
 
-**Next:** Module 04 Special functions.
+**Next course:** PHY 703 Analytical Mechanics — `00_Master` then `01_Module` only first.
