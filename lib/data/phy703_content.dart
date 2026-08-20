@@ -1462,15 +1462,258 @@ For ℓ = 0, what happens to V_eff, and can the particle reach the origin if V =
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy703-m6',
         title: 'Hamiltonian Mechanics & Phase Space',
-        summary: 'Hamiltonian Mechanics & Phase Space',
+        summary:
+            'From L to H via Legendre transform, Hamilton\'s equations, phase space and Liouville intuition.',
         units: [
-          skeletonUnit(id: 'phy703-m6-u1', title: 'Motivation'),
-          skeletonUnit(id: 'phy703-m6-u2', title: 'Legendre Transformation'),
-          skeletonUnit(id: 'phy703-m6-u3', title: 'Hamilton\'s Canonical Equations'),
-          skeletonUnit(id: 'phy703-m6-u4', title: 'Phase Space Geometry'),
+          Unit(
+            id: 'phy703-m6-u1',
+            title: 'Motivation: from Lagrangian to Hamiltonian',
+            content: r'''
+## Learning goal
+
+Explain why one passes from L(q, q̇, t) to a description in terms of coordinates and momenta (q, p), and what changes conceptually.
+
+## Lagrangian side
+
+The Lagrangian L(q, q̇, t) treats generalized velocities q̇ as the natural partners of the coordinates q. The Euler–Lagrange equations are second-order in time: you need q and q̇ at one instant to predict the future.
+
+## Hamiltonian side
+
+The Hamiltonian formulation replaces each velocity q̇ᵢ by the conjugate momentum pᵢ = ∂L/∂q̇ᵢ. The fundamental variables become (q, p) — points in **phase space** — and the equations of motion become a coupled first-order system for q̇ and ṗ.
+
+## Why bother?
+
+- First-order form is convenient for theory (symplectic geometry, statistical mechanics, quantum mechanics).
+- Energy-like conserved quantities appear naturally when H is the total energy.
+- Symmetries and canonical transformations have a clean language in (q, p).
+
+## Picture
+
+- Configuration space: only the q’s.
+- State for Lagrangian dynamics: (q, q̇).
+- State for Hamiltonian dynamics: (q, p).
+
+## Check yourself
+
+What replaces velocity as the partner of q in the Hamiltonian picture?
+''',
+            keyTakeaways: [
+              'Lagrangian uses (q, q̇); Hamiltonian uses (q, p).',
+              'Hamiltonian dynamics is first-order in time on phase space.',
+              'pᵢ = ∂L/∂q̇ᵢ links the two pictures.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m6-u1-q1',
+                question: 'In Hamiltonian mechanics the basic variables are',
+                options: [
+                  'Only forces',
+                  'Coordinates q and momenta p',
+                  'Only velocities',
+                  'Time alone',
+                ],
+                correctIndex: 1,
+                explanation: 'Phase-space coordinates are (q, p).',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m6-u2',
+            title: 'Legendre transform to the Hamiltonian',
+            content: r'''
+## Learning goal
+
+Derive H = Σ pᵢ q̇ᵢ − L and interpret the Legendre transform from velocity to momentum variables.
+
+## From p to velocity
+
+Given L(q, q̇, t), define
+
+pᵢ = ∂L/∂q̇ᵢ
+
+For standard mechanical systems, these relations can be inverted to express each q̇ᵢ as a function of (q, p, t).
+
+## Definition of H
+
+The **Hamiltonian** is
+
+H(q, p, t) := Σᵢ pᵢ q̇ᵢ(q, p, t) − L(q, q̇(q, p, t), t)
+
+That is the Legendre transform of L with respect to the velocities.
+
+## Why this combination?
+
+Differentiating L with respect to q̇ gives p; the combination p q̇ − L is the natural partner that treats p as the independent variable instead of q̇ (same idea as thermodynamics Legendre transforms between related potentials).
+
+## Energy connection
+
+When T is homogeneous quadratic in the velocities and V depends only on q,
+
+Σ pᵢ q̇ᵢ = 2T
+
+so H = 2T − (T − V) = T + V
+
+the total mechanical energy. Thus for many systems H is simply the energy written in (q, p) variables.
+
+## Check yourself
+
+For L = (1/2)m q̇² − V(q), compute p and H(q, p).
+''',
+            keyTakeaways: [
+              'H = Σ pᵢ q̇ᵢ − L with q̇ expressed through p.',
+              'This is a Legendre transform in the velocity variables.',
+              'For standard T quadratic in q̇, H = T + V.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m6-u2-q1',
+                question: 'The Hamiltonian is defined as',
+                options: [
+                  'L only',
+                  'Σ pᵢ q̇ᵢ − L',
+                  'T − V',
+                  'p only',
+                ],
+                correctIndex: 1,
+                explanation: 'H = Σ p q̇ − L is the Legendre transform definition.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m6-u3',
+            title: 'Hamilton\'s canonical equations',
+            content: r'''
+## Learning goal
+
+Derive q̇ᵢ = ∂H/∂pᵢ and ṗᵢ = −∂H/∂qᵢ from the definitions, and note the symmetric roles of q and p.
+
+## Differential of H
+
+Treat H = Σ pⱼ q̇ⱼ − L, with q̇ = q̇(q, p, t). The total differential (schematically, one coordinate first) satisfies, after using p = ∂L/∂q̇,
+
+dH = q̇ dp − (∂L/∂q) dq − (∂L/∂t) dt
+
+(with careful accounting of dependent variables). Comparing to
+
+dH = (∂H/∂q) dq + (∂H/∂p) dp + (∂H/∂t) dt
+
+gives
+
+∂H/∂p = q̇,    ∂H/∂q = −∂L/∂q
+
+## Use Euler–Lagrange
+
+EL says d/dt(∂L/∂q̇) = ∂L/∂q, i.e. ṗ = ∂L/∂q. Combined with ∂H/∂q = −∂L/∂q,
+
+ṗ = −∂H/∂q
+
+## Canonical equations
+
+q̇ᵢ = ∂H/∂pᵢ
+
+ṗᵢ = −∂H/∂qᵢ
+
+These are **Hamilton’s equations**. They are first-order and treat q and p almost symmetrically (up to a minus sign).
+
+## Example: harmonic oscillator
+
+H = p²/(2m) + (1/2) k q²
+
+q̇ = ∂H/∂p = p/m
+
+ṗ = −∂H/∂q = −k q
+
+which together give m q̈ + k q = 0.
+
+## Check yourself
+
+From Hamilton’s equations, show that if H does not depend explicitly on time, dH/dt = 0 along trajectories.
+''',
+            keyTakeaways: [
+              'q̇ = ∂H/∂p and ṗ = −∂H/∂q.',
+              'The minus sign encodes the symplectic pairing of q and p.',
+              'Oscillator: H = p²/(2m) + (1/2)k q² recovers Newton.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m6-u3-q1',
+                question: 'Hamilton\'s equations include',
+                options: [
+                  'q̇ = −∂H/∂p only',
+                  'q̇ = ∂H/∂p and ṗ = −∂H/∂q',
+                  'ṗ = ∂H/∂q with no minus',
+                  'Only F = ma written twice',
+                ],
+                correctIndex: 1,
+                explanation: 'The canonical pair is q̇ = ∂H/∂p, ṗ = −∂H/∂q.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m6-u4',
+            title: 'Phase space geometry and Liouville intuition',
+            content: r'''
+## Learning goal
+
+Define phase space, sketch oscillator trajectories, and state Liouville’s theorem in elementary form.
+
+## Phase space
+
+For one degree of freedom, phase space is the (q, p) plane. For n degrees of freedom it is 2n-dimensional with coordinates (q₁,…,qₙ, p₁,…,pₙ). Each point is a complete instantaneous state.
+
+## Harmonic oscillator trajectories
+
+With H = p²/(2m) + (1/2) k q² = E (constant),
+
+p²/(2m) + (1/2) k q² = E
+
+is an ellipse (or a circle after rescaling axes) in the (q, p) plane. Motion circulates around the origin; larger E means larger loops. There are no trajectories that spiral in or out when energy is conserved and there is no damping.
+
+## Flow of many systems
+
+Imagine a cloud of points in phase space, each a copy of the system with slightly different initial data. Hamilton’s equations move every point. **Liouville’s theorem** says that for Hamiltonian flow, the local phase-space volume occupied by the cloud is conserved: the “density” of systems in phase space is incompressible.
+
+That is a geometric statement of the structure of Hamilton’s equations and underpins equilibrium statistical mechanics.
+
+## Check yourself
+
+In the undamped oscillator phase plane, why do trajectories form closed curves rather than lines that stop?
+''',
+            keyTakeaways: [
+              'Phase space is the space of (q, p) states.',
+              'Undamped oscillator orbits are ellipses of constant H.',
+              'Liouville: Hamiltonian flow preserves phase-space volume.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m6-u4-q1',
+                question: 'For a 1D harmonic oscillator, constant-energy curves in the (q, p) plane are',
+                options: [
+                  'Straight lines through the origin only',
+                  'Ellipses (or circles in scaled axes)',
+                  'Random scatters',
+                  'Single points only always',
+                ],
+                correctIndex: 1,
+                explanation: 'H = E is an ellipse in phase space.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m6-u4-q2',
+                question: 'Liouville\'s theorem says that Hamiltonian flow',
+                options: [
+                  'Destroys all volumes in phase space',
+                  'Preserves phase-space volume',
+                  'Forces p = 0',
+                  'Eliminates energy conservation',
+                ],
+                correctIndex: 1,
+                explanation: 'Phase-space density is incompressible under Hamiltonian dynamics.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

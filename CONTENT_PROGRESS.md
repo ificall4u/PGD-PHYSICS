@@ -7,24 +7,23 @@
 | # | Course | Status |
 |---|--------|--------|
 | 1 | PHY 701 | **COMPLETE** |
-| 2 | PHY 703 Analytical Mechanics | **In progress 5/9** |
+| 2 | PHY 703 Analytical Mechanics | **In progress 6/9** |
 | 3–12 | Remaining | Pending |
 
 ## PHY 703
 
 | Module | Status |
 |--------|--------|
-| 01–04 | Done |
-| **05 Central forces** | **Done** |
-| 06 Hamiltonian | Pending ← next |
-| 07 Rigid body | Pending |
+| 01–05 | Done |
+| **06 Hamiltonian & phase space** | **Done** |
+| 07 Rigid body | Pending ← next |
 | 08 Oscillations | Pending |
 | 09 Continuous media | Pending |
 
-### Module 05 checklist
-- [x] Central force definition
-- [x] Reduced mass derivation
-- [x] L conservation ⇒ planar motion
-- [x] V_eff = V + ℓ²/(2μr²); centrifugal barrier; gravity shape
+### Module 06 checklist
+- [x] Motivation L(q,q̇) vs H(q,p)
+- [x] Legendre transform H = Σ p q̇ − L
+- [x] Hamilton equations derived
+- [x] Phase space; oscillator ellipses; Liouville intuition
 
-**Next:** PHY 703 Module 06 only.
+**Next:** PHY 703 Module 07 only.
