@@ -1974,15 +1974,256 @@ If the body is symmetric with I₁ = I₂ ≠ I₃ and τ = 0, what can you say 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy703-m8',
         title: 'Oscillatory Systems & Normal Modes',
-        summary: 'Oscillatory Systems & Normal Modes',
+        summary:
+            'Small oscillations from V near a minimum, two-mass coupled springs, secular equation, normal modes.',
         units: [
-          skeletonUnit(id: 'phy703-m8-u1', title: 'Physics of Small Oscillations'),
-          skeletonUnit(id: 'phy703-m8-u2', title: 'Coupled Oscillators'),
-          skeletonUnit(id: 'phy703-m8-u3', title: 'The Secular Equation'),
-          skeletonUnit(id: 'phy703-m8-u4', title: 'Normal Modes & Coordinates'),
+          Unit(
+            id: 'phy703-m8-u1',
+            title: 'Physics of small oscillations',
+            content: r'''
+## Learning goal
+
+Expand V about a stable equilibrium and show that small motions obey harmonic-oscillator dynamics to leading order.
+
+## Equilibrium
+
+At a configuration q₀ with ∂V/∂qᵢ = 0 (and positive-definite second-derivative matrix), the system can rest with q̇ = 0.
+
+## Taylor expansion (one coordinate)
+
+V(q) ≈ V(q₀) + V'(q₀)(q − q₀) + (1/2) V''(q₀)(q − q₀)² + …
+
+At equilibrium V'(q₀) = 0. Drop the irrelevant constant V(q₀). For small η = q − q₀,
+
+V ≈ (1/2) k η²,    k := V''(q₀) > 0
+
+With T = (1/2) m η̇², the Lagrangian is that of a harmonic oscillator:
+
+L = (1/2) m η̇² − (1/2) k η² ⇒ η̈ + (k/m) η = 0
+
+## Multi-coordinate case
+
+For coordinates ηᵢ measured from equilibrium,
+
+V ≈ (1/2) Σᵢⱼ Kᵢⱼ ηᵢ ηⱼ
+
+T ≈ (1/2) Σᵢⱼ Mᵢⱼ η̇ᵢ η̇ⱼ
+
+with K the Hessian of V and M the kinetic matrix (both symmetric; K positive definite at a stable point). Small oscillations are governed by the matrix oscillator problem of the following units.
+
+## Check yourself
+
+Why does a local maximum of V (V'' < 0 in 1D) not support small oscillations?
+''',
+            keyTakeaways: [
+              'Near a stable minimum, V is approximately quadratic.',
+              'Leading dynamics are harmonic (or multi-dimensional harmonic).',
+              'Higher-order terms in V are negligible for sufficiently small amplitude.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m8-u1-q1',
+                question: 'At a stable 1D equilibrium, small oscillations see V approximately as',
+                options: [
+                  'A linear function only',
+                  '(1/2) k η² with k = V\'\' > 0',
+                  'A constant with no η dependence',
+                  'An unbounded cubic only',
+                ],
+                correctIndex: 1,
+                explanation: 'The first non-constant term is the quadratic with positive curvature.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m8-u2',
+            title: 'Coupled oscillators: two masses, three springs',
+            content: r'''
+## Learning goal
+
+Write T and V (and thus L) for two equal masses in a line coupled by three springs, in a form ready for matrix methods.
+
+## Setup
+
+Two equal masses m can move horizontally. Three springs: wall–mass1 (constant k), mass1–mass2 (constant k), mass2–wall (constant k). Let x₁, x₂ be displacements from equilibrium.
+
+## Kinetic energy
+
+T = (1/2) m ẋ₁² + (1/2) m ẋ₂²
+
+In matrix language, with column vector x = (x₁, x₂),
+
+T = (1/2) ẋᵀ M ẋ,    M = m I = [[m, 0], [0, m]]
+
+## Potential energy
+
+V = (1/2) k x₁² + (1/2) k (x₂ − x₁)² + (1/2) k x₂²
+
+Expand:
+
+V = (1/2) k x₁² + (1/2) k (x₂² − 2 x₁ x₂ + x₁²) + (1/2) k x₂²
+
+= (1/2) k (2 x₁² − 2 x₁ x₂ + 2 x₂²) = k (x₁² − x₁ x₂ + x₂²)
+
+So
+
+V = (1/2) xᵀ K x,    K = [[2k, −k], [−k, 2k]]
+
+## Lagrangian
+
+L = T − V = (1/2) ẋᵀ M ẋ − (1/2) xᵀ K x
+
+## Check yourself
+
+Verify the (1,2) element of K by reading off the coefficient of x₁ x₂ in V.
+''',
+            keyTakeaways: [
+              'T = (1/2) ẋᵀ M ẋ with M = m I for two equal masses.',
+              'V = (1/2) xᵀ K x with K = [[2k,−k],[−k,2k]] for three equal springs.',
+              'L = (1/2) ẋᵀ M ẋ − (1/2) xᵀ K x.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m8-u2-q1',
+                question: 'For this two-mass three-spring system, K equals',
+                options: [
+                  '[[k, 0], [0, k]]',
+                  '[[2k, −k], [−k, 2k]]',
+                  '[[0, 0], [0, 0]]',
+                  'm I',
+                ],
+                correctIndex: 1,
+                explanation: 'Expansion of the three spring energies yields that K.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m8-u3',
+            title: 'The secular equation for normal frequencies',
+            content: r'''
+## Learning goal
+
+Assume harmonic time dependence, derive the eigenvalue problem K a = ω² M a, and solve det(K − ω² M) = 0 for the two-mass example.
+
+## Harmonic ansatz
+
+Seek solutions x(t) = a e^{iωt} (real part understood), with amplitude vector a = (a₁, a₂).
+
+Then ẍ = −ω² a e^{iωt}. The EL equations from L = (1/2)ẋᵀ M ẋ − (1/2)xᵀ K x become
+
+K a = ω² M a
+
+## Secular (characteristic) equation
+
+Nontrivial a requires
+
+det(K − ω² M) = 0
+
+## Example computation
+
+M = m I, K = [[2k, −k], [−k, 2k]]. Then
+
+K − ω² M = [[2k − m ω², −k], [−k, 2k − m ω²]]
+
+Determinant:
+
+(2k − m ω²)² − k² = 0
+
+(2k − m ω² − k)(2k − m ω² + k) = 0
+
+(k − m ω²)(3k − m ω²) = 0
+
+So
+
+ω₁² = k/m,    ω₂² = 3k/m
+
+or
+
+ω₁ = √(k/m),    ω₂ = √(3k/m)
+
+## Check yourself
+
+Which frequency is higher, and does that match “stiffer effective coupling” for relative motion?
+''',
+            keyTakeaways: [
+              'Normal frequencies satisfy det(K − ω² M) = 0.',
+              'For the equal-mass equal-spring chain: ω = √(k/m) and √(3k/m).',
+              'Each ω² is an eigenvalue of the generalized problem K a = ω² M a.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m8-u3-q1',
+                question: 'The secular equation is',
+                options: [
+                  'det(M) = 0',
+                  'det(K − ω² M) = 0',
+                  'K = 0',
+                  'ω = 0 only',
+                ],
+                correctIndex: 1,
+                explanation: 'Nontrivial amplitudes require a vanishing determinant.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m8-u4',
+            title: 'Normal modes and normal coordinates',
+            content: r'''
+## Learning goal
+
+Find the mode vectors for ω₁ and ω₂, interpret in-phase and out-of-phase motion, and introduce normal coordinates that decouple the system.
+
+## Mode vectors
+
+For ω₁² = k/m: (K − ω₁² M) a = 0 gives
+
+[[k, −k], [−k, k]] a = 0 ⇒ a₁ = a₂
+
+Symmetric (in-phase) mode: both masses move together; the middle spring does not stretch.
+
+For ω₂² = 3k/m:
+
+[[−k, −k], [−k, −k]] structure yields a₁ = −a₂
+
+Antisymmetric (out-of-phase) mode: masses move oppositely; middle spring stretches strongly — higher frequency.
+
+## Normal coordinates
+
+Define
+
+Q₁ ∝ (x₁ + x₂),    Q₂ ∝ (x₁ − x₂)
+
+(up to normalization). In (Q₁, Q₂) coordinates the quadratic forms for T and V become diagonal: the Lagrangian splits into two independent oscillators at ω₁ and ω₂.
+
+Any small motion is a linear combination of the two normal modes.
+
+## Check yourself
+
+If only the symmetric mode is excited, does the middle spring’s length change with time?
+''',
+            keyTakeaways: [
+              'Lower mode: a₁ = a₂ (in phase); higher mode: a₁ = −a₂ (out of phase).',
+              'Normal coordinates Q diagonalize both T and V.',
+              'General motion is a superposition of normal modes.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m8-u4-q1',
+                question: 'The higher-frequency mode of the two-mass chain is',
+                options: [
+                  'Both masses moving in phase',
+                  'Masses moving out of phase (opposite directions)',
+                  'Only one mass allowed to move',
+                  'Zero amplitude always',
+                ],
+                correctIndex: 1,
+                explanation: 'The antisymmetric mode stretches the middle spring and has ω = √(3k/m).',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

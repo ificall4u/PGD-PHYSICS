@@ -7,22 +7,21 @@
 | # | Course | Status |
 |---|--------|--------|
 | 1 | PHY 701 | **COMPLETE** |
-| 2 | PHY 703 Analytical Mechanics | **In progress 7/9** |
+| 2 | PHY 703 Analytical Mechanics | **In progress 8/9** |
 | 3–12 | Remaining | Pending |
 
 ## PHY 703
 
 | Module | Status |
 |--------|--------|
-| 01–06 | Done |
-| **07 Rigid body** | **Done** |
-| 08 Oscillations | Pending ← next |
-| 09 Continuous media | Pending |
+| 01–07 | Done |
+| **08 Oscillations & normal modes** | **Done** |
+| 09 Continuous media | Pending ← next |
 
-### Module 07 checklist
-- [x] Rigid body definition and 6 DoF
-- [x] CM; I = ∫ d² dm
-- [x] Inertia tensor; principal axes
-- [x] Euler equations in body frame
+### Module 08 checklist
+- [x] Small oscillations from V Taylor expansion
+- [x] Two-mass three-spring L in matrix form
+- [x] Secular equation; ω = √(k/m), √(3k/m)
+- [x] In-phase / out-of-phase modes; normal coordinates
 
-**Next:** PHY 703 Module 08 only.
+**Next:** PHY 703 Module 09 only, then course audit.
