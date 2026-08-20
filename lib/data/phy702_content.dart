@@ -720,15 +720,213 @@ Why must image charges be placed outside the region where you claim the solution
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy702-m4',
         title: 'Magnetostatics and Magnetic Fields',
-        summary: 'Magnetostatics and Magnetic Fields',
+        summary:
+            'Currents as sources of B, Biot–Savart, Ampere\'s law, magnetism in materials.',
         units: [
-          skeletonUnit(id: 'phy702-m4-u1', title: 'Permanent Magnets vs. Moving Charges'),
-          skeletonUnit(id: 'phy702-m4-u2', title: 'Biot-Savart Law'),
-          skeletonUnit(id: 'phy702-m4-u3', title: 'Ampere\'s Law'),
-          skeletonUnit(id: 'phy702-m4-u4', title: 'Magnetic Fields in Matter'),
+          Unit(
+            id: 'phy702-m4-u1',
+            title: 'Permanent magnets vs moving charges',
+            content: r'''
+## Learning goal
+
+Connect magnetic fields to moving electric charge and contrast that with permanent magnets as atomic-scale current loops.
+
+## Oersted’s discovery
+
+A steady electric current in a wire deflects a nearby compass needle. Moving charges (current) produce a magnetic field B in the surrounding space.
+
+## Permanent magnets
+
+Bar magnets and lodestones produce B without an obvious external circuit. At the microscopic level their magnetism comes from atomic magnetic moments — orbiting and spinning electrons that behave like tiny current loops. When many moments align, the material has a macroscopic magnetic field.
+
+## Steady currents: magnetostatics
+
+When currents are steady (no changing charge density), the magnetic field is constant in time: **magnetostatics**. The basic sources are current elements and steady current distributions.
+
+## Check yourself
+
+In what sense is a permanent magnet still “about moving charge” even with no battery attached?
+''',
+            keyTakeaways: [
+              'Steady currents produce magnetic fields (Oersted).',
+              'Permanent magnets arise from aligned atomic magnetic moments.',
+              'Magnetostatics treats steady currents and constant B.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m4-u1-q1',
+                question: 'Oersted\'s discovery linked magnetic effects to',
+                options: [
+                  'Only stationary charges',
+                  'Electric currents (moving charges)',
+                  'Gravity only',
+                  'Temperature only',
+                ],
+                correctIndex: 1,
+                explanation: 'A current-carrying wire affects a compass.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m4-u2',
+            title: 'Biot–Savart law',
+            content: r'''
+## Learning goal
+
+State the Biot–Savart law for the magnetic field of a current element and read every factor.
+
+## Current element
+
+A small piece of wire carries current I and has vector length dl (direction of conventional current). At a point whose position relative to the element is r (magnitude r, unit vector r̂),
+
+dB = (μ₀ / 4π) (I dl × r̂) / r²
+
+## Symbol reading
+
+- dB — infinitesimal magnetic field contribution
+- μ₀ — permeability of free space
+- I dl — current element
+- dl × r̂ — direction by right-hand rule; magnitude involves sin θ
+- 1/r² — falls with distance (same geometric dilution idea as Coulomb, but vector structure differs)
+
+Total field: integrate dB along the wire.
+
+## Example structure: long straight wire
+
+For an infinite straight wire, integration of Biot–Savart yields
+
+B = μ₀ I / (2π s)
+
+at perpendicular distance s, with circles of B around the wire (right-hand rule).
+
+## Check yourself
+
+If dl is parallel to r̂, what is dB from that element?
+''',
+            keyTakeaways: [
+              'Biot–Savart: dB = (μ₀/4π) I dl × r̂ / r².',
+              'Direction from the cross product (right-hand rule).',
+              'Integrate along the wire for total B.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m4-u2-q1',
+                question: 'The Biot–Savart law gives dB proportional to',
+                options: [
+                  'I dl · r̂ only',
+                  'I dl × r̂ / r²',
+                  'q₁ q₂ only',
+                  'E only',
+                ],
+                correctIndex: 1,
+                explanation: 'The cross product and 1/r² structure define Biot–Savart.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m4-u3',
+            title: 'Ampere\'s law',
+            content: r'''
+## Learning goal
+
+State Ampere’s law in integral form and use the “loop around a current” picture to find B in symmetric situations.
+
+## Statement
+
+For a steady current distribution,
+
+∮_C B · dl = μ₀ I_enc
+
+where C is a closed curve and I_enc is the total current piercing any surface bounded by C.
+
+## Hula-hoop analogy
+
+Think of a closed path as a hula hoop. Ampere’s law says the line integral of B around the hoop is fixed by how much net current goes through the hoop — not by currents that miss the hoop’s interior.
+
+## Plain English
+
+Walk around a closed loop, adding up the component of B along your path. That total equals μ₀ times the current enclosed by the loop.
+
+## Symmetric applications
+
+- Long straight wire: circle of radius s ⇒ B · 2π s = μ₀ I ⇒ B = μ₀ I /(2π s)
+- Solenoid (ideal, n turns per length): rectangular Amperian loop ⇒ B ≈ μ₀ n I inside, along the axis
+
+## Check yourself
+
+If you enlarge a circular Amperian loop around a single long wire, why does B fall as 1/s while the left side ∮ B · dl stays constant?
+''',
+            keyTakeaways: [
+              'Ampere: ∮ B · dl = μ₀ I_enc for steady currents.',
+              'Only enclosed current appears on the right-hand side.',
+              'Symmetry turns the integral into a simple expression for B.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m4-u3-q1',
+                question: 'Ampere\'s law states that ∮ B · dl equals',
+                options: [
+                  'Q_enc / ϵ₀',
+                  'μ₀ I_enc',
+                  '0 always',
+                  'E only',
+                ],
+                correctIndex: 1,
+                explanation: 'For magnetostatics, ∮ B · dl = μ₀ I_enc.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m4-u4',
+            title: 'Magnetic fields in matter',
+            content: r'''
+## Learning goal
+
+Describe diamagnetism, paramagnetism, and ferromagnetism in terms of atomic magnetic dipoles and their response to an applied B.
+
+## Atomic moments
+
+Electrons contribute magnetic moments from orbital motion and spin. Materials differ in how these moments respond to an external field and to each other.
+
+## Diamagnetism
+
+Present in all materials. Induced moments oppose the applied field (Lenz-like microscopic response), producing a weak magnetization opposite to B. Dominant when atoms have no permanent moments.
+
+## Paramagnetism
+
+Materials with permanent atomic moments that are randomly oriented when B = 0. An applied field partially aligns them, producing weak magnetization along B. Thermal disorder competes with alignment.
+
+## Ferromagnetism
+
+Strong interaction between neighbouring moments can lock large domains into alignment even without an external field (spontaneous magnetization). Iron, cobalt, nickel are familiar examples. Domain rearrangement explains permanent magnets and hysteresis.
+
+## Check yourself
+
+Why does heating a magnet past a critical temperature often destroy its permanent magnetism?
+''',
+            keyTakeaways: [
+              'Diamagnetism: weak induced moments oppose the applied field.',
+              'Paramagnetism: permanent moments partially align with the field.',
+              'Ferromagnetism: cooperative alignment of domains; strong residual magnetization possible.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m4-u4-q1',
+                question: 'Ferromagnetism is characterized by',
+                options: [
+                  'No atomic moments at all',
+                  'Strong cooperative alignment of magnetic moments (domains)',
+                  'Only diamagnetic response',
+                  'Zero response to all fields',
+                ],
+                correctIndex: 1,
+                explanation: 'Ferromagnets have spontaneous order of moments in domains.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
