@@ -1963,15 +1963,413 @@ Using only Γ(1) = 1 and Γ(z+1) = z Γ(z), compute Γ(5).
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy701-m5',
         title: 'Distribution Theory & The Dirac Delta Function',
-        summary: 'Distribution Theory & The Dirac Delta Function',
+        summary:
+            'Delta as a distribution on test functions, nascent sequences, scaling and composition proofs, distributional derivatives, Fourier representation.',
         units: [
-          skeletonUnit(id: 'phy701-m5-u1', title: 'Rigorous Definition'),
-          skeletonUnit(id: 'phy701-m5-u2', title: 'Limit Representations'),
-          skeletonUnit(id: 'phy701-m5-u3', title: 'Operational Identities'),
-          skeletonUnit(id: 'phy701-m5-u4', title: 'Fourier Representation'),
+          Unit(
+            id: 'phy701-m5-u1',
+            title: 'Dirac delta as a distribution on test functions',
+            content: r'''
+## Learning goal
+
+Define the Dirac delta rigorously as a continuous linear functional on the space of compactly supported smooth test functions, and connect that definition to the informal physics integral notation.
+
+## Why ordinary functions are not enough
+
+In physics one often writes identities such as
+
+ρ(x) = q δ(x − x0)
+
+for a point charge, or
+
+∫_{−∞}^{∞} δ(x − x') f(x) dx = f(x')
+
+If δ were an ordinary function, equal to zero everywhere except at one point, its integral against any bounded function would be zero — contradicting the second line. So δ cannot be an ordinary pointwise function. It must be treated as a **generalized function** (distribution).
+
+## Test function space D(ℝ)
+
+A function φ: ℝ → ℝ (or ℂ) belongs to D(ℝ) if:
+
+1. φ is infinitely differentiable: every derivative φ^{(k)} exists and is continuous;
+2. φ has **compact support**: there exist finite A < B such that φ(x) = 0 for all x ∉ [A, B].
+
+Examples: a smooth “bump” that is positive on (−1, 1) and identically zero outside [−1, 1]. Non-examples: e^{−x²} (smooth but not compactly supported), and a triangular tent function (compact support but not smooth at the peaks).
+
+## Distributions
+
+A **distribution** T is a linear map
+
+T: D(ℝ) → ℝ (or ℂ)
+
+that is continuous with respect to the natural topology on test functions (if φ_n → φ in that topology, then T(φ_n) → T(φ)). We write the action as
+
+⟨T, φ⟩ := T(φ)
+
+Every locally integrable ordinary function f defines a distribution T_f by
+
+⟨T_f, φ⟩ = ∫_{−∞}^{∞} f(x) φ(x) dx
+
+## Definition of the Dirac delta
+
+The Dirac delta at the origin is the distribution δ defined by
+
+⟨δ, φ⟩ = φ(0)    for every φ ∈ D(ℝ)
+
+Linearity: ⟨δ, c₁ φ₁ + c₂ φ₂⟩ = c₁ φ₁(0) + c₂ φ₂(0) = c₁ ⟨δ, φ₁⟩ + c₂ ⟨δ, φ₂⟩.
+
+There is no locally integrable function f with T_f = δ: if there were, ∫ f φ = φ(0) for all test φ, which is impossible (one can construct test functions supported where f would have to vanish yet φ(0) ≠ 0 after translation arguments, or use standard measure-theory contradictions).
+
+## Shifted delta
+
+For fixed x' ∈ ℝ, define δ_{x'} by
+
+⟨δ_{x'}, φ⟩ = φ(x')
+
+Physics notation:
+
+∫_{−∞}^{∞} δ(x − x') φ(x) dx := φ(x')
+
+## Check yourself
+
+Why does the informal statement “δ(x) = 0 for x ≠ 0 and ∫ δ(x) dx = 1” fail as a definition inside ordinary Riemann or Lebesgue integration?
+''',
+            keyTakeaways: [
+              'Test functions in D(ℝ) are smooth and compactly supported.',
+              '⟨δ, φ⟩ = φ(0) defines the delta distribution.',
+              'Physics integral notation is shorthand for the distributional pairing.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m5-u1-q1',
+                question: '⟨δ, φ⟩ equals',
+                options: [
+                  '∫ φ(x) dx over all ℝ',
+                  'φ(0)',
+                  'φ\'(0)',
+                  '0 for every φ',
+                ],
+                correctIndex: 1,
+                explanation: 'By definition the delta distribution returns the value of the test function at 0.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m5-u1-q2',
+                question: 'A function in D(ℝ) must be',
+                options: [
+                  'Only continuous',
+                  'Smooth with compact support',
+                  'A polynomial',
+                  'Equal to δ itself',
+                ],
+                correctIndex: 1,
+                explanation: 'Test functions are C^∞ and vanish outside a finite interval.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m5-u2',
+            title: 'Limit representations: Gaussian, Lorentzian, rectangle, sinc',
+            content: r'''
+## Learning goal
+
+Construct sequences of ordinary functions that converge to δ in the distributional sense, and verify the mechanism for rectangular, Gaussian, Lorentzian, and sinc-type nascent deltas.
+
+## Distributional convergence
+
+A family of locally integrable functions {f_ε}_{ε>0} is said to satisfy
+
+f_ε → δ    as ε → 0⁺
+
+in the sense of distributions if for every test function φ ∈ D(ℝ),
+
+∫_{−∞}^{∞} f_ε(x) φ(x) dx → φ(0)
+
+## Rectangular nascent delta
+
+Define
+
+f_ε(x) = 1/ε    if |x| < ε/2,
+f_ε(x) = 0      if |x| ≥ ε/2
+
+Then ∫_{−∞}^{∞} f_ε(x) dx = 1 for every ε > 0.
+
+For continuous φ,
+
+∫ f_ε(x) φ(x) dx = (1/ε) ∫_{−ε/2}^{ε/2} φ(x) dx
+
+This is the average of φ over [−ε/2, ε/2]. As ε → 0, continuity of φ forces the average → φ(0).
+
+## Gaussian nascent delta
+
+Define
+
+g_ε(x) = (1/(ε √π)) exp(−x²/ε²)
+
+(The constant is chosen so that ∫ g_ε dx = 1; equivalent normalizations use σ = ε/√2.)
+
+As ε → 0, the peak height grows like 1/ε while the width shrinks like ε, keeping unit mass. For φ ∈ D(ℝ), standard analysis (or the substitution u = x/ε) shows
+
+∫ g_ε(x) φ(x) dx → φ(0)
+
+## Lorentzian nascent delta
+
+Define
+
+L_ε(x) = (1/π) · ε / (x² + ε²)
+
+Then ∫_{−∞}^{∞} L_ε(x) dx = 1 (arctangent evaluation). As ε → 0, L_ε peaks at x = 0 with height 1/(π ε) and width of order ε. Against test functions, L_ε → δ.
+
+## Sinc / truncated Fourier integral
+
+Consider
+
+s_K(x) = (1/(2π)) ∫_{−K}^{K} e^{ikx} dk
+
+If x ≠ 0,
+
+s_K(x) = (1/(2π)) [e^{ikx}/(ix)]_{−K}^{K} = (K/π) · (sin(Kx)/(Kx)) 
+
+(up to the usual sinc normalization conventions). As K → ∞, s_K becomes a more and more oscillatory peak concentrated at x = 0 with integral 1, and s_K → δ in the distributional sense. This is the same kernel that appears in Fourier inversion (Unit 4).
+
+## Common pattern
+
+Each representation satisfies:
+
+1. ∫ f_ε = 1 (or tends to 1);
+2. for any δ > 0, ∫_{|x|>δ} f_ε(x) dx → 0 as ε → 0 (mass concentrates at 0);
+3. f_ε remains controlled enough to pass to the limit against continuous φ.
+
+## Check yourself
+
+Why must the integral of a nascent delta stay equal to 1 (or tend to 1)? What would go wrong if the integral tended to 0?
+''',
+            keyTakeaways: [
+              'Distributional limits are tested by integrating against every test function φ.',
+              'Rectangles, Gaussians, Lorentzians, and sinc kernels are standard nascent deltas.',
+              'Unit mass and concentration at 0 are the essential mechanisms.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m5-u2-q1',
+                question: 'As ε → 0, a nascent delta sequence should',
+                options: [
+                  'Spread out with fixed height 1',
+                  'Narrow while keeping total integral 1',
+                  'Tend to the zero function with integral 0',
+                  'Equal the Heaviside step pointwise',
+                ],
+                correctIndex: 1,
+                explanation: 'Mass concentrates at a single point while the integral remains 1.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m5-u2-q2',
+                question: 'The Lorentzian nascent delta is proportional to',
+                options: [
+                  'ε / (x² + ε²)',
+                  'x² + ε²',
+                  'e^{x/ε}',
+                  '1 only',
+                ],
+                correctIndex: 0,
+                explanation: 'L_ε(x) = (1/π) ε/(x²+ε²) is the standard Lorentzian approximate identity.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m5-u3',
+            title: 'Operational identities: scaling, composition, derivatives',
+            content: r'''
+## Learning goal
+
+Derive the scaling identity δ(ax) = δ(x)/|a|, the composition rule at simple zeros, and the distributional derivative of δ, each from the definition ⟨δ, φ⟩ = φ(0).
+
+## Scaling property — full derivation
+
+We must define what δ(ax) means as a distribution. For a ≠ 0 and φ ∈ D(ℝ), set
+
+⟨δ(ax), φ⟩ := ⟨δ, φ_a⟩
+
+where φ_a is the test function that makes the change of variables consistent. Compute the ordinary integral pairing against a nascent delta f_ε(ax) and pass to the limit, or directly:
+
+Substitute u = a x. Then dx = du/|a| (the absolute value appears because reversing limits when a < 0 contributes a minus sign that absolute value absorbs).
+
+∫ δ(ax) φ(x) dx = ∫ δ(u) φ(u/a) (du/|a|) = (1/|a|) φ(0)
+
+Therefore
+
+δ(ax) = (1/|a|) δ(x)
+
+as distributions: both sides give (1/|a|) φ(0) when paired with φ.
+
+### Example
+
+δ(2x) = (1/2) δ(x).  
+δ(−x) = δ(x) because |−1| = 1.
+
+## Composition δ(g(x)) at simple roots
+
+Let g be continuously differentiable and let x_k be isolated simple zeros: g(x_k) = 0 and g'(x_k) ≠ 0.
+
+Near x_k, g(x) ≈ g'(x_k)(x − x_k). Using the scaling result locally about each root and summing contributions,
+
+δ(g(x)) = Σ_k δ(x − x_k) / |g'(x_k)|
+
+### Sketch of justification
+
+On a small neighbourhood of a single simple root x_k, set u = g(x). Then du = g'(x) dx, so dx = du/g'(x). Accounting for orientation with absolute value and evaluating at the root gives the factor 1/|g'(x_k)|. Roots are isolated, so global contributions add.
+
+### Example
+
+g(x) = x² − 1 = (x−1)(x+1) has simple zeros at ±1 with |g'(±1)| = 2. Thus
+
+δ(x² − 1) = [δ(x − 1) + δ(x + 1)] / 2
+
+## Distributional derivative
+
+For any distribution T, define T' by
+
+⟨T', φ⟩ := −⟨T, φ'⟩
+
+This extends integration by parts: if T = T_f for a smooth compactly supported f, then ∫ f' φ = −∫ f φ' after boundary terms vanish, matching the definition.
+
+Apply to δ:
+
+⟨δ', φ⟩ = −⟨δ, φ'⟩ = −φ'(0)
+
+Higher orders:
+
+⟨δ^{(n)}, φ⟩ = (−1)^n φ^{(n)}(0)
+
+## Heaviside step
+
+Let H(x) = 0 for x < 0 and H(x) = 1 for x > 0 (value at 0 irrelevant for integration). For φ ∈ D(ℝ),
+
+⟨H', φ⟩ = −⟨H, φ'⟩ = −∫_0^{∞} φ'(x) dx = −[φ(∞) − φ(0)] = φ(0) = ⟨δ, φ⟩
+
+since φ(∞) = 0 by compact support. Thus H' = δ in the distributional sense.
+
+## Check yourself
+
+Evaluate ⟨δ', φ⟩ for φ(x) = e^{−x²} formally using −φ'(0).
+''',
+            keyTakeaways: [
+              'δ(ax) = δ(x)/|a| for a ≠ 0.',
+              'δ(g(x)) = Σ δ(x−x_k)/|g\'(x_k)| at simple roots x_k.',
+              '⟨δ\', φ⟩ = −φ\'(0); H\' = δ distributionally.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m5-u3-q1',
+                question: 'δ(2x) equals',
+                options: [
+                  '2 δ(x)',
+                  '(1/2) δ(x)',
+                  'δ(x)',
+                  '0',
+                ],
+                correctIndex: 1,
+                explanation: 'Scaling gives a factor 1/|a| with a = 2.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m5-u3-q2',
+                question: '⟨δ\', φ⟩ equals',
+                options: [
+                  'φ(0)',
+                  '−φ\'(0)',
+                  'φ\'\'(0)',
+                  '∫ φ dx',
+                ],
+                correctIndex: 1,
+                explanation: 'Distributional differentiation places a minus on the test function\'s derivative.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m5-u4',
+            title: 'Fourier representation of δ(x − x\')',
+            content: r'''
+## Learning goal
+
+Derive the plane-wave integral representation of the Dirac delta from the Fourier inversion theorem, with conventions stated explicitly.
+
+## Fourier transform conventions used here
+
+For a sufficiently nice function f (for example Schwartz-class, or L¹ with enough regularity for inversion), define
+
+f̂(k) = ∫_{−∞}^{∞} f(x) e^{−i k x} dx
+
+and the inverse
+
+f(x) = (1/(2π)) ∫_{−∞}^{∞} f̂(k) e^{i k x} dk
+
+(Other common conventions place factors of 2π differently on the forward and inverse transforms; the structure of the argument is the same.)
+
+## Substitute and rearrange
+
+Insert the expression for f̂ into the inversion formula:
+
+f(x) = (1/(2π)) ∫_{−∞}^{∞} [ ∫_{−∞}^{∞} f(y) e^{−i k y} dy ] e^{i k x} dk
+
+Assuming the Fubini-type interchange is justified in the distributional sense (or for the function class at hand),
+
+f(x) = ∫_{−∞}^{∞} f(y) [ (1/(2π)) ∫_{−∞}^{∞} e^{i k (x − y)} dk ] dy
+
+## Reading the kernel
+
+The identity says that the kernel
+
+K(x − y) = (1/(2π)) ∫_{−∞}^{∞} e^{i k (x − y)} dk
+
+acts as δ(x − y): integrating K(x − y) f(y) dy recovers f(x). Therefore, as distributions,
+
+(1/(2π)) ∫_{−∞}^{∞} e^{i k (x − x')} dk = δ(x − x')
+
+## Link to Unit 2
+
+The truncated integral (1/(2π)) ∫_{−K}^{K} e^{i k (x−x')} dk is precisely a sinc-type nascent delta; K → ∞ recovers δ.
+
+## Completeness interpretation
+
+The family of functions x ↦ e^{i k x}, labelled by continuous k ∈ ℝ, is complete on the line in the sense that their continuum superposition can reproduce any (suitable) f — with the completeness relation expressed by the delta function.
+
+## Check yourself
+
+If one defines both the forward and inverse transforms with symmetric factors 1/√(2π), how does the integral representation of δ change?
+''',
+            keyTakeaways: [
+              'Fourier inversion implies (1/(2π))∫ e^{ik(x−x\')} dk = δ(x−x\').',
+              'The identity holds in the distributional sense.',
+              'Truncated Fourier integrals are nascent deltas.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m5-u4-q1',
+                question: 'In the convention of this unit, δ(x − x\') equals',
+                options: [
+                  '∫ e^{ik(x−x\')} dk with no factor',
+                  '(1/(2π)) ∫_{−∞}^{∞} e^{ik(x−x\')} dk',
+                  'e^{x−x\'}',
+                  '1 only',
+                ],
+                correctIndex: 1,
+                explanation: 'That is the Fourier completeness / inversion kernel for our 2π convention.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m5-u4-q2',
+                question: 'The Fourier representation of delta is best understood as',
+                options: [
+                  'A pointwise ordinary function identity everywhere',
+                  'A distributional identity',
+                  'True only for x = 0',
+                  'Independent of inversion conventions',
+                ],
+                correctIndex: 1,
+                explanation: 'The integral does not converge pointwise as an ordinary function; it acts under the integral against test functions.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
