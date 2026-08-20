@@ -646,14 +646,253 @@ What is the dimension of the configuration space of a system with 5 degrees of f
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy703-m3',
         title: 'Calculus of Variations & Hamilton\'s Principle of Least Action',
-        summary: 'Calculus of Variations & Hamilton\'s Principle of Least Action',
+        summary:
+            'From Newtonian forces to action principles; action integral; full derivation of the Euler–Lagrange equation.',
         units: [
-          skeletonUnit(id: 'phy703-m3-u1', title: 'Path Optimization Intuition'),
-          skeletonUnit(id: 'phy703-m3-u2', title: 'The Action Integral'),
-          skeletonUnit(id: 'phy703-m3-u3', title: 'Deriving Euler-Lagrange Equations'),
+          Unit(
+            id: 'phy703-m3-u1',
+            title: 'Path optimization intuition',
+            content: r'''
+## Learning goal
+
+Contrast Newtonian “force at each instant” thinking with the idea that nature selects an entire path in time, using Fermat’s principle as a physical metaphor.
+
+## Newtonian picture
+
+In Newton’s laws, you look at a system at one moment: forces act, acceleration follows, F = ma. The future is built by integrating those instantaneous laws forward in time. The fundamental object is the force (or the differential equation) at each t.
+
+## Path picture
+
+Another point of view asks: among all imaginable histories the system could follow between two configurations, which history actually occurs? Mechanics can be rewritten so that the true history is the one that makes a certain global quantity — the **action** — stationary (often a minimum or a saddle).
+
+That is a shift from “what pushes right now?” to “which entire path is preferred?”
+
+## Optical metaphor: Fermat’s principle
+
+Light traveling between two points in a medium with varying speed does not “feel a force” in the mechanical sense. Yet the path it takes is the one that makes the travel **time** stationary (Fermat’s principle of least time). In a uniform medium that path is a straight line; at an interface it yields Snell’s law.
+
+Fermat’s principle is an existence proof that nature sometimes encodes dynamics as a path-optimization rule. Hamilton’s principle is the mechanical analogue: replace “time of travel” by a mechanical **action** built from kinetic and potential energy.
+
+## What we will build next
+
+- Define the action as an integral along a trial path.
+- Require that the true path makes the action stationary under variations that keep the endpoints fixed.
+- Extract a differential equation — the Euler–Lagrange equation — that the true path must satisfy.
+
+## Check yourself
+
+In one sentence, how does a “path principle” differ from specifying F = ma at each instant?
+''',
+            keyTakeaways: [
+              'Newton focuses on instantaneous forces; action principles select entire histories.',
+              'Fermat\'s least-time principle is an optical analogue of path optimization.',
+              'Hamilton\'s principle will play that role for mechanics.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m3-u1-q1',
+                question: 'Fermat\'s principle says that light takes a path that',
+                options: [
+                  'Maximizes travel time always',
+                  'Makes travel time stationary (often a minimum)',
+                  'Ignores the medium completely',
+                  'Is always a circle',
+                ],
+                correctIndex: 1,
+                explanation: 'Fermat\'s principle is a stationary-time principle for optical paths.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m3-u2',
+            title: 'The action integral and the Lagrangian',
+            content: r'''
+## Learning goal
+
+Define the action S as an integral of the Lagrangian along a path, and explain L = T − V in plain language.
+
+## Trial paths
+
+Fix two times t₁ and t₂ and two configurations of the system: q(t₁) = q₁ and q(t₂) = q₂. A **trial path** is any smooth function q(t) connecting those endpoints. Only one of those paths is the true motion; the action principle will pick it out.
+
+## Lagrangian
+
+For a standard mechanical system, the **Lagrangian** is
+
+L(q, q̇, t) = T(q, q̇, t) − V(q, t)
+
+where:
+
+- T is the kinetic energy (energy of motion), usually quadratic in the velocities q̇
+- V is the potential energy (energy of configuration), depending on positions
+
+So L measures, at each instant, “how much kinetic energy exceeds potential energy.”
+
+## Action
+
+The **action** of a path q(t) between t₁ and t₂ is
+
+S[q] = ∫_{t₁}^{t₂} L(q(t), q̇(t), t) dt
+
+S is a number attached to an entire history, not to a single moment. Different trial paths generally yield different values of S.
+
+## Hamilton’s principle (statement)
+
+Among all paths with the same endpoints q(t₁) and q(t₂), the true path is one for which S is **stationary**:
+
+δS = 0
+
+That is, a first-order change in the path produces no first-order change in S. (Often S is a minimum, but stationarity is the precise requirement.)
+
+## Check yourself
+
+If two trial paths share the same endpoints but differ in the middle, do they generally have the same action S?
+''',
+            keyTakeaways: [
+              'L = T − V is the Lagrangian.',
+              'S = ∫ L dt is the action of a path between fixed times.',
+              'Hamilton\'s principle: the true path makes δS = 0 at fixed endpoints.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m3-u2-q1',
+                question: 'The action S is',
+                options: [
+                  'Equal to the force at one instant',
+                  'The integral of L along a path in time',
+                  'Always equal to the potential energy only',
+                  'The mass of the particle',
+                ],
+                correctIndex: 1,
+                explanation: 'S = ∫_{t₁}^{t₂} L dt along the path.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m3-u2-q2',
+                question: 'For standard mechanics, L equals',
+                options: [
+                  'T + V',
+                  'T − V',
+                  'V − T',
+                  'T V',
+                ],
+                correctIndex: 1,
+                explanation: 'The Lagrangian is kinetic minus potential energy.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m3-u3',
+            title: 'Deriving the Euler–Lagrange equation',
+            content: r'''
+## Learning goal
+
+Derive the Euler–Lagrange equation from δS = 0 with fixed endpoints, showing the variation, integration by parts, and boundary terms explicitly (one degree of freedom; the multi-DoF case is identical componentwise).
+
+## Setup
+
+Consider one generalized coordinate q(t). Let the true path be q(t), and a varied path be
+
+q(t; ε) = q(t) + ε η(t)
+
+where ε is a small parameter and η(t) is an arbitrary smooth function with
+
+η(t₁) = 0,    η(t₂) = 0
+
+so every varied path shares the same endpoints. Then
+
+δq := ε η,    δq̇ = ε η̇
+
+at linear order in ε.
+
+## Action as a function of ε
+
+S(ε) = ∫_{t₁}^{t₂} L(q + ε η, q̇ + ε η̇, t) dt
+
+Stationarity of S at the true path means
+
+dS/dε |_{ε=0} = 0
+
+for every allowed η.
+
+## Differentiate under the integral
+
+dS/dε |_{ε=0} = ∫_{t₁}^{t₂} [ (∂L/∂q) η + (∂L/∂q̇) η̇ ] dt = 0
+
+## Integration by parts on the velocity term
+
+∫ (∂L/∂q̇) η̇ dt = [ (∂L/∂q̇) η ]_{t₁}^{t₂} − ∫ η d/dt(∂L/∂q̇) dt
+
+Because η(t₁) = η(t₂) = 0, the boundary term vanishes:
+
+[ (∂L/∂q̇) η ]_{t₁}^{t₂} = 0
+
+Therefore
+
+∫_{t₁}^{t₂} [ ∂L/∂q − d/dt(∂L/∂q̇) ] η(t) dt = 0
+
+## Fundamental lemma of the calculus of variations
+
+If a continuous function α(t) satisfies ∫ α(t) η(t) dt = 0 for every smooth η vanishing at the endpoints, then α(t) = 0 everywhere on (t₁, t₂).
+
+Apply that lemma with
+
+α(t) = ∂L/∂q − d/dt(∂L/∂q̇)
+
+to conclude
+
+d/dt (∂L/∂q̇) − ∂L/∂q = 0
+
+This is the **Euler–Lagrange equation**.
+
+## Several coordinates
+
+If there are n generalized coordinates q₁, …, qₙ, the same argument applied to each variation ηᵢ yields
+
+d/dt (∂L/∂q̇ᵢ) − ∂L/∂qᵢ = 0,    i = 1, …, n
+
+## What we gained
+
+The path principle δS = 0 is equivalent to a system of second-order differential equations for qᵢ(t) — the same dynamical content as Newton’s laws for standard systems, but written in arbitrary generalized coordinates.
+
+## Check yourself
+
+Where did the fixed-endpoint condition η(t₁) = η(t₂) = 0 enter the derivation, and what would go wrong if the endpoints were free?
+''',
+            keyTakeaways: [
+              'Vary q(t) → q + εη with η vanishing at t₁ and t₂.',
+              'Integration by parts moves d/dt onto ∂L/∂q̇; boundary terms vanish.',
+              'Euler–Lagrange: d/dt(∂L/∂q̇) − ∂L/∂q = 0 (each coordinate).',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m3-u3-q1',
+                question: 'In the derivation of Euler–Lagrange, the boundary term vanishes because',
+                options: [
+                  'L is always zero',
+                  'η(t₁) = η(t₂) = 0',
+                  'T equals V',
+                  'Time is discrete',
+                ],
+                correctIndex: 1,
+                explanation: 'Fixed endpoints force the variation η to vanish at the ends.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m3-u3-q2',
+                question: 'The Euler–Lagrange equation is',
+                options: [
+                  '∂L/∂q = 0 only',
+                  'd/dt(∂L/∂q̇) − ∂L/∂q = 0',
+                  'L = T + V',
+                  'q̈ = 0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'That is the EL equation for each generalized coordinate.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
