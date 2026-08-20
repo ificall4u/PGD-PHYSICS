@@ -2226,15 +2226,248 @@ If only the symmetric mode is excited, does the middle spring’s length change 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy703-m9',
         title: 'Mechanics of Continuous Media & Wave Equations',
-        summary: 'Mechanics of Continuous Media & Wave Equations',
+        summary:
+            'Discrete chain to continuum, Lagrangian density, field Euler–Lagrange, 1D wave equation for a string.',
         units: [
-          skeletonUnit(id: 'phy703-m9-u1', title: 'Discrete to Continuous Transition'),
-          skeletonUnit(id: 'phy703-m9-u2', title: 'Lagrangian Density'),
-          skeletonUnit(id: 'phy703-m9-u3', title: 'Continuous Euler-Lagrange Equation'),
-          skeletonUnit(id: 'phy703-m9-u4', title: 'The 1D Wave Equation'),
+          Unit(
+            id: 'phy703-m9-u1',
+            title: 'Discrete to continuous transition',
+            content: r'''
+## Learning goal
+
+Pass from a finite chain of masses and springs to a continuous string by taking N → ∞ and spacing a → 0 with fixed total length and mass density.
+
+## Discrete chain
+
+N equal masses m spaced by distance a along a line, nearest neighbours joined by springs of constant κ. Longitudinal or transverse small displacements u_j(t) of mass j.
+
+Total length ≈ N a = ℓ (fixed as N grows). Total mass M = N m fixed ⇒ linear density μ = M/ℓ = m/a.
+
+## Equations of motion (sketch)
+
+Each interior mass feels springs to left and right. For transverse waves on a taut string model, the net restoring force involves differences u_{j+1} − 2u_j + u_{j−1}, which is a discrete second derivative.
+
+## Continuum limit
+
+Identify u_j(t) with a field u(x, t) at x = j a. Then
+
+(u_{j+1} − 2u_j + u_{j−1}) / a² → ∂²u/∂x²
+
+as a → 0. Time derivatives stay ∂²u/∂t². The discrete system becomes a partial differential equation for the field u(x, t).
+
+## Check yourself
+
+If total mass and length are fixed while N doubles, what happens to m and a?
+''',
+            keyTakeaways: [
+              'A chain of N masses becomes a continuum as N → ∞, a → 0.',
+              'μ = m/a is the linear mass density held fixed in the limit.',
+              'Discrete second differences become ∂²u/∂x².',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m9-u1-q1',
+                question: 'In the continuum limit of a mass-spring chain, the displacement becomes',
+                options: [
+                  'A single number only',
+                  'A field u(x, t)',
+                  'Independent of x always',
+                  'Only defined at one point',
+                ],
+                correctIndex: 1,
+                explanation: 'Each mass label j becomes a continuous position x.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m9-u2',
+            title: 'Lagrangian density',
+            content: r'''
+## Learning goal
+
+Define the Lagrangian density so that the total Lagrangian is an integral over space.
+
+## From sum to integral
+
+For discrete masses, L = Σⱼ Lⱼ(uⱼ, u̇ⱼ). In the continuum, the sum Σⱼ a · (energy density) becomes ∫ dx · (energy density).
+
+## Definition
+
+The **Lagrangian density** ℒ is a function of the field and its derivatives (and possibly x, t) such that
+
+L = ∫ ℒ dx
+
+for a 1D continuum (with obvious generalizations to higher dimension).
+
+## Vibrating string example
+
+For a string with linear density μ and tension τ (small transverse displacement y(x,t)):
+
+Kinetic energy density: (1/2) μ (∂y/∂t)²
+
+Potential energy density from stretching (small slope): (1/2) τ (∂y/∂x)²
+
+Thus
+
+ℒ = (1/2) μ ẏ² − (1/2) τ y'²
+
+where ẏ = ∂y/∂t and y' = ∂y/∂x.
+
+## Check yourself
+
+What are the units of ℒ if L has units of energy and we integrate over length?
+''',
+            keyTakeaways: [
+              'L = ∫ ℒ dx for a 1D continuum.',
+              'ℒ is energy density of Lagrangian type (T density minus V density).',
+              'String: ℒ = (1/2)μ ẏ² − (1/2)τ (y\')².',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m9-u2-q1',
+                question: 'The total Lagrangian relates to the density by',
+                options: [
+                  'L = ℒ only with no integral',
+                  'L = ∫ ℒ dx in one spatial dimension',
+                  'L = dℒ/dx',
+                  'L = 0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'The continuum Lagrangian is the spatial integral of ℒ.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m9-u3',
+            title: 'Continuous Euler–Lagrange equation',
+            content: r'''
+## Learning goal
+
+State the Euler–Lagrange equation for a field y(x,t) when the action is ∫∫ ℒ dx dt, and connect it to varying the path in function space.
+
+## Action for a field
+
+S = ∫_{t₁}^{t₂} L dt = ∫_{t₁}^{t₂} ∫ dx ℒ(y, ẏ, y', x, t)
+
+Hamilton’s principle: δS = 0 for variations of y that vanish at the temporal (and appropriate spatial) boundaries.
+
+## Euler–Lagrange for ℒ(y, ẏ, y')
+
+The stationarity condition yields
+
+∂ℒ/∂y − ∂/∂t (∂ℒ/∂ẏ) − ∂/∂x (∂ℒ/∂y') = 0
+
+(This is the natural extension of d/dt(∂L/∂q̇) − ∂L/∂q = 0 when the “coordinate” is a field value at each x and derivatives include ∂/∂x.)
+
+## Reading the terms
+
+- ∂ℒ/∂y: explicit dependence on the field
+- ∂/∂t(∂ℒ/∂ẏ): inertial term from kinetic density
+- ∂/∂x(∂ℒ/∂y'): spatial “force” from strain energy
+
+## Check yourself
+
+If ℒ does not depend on y explicitly (only on ẏ and y'), what simplifies in the field EL equation?
+''',
+            keyTakeaways: [
+              'Field action uses ℒ integrated over space and time.',
+              'EL: ∂ℒ/∂y − ∂_t(∂ℒ/∂ẏ) − ∂_x(∂ℒ/∂y\') = 0.',
+              'This is the continuum form of the discrete Euler–Lagrange equation.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m9-u3-q1',
+                question: 'For ℒ(y, ẏ, y\'), the continuous EL equation includes',
+                options: [
+                  'Only ∂ℒ/∂y = 0',
+                  '∂ℒ/∂y − ∂_t(∂ℒ/∂ẏ) − ∂_x(∂ℒ/∂y\') = 0',
+                  'Only Newton\'s third law',
+                  'No derivatives of ℒ',
+                ],
+                correctIndex: 1,
+                explanation: 'Both time and space derivative terms appear for a 1D field.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m9-u4',
+            title: 'The 1D wave equation from the string Lagrangian',
+            content: r'''
+## Learning goal
+
+Insert the string Lagrangian density into the field EL equation and obtain ∂²y/∂t² = v² ∂²y/∂x² with v² = τ/μ.
+
+## Lagrangian density
+
+ℒ = (1/2) μ (∂y/∂t)² − (1/2) τ (∂y/∂x)²
+
+## Partial derivatives
+
+∂ℒ/∂y = 0
+
+∂ℒ/∂ẏ = μ ∂y/∂t
+
+∂ℒ/∂y' = −τ ∂y/∂x
+
+## Field EL
+
+0 − ∂/∂t (μ ∂y/∂t) − ∂/∂x (−τ ∂y/∂x) = 0
+
+μ ∂²y/∂t² − τ ∂²y/∂x² = 0
+
+(assuming μ, τ constant)
+
+## Wave equation
+
+∂²y/∂t² = (τ/μ) ∂²y/∂x²
+
+Define v² = τ/μ. Then
+
+∂²y/∂t² = v² ∂²y/∂x²
+
+## Meaning of v
+
+v = √(τ/μ) is the **wave speed** on the string: higher tension or lighter string → faster waves. Solutions include travelling waves f(x ± v t) and standing modes on finite intervals with boundary conditions.
+
+## Check yourself
+
+If tension doubles and density is unchanged, what happens to wave speed?
+''',
+            keyTakeaways: [
+              'String ℒ leads to μ y_tt = τ y_xx.',
+              'Wave speed v = √(τ/μ).',
+              'The wave equation is the EL equation of the continuous string.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m9-u4-q1',
+                question: 'The wave speed on the string is',
+                options: [
+                  'τ μ',
+                  '√(τ/μ)',
+                  'μ/τ',
+                  '0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'v² = τ/μ comes directly from the EL equation.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m9-u4-q2',
+                question: 'The 1D wave equation has the form',
+                options: [
+                  '∂y/∂t = v ∂y/∂x only always',
+                  '∂²y/∂t² = v² ∂²y/∂x²',
+                  'y = 0',
+                  '∂²y/∂x² = 0 only',
+                ],
+                correctIndex: 1,
+                explanation: 'That is the standard second-order wave equation.',
+              ),
+            ],
+          ),
         ],
       ),
     ],

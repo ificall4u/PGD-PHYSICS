@@ -6,22 +6,43 @@
 
 | # | Course | Status |
 |---|--------|--------|
-| 1 | PHY 701 | **COMPLETE** |
-| 2 | PHY 703 Analytical Mechanics | **In progress 8/9** |
-| 3–12 | Remaining | Pending |
+| 1 | PHY 701 Mathematical Methods | **COMPLETE** |
+| 2 | PHY 703 Analytical Mechanics | **COMPLETE** |
+| 3 | PHY 702 Electromagnetism | Pending ← next |
+| 4 | PHY 704 Quantum Physics | Pending |
+| 5 | PHY 705 Intro Solid State Electronics | Pending |
+| 6 | PHY 707 Digital Electronics | Pending |
+| 7 | PHY 709 Devices Design & Fabrication | Pending |
+| 8 | PHY 706 Measurement & Instrumentation | Pending |
+| 9 | PHY 710 Vacuum & Thin Films | Pending |
+| 10 | PHY 708 Nuclear & Particle | Pending |
+| 11 | PHY 712 Energy Conservation & Storage | Pending |
+| 12 | PHY 799 PGD Research Project | Pending |
 
-## PHY 703
+## PHY 703 — COMPLETE (9/9)
 
 | Module | Status |
 |--------|--------|
-| 01–07 | Done |
-| **08 Oscillations & normal modes** | **Done** |
-| 09 Continuous media | Pending ← next |
+| 01 Conservative forces / potential | Done |
+| 02 DoF & generalized coordinates | Done |
+| 03 Variations & action principle | Done |
+| 04 Lagrangian mechanics | Done |
+| 05 Central forces | Done |
+| 06 Hamiltonian & phase space | Done |
+| 07 Rigid body | Done |
+| 08 Oscillations & normal modes | Done |
+| **09 Continuous media & waves** | **Done** |
 
-### Module 08 checklist
-- [x] Small oscillations from V Taylor expansion
-- [x] Two-mass three-spring L in matrix form
-- [x] Secular equation; ω = √(k/m), √(3k/m)
-- [x] In-phase / out-of-phase modes; normal coordinates
+### Module 09 checklist
+- [x] Discrete chain → continuum field
+- [x] Lagrangian density ℒ
+- [x] Field Euler–Lagrange equation
+- [x] String → wave equation; v = √(τ/μ)
 
-**Next:** PHY 703 Module 09 only, then course audit.
+### Course audit PHY 703
+- [x] All 9 module prompts covered
+- [x] No skeletonModule / skeletonUnit left in phy703_content.dart
+- [x] No ASCII schematics; UI untouched
+- [x] Quizzes + takeaways present
+
+**Next course:** PHY 702 Module 01 only (after master prompt).
