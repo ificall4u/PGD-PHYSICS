@@ -1716,15 +1716,262 @@ In the undamped oscillator phase plane, why do trajectories form closed curves r
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy703-m7',
         title: 'Rigid Body Dynamics & Generalized Motion',
-        summary: 'Rigid Body Dynamics & Generalized Motion',
+        summary:
+            'Rigid body concept, CM and scalar inertia, inertia tensor and principal axes, Euler\'s equations.',
         units: [
-          skeletonUnit(id: 'phy703-m7-u1', title: 'Continuous Rigid Bodies'),
-          skeletonUnit(id: 'phy703-m7-u2', title: 'Center of Mass & Moment of Inertia'),
-          skeletonUnit(id: 'phy703-m7-u3', title: 'The Inertia Tensor'),
-          skeletonUnit(id: 'phy703-m7-u4', title: 'Euler\'s Equations of Motion'),
+          Unit(
+            id: 'phy703-m7-u1',
+            title: 'Continuous rigid bodies',
+            content: r'''
+## Learning goal
+
+Define a rigid body as a system of particles (or a continuum) with fixed mutual distances, and state what that implies for the allowed motion.
+
+## Physical definition
+
+A **rigid body** is an idealized system in which the distance between every pair of points remains constant in time. You may think of it as a very large number of point masses locked together by internal constraints, or as a continuous mass distribution that does not deform.
+
+## Degrees of freedom
+
+A free rigid body in 3D has 6 degrees of freedom: 3 for the position of a reference point (often the center of mass) and 3 for orientation (for example three Euler angles). Constraints such as a fixed pivot reduce that number.
+
+## What rigidity forbids
+
+Stretching, bending, and relative sliding of material points are excluded. All motion is a combination of translation of the body as a whole and rotation about some axis.
+
+## Check yourself
+
+Why does a free rigid body have 6 degrees of freedom rather than 3N for N atoms?
+''',
+            keyTakeaways: [
+              'A rigid body has fixed distances between all of its points.',
+              'Free rigid body in 3D: 6 DoF (3 translation + 3 rotation).',
+              'Motion = translation of a reference point + rotation.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m7-u1-q1',
+                question: 'A rigid body is characterized by',
+                options: [
+                  'Completely unconstrained particle motion',
+                  'Fixed relative distances between its points',
+                  'Zero mass',
+                  'Only translational motion',
+                ],
+                correctIndex: 1,
+                explanation: 'Rigidity means all mutual distances stay constant.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m7-u2',
+            title: 'Center of mass and moment of inertia',
+            content: r'''
+## Learning goal
+
+Define the center of mass for discrete and continuous mass distributions, and introduce the scalar moment of inertia about an axis.
+
+## Center of mass (discrete)
+
+For point masses mᵢ at positions rᵢ,
+
+R_cm = (Σ mᵢ rᵢ) / (Σ mᵢ)
+
+The total mass M = Σ mᵢ moves as a point particle under the net external force: M R̈_cm = F_ext.
+
+## Center of mass (continuous)
+
+R_cm = (1/M) ∫ r dm
+
+with M = ∫ dm, and dm = ρ dV for a density ρ.
+
+## Moment of inertia about a fixed axis
+
+For rotation about a fixed axis, the kinetic energy is (1/2) I ω², where
+
+I = Σ mᵢ dᵢ²    (discrete)
+
+I = ∫ d² dm    (continuous)
+
+and dᵢ (or d) is the perpendicular distance from the mass element to the axis. I is the **moment of inertia** about that axis — the rotational analogue of mass for that axis.
+
+## Parallel-axis remark
+
+If I_cm is the moment about a parallel axis through the CM, then about a parallel axis a distance a away,
+
+I = I_cm + M a²
+
+(proved by expanding ∫|r_cm + a_perp|² dm).
+
+## Check yourself
+
+Why does I depend on how mass is distributed relative to the axis, not only on total mass M?
+''',
+            keyTakeaways: [
+              'R_cm = Σ m r / M or (1/M)∫ r dm.',
+              'I = ∫ d² dm is the moment of inertia about a chosen axis.',
+              'Rotational KE about a fixed axis is (1/2) I ω².',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m7-u2-q1',
+                question: 'The moment of inertia about an axis is',
+                options: [
+                  'Always equal to M only',
+                  '∫ d² dm with d the distance to the axis',
+                  'The same for every axis',
+                  'Equal to the volume only',
+                ],
+                correctIndex: 1,
+                explanation: 'I weights each mass element by the square of its distance to the axis.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m7-u3',
+            title: 'The inertia tensor and principal axes',
+            content: r'''
+## Learning goal
+
+Define the inertia tensor, relate angular momentum to angular velocity, and introduce principal axes and principal moments.
+
+## Angular momentum of a rigid body
+
+For a rigid body rotating with angular velocity ω about a fixed point (or about the CM in the CM frame),
+
+L = ∫ (r × v) dm,    v = ω × r
+
+Expanding the triple product yields a linear relation
+
+Lᵢ = Σⱼ Iᵢⱼ ωⱼ
+
+where Iᵢⱼ are components of the **inertia tensor**.
+
+## Components
+
+With coordinates (x, y, z) relative to the reference point,
+
+I_xx = ∫ (y² + z²) dm,    I_yy = ∫ (z² + x²) dm,    I_zz = ∫ (x² + y²) dm
+
+I_xy = I_yx = −∫ x y dm,    and cyclic for other products of inertia.
+
+In matrix form, L = I ω with I a symmetric 3×3 matrix.
+
+## Principal axes
+
+Because I is real symmetric, it can be diagonalized by an orthogonal change of axes. In that **principal axis** frame,
+
+I = diag(I₁, I₂, I₃)
+
+and L₁ = I₁ ω₁, L₂ = I₂ ω₂, L₃ = I₃ ω₃. The eigenvalues I₁, I₂, I₃ are the **principal moments of inertia**.
+
+Physically, principal axes are orientations where L is parallel to ω.
+
+## Check yourself
+
+Why must the inertia tensor be symmetric (I_xy = I_yx)?
+''',
+            keyTakeaways: [
+              'L = I ω with I the inertia tensor.',
+              'Diagonal elements are moments; off-diagonal are products of inertia.',
+              'Principal axes diagonalize I; principal moments are the eigenvalues.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m7-u3-q1',
+                question: 'In a principal-axis frame, L and ω are related by',
+                options: [
+                  'A full dense matrix only',
+                  'Lᵢ = Iᵢ ωᵢ (no sum) along principal axes',
+                  'L = 0 always',
+                  'ω = 0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'I is diagonal, so each component multiplies separately.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m7-u4',
+            title: 'Euler\'s equations of rigid-body motion',
+            content: r'''
+## Learning goal
+
+Relate torque to the rate of change of angular momentum, and write Euler’s equations in the body-fixed principal-axis frame.
+
+## Space frame
+
+In an inertial frame,
+
+τ_ext = dL/dt |_inertial
+
+where τ_ext is the external torque about the same reference point used for L.
+
+## Body frame
+
+For rigid-body work one often uses axes fixed in the body. If a vector A is expressed in a frame rotating at ω relative to inertial axes,
+
+(dA/dt)_inertial = (dA/dt)_body + ω × A
+
+Apply to L:
+
+τ = (dL/dt)_body + ω × L
+
+## Principal-axis components
+
+In principal axes, Lᵢ = Iᵢ ωᵢ (no sum). Write ω = (ω₁, ω₂, ω₃) and τ = (τ₁, τ₂, τ₃). Then
+
+τ₁ = I₁ ω̇₁ + (I₃ − I₂) ω₂ ω₃
+
+τ₂ = I₂ ω̇₂ + (I₁ − I₃) ω₃ ω₁
+
+τ₃ = I₃ ω̇₃ + (I₂ − I₁) ω₁ ω₂
+
+These are **Euler’s equations**. The cross-product terms couple the components when the principal moments are unequal.
+
+## Torque-free motion
+
+If τ = 0, the equations describe free rotation. Stable spin about the axis of maximum or minimum principal moment is a classic consequence; intermediate-axis spin is unstable (tennis-racket theorem), which can be read off linearized analysis of Euler’s equations.
+
+## Check yourself
+
+If the body is symmetric with I₁ = I₂ ≠ I₃ and τ = 0, what can you say about ω₃?
+''',
+            keyTakeaways: [
+              'τ = (dL/dt)_body + ω × L in a rotating frame.',
+              'Euler\'s equations are the principal-axis component form of that law.',
+              'Cross terms (Iᵢ − Iⱼ) ωⱼ ωₖ couple the angular-velocity components.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m7-u4-q1',
+                question: 'Euler\'s equations are written most simply in',
+                options: [
+                  'Arbitrary non-orthogonal axes only',
+                  'The principal-axis body frame',
+                  'Only laboratory axes with ω = 0',
+                  'Configuration space without p',
+                ],
+                correctIndex: 1,
+                explanation: 'Principal axes make I diagonal and yield the standard Euler form.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m7-u4-q2',
+                question: 'In a body frame, torque relates to L by',
+                options: [
+                  'τ = 0 always',
+                  'τ = (dL/dt)_body + ω × L',
+                  'τ = L only',
+                  'τ = ω only',
+                ],
+                correctIndex: 1,
+                explanation: 'That is the rotating-frame transport theorem applied to L.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
