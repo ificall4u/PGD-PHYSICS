@@ -1,33 +1,28 @@
 # Content writing progress & roadmap
 
-**Rules:** one course · one module · master-prompt depth · no UI edits · no ASCII schematics · update after every step.
+**Rules:** one course · one module · master-prompt depth · no UI edits · update after every step.
 
 ## Roadmap
 
 | # | Course | Status |
 |---|--------|--------|
-| 1 | PHY 701 | **COMPLETE** |
-| 2 | PHY 703 | **COMPLETE** |
-| 3 | **PHY 702 Electromagnetism** | **In progress 2/8** |
+| 1–2 | PHY 701, 703 | **COMPLETE** |
+| 3 | **PHY 702 Electromagnetism** | **In progress 3/8** |
 | 4–12 | Remaining | Pending |
 
 ## PHY 702
 
 | Module | Status |
 |--------|--------|
-| 01 Coulomb | Done |
-| **02 Fields & Gauss** | **Done** |
-| 03 Potential / Poisson / Laplace | Pending ← next |
-| 04 Magnetostatics | Pending |
-| 05 EM energy | Pending |
-| 06 Faraday | Pending |
-| 07 Lorentz force | Pending |
-| 08 Maxwell & waves | Pending |
+| 01–02 | Done |
+| **03 Potential / Poisson / Laplace** | **Done** |
+| 04 Magnetostatics | Pending ← next |
+| 05–08 | Pending |
 
-### Module 02 checklist
-- [x] E as force per unit charge; point-charge field
-- [x] Flux Φ_E = ∫ E · dA; net analogy
-- [x] Gauss: ∮ E · dA = Q_enc/ϵ₀
-- [x] Point, infinite line, infinite sheet applications
+### Module 03 checklist
+- [x] Potential vs potential energy; voltage hill
+- [x] E = −∇V
+- [x] Poisson ∇²V = −ρ/ϵ₀; Laplace ∇²V = 0; average-value reading
+- [x] Uniqueness intuition; method of images
 
-**Next:** PHY 702 Module 03 only.
+**Next:** PHY 702 Module 04 only.

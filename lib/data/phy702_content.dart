@@ -499,15 +499,225 @@ Why does the field of an infinite sheet not fall off with distance in this ideal
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy702-m3',
         title: 'Electric Potential, Poisson, and Laplace Equations',
-        summary: 'Electric Potential, Poisson, and Laplace Equations',
+        summary:
+            'Electric potential, E = −grad V, Poisson and Laplace equations, uniqueness and method of images.',
         units: [
-          skeletonUnit(id: 'phy702-m3-u1', title: 'Electric Potential (Voltage)'),
-          skeletonUnit(id: 'phy702-m3-u2', title: 'Relationship Between Electric Field and Potential'),
-          skeletonUnit(id: 'phy702-m3-u3', title: 'Poisson and Laplace Equations'),
-          skeletonUnit(id: 'phy702-m3-u4', title: 'Boundary Value Problems'),
+          Unit(
+            id: 'phy702-m3-u1',
+            title: 'Electric potential (voltage)',
+            content: r'''
+## Learning goal
+
+Distinguish potential energy from electric potential and use a topographic “height” analogy for voltage.
+
+## Potential energy vs potential
+
+A charge q in an electric field has electric **potential energy** U. The **electric potential** (voltage) V is defined so that
+
+U = q V
+
+for a test charge (with a chosen zero of potential). V is potential energy per unit charge, measured in volts (1 V = 1 J/C).
+
+## Topographic analogy
+
+Think of V as the “height” of a landscape. A positive charge is like a ball that rolls downhill — toward lower V. Contours of constant V are equipotentials (level curves). Steep slopes mean rapid change of height with distance — large |E|, as the next unit makes precise.
+
+## Potential difference
+
+Only differences in V are physically measured. We often set V = 0 at infinity for localized charge distributions, or at a grounded conductor.
+
+## Check yourself
+
+If a +1 C charge loses 5 J of potential energy moving from A to B, what is V(A) − V(B)?
+''',
+            keyTakeaways: [
+              'Potential V is potential energy per unit charge: U = q V.',
+              'Voltage differences matter; the zero of V is conventional.',
+              'Equipotentials are like contour lines on a height map of V.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m3-u1-q1',
+                question: 'Electric potential V relates to potential energy U of charge q by',
+                options: [
+                  'U = V only',
+                  'U = q V',
+                  'U = V/q',
+                  'U = q² V',
+                ],
+                correctIndex: 1,
+                explanation: 'By definition U = q V for the electrostatic potential energy.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m3-u2',
+            title: 'Relationship between E and V',
+            content: r'''
+## Learning goal
+
+Relate the electric field to the gradient of potential: E = −∇V, with the minus sign meaning “downhill.”
+
+## Line integral definition
+
+The potential difference is the negative of the work per unit charge by the field along a path:
+
+V(b) − V(a) = −∫_a^b E · dr
+
+For electrostatic fields this integral is path-independent (conservative field).
+
+## Local form
+
+In differential form,
+
+E = −∇V
+
+Component-wise: E_x = −∂V/∂x, and so on.
+
+## Physical reading of the minus sign
+
+∇V points toward increasing V (uphill). The force on a positive charge is qE and points toward decreasing V (downhill). Hence E points opposite to ∇V.
+
+On the topographic map: E points down the steepest slope of the voltage hill.
+
+## Check yourself
+
+If V increases in the +x direction only, which way does E point?
+''',
+            keyTakeaways: [
+              'V(b) − V(a) = −∫_a^b E · dr.',
+              'E = −∇V in electrostatics.',
+              'E points downhill on the potential landscape.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m3-u2-q1',
+                question: 'The relation between E and V is',
+                options: [
+                  'E = ∇V',
+                  'E = −∇V',
+                  'E = V²',
+                  'E independent of V always',
+                ],
+                correctIndex: 1,
+                explanation: 'Electrostatic field is the negative gradient of potential.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m3-u3',
+            title: 'Poisson and Laplace equations',
+            content: r'''
+## Learning goal
+
+Derive Poisson’s equation from Gauss’s law and the gradient relation, and interpret Laplace’s equation as a local averaging property.
+
+## From Gauss to divergence form
+
+Differential form of Gauss’s law:
+
+∇ · E = ρ / ϵ₀
+
+Substitute E = −∇V:
+
+∇ · (−∇V) = ρ / ϵ₀ ⇒ −∇²V = ρ / ϵ₀
+
+so
+
+∇²V = −ρ / ϵ₀
+
+This is **Poisson’s equation**. Here ∇² is the Laplacian (sum of second pure derivatives in Cartesian coordinates).
+
+## Charge-free regions: Laplace’s equation
+
+Where ρ = 0,
+
+∇²V = 0
+
+**Laplace’s equation.** Solutions are called harmonic functions.
+
+## Plain-English reading of Laplace
+
+In free space, the value of V at a point is the average of V over any small sphere (or circle in 2D) centred on that point. There are no local bumps or pits in V without charge — charge is what sources curvature of V through Poisson’s equation.
+
+## Check yourself
+
+If ρ > 0 in a region, what can you say about the sign of ∇²V from Poisson’s equation?
+''',
+            keyTakeaways: [
+              'Poisson: ∇²V = −ρ/ϵ₀.',
+              'Laplace: ∇²V = 0 where ρ = 0.',
+              'Laplace means V equals its local spatial average.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m3-u3-q1',
+                question: 'Poisson\'s equation is',
+                options: [
+                  '∇ · E = 0',
+                  '∇²V = −ρ/ϵ₀',
+                  '∇ × E = 0 only as the full story',
+                  'V = 0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'Combining Gauss and E = −∇V yields Poisson\'s equation.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m3-u4',
+            title: 'Boundary value problems: uniqueness and images',
+            content: r'''
+## Learning goal
+
+State the uniqueness idea for Laplace/Poisson problems with boundary data, and introduce the method of images as a visual problem-solving tool.
+
+## Boundary value problems
+
+To find V in a region one needs:
+
+- Poisson or Laplace’s equation inside the region
+- Boundary conditions on the surface (specified V, or specified normal derivative related to surface charge, or mixed conditions)
+
+## Uniqueness (intuition)
+
+If two candidate potentials satisfy the same PDE and the same boundary conditions on the closed boundary of a region, their difference satisfies Laplace’s equation with zero boundary values and must vanish — so the solution is unique. (Standard theorems make this precise for Dirichlet, Neumann with compatibility, etc.)
+
+Practically: once you find any V that satisfies the equation and the boundaries, you have the answer.
+
+## Method of images (visual idea)
+
+Some problems with conductors can be solved by inventing **image charges** outside the region of interest so that the equipotential boundary conditions on the conductor are automatically met. Inside the physical region, the potential of the real plus image charges solves Laplace/Poisson with the correct boundaries; the images themselves are not physical charge in that region.
+
+Classic example: point charge above an infinite grounded conducting plane — an opposite image charge mirrored below the plane makes V = 0 on the plane.
+
+## Check yourself
+
+Why must image charges be placed outside the region where you claim the solution is valid?
+''',
+            keyTakeaways: [
+              'PDE + boundary conditions determine V uniquely (under standard conditions).',
+              'Any valid solution is the solution.',
+              'Method of images uses fictitious charges to enforce conductor boundary conditions.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m3-u4-q1',
+                question: 'The method of images is used to',
+                options: [
+                  'Violate Gauss\'s law',
+                  'Satisfy boundary conditions with fictitious charges outside the region of interest',
+                  'Replace Poisson\'s equation with F = ma',
+                  'Eliminate the need for any boundary data',
+                ],
+                correctIndex: 1,
+                explanation: 'Images are a technique to meet boundary conditions analytically.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
