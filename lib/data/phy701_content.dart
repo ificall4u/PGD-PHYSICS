@@ -2761,15 +2761,395 @@ If f is replaced by f(ax) with a > 1 (compression in x), how must |f̂| change s
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy701-m7',
         title: 'Complex Analysis, Residue Calculus, and Green\'s Functions',
-        summary: 'Complex Analysis, Residue Calculus, and Green\'s Functions',
+        summary:
+            'Cauchy and residue theorems, worked contour integral, Green\'s functions as impulse responses, general 1D S–L jump construction.',
         units: [
-          skeletonUnit(id: 'phy701-m7-u1', title: 'Cauchy\'s Residue Theorem'),
-          skeletonUnit(id: 'phy701-m7-u2', title: 'Contour Integration'),
-          skeletonUnit(id: 'phy701-m7-u3', title: 'Impulse Response Theory'),
-          skeletonUnit(id: 'phy701-m7-u4', title: 'Construction Rules'),
+          Unit(
+            id: 'phy701-m7-u1',
+            title: 'Cauchy\'s theorem and the residue theorem',
+            content: r'''
+## Learning goal
+
+State Cauchy's theorem, define residues via Laurent series, compute residues at poles of order m, and prove the residue theorem from Cauchy's theorem applied to small circles about singularities.
+
+## Complex derivative and holomorphicity
+
+A function f of a complex variable z is **holomorphic** (analytic) in an open set U if f'(z) exists at every point of U, where
+
+f'(z) = lim_{h→0} [f(z+h) − f(z)] / h
+
+with h complex. Holomorphic functions satisfy the Cauchy–Riemann equations and are automatically infinitely differentiable in U.
+
+## Cauchy's theorem
+
+**Statement.** Let C be a simple closed positively oriented contour (counter-clockwise), and let f be holomorphic inside and on C. Then
+
+∮_C f(z) dz = 0
+
+**Proof idea (Green’s theorem route).** Write z = x + i y, f = u + i v, and dz = dx + i dy. Then
+
+∮_C f dz = ∮_C (u dx − v dy) + i ∮_C (v dx + u dy)
+
+Apply Green’s theorem in the plane to each real line integral. The integrands’ curls involve u_x − v_y and v_x + u_y. Cauchy–Riemann says u_x = v_y and u_y = −v_x, so both curls vanish. Hence both integrals are zero.
+
+(Alternative proofs use Goursat’s form avoiding continuity of f', or homotopy invariance of contour integrals in holomorphic regions.)
+
+## Laurent series and residue
+
+About an isolated singularity z_0, f has a Laurent expansion
+
+f(z) = Σ_{n=−∞}^{∞} a_n (z − z_0)^n
+
+valid in an annulus 0 < |z − z_0| < R. The coefficient a_{−1} is the **residue**:
+
+Res(f; z_0) := a_{−1}
+
+**Why residues matter for integrals.** On a small circle γ about z_0, parametrize z = z_0 + ε e^{iθ}, dz = i ε e^{iθ} dθ. Then
+
+∮_γ (z − z_0)^n dz = 2πi if n = −1, and 0 otherwise
+
+So only the a_{−1} term survives:
+
+∮_γ f(z) dz = 2πi a_{−1} = 2πi Res(f; z_0)
+
+## Residue formulas at poles
+
+If f has a **simple pole** at z_0 (principal part only a_{−1}/(z−z_0)),
+
+Res(f; z_0) = lim_{z→z_0} (z − z_0) f(z)
+
+If f has a pole of **order m** at z_0,
+
+Res(f; z_0) = (1/(m−1)!) lim_{z→z_0} d^{m−1}/dz^{m−1} [ (z − z_0)^m f(z) ]
+
+## Residue theorem
+
+**Statement.** Let C be a simple closed positive contour, and let f be holomorphic on and inside C except for finitely many isolated singularities z_1, …, z_N inside C. Then
+
+∮_C f(z) dz = 2πi Σ_{k=1}^{N} Res(f; z_k)
+
+**Proof.** Excise each singularity with a small circle γ_k oriented clockwise (negative orientation) so that f is holomorphic in the multiply connected region between C and the γ_k. The integral over the whole boundary vanishes by Cauchy’s theorem (or its extension to such regions). The integral over each clockwise γ_k equals −∮_{counter-clockwise γ_k} f dz = −2πi Res(f; z_k). Accounting for orientation yields the stated formula.
+
+## Check yourself
+
+Compute Res(e^z / z²; 0) using the order-2 formula.
+''',
+            keyTakeaways: [
+              'Cauchy: ∮ f = 0 when f is holomorphic inside and on a simple closed curve.',
+              'Residue = Laurent coefficient a_{−1}; simple and order-m formulas compute it.',
+              'Residue theorem: ∮_C f = 2πi × sum of residues inside C.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m7-u1-q1',
+                question: 'The residue at an isolated singularity is the coefficient of',
+                options: [
+                  '(z−z_0)^2',
+                  '(z−z_0)^{−1} in the Laurent series',
+                  'The constant term only',
+                  'e^z always',
+                ],
+                correctIndex: 1,
+                explanation: 'Res(f; z_0) = a_{−1}.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m7-u1-q2',
+                question: '∮_C f dz equals 2πi times',
+                options: [
+                  'The maximum of |f| on C',
+                  'The sum of residues of f inside C',
+                  'f\' at one interior point always',
+                  'Zero always even with poles inside',
+                ],
+                correctIndex: 1,
+                explanation: 'That is the residue theorem.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m7-u2',
+            title: 'Contour integration of a real integral',
+            content: r'''
+## Learning goal
+
+Evaluate a real improper integral completely using a semicircular contour, the residue theorem, and a vanishing-arc estimate, and state the role of Jordan’s lemma for Fourier-type integrals.
+
+## Model integral
+
+Compute
+
+I = ∫_{−∞}^{∞} dx / (x² + 1)
+
+We will show I = π.
+
+## Complex function and poles
+
+Set f(z) = 1/(z² + 1) = 1/[(z − i)(z + i)].  
+Simple poles at z = i and z = −i.
+
+## Contour
+
+For R > 1, let C_R consist of the real segment [−R, R] and the upper semicircle Γ_R: z = R e^{iθ}, θ ∈ [0, π]. Only the pole z = i lies inside C_R.
+
+## Residue at z = i
+
+Res(f; i) = lim_{z→i} (z − i) / [(z − i)(z + i)] = 1/(2i)
+
+## Integral over C_R
+
+∮_{C_R} f dz = 2πi · Res(f; i) = 2πi · (1/(2i)) = π
+
+But
+
+∮_{C_R} f dz = ∫_{−R}^{R} dx/(x²+1) + ∫_{Γ_R} f(z) dz
+
+## Arc estimate
+
+On Γ_R, |z| = R, so |z² + 1| ≥ |z|² − 1 = R² − 1. Thus |f(z)| ≤ 1/(R² − 1). The length of Γ_R is π R, so
+
+|∫_{Γ_R} f dz| ≤ length(Γ_R) · max|f| ≤ π R / (R² − 1) → 0 as R → ∞
+
+## Limit R → ∞
+
+∫_{−∞}^{∞} dx/(x²+1) + 0 = π
+
+Hence I = π.
+
+## Jordan’s lemma (role)
+
+For integrals of the form ∫_{−∞}^{∞} R(x) e^{i x} dx with R rational, one studies R(z) e^{i z} on a semicircle. On the upper half-plane, Im(z) ≥ 0, so |e^{i z}| = e^{−Im(z)} ≤ 1 and decays when Im(z) is large. **Jordan’s lemma** gives conditions under which the integral of e^{i z} R(z) over Γ_R still tends to 0 as R → ∞ even though |e^{i z}| is not small on the whole arc. One then evaluates the real integral as 2πi times the sum of residues in the upper half-plane (for the e^{i x} convention).
+
+## Check yourself
+
+Why was the upper half-plane chosen for 1/(z²+1) rather than the lower? What would change if we closed below?
+''',
+            keyTakeaways: [
+              'Close a contour enclosing known poles; apply the residue theorem.',
+              'Prove the arc contribution vanishes as R → ∞ by a length × max|f| bound.',
+              'Jordan\'s lemma handles e^{iz} factors on large semicircles for Fourier-type integrals.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m7-u2-q1',
+                question: 'For ∫ dx/(x²+1) via the upper half-plane, the enclosed pole is',
+                options: [
+                  'z = −i',
+                  'z = i',
+                  'z = 0',
+                  'z = ∞',
+                ],
+                correctIndex: 1,
+                explanation: 'Only z = i lies in the upper half-plane.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m7-u2-q2',
+                question: '∫_{−∞}^{∞} dx/(x²+1) equals',
+                options: [
+                  '0',
+                  '1',
+                  'π',
+                  '2π',
+                ],
+                correctIndex: 2,
+                explanation: 'The residue calculation gives π.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m7-u3',
+            title: 'Green\'s functions as impulse responses',
+            content: r'''
+## Learning goal
+
+Define the Green’s function of a linear differential operator as the response to a delta-function source, and show how general sources are solved by superposition.
+
+## Definition
+
+Let L be a linear differential operator acting in the variable x (coefficients may depend on x). A **Green’s function** G(x, x') for L, subject to specified homogeneous boundary conditions in x, satisfies
+
+L_x G(x, x') = δ(x − x')
+
+Here:
+
+- x is the field point (where we observe the response)
+- x' is the source point (where the unit impulse sits)
+- L_x means L acts on the x dependence of G
+- δ is the Dirac delta from Module 5
+
+## Superposition for a general source
+
+Suppose we wish to solve L u = f with the same homogeneous boundary conditions. Write formally
+
+u(x) = ∫ G(x, x') f(x') dx'
+
+Apply L_x under the integral (justified for suitable f and G):
+
+L_x u = ∫ L_x G(x, x') f(x') dx' = ∫ δ(x − x') f(x') dx' = f(x)
+
+So G converts an arbitrary source f into the solution u by linear superposition of impulse responses.
+
+## Physical reading
+
+In electrostatics, G is the potential at x due to a unit point charge at x' (with conductors grounded, etc.). In dynamics, G is the displacement at x due to a unit impulse at x'. The name “impulse response” is exactly this idea.
+
+## Causality / boundary conditions
+
+Which homogeneous solutions appear in G is fixed by the boundary conditions (Dirichlet, Neumann, radiation conditions at infinity, etc.). Different BCs produce different Green’s functions for the same formal operator L.
+
+## Check yourself
+
+If L and the boundary conditions are translation-invariant on the whole line, why can one write G(x, x') = g(x − x')?
+''',
+            keyTakeaways: [
+              'L_x G(x, x\') = δ(x − x\') defines the Green\'s function.',
+              'u = ∫ G f solves L u = f by superposition of impulse responses.',
+              'Boundary conditions select which homogeneous pieces enter G.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m7-u3-q1',
+                question: 'The defining equation for G is',
+                options: [
+                  'L G = 0 everywhere including at x = x\'',
+                  'L_x G(x, x\') = δ(x − x\')',
+                  'G = 1',
+                  'G\'\' = G',
+                ],
+                correctIndex: 1,
+                explanation: 'G is the fundamental solution for L with the chosen BCs.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m7-u4',
+            title: 'Jump construction for a general 1D Sturm–Liouville operator',
+            content: r'''
+## Learning goal
+
+Derive the continuity and derivative-jump conditions for the Green’s function of a general second-order Sturm–Liouville operator, and construct G explicitly from left and right homogeneous solutions.
+
+## Operator
+
+On an interval [a, b], consider
+
+L[y] = − d/dx [ p(x) dy/dx ] − q(x) y
+
+with p continuously differentiable, p(x) > 0, and q continuous. (Weight w can be restored by studying L y = λ w y; for the source problem L G = δ we keep the form above, or L G = δ/w depending on convention — here L G = δ with L as written.)
+
+The Green’s function satisfies
+
+− d/dx [ p(x) ∂G/∂x ] − q(x) G = δ(x − x')
+
+with homogeneous boundary conditions at x = a and x = b in the x variable.
+
+## Homogeneous solutions
+
+Let y_L(x) solve L[y] = 0 on [a, b] and the left boundary condition at x = a.  
+Let y_R(x) solve L[y] = 0 and the right boundary condition at x = b.
+
+Assume y_L and y_R are independent, so their Wronskian
+
+W(y_L, y_R) = y_L y_R' − y_R y_L'
+
+is not identically zero. For the SL operator, Abel’s identity (Module 1) gives p(x) W(y_L, y_R)(x) = constant.
+
+## Piecewise definition of G
+
+For x ≠ x', G is a homogeneous solution. Enforce BCs by
+
+G(x, x') = A(x') y_L(x)    for x < x'
+
+G(x, x') = B(x') y_R(x)    for x > x'
+
+## Continuity of G at x = x'
+
+Integrate the ODE across a tiny interval (x'−ε, x'+ε). The delta produces a jump in p ∂G/∂x, but G itself remains continuous for a second-order operator in divergence form (no delta in lower-order terms that would jump G). Thus
+
+A(x') y_L(x') = B(x') y_R(x')
+
+## Jump in p ∂G/∂x
+
+Integrate
+
+− d/dx [ p ∂G/∂x ] − q G = δ(x − x')
+
+from x'−ε to x'+ε:
+
+− [ p ∂G/∂x ]_{x'−ε}^{x'+ε} − ∫ q G dx = 1
+
+Let ε → 0. The integral of q G vanishes if G is bounded. Therefore
+
+− p(x') ( ∂G/∂x |_{x'+} − ∂G/∂x |_{x'−} ) = 1
+
+so
+
+p(x') ( G_x(x'+) − G_x(x'−) ) = −1
+
+Now G_x(x'−) = A y_L'(x') and G_x(x'+) = B y_R'(x'), hence
+
+p(x') [ B y_R'(x') − A y_L'(x') ] = −1
+
+## Solving for A and B
+
+From continuity: A y_L(x') = B y_R(x').  
+From the jump: B y_R'(x') − A y_L'(x') = −1/p(x').
+
+This linear system yields
+
+A(x') = − y_R(x') / [ p(x') W(y_L, y_R)(x') ]
+
+B(x') = − y_L(x') / [ p(x') W(y_L, y_R)(x') ]
+
+(with sign conventions matching W = y_L y_R' − y_R y_L'). Using p W = constant, one may write a symmetric formula
+
+G(x, x') = y_L(x_<) y_R(x_>) / (− p W)
+
+where x_< = min(x,x') and x_> = max(x,x'), up to the overall sign fixed by the jump condition.
+
+## Special case check: −d²/dx² on [0, 1]
+
+Here p = 1, q = 0, y_L = x, y_R = 1−x, W = x(−1) − (1−x)(1) = −1.  
+Then G = x_<(1 − x_>), matching the explicit Dirichlet Green function constructed by elementary matching.
+
+## Check yourself
+
+Why does a second-order operator force a jump in the first derivative of G but continuity of G itself?
+''',
+            keyTakeaways: [
+              'G is built from left and right homogeneous solutions matching each boundary.',
+              'G is continuous at x\'; p G_x jumps by −1 across x\'.',
+              'A and B are fixed by continuity and the jump; W and p normalize G.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m7-u4-q1',
+                question: 'Across x = x\', for a standard second-order S–L Green\'s function,',
+                options: [
+                  'G jumps and G_x is continuous',
+                  'G is continuous and p G_x jumps',
+                  'Both G and G_x are C^∞ with no feature',
+                  'G is infinite for all x',
+                ],
+                correctIndex: 1,
+                explanation: 'Integrating the ODE across x\' produces a jump in p G_x while G stays continuous.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m7-u4-q2',
+                question: 'The jump condition from −(p G_x)\' − q G = δ reads',
+                options: [
+                  'G(x\'+) − G(x\'−) = 1',
+                  'p(x\')(G_x(x\'+) − G_x(x\'−)) = −1',
+                  'p = 0 at x\'',
+                  'W = 0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'Integrating the principal part across the delta yields that jump relation.',
+              ),
+            ],
+          ),
         ],
       ),
     ],
