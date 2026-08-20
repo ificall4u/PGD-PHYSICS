@@ -246,15 +246,257 @@ Two equal positive charges sit at (1,0) and (−1,0). What is the direction of t
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy702-m2',
         title: 'Electric Fields and Gauss\' Law',
-        summary: 'Electric Fields and Gauss\' Law',
+        summary:
+            'Electric field concept, flux, Gauss\'s law, and applications to point charge, line, and sheet.',
         units: [
-          skeletonUnit(id: 'phy702-m2-u1', title: 'Electric Field \$E\$ Concept'),
-          skeletonUnit(id: 'phy702-m2-u2', title: 'Electric Flux Intuition'),
-          skeletonUnit(id: 'phy702-m2-u3', title: 'Gauss\' Law'),
-          skeletonUnit(id: 'phy702-m2-u4', title: 'Applications of Gauss\' Law'),
+          Unit(
+            id: 'phy702-m2-u1',
+            title: 'Electric field concept',
+            content: r'''
+## Learning goal
+
+Replace “action at a distance” with the electric field as a local property of space around charges.
+
+## From force to field
+
+Coulomb’s law says a charge q₂ feels a force due to q₁ even when they are separated. One modern way to think about that is: q₁ alters the space around it by creating an **electric field** E. Then the force on a test charge q at a point is
+
+F = q E
+
+so
+
+E = F/q
+
+(for a small test charge that does not disturb the sources).
+
+## Field of a point charge
+
+At a displacement r from a point charge Q (unit vector r̂ from the source toward the field point),
+
+E = k_e (Q / r²) r̂ = (1/(4πϵ₀)) (Q / r²) r̂
+
+Direction: away from Q if Q > 0, toward Q if Q < 0.
+
+## Superposition for fields
+
+Fields from several sources add as vectors:
+
+E_total = E₁ + E₂ + …
+
+That is the same superposition principle as for forces, divided by the test charge.
+
+## Check yourself
+
+If the force on a +2 μC test charge is 0.01 N east, what is E at that point?
+''',
+            keyTakeaways: [
+              'E is force per unit charge: F = q E.',
+              'Point charge: E = k_e Q/r² radially.',
+              'Fields superpose vectorially.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m2-u1-q1',
+                question: 'The electric field E is defined so that the force on a charge q is',
+                options: [
+                  'F = E only',
+                  'F = q E',
+                  'F = E/q',
+                  'F = q² E',
+                ],
+                correctIndex: 1,
+                explanation: 'By definition F = q E in electrostatics for a test charge.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m2-u2',
+            title: 'Electric flux intuition',
+            content: r'''
+## Learning goal
+
+Define electric flux through a surface using a flow-through-a-net picture and the formula Φ_E = ∫ E · dA.
+
+## Water-through-a-net analogy
+
+Imagine water flowing through a butterfly net. The amount of water per time that passes through the net depends on:
+
+- how fast the water flows (field strength)
+- how large the net is (area)
+- whether the net faces the flow or is tilted edge-on (angle)
+
+Electric **flux** is the analogous quantity for the electric field “flowing” through a surface.
+
+## Mathematical definition
+
+For a small patch of surface with area vector dA (magnitude = area, direction = local normal),
+
+dΦ_E = E · dA = E dA cos θ
+
+where θ is the angle between E and the normal. For a finite surface,
+
+Φ_E = ∫_S E · dA
+
+## Closed surfaces
+
+For a closed surface (a “bubble”), the normal is usually chosen **outward**. Positive flux means net field lines leaving the volume; negative means net lines entering.
+
+## Check yourself
+
+If E is everywhere tangent to a surface, what is the flux through that surface?
+''',
+            keyTakeaways: [
+              'Flux measures field “flow” through a surface: Φ_E = ∫ E · dA.',
+              'Tilt and strength both matter (cosine of the angle).',
+              'Closed surfaces use an outward normal by convention.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m2-u2-q1',
+                question: 'Electric flux through a surface is',
+                options: [
+                  'Always equal to the charge only',
+                  '∫ E · dA',
+                  'E × A with no integral ever',
+                  'Independent of orientation',
+                ],
+                correctIndex: 1,
+                explanation: 'Flux is the surface integral of E · dA.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m2-u3',
+            title: 'Gauss\'s law',
+            content: r'''
+## Learning goal
+
+State Gauss’s law in integral form and translate every part into plain English.
+
+## Statement
+
+The total electric flux out of any closed surface equals the enclosed charge divided by ϵ₀:
+
+∮_S E · dA = Q_enc / ϵ₀
+
+## English translation
+
+- ∮_S — integral over a **closed** surface S (the Gaussian surface)
+- E · dA — local contribution to flux
+- Q_enc — total charge inside the volume bounded by S (not charges outside)
+- ϵ₀ — permittivity of free space
+
+Only enclosed charge appears on the right. Charges outside can affect E on the surface, but their net contribution to the total flux cancels.
+
+## Link to Coulomb
+
+For a point charge at the centre of a sphere of radius r, symmetry gives constant |E| on the sphere and E parallel to dA, so
+
+∮ E · dA = E · 4π r² = Q/ϵ₀ ⇒ E = Q/(4πϵ₀ r²)
+
+Gauss’s law recovers Coulomb’s field for a point charge.
+
+## Check yourself
+
+If a closed surface encloses zero net charge, must E be zero everywhere on the surface?
+''',
+            keyTakeaways: [
+              'Gauss: ∮ E · dA = Q_enc / ϵ₀.',
+              'Only enclosed charge counts for the total flux.',
+              'Symmetric cases turn the integral into algebra for E.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m2-u3-q1',
+                question: 'Gauss\'s law states that the flux through a closed surface equals',
+                options: [
+                  'Zero always',
+                  'Q_enc / ϵ₀',
+                  'Q_enc × ϵ₀',
+                  'Only the potential',
+                ],
+                correctIndex: 1,
+                explanation: '∮ E · dA = Q_enc / ϵ₀.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m2-u4',
+            title: 'Applications: point charge, line, and sheet',
+            content: r'''
+## Learning goal
+
+Use Gauss’s law with symmetry to find E for a point charge, an infinite line charge, and an infinite sheet.
+
+## Point charge
+
+Gaussian surface: sphere of radius r centred on Q. By symmetry E is radial and constant on the sphere.
+
+E · 4π r² = Q/ϵ₀ ⇒ E = Q/(4πϵ₀ r²) radially outward if Q > 0.
+
+## Infinite line charge (linear density λ)
+
+Symmetry: E is radial from the line, depends only on perpendicular distance r.  
+Gaussian surface: cylinder of radius r and length L centred on the line.  
+Flux through the curved wall: E · 2π r L (ends contribute zero if E is perpendicular to the axis).  
+Enclosed charge: λ L.
+
+E · 2π r L = λ L / ϵ₀ ⇒ E = λ / (2π ϵ₀ r)
+
+## Infinite sheet (surface density σ)
+
+Symmetry: E is perpendicular to the sheet, same magnitude on both sides, independent of distance (ideal infinite sheet).  
+Gaussian surface: pillbox piercing the sheet, end area A.  
+Flux: 2 E A (both ends). Enclosed charge: σ A.
+
+2 E A = σ A / ϵ₀ ⇒ E = σ / (2 ϵ₀)
+
+## Method checklist
+
+1. Argue the direction and dependence of E from symmetry.  
+2. Choose a Gaussian surface adapted to that symmetry.  
+3. Evaluate flux as E times a simple area factor.  
+4. Set equal to Q_enc/ϵ₀ and solve for E.
+
+## Check yourself
+
+Why does the field of an infinite sheet not fall off with distance in this idealization?
+''',
+            keyTakeaways: [
+              'Point charge: E = Q/(4πϵ₀ r²).',
+              'Infinite line: E = λ/(2πϵ₀ r).',
+              'Infinite sheet: E = σ/(2ϵ₀), independent of distance.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m2-u4-q1',
+                question: 'The field magnitude of an infinite line charge λ at distance r is',
+                options: [
+                  'λ/(4πϵ₀ r²)',
+                  'λ/(2πϵ₀ r)',
+                  'σ/(2ϵ₀)',
+                  '0',
+                ],
+                correctIndex: 1,
+                explanation: 'Cylindrical Gaussian surface yields E = λ/(2πϵ₀ r).',
+              ),
+              QuizQuestion(
+                id: 'phy702-m2-u4-q2',
+                question: 'An infinite sheet with surface charge σ has field magnitude',
+                options: [
+                  'σ/ϵ₀',
+                  'σ/(2ϵ₀)',
+                  'σ/(4πϵ₀)',
+                  'Depends on 1/r² always',
+                ],
+                correctIndex: 1,
+                explanation: 'Pillbox argument gives E = σ/(2ϵ₀) on each side.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

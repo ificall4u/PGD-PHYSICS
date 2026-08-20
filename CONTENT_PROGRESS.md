@@ -1,39 +1,33 @@
 # Content writing progress & roadmap
 
-**Rules (remind every step):**
-1. One course at a time  
-2. One module prompt at a time, numeric order  
-3. Master-prompt depth — no skipped required derivations, no thin stand-ins  
-4. No UI / Nova / theme edits  
-5. No ASCII schematics; no SVG code blocks in lessons  
-6. Update this file after every step  
+**Rules:** one course · one module · master-prompt depth · no UI edits · no ASCII schematics · update after every step.
 
 ## Roadmap
 
 | # | Course | Status |
 |---|--------|--------|
-| 1 | PHY 701 Mathematical Methods | **COMPLETE** |
-| 2 | PHY 703 Analytical Mechanics | **COMPLETE** |
-| 3 | **PHY 702 Electromagnetism** | **In progress 1/8** |
-| 4–12 | PHY 704 … 799 | Pending |
+| 1 | PHY 701 | **COMPLETE** |
+| 2 | PHY 703 | **COMPLETE** |
+| 3 | **PHY 702 Electromagnetism** | **In progress 2/8** |
+| 4–12 | Remaining | Pending |
 
-## PHY 702 Electromagnetism
+## PHY 702
 
 | Module | Status |
 |--------|--------|
-| **01 Coulomb's law & electrostatic forces** | **Done** |
-| 02 Electric fields & Gauss's law | Pending ← next |
-| 03 Potential, Poisson, Laplace | Pending |
+| 01 Coulomb | Done |
+| **02 Fields & Gauss** | **Done** |
+| 03 Potential / Poisson / Laplace | Pending ← next |
 | 04 Magnetostatics | Pending |
 | 05 EM energy | Pending |
-| 06 Faraday induction | Pending |
+| 06 Faraday | Pending |
 | 07 Lorentz force | Pending |
 | 08 Maxwell & waves | Pending |
 
-### Module 01 checklist
-- [x] Charge intuition; attract/repel  
-- [x] Inverse-square intuition (sphere spreading)  
-- [x] F = k_e |q1 q2|/r² symbol-by-symbol  
-- [x] Vector form + superposition  
+### Module 02 checklist
+- [x] E as force per unit charge; point-charge field
+- [x] Flux Φ_E = ∫ E · dA; net analogy
+- [x] Gauss: ∮ E · dA = Q_enc/ϵ₀
+- [x] Point, infinite line, infinite sheet applications
 
-**Next:** PHY 702 Module 02 only.
+**Next:** PHY 702 Module 03 only.
