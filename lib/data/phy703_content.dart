@@ -1184,15 +1184,282 @@ For L = (1/2)m(ṙ² + r² φ̇²) − V(r), which coordinate is cyclic and what
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy703-m5',
         title: 'Central Forces & Central Potential Problems',
-        summary: 'Central Forces & Central Potential Problems',
+        summary:
+            'Central forces, reduced mass, angular momentum conservation and planar motion, effective potential.',
         units: [
-          skeletonUnit(id: 'phy703-m5-u1', title: 'Physical Definition'),
-          skeletonUnit(id: 'phy703-m5-u2', title: 'Reduction to One-Body Problem'),
-          skeletonUnit(id: 'phy703-m5-u3', title: 'Conservation Laws in Orbit'),
-          skeletonUnit(id: 'phy703-m5-u4', title: 'Effective Potential Energy'),
+          Unit(
+            id: 'phy703-m5-u1',
+            title: 'Physical definition of a central force',
+            content: r'''
+## Learning goal
+
+Define a central force and give the main physical examples used in orbital mechanics.
+
+## Definition
+
+A force on a particle is **central** (about a fixed point O) if it is always directed along the line from O to the particle. In vector form,
+
+F(r) = F(r) r̂
+
+where r is the distance from O, r̂ is the unit vector from O toward the particle, and F(r) depends only on r (not on angles).
+
+Equivalently, F = −∇V with a potential V that depends only on r: V = V(r).
+
+## Examples
+
+- Newtonian gravity of a fixed point mass: F(r) = −GMm/r² (attractive).
+- Coulomb force between charges (same structure with constants k q₁ q₂).
+- Ideal spring force toward a fixed origin: F = −k r (Hooke’s law in 3D radial form).
+
+## Two-body remark
+
+In the two-body problem (Sun–Earth, binary stars), each body pulls the other along the line joining them. After the reduction of the next unit, the relative motion behaves as a single particle in a central force about the center of mass.
+
+## Check yourself
+
+Is a uniform gravitational field F = −mg ẑ near the Earth’s surface a central force about the Earth’s center? About a point on the table?
+''',
+            keyTakeaways: [
+              'A central force is always along the line from a fixed center: F = F(r) r̂.',
+              'It derives from a potential V(r) that depends only on distance.',
+              'Gravity and Coulomb forces are the standard orbital examples.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m5-u1-q1',
+                question: 'A central force about O is always',
+                options: [
+                  'Perpendicular to the radius from O',
+                  'Parallel to the radius vector from O',
+                  'Independent of position',
+                  'Zero',
+                ],
+                correctIndex: 1,
+                explanation: 'Central means along the line from O to the particle.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m5-u2',
+            title: 'Reduction to the one-body problem',
+            content: r'''
+## Learning goal
+
+Derive the reduced mass μ = m₁ m₂ / (m₁ + m₂) and show that relative motion obeys a one-body equation with that mass.
+
+## Two-body setup
+
+Particles of masses m₁, m₂ at positions r₁, r₂ relative to an inertial origin. Interaction forces are equal and opposite along r₁ − r₂ (Newton’s third law, central mutual force).
+
+Total mass M = m₁ + m₂. Center of mass:
+
+R = (m₁ r₁ + m₂ r₂) / M
+
+Relative vector:
+
+r = r₁ − r₂
+
+## Invert for r₁, r₂
+
+r₁ = R + (m₂/M) r
+
+r₂ = R − (m₁/M) r
+
+## Kinetic energy split
+
+T = (1/2) m₁ |ṙ₁|² + (1/2) m₂ |ṙ₂|²
+
+Substitute and expand. Cross terms rearrange so that
+
+T = (1/2) M |Ṙ|² + (1/2) μ |ṙ|²
+
+where the **reduced mass** is
+
+μ = m₁ m₂ / (m₁ + m₂)
+
+## Relative equation of motion
+
+If the only forces are the mutual central forces ±F, the center of mass moves uniformly (or stays at rest), and the relative vector satisfies
+
+μ r̈ = F
+
+with F along r — a single particle of mass μ in a central force.
+
+## Check yourself
+
+If m₂ → ∞ with m₁ fixed (fixed force center), what does μ approach?
+''',
+            keyTakeaways: [
+              'Two-body motion splits into CM motion plus relative motion.',
+              'μ = m₁ m₂ / (m₁ + m₂) is the reduced mass.',
+              'Relative vector obeys μ r̈ = F with F central in r.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m5-u2-q1',
+                question: 'The reduced mass μ equals',
+                options: [
+                  'm₁ + m₂',
+                  'm₁ m₂ / (m₁ + m₂)',
+                  'm₁ − m₂',
+                  'M²',
+                ],
+                correctIndex: 1,
+                explanation: 'μ = m₁ m₂ / (m₁ + m₂).',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m5-u3',
+            title: 'Angular momentum conservation and planar motion',
+            content: r'''
+## Learning goal
+
+Prove that a central force conserves angular momentum, and deduce that the motion lies in a fixed plane.
+
+## Angular momentum
+
+For a particle (or relative particle) at position r with momentum p = μ ṙ,
+
+L = r × p = μ r × ṙ
+
+## Torque of a central force
+
+Torque about the origin: τ = r × F. If F = F(r) r̂, then F is parallel to r, so
+
+r × F = 0
+
+Newton’s law in angular form: dL/dt = τ = 0. Therefore
+
+L = constant vector
+
+## Planar motion
+
+Because L is fixed in direction, r × ṙ is always parallel to a fixed axis. Both r and ṙ remain perpendicular to that axis, so r(t) stays in the fixed plane orthogonal to L (provided L ≠ 0).
+
+If L = 0, motion is along a straight line through the origin.
+
+## Polar form in the plane
+
+In the plane of motion, use polar coordinates (r, φ). Then
+
+|L| = μ r² φ̇ = constant
+
+so
+
+φ̇ = ℓ / (μ r²)
+
+where ℓ = |L| is the constant magnitude of angular momentum.
+
+## Check yourself
+
+Why does r × F vanish when F is parallel to r?
+''',
+            keyTakeaways: [
+              'Central force ⇒ torque zero ⇒ angular momentum L conserved.',
+              'Fixed L direction ⇒ motion in a fixed plane.',
+              'In plane polar coordinates, μ r² φ̇ = ℓ constant.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m5-u3-q1',
+                question: 'For a central force, angular momentum about the center is',
+                options: [
+                  'Never conserved',
+                  'Conserved in time',
+                  'Always zero',
+                  'Equal to the energy',
+                ],
+                correctIndex: 1,
+                explanation: 'Torque vanishes, so dL/dt = 0.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m5-u4',
+            title: 'Effective potential energy',
+            content: r'''
+## Learning goal
+
+Derive the effective potential V_eff(r) = V(r) + ℓ²/(2μ r²), interpret the centrifugal term, and describe the shape for Newtonian gravity.
+
+## Radial kinetic energy
+
+In plane polar coordinates,
+
+T = (1/2) μ (ṙ² + r² φ̇²)
+
+Using ℓ = μ r² φ̇ so φ̇ = ℓ/(μ r²),
+
+T = (1/2) μ ṙ² + ℓ² / (2 μ r²)
+
+## Energy
+
+E = T + V(r) = (1/2) μ ṙ² + [ V(r) + ℓ² / (2 μ r²) ]
+
+Define the **effective potential**
+
+V_eff(r) = V(r) + ℓ² / (2 μ r²)
+
+Then
+
+E = (1/2) μ ṙ² + V_eff(r)
+
+Radial motion looks like a 1D particle of mass μ in the potential V_eff.
+
+## Centrifugal barrier
+
+The term ℓ²/(2μ r²) is positive and blows up as r → 0 when ℓ ≠ 0. It represents the kinetic energy tied up in tangential motion required by angular-momentum conservation: you cannot reach r = 0 without infinite tangential speed if ℓ ≠ 0. That is the **centrifugal barrier**.
+
+## Newtonian gravity
+
+V(r) = −α/r with α = G M μ (for fixed center mass M, or the two-body equivalent). Then
+
+V_eff(r) = −α/r + ℓ²/(2μ r²)
+
+- As r → 0, the +1/r² term dominates → V_eff → +∞.
+- As r → ∞, V_eff → 0 from below if α > 0.
+- There is a minimum at intermediate r for ℓ ≠ 0, allowing circular and bound elliptical orbits for suitable E.
+
+## Check yourself
+
+For ℓ = 0, what happens to V_eff, and can the particle reach the origin if V = −α/r?
+''',
+            keyTakeaways: [
+              'V_eff(r) = V(r) + ℓ²/(2μ r²).',
+              'The ℓ²/(2μ r²) term is the centrifugal barrier.',
+              'Radial motion is 1D motion in V_eff; gravity yields the standard orbital effective potential.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m5-u4-q1',
+                question: 'The centrifugal term in V_eff is',
+                options: [
+                  '−ℓ²/(2μ r²)',
+                  'ℓ²/(2μ r²)',
+                  'μ r²',
+                  'V(r) only',
+                ],
+                correctIndex: 1,
+                explanation: 'Angular kinetic energy becomes ℓ²/(2μ r²) in V_eff.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m5-u4-q2',
+                question: 'Energy in radial form reads',
+                options: [
+                  'E = V only',
+                  'E = (1/2)μ ṙ² + V_eff(r)',
+                  'E = ℓ only',
+                  'E = 0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'That is the 1D energy equation for r(t).',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
