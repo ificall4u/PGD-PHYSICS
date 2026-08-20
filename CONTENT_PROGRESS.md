@@ -1,6 +1,6 @@
 # Content writing progress & roadmap
 
-**Rules:** one course · one module · master-prompt depth · update this file after every step.  
+**Rules:** one course · one module · master-prompt depth · update after every step.  
 **CI:** workflow green.
 
 ## Roadmap
@@ -8,8 +8,8 @@
 | # | Course | Status |
 |---|--------|--------|
 | 1 | PHY 701 Mathematical Methods | **COMPLETE** |
-| 2 | PHY 703 Analytical Mechanics | **In progress 3/9** |
-| 3–12 | PHY 702 … 799 | Pending (see authoring order) |
+| 2 | PHY 703 Analytical Mechanics | **In progress 4/9** |
+| 3–12 | Remaining courses | Pending |
 
 ## PHY 703 detail
 
@@ -17,18 +17,18 @@
 |--------|--------|
 | 01 Conservative forces / potential | Done |
 | 02 DoF & generalized coordinates | Done |
-| **03 Variations & action principle** | **Done** |
-| 04 Lagrangian mechanics | Pending ← next |
-| 05 Central forces | Pending |
+| 03 Variations & action principle | Done |
+| **04 Lagrangian mechanics** | **Done** |
+| 05 Central forces | Pending ← next |
 | 06 Hamiltonian | Pending |
 | 07 Rigid body | Pending |
 | 08 Oscillations | Pending |
 | 09 Continuous media | Pending |
 
-### Module 03 checklist
-- [x] Path vs Newtonian intuition + Fermat metaphor
-- [x] Action S = ∫ L dt; L = T − V
-- [x] Full δS = 0 → integration by parts → Euler–Lagrange
-- [x] Quizzes / takeaways; no ASCII; UI untouched
+### Module 04 checklist
+- [x] Four-step Lagrangian recipe
+- [x] Mass–spring → m q̈ + k q = 0
+- [x] Pendulum geometry → θ̈ + (g/ℓ) sin θ = 0
+- [x] pⱼ = ∂L/∂q̇ⱼ; cyclic coordinates; conservation / Noether intuition
 
-**Next:** PHY 703 Module 04 only.
+**Next:** PHY 703 Module 05 only.

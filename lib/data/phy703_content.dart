@@ -895,15 +895,293 @@ Where did the fixed-endpoint condition η(t₁) = η(t₂) = 0 enter the derivat
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy703-m4',
         title: 'Lagrangian Mechanics & Applications',
-        summary: 'Lagrangian Mechanics & Applications',
+        summary:
+            'Lagrangian recipe, mass-spring and pendulum worked examples, generalized momenta and cyclic coordinates.',
         units: [
-          skeletonUnit(id: 'phy703-m4-u1', title: 'The Lagrangian Recipe'),
-          skeletonUnit(id: 'phy703-m4-u2', title: 'Step-by-Step Application 1'),
-          skeletonUnit(id: 'phy703-m4-u3', title: 'Step-by-Step Application 2'),
-          skeletonUnit(id: 'phy703-m4-u4', title: 'Generalized Momenta & Cyclic Coordinates'),
+          Unit(
+            id: 'phy703-m4-u1',
+            title: 'The Lagrangian recipe',
+            content: r'''
+## Learning goal
+
+State a universal four-step procedure for solving a standard mechanical problem with the Lagrangian method.
+
+## The four steps
+
+1. **Choose generalized coordinates** q₁, …, qₙ that already incorporate holonomic constraints and match the degrees of freedom.
+
+2. **Write the kinetic energy** T as a function of the q’s and q̇’s. Start from Cartesian (1/2)m(ẋ²+ẏ²+ż²) for each particle if needed, then substitute x(q), y(q), z(q).
+
+3. **Write the potential energy** V as a function of the q’s (and possibly t). Examples: mgy, (1/2)kx², gravitational or electrostatic potentials.
+
+4. **Form L = T − V** and apply the Euler–Lagrange equation for each coordinate:
+
+d/dt (∂L/∂q̇ᵢ) − ∂L/∂qᵢ = 0
+
+## What you get
+
+A system of second-order differential equations for qᵢ(t) — the equations of motion — without explicitly introducing constraint forces that do no virtual work (for ideal holonomic constraints).
+
+## Check yourself
+
+Why is step 1 (choosing q’s that build in constraints) important before writing T and V?
+''',
+            keyTakeaways: [
+              'Recipe: choose q\'s → write T → write V → L = T − V → Euler–Lagrange.',
+              'T is often easiest from Cartesians after substituting x(q).',
+              'Ideal holonomic constraints are built into the coordinates, not added as extra forces.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m4-u1-q1',
+                question: 'The Lagrangian recipe ends by applying',
+                options: [
+                  'Only Newton\'s third law',
+                  'The Euler–Lagrange equations to L = T − V',
+                  'Fermat\'s principle to light only',
+                  'Random forces',
+                ],
+                correctIndex: 1,
+                explanation: 'Step 4 is forming L and writing EL equations.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m4-u2',
+            title: 'Application 1: mass–spring oscillator',
+            content: r'''
+## Learning goal
+
+Carry out the Lagrangian recipe for a one-dimensional mass–spring system and recover m q̈ + k q = 0.
+
+## System
+
+Mass m slides without friction in one dimension, attached to a fixed wall by a spring of constant k. Let q be the extension from equilibrium (so V = 0 at q = 0).
+
+## Step 1 — Coordinate
+
+One degree of freedom: generalized coordinate q.
+
+## Step 2 — Kinetic energy
+
+T = (1/2) m q̇²
+
+## Step 3 — Potential energy
+
+V = (1/2) k q²
+
+## Step 4 — Lagrangian and EL
+
+L = T − V = (1/2) m q̇² − (1/2) k q²
+
+Compute:
+
+∂L/∂q̇ = m q̇
+
+d/dt (∂L/∂q̇) = m q̈
+
+∂L/∂q = − k q
+
+Euler–Lagrange: m q̈ − (−k q) = 0 ⇒
+
+m q̈ + k q = 0
+
+This is Newton’s second law with F = −k q. The Lagrangian method reproduces the familiar oscillator equation.
+
+## Check yourself
+
+If the equilibrium were shifted so V = (1/2)k(q − q₀)², what changes in the EL equation after a redefinition of the origin?
+''',
+            keyTakeaways: [
+              'For the mass–spring: L = (1/2)m q̇² − (1/2)k q².',
+              'EL yields m q̈ + k q = 0.',
+              'Lagrangian mechanics agrees with Newton for this standard system.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m4-u2-q1',
+                question: 'For L = (1/2)m q̇² − (1/2)k q², the EL equation is',
+                options: [
+                  'm q̈ − k q = 0',
+                  'm q̈ + k q = 0',
+                  'q̈ = 0',
+                  'k q̈ + m q = 0',
+                ],
+                correctIndex: 1,
+                explanation: 'd/dt(m q̇) − (−k q) = 0 gives m q̈ + k q = 0.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m4-u3',
+            title: 'Application 2: simple pendulum',
+            content: r'''
+## Learning goal
+
+Express the plane pendulum in terms of the angle θ, build L, and derive the exact equation of motion.
+
+## Geometry
+
+Pivot at the origin; rod length ℓ; mass m in a vertical plane. Angle θ measured from the downward vertical.
+
+Cartesian coordinates of the mass:
+
+x = ℓ sin θ
+
+y = −ℓ cos θ
+
+(with y increasing upward).
+
+## Velocities
+
+ẋ = ℓ θ̇ cos θ
+
+ẏ = ℓ θ̇ sin θ
+
+ẋ² + ẏ² = ℓ² θ̇² (cos²θ + sin²θ) = ℓ² θ̇²
+
+## Kinetic and potential energy
+
+T = (1/2) m (ẋ² + ẏ²) = (1/2) m ℓ² θ̇²
+
+V = m g y = − m g ℓ cos θ
+
+(If you prefer V = 0 at the bottom, use V = m g ℓ (1 − cos θ); the two choices differ by a constant and give the same EL equation.)
+
+## Lagrangian
+
+Using V = − m g ℓ cos θ:
+
+L = (1/2) m ℓ² θ̇² + m g ℓ cos θ
+
+Using V = m g ℓ (1 − cos θ):
+
+L = (1/2) m ℓ² θ̇² − m g ℓ (1 − cos θ)
+
+## Euler–Lagrange
+
+Take L = (1/2) m ℓ² θ̇² + m g ℓ cos θ.
+
+∂L/∂θ̇ = m ℓ² θ̇
+
+d/dt (∂L/∂θ̇) = m ℓ² θ̈
+
+∂L/∂θ = − m g ℓ sin θ
+
+EL: m ℓ² θ̈ − (− m g ℓ sin θ) = 0 ⇒
+
+θ̈ + (g/ℓ) sin θ = 0
+
+For small θ, sin θ ≈ θ, recovering θ̈ + (g/ℓ) θ = 0.
+
+## Check yourself
+
+Show that switching to V = m g ℓ (1 − cos θ) yields the same EL equation.
+''',
+            keyTakeaways: [
+              'Pendulum: T = (1/2)m ℓ² θ̇² after substituting Cartesians.',
+              'L leads to θ̈ + (g/ℓ) sin θ = 0.',
+              'Additive constants in V do not change the equations of motion.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m4-u3-q1',
+                question: 'The exact pendulum equation from EL is',
+                options: [
+                  'θ̈ + (g/ℓ) θ = 0 only (exact for all angles)',
+                  'θ̈ + (g/ℓ) sin θ = 0',
+                  'θ̈ = 0',
+                  'θ̈ − (g/ℓ) sin θ = 0',
+                ],
+                correctIndex: 1,
+                explanation: 'The nonlinear equation is θ̈ + (g/ℓ) sin θ = 0.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m4-u4',
+            title: 'Generalized momenta and cyclic coordinates',
+            content: r'''
+## Learning goal
+
+Define generalized momentum, identify cyclic coordinates, and connect missing coordinates in L to conservation laws (Noether intuition).
+
+## Generalized momentum
+
+For each coordinate qⱼ define
+
+pⱼ := ∂L/∂q̇ⱼ
+
+This is the **generalized momentum** conjugate to qⱼ. For a free particle with L = (1/2)m ẋ² and q = x, one gets p = m ẋ — ordinary linear momentum. For the pendulum coordinate θ, p_θ = m ℓ² θ̇ — angular momentum about the pivot.
+
+## Euler–Lagrange in momentum form
+
+EL says
+
+dpⱼ/dt = ∂L/∂qⱼ
+
+So the rate of change of pⱼ equals how L depends on qⱼ itself.
+
+## Cyclic coordinates
+
+If L does not depend on a particular coordinate qⱼ (though it may still depend on q̇ⱼ),
+
+∂L/∂qⱼ = 0
+
+then
+
+dpⱼ/dt = 0 ⇒ pⱼ = constant
+
+Such a qⱼ is called **cyclic** (or ignorable). Its conjugate momentum is conserved.
+
+## Noether intuition
+
+A coordinate that does not appear in L labels a direction in configuration space along which the physics looks the same — a **symmetry**. The conserved pⱼ is the quantity tied to that symmetry (Noether’s theorem in elementary form: continuous symmetry ↔ conserved momentum).
+
+### Examples
+
+- Free particle: L independent of x ⇒ p_x = mẋ conserved (translation symmetry).
+- Central force in polar coordinates: L independent of φ ⇒ p_φ = angular momentum conserved (rotational symmetry).
+
+## Check yourself
+
+For L = (1/2)m(ṙ² + r² φ̇²) − V(r), which coordinate is cyclic and what is conserved?
+''',
+            keyTakeaways: [
+              'pⱼ = ∂L/∂q̇ⱼ is the momentum conjugate to qⱼ.',
+              'If ∂L/∂qⱼ = 0, then pⱼ is conserved (qⱼ is cyclic).',
+              'A missing coordinate signals a symmetry and a conservation law.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m4-u4-q1',
+                question: 'If L does not depend on qⱼ, then',
+                options: [
+                  'qⱼ must be zero',
+                  'pⱼ = ∂L/∂q̇ⱼ is constant in time',
+                  'Energy is always zero',
+                  'The system has no kinetic energy',
+                ],
+                correctIndex: 1,
+                explanation: 'Cyclic coordinates have conserved conjugate momenta.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m4-u4-q2',
+                question: 'Generalized momentum pⱼ is defined as',
+                options: [
+                  '∂L/∂qⱼ',
+                  '∂L/∂q̇ⱼ',
+                  'qⱼ itself',
+                  'T + V',
+                ],
+                correctIndex: 1,
+                explanation: 'pⱼ := ∂L/∂q̇ⱼ.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
