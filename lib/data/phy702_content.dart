@@ -929,14 +929,172 @@ Why does heating a magnet past a critical temperature often destroy its permanen
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy702-m5',
         title: 'Electric and Magnetic Energy Storage',
-        summary: 'Electric and Magnetic Energy Storage',
+        summary:
+            'Energy in capacitors and E fields, energy in inductors and B fields, field energy densities.',
         units: [
-          skeletonUnit(id: 'phy702-m5-u1', title: 'Energy Stored in Electric Fields'),
-          skeletonUnit(id: 'phy702-m5-u2', title: 'Energy Stored in Magnetic Fields'),
-          skeletonUnit(id: 'phy702-m5-u3', title: 'Energy Density in Fields'),
+          Unit(
+            id: 'phy702-m5-u1',
+            title: 'Energy stored in electric fields',
+            content: r'''
+## Learning goal
+
+Relate the work needed to assemble charges to energy stored in a capacitor and to the energy density of the electric field.
+
+## Assembling charges
+
+Bringing like charges together against repulsion takes work. That work is stored as electrostatic potential energy of the configuration. For a capacitor charged to voltage V with charge Q,
+
+U_E = (1/2) Q V = (1/2) C V² = Q² / (2C)
+
+depending on which pair of variables is convenient.
+
+## Field form
+
+The same energy can be written as an integral over space of a density depending on E. In vacuum,
+
+U_E = (ϵ₀ / 2) ∫ E² dV
+
+so the **electric energy density** is
+
+u_E = (1/2) ϵ₀ E²
+
+## Capacitor picture
+
+Between the plates of a parallel-plate capacitor E is roughly uniform and concentrated in the gap; the formula (1/2)ϵ₀ E² times the gap volume recovers (1/2) C V².
+
+## Check yourself
+
+If E is doubled everywhere in a region (same volume), by what factor does the electric field energy increase?
+''',
+            keyTakeaways: [
+              'Capacitor energy: (1/2) Q V = (1/2) C V².',
+              'In vacuum, u_E = (1/2) ϵ₀ E².',
+              'Assembling charges stores energy in the electric field configuration.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m5-u1-q1',
+                question: 'The electric energy density in vacuum is',
+                options: [
+                  'ϵ₀ E',
+                  '(1/2) ϵ₀ E²',
+                  'E² / ϵ₀',
+                  '0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'u_E = (1/2) ϵ₀ E².',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m5-u2',
+            title: 'Energy stored in magnetic fields',
+            content: r'''
+## Learning goal
+
+Connect the work done against induced emf while building a current to energy stored in an inductor and to magnetic energy density.
+
+## Building a current
+
+When current in an inductor increases, the changing flux induces an emf that opposes the increase (Lenz). The power supply must work against that emf. The cumulative work is stored in the magnetic field of the inductor:
+
+U_B = (1/2) L I²
+
+for inductance L carrying current I.
+
+## Field form
+
+In vacuum the magnetic energy can be written
+
+U_B = (1/(2 μ₀)) ∫ B² dV
+
+so the **magnetic energy density** is
+
+u_B = B² / (2 μ₀)
+
+## Solenoid picture
+
+Inside a long solenoid B ≈ μ₀ n I is roughly uniform; integrating u_B over the interior volume recovers (1/2) L I² for the solenoid’s inductance.
+
+## Check yourself
+
+Why must you do net positive work to establish a steady current in an inductor from zero, even though a steady current in a resistance-free circuit needs no ongoing power against resistance?
+''',
+            keyTakeaways: [
+              'Inductor energy: (1/2) L I².',
+              'In vacuum, u_B = B² / (2 μ₀).',
+              'Work against self-inductance while current rises is stored in B.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m5-u2-q1',
+                question: 'The magnetic energy density in vacuum is',
+                options: [
+                  'μ₀ B²',
+                  'B² / (2 μ₀)',
+                  '(1/2) ϵ₀ B²',
+                  'B only',
+                ],
+                correctIndex: 1,
+                explanation: 'u_B = B² / (2 μ₀).',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m5-u3',
+            title: 'Energy density in fields',
+            content: r'''
+## Learning goal
+
+Treat electromagnetic fields as physical systems that store energy in space, not merely as mathematical aids for computing forces.
+
+## Fields as a medium
+
+The expressions
+
+u_E = (1/2) ϵ₀ E²,    u_B = B² / (2 μ₀)
+
+assign energy to each region of space where the fields are nonzero. In this view, a charged capacitor’s energy lives primarily in the gap field; an inductor’s energy lives in the B field of the coil.
+
+## Elastic analogy
+
+Think of the field configuration as a stressed elastic medium: changing the configuration takes work, and that work is recoverable when the fields return to a less energetic arrangement (with care about radiation and resistance in real circuits).
+
+## Total electromagnetic energy
+
+In vacuum, with both fields present,
+
+U = ∫ [ (1/2) ϵ₀ E² + B² / (2 μ₀) ] dV
+
+(This is the static or quasi-static bookkeeping; full electrodynamics also involves energy flow described by the Poynting vector.)
+
+## Check yourself
+
+Where is most of the energy “located” for a parallel-plate capacitor with a large plate separation compared to plate size — between the plates or far outside?
+''',
+            keyTakeaways: [
+              'Field energy densities localize stored energy in space.',
+              'Capacitors store energy mainly in E; inductors mainly in B.',
+              'Total U integrates u_E + u_B over volume.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m5-u3-q1',
+                question: 'Electromagnetic energy in vacuum is associated with',
+                options: [
+                  'Charges only, never fields',
+                  'Integrals of E² and B² over space',
+                  'Mass only',
+                  'Temperature only',
+                ],
+                correctIndex: 1,
+                explanation: 'Energy densities (1/2)ϵ₀ E² and B²/(2μ₀) integrate to total field energy.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
