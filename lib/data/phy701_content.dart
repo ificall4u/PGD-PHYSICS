@@ -2372,15 +2372,393 @@ If one defines both the forward and inverse transforms with symmetric factors 1/
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy701-m6',
         title: 'Fourier Series & Continuous Fourier Transforms',
-        summary: 'Fourier Series & Continuous Fourier Transforms',
+        summary:
+            'Complex Fourier series from real form, continuum limit to transforms, operational theorems, Parseval and Plancherel proofs.',
         units: [
-          skeletonUnit(id: 'phy701-m6-u1', title: 'Trigonometric & Complex Fourier Series'),
-          skeletonUnit(id: 'phy701-m6-u2', title: 'The Continuous Limit'),
-          skeletonUnit(id: 'phy701-m6-u3', title: 'Operational Theorems'),
-          skeletonUnit(id: 'phy701-m6-u4', title: 'Energy Conservation'),
+          Unit(
+            id: 'phy701-m6-u1',
+            title: 'Trigonometric and complex Fourier series',
+            content: r'''
+## Learning goal
+
+Start from the real sine/cosine Fourier series on an interval of length 2L, derive the complex exponential form, and obtain the formula for the coefficients c_n from orthogonality with every step shown.
+
+## Physical motivation
+
+Periodic signals — a vibrating string with fixed ends extended oddly, a periodic driving force, a crystal lattice potential — invite expansion in sines and cosines that match the period. The Fourier series is that expansion.
+
+## Real form on (−L, L)
+
+Assume f is piecewise smooth on (−L, L) and is extended to a 2L-periodic function on ℝ. The real Fourier series is
+
+f(x) ~ a_0/2 + Σ_{n=1}^{∞} [ a_n cos(n π x / L) + b_n sin(n π x / L) ]
+
+### Coefficient formulas (real)
+
+The set {1/√(2L), cos(nπx/L)/√L, sin(nπx/L)/√L} (with appropriate indexing) is orthonormal on (−L, L). Integrating term by term against cos(mπx/L) and sin(mπx/L) and using
+
+∫_{−L}^{L} cos(nπx/L) cos(mπx/L) dx = L δ_{nm}    (n,m ≥ 1)
+∫_{−L}^{L} sin(nπx/L) sin(mπx/L) dx = L δ_{nm}
+∫_{−L}^{L} cos(nπx/L) sin(mπx/L) dx = 0
+
+gives
+
+a_n = (1/L) ∫_{−L}^{L} f(x) cos(n π x / L) dx,    n ≥ 0
+
+b_n = (1/L) ∫_{−L}^{L} f(x) sin(n π x / L) dx,    n ≥ 1
+
+(The factor 1/2 in a_0/2 makes the n = 0 formula for a_n match the same integral expression.)
+
+## Euler identity and complex form
+
+Use
+
+cos θ = (e^{iθ} + e^{−iθ})/2,    sin θ = (e^{iθ} − e^{−iθ})/(2i)
+
+Substitute into the real series and regroup coefficients of e^{i n π x / L} for n ∈ ℤ. The series becomes
+
+f(x) ~ Σ_{n=−∞}^{∞} c_n e^{i n π x / L}
+
+## Formula for c_n
+
+Multiply the complex series by e^{−i m π x / L} and integrate over (−L, L). Use the orthogonality relation
+
+∫_{−L}^{L} e^{i (n−m) π x / L} dx = 2L δ_{nm}
+
+Derivation of that integral: if n = m, integrand is 1 and the integral is 2L. If n ≠ m,
+
+∫_{−L}^{L} e^{i (n−m) π x / L} dx = [ L / (i(n−m)π) e^{i (n−m) π x / L} ]_{−L}^{L} = 0
+
+because e^{i(n−m)π} = e^{−i(n−m)π} = (±1) with matching values at the endpoints for integer n−m.
+
+Therefore
+
+c_m · 2L = ∫_{−L}^{L} f(x) e^{−i m π x / L} dx
+
+so
+
+c_n = (1/(2L)) ∫_{−L}^{L} f(x) e^{−i n π x / L} dx
+
+## Relation to a_n, b_n
+
+For real f and n ≥ 1:
+
+c_n = (a_n − i b_n)/2,    c_{−n} = (a_n + i b_n)/2,    c_0 = a_0/2
+
+## Check yourself
+
+If f is real and even, show that each c_n is real.
+''',
+            keyTakeaways: [
+              'Real Fourier series and complex exponential series are equivalent rearrangements.',
+              'c_n = (1/(2L)) ∫_{−L}^{L} f(x) e^{−i n π x / L} dx.',
+              'Orthogonality of complex exponentials on (−L, L) isolates each c_n.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m6-u1-q1',
+                question: 'The analysis formula for c_n uses',
+                options: [
+                  'e^{i n π x / L} inside the integral only',
+                  'e^{−i n π x / L} inside the integral',
+                  'Only sin(nπx/L)',
+                  'x^n',
+                ],
+                correctIndex: 1,
+                explanation: 'Standard convention pairs e^{i n π x / L} in the series with e^{−i n π x / L} in c_n.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m6-u1-q2',
+                question: '∫_{−L}^{L} e^{i (n−m) π x / L} dx equals',
+                options: [
+                  '0 always',
+                  '2L δ_{nm}',
+                  '1',
+                  'L only when n ≠ m',
+                ],
+                correctIndex: 1,
+                explanation: 'The complex exponentials are orthogonal with norm-squared 2L.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m6-u2',
+            title: 'From Fourier series to the continuous Fourier transform',
+            content: r'''
+## Learning goal
+
+Take the limit L → ∞ of the complex Fourier series carefully and obtain a continuous Fourier transform pair, tracking factors of 2π and the spacing of discrete frequencies.
+
+## Discrete frequencies and spacing
+
+On the interval (−L, L), the allowed wave numbers are
+
+k_n = n π / L,    n ∈ ℤ
+
+The spacing between neighbouring modes is
+
+Δk = k_{n+1} − k_n = π / L
+
+As L → ∞, Δk → 0: the discrete grid of frequencies becomes a continuum.
+
+## Rewrite the series using Δk
+
+From Unit 1,
+
+f(x) ~ Σ_{n=−∞}^{∞} c_n e^{i k_n x}
+
+with
+
+c_n = (1/(2L)) ∫_{−L}^{L} f(y) e^{−i k_n y} dy
+
+Note that
+
+1/(2L) = (π/L) / (2π) = Δk / (2π)
+
+So
+
+f(x) ~ Σ_{n=−∞}^{∞} [ (Δk / (2π)) ∫_{−L}^{L} f(y) e^{−i k_n y} dy ] e^{i k_n x}
+
+= Σ_{n=−∞}^{∞} (Δk) · { (1/(2π)) [∫_{−L}^{L} f(y) e^{−i k_n y} dy] e^{i k_n x} }
+
+## Continuum limit
+
+As L → ∞:
+
+1. The inner integral extends to ∫_{−∞}^{∞} f(y) e^{−i k y} dy, defining the Fourier transform
+2. The sum Σ g(k_n) Δk becomes the integral ∫_{−∞}^{∞} g(k) dk
+
+Therefore
+
+f(x) = (1/(2π)) ∫_{−∞}^{∞} f̂(k) e^{i k x} dk
+
+where
+
+f̂(k) = ∫_{−∞}^{∞} f(x) e^{−i k x} dx
+
+## Transform pair (summary)
+
+Forward:    f̂(k) = ∫_{−∞}^{∞} f(x) e^{−i k x} dx
+
+Inverse:    f(x) = (1/(2π)) ∫_{−∞}^{∞} f̂(k) e^{i k x} dk
+
+(Other conventions move the 2π factors; always stay consistent within one calculation.)
+
+## Check yourself
+
+Show algebraically that 1/(2L) = Δk/(2π) when Δk = π/L.
+''',
+            keyTakeaways: [
+              'Frequency spacing Δk = π/L vanishes as L → ∞.',
+              '1/(2L) = Δk/(2π) converts the discrete sum into a k-integral.',
+              'The Fourier transform pair is the continuum limit of the complex series.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m6-u2-q1',
+                question: 'As L → ∞, the discrete Fourier sum becomes',
+                options: [
+                  'A finite Taylor polynomial',
+                  'A continuous integral over k',
+                  'Independent of f',
+                  'Only a single sine term',
+                ],
+                correctIndex: 1,
+                explanation: 'Densifying frequencies turns Σ (·) Δk into ∫ dk.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m6-u2-q2',
+                question: 'In this unit\'s convention, the inverse transform carries the factor',
+                options: [
+                  '2π in the forward transform only and none in the inverse',
+                  '1/(2π) in front of the k-integral for f(x)',
+                  'No 2π factors anywhere',
+                  '4π always',
+                ],
+                correctIndex: 1,
+                explanation: 'We placed 1/(2π) on the inverse integral.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m6-u3',
+            title: 'Operational theorems: shift, derivative, convolution',
+            content: r'''
+## Learning goal
+
+Derive the spatial shift theorem, the transform of a derivative, and the convolution theorem from the definitions in Unit 2.
+
+## Shift theorem
+
+Let g(x) = f(x − x_0) for fixed x_0. Then
+
+ĝ(k) = ∫_{−∞}^{∞} f(x − x_0) e^{−i k x} dx
+
+Substitute u = x − x_0 (so x = u + x_0, dx = du):
+
+ĝ(k) = ∫_{−∞}^{∞} f(u) e^{−i k (u + x_0)} du = e^{−i k x_0} ∫_{−∞}^{∞} f(u) e^{−i k u} du
+
+= e^{−i k x_0} f̂(k)
+
+A spatial translation multiplies the transform by a pure phase e^{−i k x_0}.
+
+## Derivative theorem
+
+Assume f(x) → 0 as |x| → ∞ and f' is transformable. Integrate by parts:
+
+∫_{−∞}^{∞} f'(x) e^{−i k x} dx = [ f(x) e^{−i k x} ]_{−∞}^{∞} − ∫_{−∞}^{∞} f(x) (−i k) e^{−i k x} dx
+
+Boundary terms vanish by the decay assumption. Therefore
+
+widehat{f'}(k) = i k f̂(k)
+
+Differentiation in x multiplies the transform by i k in this convention.
+
+(Repeated differentiation: n-th derivative ↔ (i k)^n f̂(k).)
+
+## Convolution theorem
+
+Define
+
+(f ∗ g)(x) = ∫_{−∞}^{∞} f(y) g(x − y) dy
+
+Compute the transform:
+
+widehat{f ∗ g}(k) = ∫_{−∞}^{∞} ∫_{−∞}^{∞} f(y) g(x − y) e^{−i k x} dy dx
+
+Change the order of integration (justified for suitable f, g). For fixed y set u = x − y:
+
+∫_{−∞}^{∞} g(x − y) e^{−i k x} dx = ∫_{−∞}^{∞} g(u) e^{−i k (u+y)} du = e^{−i k y} ĝ(k)
+
+Therefore
+
+widehat{f ∗ g}(k) = ∫_{−∞}^{∞} f(y) e^{−i k y} ĝ(k) dy = f̂(k) ĝ(k)
+
+Convolution in space ↔ product in frequency.
+
+## Dual statements (brief)
+
+Multiplication by e^{i k_0 x} in space shifts the transform in k. Multiplication of transforms corresponds to convolution of the original functions (with a 2π factor depending on convention).
+
+## Check yourself
+
+Find the transform of f(x − 2) + f(x + 2) in terms of f̂(k).
+''',
+            keyTakeaways: [
+              'Translation by x_0 multiplies f̂ by e^{−i k x_0}.',
+              'f\' transforms to i k f̂ when boundary terms vanish.',
+              'Convolution transforms to the product f̂ ĝ.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m6-u3-q1',
+                question: 'The Fourier transform of f(x − x_0) is',
+                options: [
+                  'f̂(k − x_0)',
+                  'e^{−i k x_0} f̂(k)',
+                  'f̂(k)/x_0',
+                  'i k f̂(k)',
+                ],
+                correctIndex: 1,
+                explanation: 'Shifts become phase factors in k-space.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m6-u3-q2',
+                question: 'The transform of f ∗ g is',
+                options: [
+                  'f̂ + ĝ',
+                  'f̂ ĝ',
+                  'f̂ / ĝ',
+                  'f̂\' ĝ\'',
+                ],
+                correctIndex: 1,
+                explanation: 'Convolution theorem: transforms multiply.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy701-m6-u4',
+            title: 'Parseval and Plancherel theorems',
+            content: r'''
+## Learning goal
+
+Prove the energy identities linking the mean-square size of f to its Fourier coefficients (Parseval) and to its Fourier transform (Plancherel).
+
+## Parseval for orthonormal expansions
+
+Let {φ_n} be an orthonormal set in L²(I) for an interval I:
+
+∫_I φ_n(x) φ_m^*(x) dx = δ_{nm}
+
+If f = Σ_n c_n φ_n with convergence in L², then
+
+∫_I |f(x)|² dx = ∫_I (Σ_n c_n φ_n) (Σ_m c_m^* φ_m^*) dx = Σ_n Σ_m c_n c_m^* ∫ φ_n φ_m^* = Σ_n |c_n|²
+
+That is **Parseval's identity** for orthonormal series: the energy of f equals the sum of squared coefficient moduli.
+
+### Application to complex Fourier series
+
+With the normalization of Unit 1, the functions (1/√(2L)) e^{i n π x / L} are orthonormal on (−L, L). Writing f = Σ c_n e^{i n π x / L} with the c_n of Unit 1, one obtains the matching form
+
+(1/(2L)) ∫_{−L}^{L} |f(x)|² dx = Σ_{n=−∞}^{∞} |c_n|²
+
+(or an equivalent rearrangement depending on whether c_n absorbs the 1/√(2L) factor — stay consistent with your coefficient convention).
+
+## Plancherel theorem for the continuous transform
+
+Using the transform pair of Unit 2 and the same energy idea in the continuum limit (or by a careful limiting argument from the series Parseval identity as L → ∞),
+
+∫_{−∞}^{∞} |f(x)|² dx = (1/(2π)) ∫_{−∞}^{∞} |f̂(k)|² dk
+
+This is **Plancherel's theorem** in our convention: the Fourier transform is an isometry of L² up to the universal factor 1/(2π) on the frequency side.
+
+### Sketch via the continuum limit
+
+From the series Parseval form, the left side is a mean-square over one period. As L → ∞ for functions that decay at infinity, the mean-square over (−L, L) relates to ∫|f|², while Σ |c_n|² with c_n ~ (Δk/(2π)) f̂(k_n) becomes an integral (1/(2π)) ∫ |f̂|² dk after accounting for Δk.
+
+## Physical reading
+
+Plancherel says that the total “energy” computed in space equals the total energy computed from the spectrum. A pulse that is very narrow in x must be broad in k so that ∫|f̂|² still matches — the quantitative form of bandwidth intuition.
+
+## Check yourself
+
+If f is replaced by f(ax) with a > 1 (compression in x), how must |f̂| change so that Plancherel still holds?
+''',
+            keyTakeaways: [
+              'Parseval: ∫|f|² equals Σ|c_n|² for orthonormal expansions (up to normalization).',
+              'Plancherel: ∫|f|² = (1/(2π)) ∫|f̂|² in this unit\'s convention.',
+              'Spatial concentration forces spectral spread at fixed energy.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy701-m6-u4-q1',
+                question: 'Plancherel\'s theorem relates',
+                options: [
+                  'Only the phase of f̂ to f',
+                  '∫|f|² to an integral of |f̂|²',
+                  'Zeros of f only',
+                  'Taylor coefficients only',
+                ],
+                correctIndex: 1,
+                explanation: 'Plancherel is the L² energy identity between space and frequency.',
+              ),
+              QuizQuestion(
+                id: 'phy701-m6-u4-q2',
+                question: 'Parseval for an orthonormal series states that ∫|f|² equals',
+                options: [
+                  'Σ c_n only',
+                  'Σ |c_n|²',
+                  'max |c_n|',
+                  '0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'Energy of f equals the sum of squared coefficient moduli.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

@@ -1,20 +1,18 @@
 # Content writing progress
 
-Binding rule: follow each master prompt — full derivations, no compression, one module at a time.
+Master-prompt rule: full derivations, no compression, one module at a time.
 
 ## PHY 701
 | Module | Status |
 |--------|--------|
-| 01–03 | Done |
-| 04 Special functions | Done (exhaustive rewrite) |
-| **05 Dirac delta** | **Done (exhaustive)** |
-| 06 Fourier | Skeleton — next |
-| 07 Residues & Green | Skeleton |
+| 01–05 | Done |
+| **06 Fourier** | **Done (exhaustive)** |
+| 07 Residues & Green | Skeleton — next |
 
-### Module 05 includes
-- D(ℝ), distribution definition, ⟨δ,φ⟩=φ(0), why not ordinary function
-- Rectangle, Gaussian, Lorentzian, sinc nascent deltas with convergence mechanism
-- Scaling proof with substitution; composition at simple roots; δ' and H'=δ via parts
-- Fourier inversion → (1/2π)∫ e^{ik(x-x')} dk = δ(x-x')
+### Module 06 includes
+- Real series → complex form; orthogonality → c_n
+- L→∞ with Δk = π/L and 1/(2L)=Δk/(2π); transform pair
+- Shift, derivative (parts), convolution (Fubini + substitution)
+- Parseval for orthonormal series; Plancherel continuum form
 
-**Next:** Module 06 only, same standard.
+**Next:** Module 07 only.
