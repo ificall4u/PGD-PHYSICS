@@ -341,15 +341,309 @@ For V(x) = x^4 - x^2, find the equilibria and classify them with V''.
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy703-m2',
         title: 'Degrees of Freedom & Generalized Coordinates',
-        summary: 'Degrees of Freedom & Generalized Coordinates',
+        summary:
+            'Degrees of freedom, holonomic vs non-holonomic constraints, generalized coordinates, and configuration space.',
         units: [
-          skeletonUnit(id: 'phy703-m2-u1', title: 'Degrees of Freedom (DoF)'),
-          skeletonUnit(id: 'phy703-m2-u2', title: 'Constraints'),
-          skeletonUnit(id: 'phy703-m2-u3', title: 'Generalized Coordinates'),
-          skeletonUnit(id: 'phy703-m2-u4', title: 'Configuration Space'),
+          Unit(
+            id: 'phy703-m2-u1',
+            title: 'Degrees of freedom (DoF)',
+            content: r'''
+## Learning goal
+
+Define degrees of freedom as the number of independent pieces of information needed to specify the configuration of a mechanical system, and compute DoF for simple examples.
+
+## Physical meaning
+
+A system’s **degrees of freedom** (DoF) answer: how many independent numbers do you need to say exactly where everything is?
+
+### Free bead in space
+
+A single point particle free in three-dimensional space can move independently in x, y, and z. You need three numbers to locate it. DoF = 3.
+
+### Bead on a wire
+
+If the same bead is forced to slide on a fixed curved wire, its position is fixed once you know a single parameter along the wire (arc length s, or an angle if the wire is a circle). DoF = 1.
+
+The wire has removed two independent directions of motion by constraint.
+
+### Rigid body in space (preview)
+
+A free rigid body needs 3 numbers for the position of one reference point and 3 numbers for orientation (for example three Euler angles). DoF = 6 when unconstrained.
+
+## Counting rule (unconstrained particles)
+
+N point particles in 3D, with no constraints: DoF = 3N.
+
+Each independent constraint that can be used to eliminate one coordinate reduces the count by one (details in the next unit).
+
+## Check yourself
+
+A free particle on a tabletop (motion only in a plane) has how many degrees of freedom?
+''',
+            keyTakeaways: [
+              'DoF = number of independent coordinates needed to specify the configuration.',
+              'A free particle in 3D has 3 DoF; a bead on a fixed wire has 1 DoF.',
+              'Constraints reduce the number of independent coordinates.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m2-u1-q1',
+                question: 'A bead forced to slide on a fixed wire has',
+                options: [
+                  '3 degrees of freedom',
+                  '1 degree of freedom',
+                  '0 degrees of freedom',
+                  '6 degrees of freedom',
+                ],
+                correctIndex: 1,
+                explanation: 'One parameter along the wire completely fixes the bead\'s position.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m2-u2-q0',
+                question: 'N free point particles in 3D with no constraints have',
+                options: [
+                  'N degrees of freedom',
+                  '3N degrees of freedom',
+                  '6N degrees of freedom',
+                  '1 degree of freedom',
+                ],
+                correctIndex: 1,
+                explanation: 'Each particle contributes 3 coordinates.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m2-u2',
+            title: 'Holonomic and non-holonomic constraints',
+            content: r'''
+## Learning goal
+
+Define constraints, distinguish holonomic from non-holonomic constraints, and give real-world examples of each.
+
+## What a constraint is
+
+A **constraint** is a restriction on the possible motions or configurations of a system — a rule the system is not allowed to violate (an ideal rigid rod, a surface it must stay on, a no-slip rolling condition).
+
+## Holonomic constraints
+
+A constraint is **holonomic** if it can be written as an equation relating the coordinates (and possibly time) only, not the velocities:
+
+f(x₁, y₁, z₁, …, t) = 0
+
+Such a constraint can be used to eliminate one coordinate from the description of the system.
+
+### Example: simple pendulum
+
+A mass on a rigid rod of length ℓ pivoted in a plane satisfies
+
+x² + y² − ℓ² = 0
+
+(with origin at the pivot). This is holonomic. One angle θ completely describes the configuration: x = ℓ sin θ, y = −ℓ cos θ.
+
+### Example: bead on a sphere
+
+A bead constrained to a sphere of radius R:
+
+x² + y² + z² − R² = 0
+
+Holonomic; two angular coordinates (θ, φ) remain.
+
+## Non-holonomic constraints
+
+A constraint is **non-holonomic** if it cannot be written as a relation among coordinates alone — typically it involves velocities (or is an inequality).
+
+### Example: rolling without slipping
+
+A vertical coin rolling on a plane without slipping has a velocity constraint linking the rotation rate to the speed of the contact point. That relation is on velocities; it cannot be integrated once and for all into a fixed relation among coordinates alone in the general case. The system is non-holonomic.
+
+### Example: inequality constraints
+
+A solid object resting on a table satisfies z ≥ 0 for its bottom surface — an inequality, also outside the simple holonomic equality class.
+
+## Why the distinction matters
+
+Holonomic constraints let us reduce to a smaller set of independent coordinates before writing equations of motion. Non-holonomic constraints often must be enforced with extra conditions (Lagrange multipliers, quasi-coordinates) and change the structure of the variational problem.
+
+## Check yourself
+
+Is the rigid-rod condition for a plane pendulum holonomic or non-holonomic? Why?
+''',
+            keyTakeaways: [
+              'Holonomic constraints are equations among coordinates (and possibly t) only.',
+              'Non-holonomic constraints involve velocities or inequalities and cannot be reduced the same way.',
+              'Pendulum rod length is holonomic; ideal no-slip rolling is a classic non-holonomic example.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m2-u2-q1',
+                question: 'A holonomic constraint can be written as',
+                options: [
+                  'A relation involving velocities only, never positions',
+                  'An equation among coordinates (and possibly time)',
+                  'Always an inequality',
+                  'Newton\'s second law itself',
+                ],
+                correctIndex: 1,
+                explanation: 'Holonomic constraints are f(coordinates, t) = 0.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m2-u2-q2',
+                question: 'Rolling without slipping is typically',
+                options: [
+                  'Holonomic',
+                  'Non-holonomic',
+                  'Not a constraint',
+                  'The same as a free particle',
+                ],
+                correctIndex: 1,
+                explanation: 'No-slip links velocities and is not reducible to a pure coordinate equation in general.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m2-u3',
+            title: 'Generalized coordinates',
+            content: r'''
+## Learning goal
+
+Explain why Cartesian coordinates are often inconvenient under constraints, and define generalized coordinates q₁, …, qₙ that match the true degrees of freedom.
+
+## The inconvenience of Cartesians
+
+For a plane pendulum, the mass has Cartesian coordinates (x, y), but they are not independent: x² + y² = ℓ². If you write kinetic energy T = (1/2)m(ẋ² + ẏ²) and potential V = mgy, you must still enforce the constraint at every step.
+
+It is cleaner to use the single angle θ:
+
+x = ℓ sin θ,    y = −ℓ cos θ
+
+Then T = (1/2) m ℓ² θ̇², V = −mgℓ cos θ, with no leftover constraint equation.
+
+## Definition
+
+**Generalized coordinates** are any set of independent coordinates
+
+q₁, q₂, …, qₙ
+
+sufficient to specify the configuration of the system when constraints (holonomic ones) have been built in. The number n equals the number of degrees of freedom.
+
+They need not be lengths: angles, arc lengths, or other parameters are allowed. The word “generalized” means “not restricted to Cartesian x, y, z.”
+
+## Example set
+
+- Plane pendulum: q₁ = θ
+- Spherical pendulum: q₁ = θ, q₂ = φ
+- Free particle in plane: q₁ = x, q₂ = y (Cartesians happen to be fine)
+- Double pendulum: q₁ = θ₁, q₂ = θ₂
+
+## Velocities
+
+Generalized velocities are q̇ᵢ = dqᵢ/dt. Kinetic energy is written as a function of the q’s and q̇’s after substituting the relations between Cartesian velocities and q̇’s.
+
+## Check yourself
+
+For a bead on a fixed horizontal circle of radius R, name one convenient generalized coordinate and state the DoF.
+''',
+            keyTakeaways: [
+              'Generalized coordinates q₁…qₙ specify configuration after holonomic constraints are incorporated.',
+              'n equals the number of degrees of freedom.',
+              'Angles and other parameters are valid generalized coordinates.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m2-u3-q1',
+                question: 'Generalized coordinates are',
+                options: [
+                  'Always Cartesian x, y, z only',
+                  'Any independent coordinates that specify the configuration',
+                  'Only energy and time',
+                  'Only velocities',
+                ],
+                correctIndex: 1,
+                explanation: 'Any independent configuration parameters are allowed.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m2-u3-q2',
+                question: 'For a plane pendulum, a natural generalized coordinate is',
+                options: [
+                  'The mass m',
+                  'The angle θ from the vertical',
+                  'Time t only',
+                  'The tension in the rod as a coordinate',
+                ],
+                correctIndex: 1,
+                explanation: 'One angle fully fixes the position of the bob.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy703-m2-u4',
+            title: 'Configuration space',
+            content: r'''
+## Learning goal
+
+Explain configuration space as the mathematical space in which each point represents one entire configuration of the physical system.
+
+## Idea
+
+Once generalized coordinates q₁, …, qₙ are chosen, every allowed arrangement of the system corresponds to a point
+
+q = (q₁, q₂, …, qₙ)
+
+in an n-dimensional space called **configuration space**.
+
+### Examples
+
+- Plane pendulum: configuration space is a circle (θ defined modulo 2π), often drawn as an angle line with ends identified.
+- Free particle in a plane: configuration space is the plane ℝ² with coordinates (x, y).
+- Double pendulum: configuration space is a 2-torus (two angles, each periodic).
+
+## Motion as a path
+
+As time runs, the system traces a curve q(t) in configuration space. The physical trajectory in ordinary space is recovered by mapping q(t) back through x(q), y(q), …
+
+## Link to later modules
+
+Lagrangian mechanics treats the path q(t) in configuration space as the unknown. Hamilton’s principle selects among all paths between two configurations the one that makes the action stationary. Configuration space is the stage on which that story is told.
+
+## Check yourself
+
+What is the dimension of the configuration space of a system with 5 degrees of freedom?
+''',
+            keyTakeaways: [
+              'Configuration space is the n-dimensional space of generalized coordinates.',
+              'Each point is one complete configuration of the system.',
+              'Time evolution is a path q(t) through configuration space.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy703-m2-u4-q1',
+                question: 'Configuration space is',
+                options: [
+                  'Only ordinary 3D physical space',
+                  'The space whose points are complete system configurations',
+                  'Momentum space only',
+                  'The same as the set of forces',
+                ],
+                correctIndex: 1,
+                explanation: 'Each point of configuration space labels one full configuration via the q\'s.',
+              ),
+              QuizQuestion(
+                id: 'phy703-m2-u4-q2',
+                question: 'A system with n degrees of freedom has configuration space of dimension',
+                options: [
+                  '1 always',
+                  'n',
+                  '3n always',
+                  '0',
+                ],
+                correctIndex: 1,
+                explanation: 'One axis per independent generalized coordinate.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

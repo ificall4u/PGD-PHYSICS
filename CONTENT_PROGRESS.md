@@ -1,34 +1,53 @@
-# Content writing progress
+# Content writing progress & roadmap
 
-Master-prompt rule: full derivations, no compression, one module at a time.
+**Rules (from CONTENT_AUTHORING.md):** one course at a time · one module prompt at a time · full master-prompt depth · no UI edits · no ASCII schematics · update this file after every step.
 
-## PHY 701 Mathematical Methods — COMPLETE
+**CI:** GitHub Actions workflow green (APK builds).
+
+---
+
+## Roadmap (execution order)
+
+| # | Course | Modules | Status |
+|---|--------|---------|--------|
+| 1 | **PHY 701** Mathematical Methods | 7 | **COMPLETE** (audited) |
+| 2 | **PHY 703** Analytical Mechanics | 9 | **In progress — 2/9** |
+| 3 | PHY 702 Electromagnetism | 8 | Pending |
+| 4 | PHY 704 Quantum Physics | 8 | Pending |
+| 5 | PHY 705 Intro Solid State Electronics | 8 | Pending |
+| 6 | PHY 707 Digital Electronics | 8 | Pending |
+| 7 | PHY 709 Devices Design & Fabrication | 8 | Pending |
+| 8 | PHY 706 Measurement & Instrumentation | 8 | Pending |
+| 9 | PHY 710 Vacuum & Thin Films | 8 | Pending |
+| 10 | PHY 708 Nuclear & Particle | 8 | Pending |
+| 11 | PHY 712 Energy Conservation & Storage | 8 | Pending |
+| 12 | PHY 799 PGD Research Project | 4 | Pending |
+
+---
+
+## PHY 701 — COMPLETE
+
+All modules 01–07 filled; no skeletons; course audit passed.
+
+## PHY 703 Analytical Mechanics
 
 | Module | Status |
 |--------|--------|
-| 01 ODEs & Sturm–Liouville | Done |
-| 02 Laplace | Done |
-| 03 PDEs & BVPs | Done |
-| 04 Special functions | Done (exhaustive) |
-| 05 Dirac delta | Done (exhaustive) |
-| 06 Fourier | Done (exhaustive) |
-| **07 Residues & Green** | **Done (exhaustive)** |
+| 01 Conservative forces, work, potential | Done |
+| **02 DoF & generalized coordinates** | **Done (this step)** |
+| 03 Calculus of variations & least action | Pending ← next |
+| 04 Lagrangian mechanics | Pending |
+| 05 Central forces & orbits | Pending |
+| 06 Hamiltonian mechanics | Pending |
+| 07 Rigid body dynamics | Pending |
+| 08 Oscillations & normal modes | Pending |
+| 09 Continuous media | Pending |
 
-### Module 07 includes
-- Cauchy theorem (Green/CR idea); Laurent residue; order-m formula; residue theorem proof sketch via excised circles
-- Full worked ∫ dx/(x²+1)=π with arc estimate; Jordan’s lemma role
-- G as impulse response; superposition u=∫G f
-- General SL operator: continuity of G; jump pG_x = −1; A,B from y_L,y_R and Wronskian; special case check
+### Module 02 checklist
+- [x] DoF with bead/wire examples
+- [x] Holonomic vs non-holonomic with pendulum / rolling examples
+- [x] Generalized coordinates q_i
+- [x] Configuration space
+- [x] Takeaways + quizzes; no ASCII diagrams; UI untouched
 
-### Course audit PHY 701
-- [x] All 7 module prompts covered
-- [x] No skeletonModule / skeletonUnit left in phy701_content.dart
-- [x] No ASCII schematics
-- [x] Quizzes + takeaways on all units
-- [x] UI untouched
-
-## PHY 703 Analytical Mechanics
-| Module 01 | Done (earlier) |
-| Modules 02–09 | Pending — next course |
-
-**Next course:** continue PHY 703 Module 02 at the same master-prompt standard.
+**Next step:** PHY 703 Module 03 only.
