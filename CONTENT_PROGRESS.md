@@ -1,20 +1,21 @@
 # Content writing progress
 
-Quality bar: full steps (PHY701 Modules 01–03 standard). No compressed required derivations.
+## Binding rule
+Follow each course **master prompt** strictly: ground-up derivations, no skipped algebra, no compression, one module at a time. Never ship thin stand-ins.
 
-## PHY 701 — complete (7/7), audit passed after M4–M7 rewrite
-
-## PHY 703 Analytical Mechanics
+## PHY 701
 | Module | Status |
 |--------|--------|
-| 01 Conservative forces, work, potential | **Done** |
-| 02 DoF & generalized coordinates | Pending ← next |
-| 03 Variations & least action | Pending |
-| 04 Lagrangian | Pending |
-| 05 Central forces | Pending |
-| 06 Hamiltonian | Pending |
-| 07 Rigid body | Pending |
-| 08 Oscillations | Pending |
-| 09 Continuous media | Pending |
+| 01–03 | Done (full depth) |
+| **04 Special functions** | **Rewritten exhaustively (master-prompt standard)** |
+| 05 Dirac delta | Retracted → skeleton (next) |
+| 06 Fourier | Retracted → skeleton |
+| 07 Residues & Green | Retracted → skeleton |
 
-**Next:** PHY703 Module 02 at the same depth.
+### Module 04 includes
+- Bessel from cylindrical Helmholtz/Laplace; full Frobenius; indicial equation; recurrence a_m; even chain; normalization to J_ν
+- Legendre from axisymmetric Laplace; x = cos θ; Rodrigues; S–L orthogonality with boundary term (1−x²)→0
+- Hermite from Schrödinger with full ψ = H e^{−ξ²/2} substitution; E_n; generating function / recurrence; Laguerre + hydrogen
+- Gamma integral definition; parts with both boundary terms; factorials; Beta + Jacobian relation to Gamma
+
+**Next:** PHY 701 Module 05 only, same non-negotiable depth.

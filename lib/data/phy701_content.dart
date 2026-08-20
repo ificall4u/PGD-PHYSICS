@@ -1367,293 +1367,469 @@ A rod with one end held at 0 °C and the other end insulated mixes which two bou
         id: 'phy701-m4',
         title: 'Special Functions of Mathematical Physics',
         summary:
-            'Bessel via Frobenius, Legendre and Rodrigues, Hermite/Laguerre, Gamma and Beta — full working derivations.',
+            'Exhaustive treatment: Bessel (Frobenius to J_ν), Legendre (Rodrigues, orthogonality), Hermite and Laguerre from QM, Gamma and Beta.',
         units: [
           Unit(
             id: 'phy701-m4-u1',
-            title: 'Bessel functions from cylindrical symmetry',
+            title: 'Bessel functions: cylindrical origin and Frobenius series for J_ν',
             content: r'''
 ## Learning goal
 
-Derive Bessel's equation from cylindrical separation, solve it by the Frobenius method with the full recurrence, and identify J_ν and the need for Y_ν.
+Start from a physical wave or potential problem with cylindrical symmetry, derive Bessel's differential equation for the radial factor, solve it by the method of Frobenius with every recurrence step written out, and obtain the series for the Bessel function of the first kind J_ν(x).
 
-## Physical setup
+## Physical system: cylindrical waves
 
-In cylindrical coordinates (r, θ, z), solutions of Laplace's or Helmholtz's equation often separate as
+Consider a scalar field ψ (for example a fixed-frequency mode of the wave equation, or a separated solution of Laplace's equation in a tube) in cylindrical coordinates (r, θ, z). Here:
+
+- r ≥ 0 is the perpendicular distance from the z-axis
+- θ is the azimuthal angle around the axis
+- z is the height along the axis
+
+The Laplacian in these coordinates is
+
+∇²ψ = (1/r) ∂/∂r (r ∂ψ/∂r) + (1/r²) ∂²ψ/∂θ² + ∂²ψ/∂z²
+
+For the Helmholtz equation ∇²ψ + k²ψ = 0 (which arises from the wave equation after assuming time dependence e^{-iωt} with k related to ω/c), substitute a separated product
 
 ψ(r, θ, z) = R(r) Θ(θ) Z(z)
 
-For Helmholtz ∇²ψ + k²ψ = 0, after separating a periodic θ factor e^{iνθ} (or cos νθ, sin νθ) and a z-factor, the radial function satisfies an equation that, with the dimensionless variable
+Standard separation (periodic in θ with period 2π, exponential or trigonometric in z) produces a radial equation. After introducing a dimensionless radial variable
 
-x = κr
+x = κ r
 
-(κ related to the separation constant and k), becomes **Bessel's equation of order ν**:
+where κ² combines k² and the z-separation constant, the radial unknown y(x) = R(r) satisfies **Bessel's equation of order ν**:
 
-x² y'' + x y' + (x² − ν²) y = 0
+x² y''(x) + x y'(x) + (x² − ν²) y(x) = 0
 
-Equivalently,
+Here:
+
+- y(x) is the radial profile as a function of dimensionless radius x
+- ν is the separation constant from the θ equation (integer if Θ must be single-valued on a full circle, or real more generally)
+- primes denote d/dx
+
+Dividing by x² (for x ≠ 0) gives the equivalent form
 
 y'' + (1/x) y' + (1 − ν²/x²) y = 0
 
+## Why x = 0 is a regular singular point
+
+The coefficients of y' and y, written in standard form y'' + P(x)y' + Q(x)y = 0, are P(x) = 1/x and Q(x) = 1 − ν²/x². Both xP and x²Q are analytic at x = 0, so x = 0 is a **regular singular point**. Frobenius theory therefore applies.
+
 ## Frobenius ansatz
 
-Because x = 0 is a regular singular point, seek
+Seek a solution of the form
 
-y(x) = x^r Σ_{m=0}^∞ a_m x^m ,    a_0 ≠ 0
+y(x) = x^r Σ_{m=0}^{∞} a_m x^m = Σ_{m=0}^{∞} a_m x^{m+r}
 
-Then
+with a_0 ≠ 0. Then
 
-y' = Σ_{m=0}^∞ (m+r) a_m x^{m+r−1}
+y'(x) = Σ_{m=0}^{∞} (m+r) a_m x^{m+r−1}
 
-y'' = Σ_{m=0}^∞ (m+r)(m+r−1) a_m x^{m+r−2}
+y''(x) = Σ_{m=0}^{∞} (m+r)(m+r−1) a_m x^{m+r−2}
 
-Substitute into x² y'' + x y' + (x² − ν²) y = 0 and collect powers of x.
+## Substitute into x² y'' + x y' + (x² − ν²) y = 0
 
-## Indicial equation
+Compute each term:
 
-The lowest power x^r gives
+x² y'' = Σ_{m=0}^{∞} (m+r)(m+r−1) a_m x^{m+r}
 
-[r(r−1) + r − ν²] a_0 = 0 ⇒ (r² − ν²) a_0 = 0 ⇒ r = ±ν
+x y' = Σ_{m=0}^{∞} (m+r) a_m x^{m+r}
+
+(x² − ν²) y = Σ_{m=0}^{∞} a_m x^{m+r+2} − ν² Σ_{m=0}^{∞} a_m x^{m+r}
+
+Shift the index in the x² y piece: let m' = m+2 in Σ a_m x^{m+r+2}, so
+
+Σ_{m=0}^{∞} a_m x^{m+r+2} = Σ_{m=2}^{∞} a_{m−2} x^{m+r}
+
+(renaming m' back to m). Collect the coefficient of x^{m+r} for each m.
+
+## Indicial equation (m = 0)
+
+For the lowest power x^r (m = 0), there is no a_{−2} contribution. The coefficient is
+
+[(r)(r−1) + r − ν²] a_0 = 0
+
+That is (r² − ν²) a_0 = 0. Since a_0 ≠ 0,
+
+r² − ν² = 0 ⇒ r = ν    or    r = −ν
 
 ## Recurrence for r = ν
 
-For the root r = ν, the coefficient of a general power yields (for m ≥ 1, with a_j = 0 for j < 0)
+For m ≥ 1, the coefficient of x^{m+ν} gives
 
-[(m+ν)² − ν²] a_m + a_{m−2} = 0
+[(m+ν)(m+ν−1) + (m+ν) − ν²] a_m + a_{m−2} = 0
 
-so
+Simplify the bracket:
+
+(m+ν)(m+ν−1) + (m+ν) − ν² = (m+ν)² − (m+ν) + (m+ν) − ν² = (m+ν)² − ν²
+
+= m² + 2 m ν + ν² − ν² = m(m + 2ν)
+
+So
+
+m(m + 2ν) a_m + a_{m−2} = 0
+
+hence, for m ≥ 1,
 
 a_m = − a_{m−2} / [m (m + 2ν)]
 
-Odd indices vanish if we set a_1 = 0 (consistent with the recurrence). For even indices set m = 2j:
+## Even and odd chains
 
-a_{2j} = − a_{2j−2} / [(2j)(2j + 2ν)]
+If m = 1:
 
-Iterating from a_0,
+a_1 = − a_{−1} / [1·(1+2ν)]
 
-a_{2j} = (−1)^j a_0 / [2^{2j} j! (ν+1)(ν+2)…(ν+j)]
+With a_{−1} = 0, we get a_1 = 0. Then every odd index vanishes: a_3 = a_5 = … = 0.
 
-Using the Gamma function, (ν+1)…(ν+j) = Γ(ν+j+1)/Γ(ν+1), and choosing the conventional normalization
+Only even indices survive. Set m = 2j with j = 1, 2, 3, …:
 
-a_0 = 1 / [2^ν Γ(ν+1)]
+a_{2j} = − a_{2j−2} / [(2j)(2j + 2ν)] = − a_{2j−2} / [2j · 2(j + ν)] = − a_{2j−2} / [4 j (j + ν)]
 
-produces
+Iterate:
 
-J_ν(x) = Σ_{j=0}^∞ (−1)^j / [j! Γ(ν+j+1)] (x/2)^{2j+ν}
+a_2 = − a_0 / [4 · 1 · (1+ν)]
 
-This is the **Bessel function of the first kind**.
+a_4 = − a_2 / [4 · 2 · (2+ν)] = a_0 / [4² · (2·1) · (1+ν)(2+ν)]
 
-## Second solution
+a_6 = − a_4 / [4 · 3 · (3+ν)] = − a_0 / [4³ · (3·2·1) · (1+ν)(2+ν)(3+ν)]
 
-If ν is not an integer, x^{−ν} times a similar series gives J_{−ν}, independent of J_ν. If ν = n is an integer, J_{−n} is a multiple of J_n; a second independent solution is the Neumann function Y_n(x), which diverges as x → 0⁺.
+In general,
 
-## Physical selection
+a_{2j} = (−1)^j a_0 / [ 2^{2j} j! (ν+1)(ν+2)⋯(ν+j) ]
 
-On a disk including the axis, demand |y| finite at x = 0 ⇒ discard Y_ν (and J_{−ν} when it is singular). On an annulus, both solutions may appear.
+Using the Gamma function identity
+
+(ν+1)(ν+2)⋯(ν+j) = Γ(ν+j+1) / Γ(ν+1)
+
+we have
+
+a_{2j} = (−1)^j a_0 Γ(ν+1) / [ 2^{2j} j! Γ(ν+j+1) ]
+
+## Normalization to J_ν
+
+Choose
+
+a_0 = 1 / [ 2^ν Γ(ν+1) ]
+
+Then
+
+y(x) = Σ_{j=0}^{∞} (−1)^j / [ j! Γ(ν+j+1) ] (x/2)^{2j+ν}
+
+This series is the **Bessel function of the first kind of order ν**:
+
+J_ν(x) = Σ_{j=0}^{∞} (−1)^j / [ j! Γ(ν+j+1) ] (x/2)^{2j+ν}
+
+## Second independent solution
+
+If ν is not an integer, r = −ν produces an independent series J_{−ν}(x). If ν = n is an integer, J_{−n} is linearly dependent on J_n; a second independent solution is the Neumann function Y_n(x), which diverges as x → 0⁺. On a disk that includes the axis, finiteness forces the coefficient of Y_ν (and of J_{−ν} when singular) to vanish.
 
 ## Check yourself
 
-From the recurrence a_m = −a_{m−2}/[m(m+2ν)], why do odd powers drop out when a_1 = 0?
+From a_m = −a_{m−2}/[m(m+2ν)], show that a_1 = 0 implies a_3 = 0.
 ''',
             keyTakeaways: [
-              'Cylindrical separation produces Bessel\'s equation in the radial variable.',
-              'Frobenius with r = ν and the even recurrence yields J_ν(x).',
-              'Y_ν (or J_{−ν} when independent) is required when the origin is excluded.',
+              'Cylindrical Helmholtz/Laplace separation produces Bessel\'s equation in x = κr.',
+              'Frobenius with r = ν and the recurrence a_m = −a_{m−2}/[m(m+2ν)] yields only even powers.',
+              'Standard normalization gives the series for J_ν(x); Y_ν is needed when the origin is excluded.',
             ],
             quiz: [
               QuizQuestion(
                 id: 'phy701-m4-u1-q1',
-                question: 'The indicial roots for Bessel\'s equation under Frobenius are',
+                question: 'The indicial equation for Bessel\'s equation under Frobenius yields',
                 options: [
                   'r = 0 only',
                   'r = ±ν',
                   'r = ν²',
-                  'r = 1/2 only',
+                  'r = 1 only',
                 ],
                 correctIndex: 1,
-                explanation: 'The indicial equation is r² − ν² = 0, so r = ±ν.',
+                explanation: 'From (r² − ν²)a_0 = 0 one gets r = ±ν.',
               ),
               QuizQuestion(
                 id: 'phy701-m4-u1-q2',
-                question: 'On a full disk including r = 0 one keeps',
+                question: 'The recurrence for coefficients with r = ν is',
                 options: [
-                  'Only Y_ν',
-                  'J_ν (the solution finite at 0)',
-                  'Only exponentially growing solutions',
-                  'No radial solution',
+                  'a_m = m a_{m−1}',
+                  'a_m = −a_{m−2}/[m(m+2ν)]',
+                  'a_m = 0 for all m',
+                  'a_m = a_0 only',
                 ],
                 correctIndex: 1,
-                explanation: 'J_ν remains finite at the origin; Y_ν does not.',
+                explanation: 'Collecting powers of x^{m+ν} gives m(m+2ν)a_m + a_{m−2} = 0.',
               ),
             ],
           ),
           Unit(
             id: 'phy701-m4-u2',
-            title: 'Legendre polynomials: equation, Rodrigues, orthogonality',
+            title: 'Legendre polynomials: spherical origin, Rodrigues, orthogonality',
             content: r'''
 ## Learning goal
 
-Derive Legendre's equation from axisymmetric spherical geometry, obtain P_ℓ from Rodrigues' formula, and prove orthogonality from the Sturm–Liouville structure.
+Derive Legendre's equation from Laplace's equation in spherical coordinates under axial symmetry, obtain P_ℓ through Rodrigues' formula, and prove orthogonality on [−1, 1] from the Sturm–Liouville structure with explicit boundary-term cancellation.
 
-## From Laplace in spherical coordinates
+## Physical system: axisymmetric potential
 
-For axisymmetric potentials (no φ dependence),
+In electrostatics (or steady temperature), Laplace's equation ∇²u = 0 holds in empty space. In spherical coordinates (r, θ, φ) with no φ dependence (axisymmetry about z),
 
-∇²u = 0 ⇒ (1/r²) ∂/∂r (r² ∂u/∂r) + (1/(r² sin θ)) ∂/∂θ (sin θ ∂u/∂θ) = 0
+∇²u = (1/r²) ∂/∂r (r² ∂u/∂r) + (1/(r² sin θ)) ∂/∂θ (sin θ ∂u/∂θ) = 0
 
-Separate u = R(r) Θ(θ). The angular equation, with separation constant ℓ(ℓ+1) and x = cos θ, becomes
+Seek product solutions u(r, θ) = R(r) Θ(θ). Substitute and multiply through by r²/(R Θ):
 
-d/dx [(1 − x²) dΘ/dx] + ℓ(ℓ+1) Θ = 0
+(1/R) d/dr (r² dR/dr) = − (1/Θ) (1/sin θ) d/dθ (sin θ dΘ/dθ)
 
-Expanded:
+Both sides equal a constant. Call that constant ℓ(ℓ+1) (the name anticipates polynomial solutions). The angular equation is
 
-(1 − x²) Θ'' − 2x Θ' + ℓ(ℓ+1) Θ = 0
+(1/sin θ) d/dθ (sin θ dΘ/dθ) + ℓ(ℓ+1) Θ = 0
 
-This is **Legendre's equation**. Boundedness at x = ±1 (the poles θ = 0, π) forces ℓ = 0, 1, 2, … and polynomial solutions P_ℓ(x).
+## Change of variable x = cos θ
 
-## Rodrigues formula
+Let x = cos θ, so dx = −sin θ dθ. When θ runs from 0 to π, x runs from 1 to −1. Set y(x) = Θ(θ). Then
+
+dΘ/dθ = dy/dx · dx/dθ = −sin θ dy/dx
+
+A standard chain-rule calculation converts the angular equation into
+
+d/dx [ (1 − x²) dy/dx ] + ℓ(ℓ+1) y = 0
+
+Expanded with the product rule:
+
+(1 − x²) y'' − 2x y' + ℓ(ℓ+1) y = 0
+
+This is **Legendre's equation**. Here:
+
+- x = cos θ ∈ [−1, 1] for physical polar angles
+- y(x) is the polar angular factor
+- ℓ(ℓ+1) is the separation constant
+
+Boundedness of Θ at θ = 0 and θ = π requires y finite at x = ±1. That selects ℓ = 0, 1, 2, … and the Legendre polynomials P_ℓ(x).
+
+## Rodrigues' formula
 
 Define
 
 P_ℓ(x) = (1/(2^ℓ ℓ!)) d^ℓ/dx^ℓ (x² − 1)^ℓ
 
-Verification for small ℓ:
+### Verification for small ℓ
 
-- ℓ = 0: P_0 = 1
-- ℓ = 1: P_1 = x
-- ℓ = 2: P_2 = (3x² − 1)/2
+ℓ = 0: P_0(x) = 1.
 
-One can show by direct differentiation that this P_ℓ satisfies Legendre's equation (standard exercise in Boas).
+ℓ = 1: d/dx (x² − 1) = 2x, so P_1(x) = (1/2) · 2x = x.
 
-## Sturm–Liouville form and orthogonality
+ℓ = 2: (x² − 1)² = x⁴ − 2x² + 1; second derivative 12x² − 4; P_2 = (1/8)(12x² − 4) = (3x² − 1)/2.
+
+### Why it solves Legendre's equation (structure)
+
+Let w = (x² − 1)^ℓ. Then w satisfies a first-order relation obtained by logarithmic differentiation: w' / w = 2ℓx/(x² − 1). Differentiating ℓ times and using Leibniz's rule leads to Legendre's equation for y = d^ℓ w/dx^ℓ (up to the constant factor in Rodrigues). The factor 1/(2^ℓ ℓ!) is conventional normalization so that P_ℓ(1) = 1.
+
+## Sturm–Liouville form
 
 Legendre's equation is already
 
-d/dx [(1 − x²) y'] + ℓ(ℓ+1) y = 0
+d/dx [ (1 − x²) y' ] + ℓ(ℓ+1) y = 0
 
-so p(x) = 1 − x², weight w = 1, eigenvalue λ = ℓ(ℓ+1). For integers ℓ ≠ m, Module 1 gives
+so p(x) = 1 − x², q(x) = 0, weight w(x) = 1, eigenvalue λ = ℓ(ℓ+1). Note p(±1) = 0.
+
+## Orthogonality proof
+
+Let y_ℓ = P_ℓ and y_m = P_m with ℓ ≠ m. Multiply Legendre's equation for y_ℓ by y_m and for y_m by y_ℓ:
+
+y_m d/dx [(1−x²) y_ℓ'] + ℓ(ℓ+1) y_m y_ℓ = 0
+
+y_ℓ d/dx [(1−x²) y_m'] + m(m+1) y_ℓ y_m = 0
+
+Subtract and integrate from −1 to 1:
+
+∫_{−1}^{1} { y_m d/dx [(1−x²) y_ℓ'] − y_ℓ d/dx [(1−x²) y_m'] } dx + [ℓ(ℓ+1) − m(m+1)] ∫_{−1}^{1} y_ℓ y_m dx = 0
+
+The first integral is a pure boundary term after integration by parts (Lagrange identity):
+
+[ (1−x²) (y_m y_ℓ' − y_ℓ y_m') ]_{−1}^{1}
+
+At x = ±1, the factor (1−x²) = 0, so the boundary term vanishes. Therefore
+
+[ℓ(ℓ+1) − m(m+1)] ∫_{−1}^{1} P_ℓ(x) P_m(x) dx = 0
+
+For ℓ ≠ m the prefactor is nonzero, hence
 
 ∫_{−1}^{1} P_ℓ(x) P_m(x) dx = 0
 
-The normalization ∫_{−1}^{1} [P_ℓ(x)]² dx = 2/(2ℓ+1) follows by integrating Rodrigues by parts ℓ times (boundary terms vanish because (x²−1)^ℓ and its first ℓ−1 derivatives vanish at ±1).
+## Normalization (standard result)
+
+∫_{−1}^{1} [P_ℓ(x)]² dx = 2/(2ℓ+1)
+
+(obtained by applying Rodrigues and integrating by parts ℓ times; each time a boundary term vanishes because (x²−1)^ℓ and its first ℓ−1 derivatives vanish at ±1).
 
 ## Check yourself
 
-Why do boundary terms vanish when integrating Rodrigues by parts on [−1, 1]?
+In the boundary term (1−x²)(y_m y_ℓ' − y_ℓ y_m'), why do we not need y_ℓ and y_m to vanish at ±1?
 ''',
             keyTakeaways: [
               'Axisymmetric spherical Laplace separation yields Legendre\'s equation in x = cos θ.',
-              'Rodrigues\' formula constructs P_ℓ as the ℓ-th derivative of (x²−1)^ℓ.',
-              'Distinct P_ℓ are orthogonal on [−1, 1]; ‖P_ℓ‖² = 2/(2ℓ+1).',
+              'Rodrigues: P_ℓ(x) = 1/(2^ℓ ℓ!) d^ℓ/dx^ℓ (x²−1)^ℓ.',
+              'Orthogonality follows from the S–L identity; boundary terms vanish because p(±1) = 0.',
             ],
             quiz: [
               QuizQuestion(
                 id: 'phy701-m4-u2-q1',
-                question: 'In Legendre\'s equation, the eigenvalue parameter multiplies',
+                question: 'Legendre\'s equation in x = cos θ is',
                 options: [
-                  'Only y\'\'',
-                  'y, as ℓ(ℓ+1) y',
-                  'Only the boundary value at x = 2',
-                  'p(x) alone with no y',
+                  'y\'\' + y = 0',
+                  '(1−x²)y\'\' − 2x y\' + ℓ(ℓ+1)y = 0',
+                  'x y\'\' + y = 0',
+                  'y\' − ℓ y = 0 only',
                 ],
                 correctIndex: 1,
-                explanation: 'The term ℓ(ℓ+1) y is the eigenvalue term with weight 1.',
+                explanation: 'That is the standard expanded form of Legendre\'s equation.',
               ),
               QuizQuestion(
                 id: 'phy701-m4-u2-q2',
-                question: '∫_{−1}^{1} P_2(x) P_3(x) dx equals',
+                question: '∫_{−1}^{1} P_ℓ P_m dx for ℓ ≠ m equals',
                 options: [
                   '1',
                   '0',
-                  '2/5',
-                  '2/7',
+                  '2/(2ℓ+1)',
+                  'ℓ + m',
                 ],
                 correctIndex: 1,
-                explanation: 'Distinct degrees are orthogonal on [−1, 1].',
+                explanation: 'Distinct eigenvalues give orthogonality on [−1, 1].',
               ),
             ],
           ),
           Unit(
             id: 'phy701-m4-u3',
-            title: 'Hermite and Laguerre polynomials',
+            title: 'Hermite and Laguerre polynomials from quantum mechanics',
             content: r'''
 ## Learning goal
 
-Derive the Hermite equation from the quantum harmonic oscillator, introduce Laguerre from the radial hydrogen problem, and record generating functions and recurrence relations used in practice.
+Derive Hermite's differential equation from the quantum harmonic oscillator Schrödinger equation with every substitution shown, introduce Laguerre polynomials from the radial hydrogen problem, and state generating functions and recurrence relations.
 
-## Hermite from the oscillator
+## Part A — Hermite and the oscillator
 
-The time-independent Schrödinger equation for V(x) = (1/2) m ω² x² is
+### Schrödinger equation
 
-−(ℏ²/(2m)) ψ'' + (1/2) m ω² x² ψ = E ψ
+A particle of mass m in V(x) = (1/2) m ω² x² obeys
 
-Set ξ = α x with α = √(mω/ℏ), and ε = 2E/(ℏω). Then
+−(ℏ²/(2m)) d²ψ/dx² + (1/2) m ω² x² ψ = E ψ
 
-d²ψ/dξ² + (ε − ξ²) ψ = 0
+### Dimensionless coordinate
 
-Write ψ(ξ) = H(ξ) e^{−ξ²/2}. Substitute (product rule twice): the first-derivative cross terms rearrange to
+Define α = √(m ω / ℏ) (units of 1/length) and ξ = α x. Then d/dx = α d/dξ, d²/dx² = α² d²/dξ². Substitute:
+
+−(ℏ²/(2m)) α² ψ'' + (1/2) m ω² (ξ²/α²) ψ = E ψ
+
+where ' = d/dξ. Insert α² = m ω / ℏ:
+
+−(ℏ²/(2m)) (m ω / ℏ) ψ'' + (1/2) m ω² (ℏ/(m ω)) ξ² ψ = E ψ
+
+Simplify:
+
+−(ℏ ω / 2) ψ'' + (ℏ ω / 2) ξ² ψ = E ψ
+
+Divide by ℏ ω / 2:
+
+−ψ'' + ξ² ψ = (2E/(ℏ ω)) ψ
+
+Define ε = 2E/(ℏ ω). Then
+
+ψ'' + (ε − ξ²) ψ = 0
+
+### Factor the Gaussian ground-state behaviour
+
+For large |ξ|, ψ'' ≈ ξ² ψ suggests Gaussian decay. Set
+
+ψ(ξ) = H(ξ) e^{−ξ²/2}
+
+Compute derivatives:
+
+ψ' = (H' − ξ H) e^{−ξ²/2}
+
+ψ'' = (H'' − ξ H' − [H' − ξ H] − ξ (H' − ξ H)) e^{−ξ²/2}
+
+= (H'' − 2ξ H' + (ξ² − 1) H) e^{−ξ²/2}
+
+Substitute into ψ'' + (ε − ξ²) ψ = 0 and cancel the common never-zero factor e^{−ξ²/2}:
+
+H'' − 2ξ H' + (ξ² − 1) H + (ε − ξ²) H = 0
 
 H'' − 2ξ H' + (ε − 1) H = 0
 
-Polynomial solutions exist when ε − 1 = 2n for n = 0, 1, 2, …, i.e. E_n = ℏω(n + 1/2). Then H = H_n satisfies **Hermite's equation**
+### Polynomial termination
+
+Power-series analysis of this equation shows that H grows too fast unless the series terminates. Termination occurs when
+
+ε − 1 = 2n,    n = 0, 1, 2, …
+
+so ε = 2n + 1, hence
+
+E_n = ℏ ω (n + 1/2)
+
+Then H = H_n satisfies **Hermite's equation**
 
 H'' − 2ξ H' + 2n H = 0
 
-## Generating function and recurrence
+### Generating function and recurrence
 
-exp(2ξt − t²) = Σ_{n=0}^∞ H_n(ξ) t^n / n!
+The generating function (standard convention)
 
-Differentiating with respect to t or ξ yields standard recurrences, including
+G(ξ, t) = exp(2 ξ t − t²) = Σ_{n=0}^{∞} H_n(ξ) t^n / n!
+
+Differentiating with respect to t:
+
+∂G/∂t = (2ξ − 2t) G
+
+Coefficient matching yields the recurrence
 
 H_{n+1}(ξ) = 2ξ H_n(ξ) − 2n H_{n−1}(ξ)
 
-Orthogonality: ∫_{−∞}^{∞} H_n(ξ) H_m(ξ) e^{−ξ²} dξ = 0 for n ≠ m (weight e^{−ξ²} from the ground-state Gaussian factor).
+Orthogonality weight on (−∞, ∞): e^{−ξ²}, coming from the factor e^{−ξ²/2} in each wavefunction (product of two factors).
 
-## Laguerre and hydrogen
+## Part B — Laguerre and hydrogen
 
-The radial hydrogen equation, after factoring the large-r exponential and the near-origin r^ℓ behaviour, reduces to an associated Laguerre equation. The ordinary Laguerre equation is
+The radial Schrödinger equation for hydrogen, after writing the radial wave as R(r) = u(r)/r and separating constants, reduces (for bound states) to an equation solvable by associated Laguerre polynomials. The **ordinary Laguerre equation** is
 
-x y'' + (1 − x) y' + n y = 0
+x y'' + (1 − x) y' + n y = 0,    n = 0, 1, 2, …
 
-with polynomial solutions L_n(x). Weight on (0, ∞): e^{−x}. Associated Laguerre L_n^{(k)} appear for nonzero angular momentum.
+Polynomial solutions are L_n(x). Weight for orthogonality on (0, ∞): e^{−x}.
 
-Generating function (ordinary Laguerre):
+Associated Laguerre polynomials L_n^{(k)}(x) satisfy a related equation with an extra k-dependent term; they appear when orbital angular momentum ℓ is nonzero (k related to ℓ).
 
-exp(−xt/(1−t)) / (1−t) = Σ_{n=0}^∞ L_n(x) t^n    (|t| < 1)
+Generating function for ordinary Laguerre:
+
+exp(−x t /(1−t)) / (1−t) = Σ_{n=0}^{∞} L_n(x) t^n ,    |t| < 1
 
 ## Check yourself
 
-In the oscillator reduction, what role does the factor e^{−ξ²/2} play before Hermite's equation appears?
+In the oscillator reduction, show that ε = 2n+1 implies E_n = ℏω(n+1/2).
 ''',
             keyTakeaways: [
               'ψ = H(ξ) e^{−ξ²/2} converts the oscillator ODE into Hermite\'s equation.',
-              'E_n = ℏω(n+1/2) is the condition for polynomial H_n.',
-              'Laguerre polynomials arise in the radial hydrogen problem with weight e^{−x} on (0,∞).',
+              'Termination gives E_n = ℏω(n+1/2) and Hermite polynomials H_n.',
+              'Laguerre / associated Laguerre arise in the radial hydrogen problem.',
             ],
             quiz: [
               QuizQuestion(
                 id: 'phy701-m4-u3-q1',
-                question: 'Hermite\'s equation for H_n is',
+                question: 'Hermite\'s equation is',
                 options: [
                   'H\'\' + H = 0',
                   'H\'\' − 2ξ H\' + 2n H = 0',
-                  'ξ H\'\' + H = 0',
-                  'H\' − n H = 0 only',
+                  'ξ H\' = n H',
+                  'H\'\' − H = 0',
                 ],
                 correctIndex: 1,
                 explanation: 'Standard form: H\'\' − 2ξ H\' + 2n H = 0.',
               ),
               QuizQuestion(
                 id: 'phy701-m4-u3-q2',
-                question: 'The oscillator energies tied to H_n are',
+                question: 'Oscillator energies for H_n are',
                 options: [
-                  'E_n = n ℏω only',
-                  'E_n = ℏω(n + 1/2)',
-                  'E_n = ℏω / n',
+                  'n ℏω',
+                  'ℏω(n + 1/2)',
+                  'ℏω / (n+1)',
                   'Independent of n',
                 ],
                 correctIndex: 1,
-                explanation: 'Polynomial termination gives E_n = ℏω(n + 1/2).',
+                explanation: 'ε = 2n+1 means 2E/(ℏω) = 2n+1, so E = ℏω(n+1/2).',
               ),
             ],
           ),
@@ -1663,917 +1839,161 @@ In the oscillator reduction, what role does the factor e^{−ξ²/2} play before
             content: r'''
 ## Learning goal
 
-Define Γ(z), derive Γ(z+1) = z Γ(z) by integration by parts with boundary terms checked, connect to n!, and prove the Beta–Gamma relation in outline.
+Define the Gamma function by its Euler integral, derive Γ(z+1) = z Γ(z) with boundary terms checked explicitly, relate Γ(n+1) to n!, define the Beta function, and establish B(p,q) = Γ(p)Γ(q)/Γ(p+q).
 
-## Definition
+## Definition of Gamma
 
-For Re(z) > 0,
+For complex z with Re(z) > 0,
 
-Γ(z) = ∫_0^∞ t^{z−1} e^{−t} dt
+Γ(z) = ∫_0^{∞} t^{z−1} e^{−t} dt
 
-## Functional equation — full steps
+Symbols:
 
-Γ(z+1) = ∫_0^∞ t^z e^{−t} dt
+- t > 0 is the dummy integration variable
+- z is the argument (Re(z) > 0 ensures convergence at t = 0)
+- e^{−t} guarantees convergence as t → ∞
 
-Integrate by parts: let u = t^z, dv = e^{−t} dt, so du = z t^{z−1} dt, v = −e^{−t}.
+## Convergence notes
 
-∫ u dv = uv − ∫ v du:
+Near t = 0, t^{z−1} = t^{Re(z)−1} times a phase; ∫_0^1 t^{Re(z)−1} dt converges when Re(z) > 0. At infinity, e^{−t} dominates any power t^{Re(z)−1}.
 
-Γ(z+1) = [−t^z e^{−t}]_0^∞ + z ∫_0^∞ t^{z−1} e^{−t} dt
+## Functional equation — full integration by parts
 
-At t = ∞: t^z e^{−t} → 0 for any fixed z (exponential dominates).  
-At t = 0: t^z → 0 when Re(z) > 0.
+Consider
 
-Thus Γ(z+1) = z Γ(z).
+Γ(z+1) = ∫_0^{∞} t^z e^{−t} dt
+
+Set u = t^z,    dv = e^{−t} dt
+
+Then du = z t^{z−1} dt,    v = −e^{−t}
+
+∫ u dv = u v − ∫ v du:
+
+Γ(z+1) = [ −t^z e^{−t} ]_0^{∞} − ∫_0^{∞} (−e^{−t}) z t^{z−1} dt
+
+= [ −t^z e^{−t} ]_0^{∞} + z ∫_0^{∞} t^{z−1} e^{−t} dt
+
+### Boundary term at infinity
+
+For fixed z, t^z e^{−t} → 0 as t → ∞ because exponential decay beats polynomial (or power) growth of |t^z|.
+
+### Boundary term at zero
+
+t^z → 0 as t → 0 when Re(z) > 0. Thus [ −t^z e^{−t} ]_0^{∞} = 0 − 0 = 0.
+
+Therefore
+
+Γ(z+1) = z Γ(z)
 
 ## Factorials
 
-Γ(1) = ∫_0^∞ e^{−t} dt = 1.  
-Γ(2) = 1·Γ(1) = 1,  
-Γ(3) = 2·Γ(2) = 2,  
-Γ(4) = 3·Γ(3) = 6,  
-so Γ(n+1) = n! for integers n ≥ 0.
+Γ(1) = ∫_0^{∞} e^{−t} dt = [ −e^{−t} ]_0^{∞} = 1
+
+Γ(2) = 1 · Γ(1) = 1 = 1!
+
+Γ(3) = 2 · Γ(2) = 2 = 2!
+
+Γ(4) = 3 · Γ(3) = 6 = 3!
+
+By induction, Γ(n+1) = n! for integers n ≥ 0.
 
 ## Beta function
 
-B(p,q) = ∫_0^1 t^{p−1} (1−t)^{q−1} dt,    Re(p)>0, Re(q)>0
+For Re(p) > 0 and Re(q) > 0,
 
-The identity B(p,q) = Γ(p)Γ(q)/Γ(p+q) follows by writing Γ(p)Γ(q) as a double integral in (s,t), substituting s = uv, t = u(1−v) (Jacobian u), and recognizing the u-integral as Γ(p+q) and the v-integral as B(p,q).
+B(p,q) = ∫_0^1 t^{p−1} (1−t)^{q−1} dt
+
+## Relation B(p,q) = Γ(p)Γ(q)/Γ(p+q)
+
+Write
+
+Γ(p)Γ(q) = ∫_0^{∞} ∫_0^{∞} s^{p−1} e^{−s} u^{q−1} e^{−u} ds du
+
+Change variables: s = ξ η,    u = ξ (1 − η), with ξ ∈ (0, ∞) and η ∈ (0, 1). The Jacobian of the transformation (s,u) ← (ξ,η) has absolute value ξ (standard computation: s+u = ξ, u/(s+u) = 1−η, etc.).
+
+Then
+
+Γ(p)Γ(q) = ∫_0^1 η^{p−1} (1−η)^{q−1} dη  ·  ∫_0^{∞} ξ^{p+q−1} e^{−ξ} dξ
+
+= B(p,q) · Γ(p+q)
+
+Hence
+
+B(p,q) = Γ(p)Γ(q) / Γ(p+q)
 
 ## Link to Bessel
 
-The series for J_ν uses Γ(ν+j+1) in the denominator — Gamma is the natural extension of the factorial that normalizes special-function series.
+The series coefficients for J_ν use Γ(ν+j+1) in the denominator — Gamma extends the factorial law to the non-integer orders that appear in cylindrical problems.
 
 ## Check yourself
 
-Evaluate Γ(5) using only the functional equation and Γ(1) = 1.
+Using only Γ(1) = 1 and Γ(z+1) = z Γ(z), compute Γ(5).
 ''',
             keyTakeaways: [
-              'Γ(z) = ∫_0^∞ t^{z−1} e^{−t} dt for Re(z) > 0.',
-              'Integration by parts gives Γ(z+1) = z Γ(z); hence Γ(n+1) = n!.',
+              'Γ(z) = ∫_0^{∞} t^{z−1} e^{−t} dt for Re(z) > 0.',
+              'Integration by parts gives Γ(z+1) = z Γ(z); Γ(n+1) = n!.',
               'B(p,q) = Γ(p)Γ(q)/Γ(p+q).',
             ],
             quiz: [
               QuizQuestion(
                 id: 'phy701-m4-u4-q1',
-                question: 'Γ(z+1) = z Γ(z) is proved by',
+                question: 'Γ(z+1) equals',
                 options: [
-                  'Differentiating under a finite sum only',
-                  'Integration by parts on ∫ t^z e^{−t} dt',
-                  'Setting z = 0 only',
-                  'Fourier transformation',
+                  'Γ(z)/z',
+                  'z Γ(z)',
+                  'Γ(z)²',
+                  '1/Γ(z)',
                 ],
                 correctIndex: 1,
-                explanation: 'Parts with u = t^z, dv = e^{−t} dt yields the functional equation.',
+                explanation: 'The functional equation is Γ(z+1) = z Γ(z).',
               ),
               QuizQuestion(
                 id: 'phy701-m4-u4-q2',
-                question: 'Γ(4) equals',
+                question: 'B(p,q) equals',
                 options: [
-                  '3',
-                  '6',
-                  '24',
-                  '1',
+                  'Γ(p) + Γ(q)',
+                  'Γ(p)Γ(q)/Γ(p+q)',
+                  'Γ(p+q)',
+                  'p q',
                 ],
                 correctIndex: 1,
-                explanation: 'Γ(4) = 3! = 6.',
+                explanation: 'That is the fundamental Beta–Gamma identity.',
               ),
             ],
           ),
         ],
       ),
-      Module(
+      skeletonModule(
         id: 'phy701-m5',
         title: 'Distribution Theory & The Dirac Delta Function',
-        summary:
-            'Delta as a distribution, nascent sequences, scaling/composition/derivatives, Fourier representation.',
+        summary: 'Distribution Theory & The Dirac Delta Function',
         units: [
-          Unit(
-            id: 'phy701-m5-u1',
-            title: 'Dirac delta as a distribution',
-            content: r'''
-## Learning goal
-
-Define the Dirac delta rigorously as a continuous linear functional on a space of test functions, and connect that definition to the informal physics integral.
-
-## Test function space
-
-Let D(ℝ) be the set of all infinitely differentiable functions φ: ℝ → ℝ that vanish outside some finite interval (compact support). If φ ∈ D(ℝ), there exist A < B such that φ(x) = 0 for all x ∉ [A, B], and φ^{(k)} exists for every order k.
-
-## Distributions
-
-A **distribution** is a continuous linear map T: D(ℝ) → ℝ (continuity in the test-function topology). Every locally integrable ordinary function f defines a distribution by
-
-⟨T_f, φ⟩ = ∫_{−∞}^{∞} f(x) φ(x) dx
-
-## The delta distribution
-
-Define δ by
-
-⟨δ, φ⟩ = φ(0)    for every φ ∈ D(ℝ)
-
-Linearity is obvious. This is **not** of the form T_f for any locally integrable f: if such an f existed, ∫ f φ = φ(0) for all test φ, which is impossible (take a sequence of test functions peaking away from regions where f would have to concentrate).
-
-## Shifted delta
-
-⟨δ_{x'}, φ⟩ = φ(x'). In physics notation,
-
-∫_{−∞}^{∞} δ(x − x') φ(x) dx = φ(x')
-
-## Check yourself
-
-Why is "δ(x) = 0 for x ≠ 0 and ∫ δ = 1" only a mnemonic, not a definition in ordinary calculus?
-''',
-            keyTakeaways: [
-              'Test functions are smooth and compactly supported.',
-              '⟨δ, φ⟩ = φ(0) defines the delta distribution.',
-              'Physics integral notation is shorthand for that pairing.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m5-u1-q1',
-                question: '⟨δ, φ⟩ equals',
-                options: [
-                  '∫ φ(x) dx over ℝ',
-                  'φ(0)',
-                  'φ\'(0)',
-                  '0 for all φ',
-                ],
-                correctIndex: 1,
-                explanation: 'The delta distribution evaluates the test function at 0.',
-              ),
-              QuizQuestion(
-                id: 'phy701-m5-u1-q2',
-                question: 'The Dirac delta is',
-                options: [
-                  'An ordinary continuous function',
-                  'A distribution (generalized function)',
-                  'A polynomial of degree 1',
-                  'Equal to the constant 1',
-                ],
-                correctIndex: 1,
-                explanation: 'Delta is defined as a functional on test functions, not pointwise values.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m5-u2',
-            title: 'Limit representations of the delta',
-            content: r'''
-## Learning goal
-
-Construct sequences of ordinary functions that converge to δ in the distributional sense, including Gaussian, Lorentzian, and rectangular nascent deltas.
-
-## Distributional convergence
-
-A family f_ε (ε → 0⁺) satisfies f_ε → δ if for every test φ,
-
-∫_{−∞}^{∞} f_ε(x) φ(x) dx → φ(0)
-
-## Rectangular nascent delta
-
-Let f_ε(x) = 1/ε for |x| < ε/2 and 0 otherwise. Then ∫ f_ε = 1, and for continuous φ the integral is the average of φ over a shrinking interval about 0 → φ(0).
-
-## Gaussian
-
-f_ε(x) = (1/(ε √π)) exp(−x²/ε²)
-
-(Normalize so ∫ f_ε dx = 1; equivalent forms use σ = ε/√2, etc.) As ε → 0 the peak height grows and the width shrinks while unit mass is preserved.
-
-## Lorentzian
-
-f_ε(x) = (1/π) · ε / (x² + ε²)
-
-∫_{−∞}^{∞} f_ε = 1, and the same averaging argument applies.
-
-## Sinc / Fourier partial integrals
-
-The integral (1/(2π)) ∫_{−K}^{K} e^{ikx} dk = (K/π) sinc(Kx) (up to sinc convention) peaks more sharply as K → ∞ and is another standard nascent delta under Fourier inversion.
-
-## Check yourself
-
-Why is unit integral of f_ε essential for convergence to δ rather than to 0?
-''',
-            keyTakeaways: [
-              'Nascent deltas are ordinary functions with unit mass concentrating at 0.',
-              'Rectangles, Gaussians, and Lorentzians are standard examples.',
-              'Convergence is tested against test functions, not pointwise at 0.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m5-u2-q1',
-                question: 'As ε → 0, a nascent delta sequence should',
-                options: [
-                  'Spread out with fixed height',
-                  'Narrow while keeping integral 1',
-                  'Tend to the zero function in L¹ with integral 0',
-                  'Equal the Heaviside function',
-                ],
-                correctIndex: 1,
-                explanation: 'Mass concentrates at a point while total integral remains 1.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m5-u3',
-            title: 'Operational identities',
-            content: r'''
-## Learning goal
-
-Derive the scaling identity, the composition rule at simple zeros, and the distributional derivative of δ.
-
-## Scaling — full argument
-
-For a ≠ 0 and φ ∈ D(ℝ),
-
-⟨δ(ax), φ⟩ := ⟨δ, φ(·/a) / |a|⟩ after the substitution u = ax
-
-More carefully: the composition of delta with the linear map x ↦ ax means
-
-∫ δ(ax) φ(x) dx = ∫ δ(u) φ(u/a) du/|a| = φ(0)/|a|
-
-Hence δ(ax) = (1/|a|) δ(x).
-
-Example: δ(2x) = (1/2) δ(x).
-
-## Composition at simple roots
-
-Let g be smooth and let x_k be simple zeros: g(x_k) = 0, g'(x_k) ≠ 0. Near each root, g(x) ≈ g'(x_k)(x − x_k), so
-
-δ(g(x)) = Σ_k δ(x − x_k) / |g'(x_k)|
-
-## Distributional derivative
-
-Define δ' by integration by parts against test functions (boundary terms vanish by compact support):
-
-⟨δ', φ⟩ = −⟨δ, φ'⟩ = −φ'(0)
-
-Higher derivatives: ⟨δ^{(n)}, φ⟩ = (−1)^n φ^{(n)}(0).
-
-## Heaviside link
-
-If H is the Heaviside step (H(x) = 0 for x < 0, 1 for x > 0), then H' = δ in the distributional sense.
-
-## Check yourself
-
-Compute ⟨δ', φ⟩ if φ(x) = e^{−x²} (as a formal test-function-style evaluation at 0).
-''',
-            keyTakeaways: [
-              'δ(ax) = δ(x)/|a| for a ≠ 0.',
-              'δ(g(x)) sums 1/|g\'| at each simple root.',
-              '⟨δ\', φ⟩ = −φ\'(0); H\' = δ distributionally.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m5-u3-q1',
-                question: 'δ(2x) equals',
-                options: [
-                  '2 δ(x)',
-                  '(1/2) δ(x)',
-                  'δ(x)',
-                  'δ(x/2)',
-                ],
-                correctIndex: 1,
-                explanation: 'Scaling gives a factor 1/|a| with a = 2.',
-              ),
-              QuizQuestion(
-                id: 'phy701-m5-u3-q2',
-                question: '⟨δ\', φ⟩ equals',
-                options: [
-                  'φ(0)',
-                  '−φ\'(0)',
-                  'φ\'\'(0)',
-                  '∫ φ',
-                ],
-                correctIndex: 1,
-                explanation: 'Distributional differentiation moves a minus sign onto φ\'.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m5-u4',
-            title: 'Fourier representation of the delta',
-            content: r'''
-## Learning goal
-
-Derive the plane-wave integral representation of δ from Fourier inversion.
-
-## Fourier inversion (convention)
-
-Adopt
-
-f̂(k) = ∫_{−∞}^{∞} f(x) e^{−ikx} dx
-
-f(x) = (1/(2π)) ∫_{−∞}^{∞} f̂(k) e^{ikx} dk
-
-Substitute f̂ into the inversion integral and interchange (justified in the distributional sense for suitable f):
-
-f(x) = (1/(2π)) ∫_{−∞}^{∞} ∫_{−∞}^{∞} f(y) e^{ik(x−y)} dy dk
-
-So the kernel
-
-(1/(2π)) ∫_{−∞}^{∞} e^{ik(x−y)} dk
-
-acts as δ(x − y). That is the **Fourier representation** of the delta.
-
-## Completeness reading
-
-The identity says the continuum of eigenfunctions e^{ikx} of translation is complete on the line — the same role played by {e^{i n π x / L}} on a finite interval before L → ∞ (Module 6).
-
-## Check yourself
-
-Where does the factor 1/(2π) go if one uses a symmetric 1/√(2π) convention on both transform and inverse?
-''',
-            keyTakeaways: [
-              'Fourier inversion implies (1/(2π))∫ e^{ik(x−y)} dk = δ(x−y).',
-              'This is a distributional identity.',
-              'It expresses completeness of plane waves on ℝ.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m5-u4-q1',
-                question: 'The integral over all k of e^{ik(x−x\')} is proportional to',
-                options: [
-                  '1',
-                  'δ(x − x\')',
-                  'e^{x−x\'}',
-                  'x − x\'',
-                ],
-                correctIndex: 1,
-                explanation: 'Plane-wave completeness produces a delta in (x − x\').',
-              ),
-            ],
-          ),
+          skeletonUnit(id: 'phy701-m5-u1', title: 'Rigorous Definition'),
+          skeletonUnit(id: 'phy701-m5-u2', title: 'Limit Representations'),
+          skeletonUnit(id: 'phy701-m5-u3', title: 'Operational Identities'),
+          skeletonUnit(id: 'phy701-m5-u4', title: 'Fourier Representation'),
         ],
       ),
-      Module(
+      skeletonModule(
         id: 'phy701-m6',
         title: 'Fourier Series & Continuous Fourier Transforms',
-        summary:
-            'Complex Fourier series, continuum limit, operational theorems, Parseval and Plancherel with derivations.',
+        summary: 'Fourier Series & Continuous Fourier Transforms',
         units: [
-          Unit(
-            id: 'phy701-m6-u1',
-            title: 'Trigonometric and complex Fourier series',
-            content: r'''
-## Learning goal
-
-Start from the real sine/cosine series on (−L, L), derive the complex coefficient formula for c_n, and relate the two forms.
-
-## Real orthonormal expansion
-
-For f piecewise smooth on (−L, L) and extended periodically,
-
-f(x) ~ a_0/2 + Σ_{n=1}^∞ [a_n cos(nπx/L) + b_n sin(nπx/L)]
-
-a_n = (1/L) ∫_{−L}^{L} f(x) cos(nπx/L) dx
-
-b_n = (1/L) ∫_{−L}^{L} f(x) sin(nπx/L) dx
-
-## Complex basis
-
-Note that
-
-cos θ = (e^{iθ} + e^{−iθ})/2,    sin θ = (e^{iθ} − e^{−iθ})/(2i)
-
-Rearrangement of the real series produces
-
-f(x) ~ Σ_{n=−∞}^{∞} c_n e^{i n π x / L}
-
-Matching coefficients gives
-
-c_n = (1/(2L)) ∫_{−L}^{L} f(x) e^{−i n π x / L} dx
-
-and the relations c_n = (a_n − i b_n)/2 for n ≥ 1, c_0 = a_0/2, with c_{−n} = (a_n + i b_n)/2 for real f.
-
-## Orthogonality behind c_n
-
-The functions e^{i n π x / L} are orthogonal on (−L, L):
-
-∫_{−L}^{L} e^{i (n−m) π x / L} dx = 2L δ_{nm}
-
-Multiplying the series by e^{−i m π x / L} and integrating isolates c_m — that is the derivation of the coefficient formula.
-
-## Check yourself
-
-Show that if f is real and even, then each c_n is real.
-''',
-            keyTakeaways: [
-              'Real Fourier series and complex exponential series are equivalent rearrangements.',
-              'c_n = (1/(2L)) ∫_{−L}^{L} f e^{−i n π x / L} dx.',
-              'Orthogonality of complex exponentials isolates each c_n.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m6-u1-q1',
-                question: 'The analysis formula for c_n uses the factor',
-                options: [
-                  'e^{i n π x / L} inside the integral only',
-                  'e^{−i n π x / L} inside the integral',
-                  'Only sin(nπx/L)',
-                  'x^n',
-                ],
-                correctIndex: 1,
-                explanation: 'Standard convention pairs e^{i n π x / L} in the series with e^{−i n π x / L} in c_n.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m6-u2',
-            title: 'From Fourier series to the Fourier transform',
-            content: r'''
-## Learning goal
-
-Take the limit L → ∞ carefully and obtain a continuous transform pair.
-
-## Discrete frequencies
-
-On (−L, L), wave numbers are k_n = nπ/L with spacing Δk = π/L.
-
-Write the complex series as
-
-f(x) ~ Σ_{n=−∞}^{∞} [ (1/(2L)) ∫_{−L}^{L} f(y) e^{−i k_n y} dy ] e^{i k_n x}
-
-Note 1/(2L) = Δk / (2π).
-
-As L → ∞, Δk → 0, the sum Σ g(k_n) Δk becomes ∫ g(k) dk, and the inner integral extends to ℝ, yielding
-
-f(x) = (1/(2π)) ∫_{−∞}^{∞} ( ∫_{−∞}^{∞} f(y) e^{−i k y} dy ) e^{i k x} dk
-
-## Transform pair
-
-Define
-
-f̂(k) = ∫_{−∞}^{∞} f(x) e^{−ikx} dx
-
-Then
-
-f(x) = (1/(2π)) ∫_{−∞}^{∞} f̂(k) e^{ikx} dk
-
-## Check yourself
-
-Why is 1/(2L) equal to Δk/(2π) when Δk = π/L?
-''',
-            keyTakeaways: [
-              'Mode spacing Δk = π/L vanishes as L → ∞.',
-              '1/(2L) = Δk/(2π) converts the sum into a k-integral.',
-              'The Fourier transform pair is the continuum limit of the series.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m6-u2-q1',
-                question: 'In the continuum limit, the discrete sum over n becomes',
-                options: [
-                  'A finite Taylor polynomial',
-                  'An integral over continuous k',
-                  'Independent of f',
-                  'Only a single sine term',
-                ],
-                correctIndex: 1,
-                explanation: 'Densifying frequencies turns the sum into ∫ dk.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m6-u3',
-            title: 'Operational theorems',
-            content: r'''
-## Learning goal
-
-Derive the shift theorem, the transform of a derivative, and the convolution theorem.
-
-## Shift
-
-Let g(x) = f(x − x_0). Then
-
-ĝ(k) = ∫ f(x − x_0) e^{−ikx} dx
-
-Set u = x − x_0: ĝ(k) = ∫ f(u) e^{−ik(u+x_0)} du = e^{−ik x_0} f̂(k)
-
-## Derivative
-
-Assume f(x) → 0 as |x| → ∞. Integrate by parts:
-
-∫ f'(x) e^{−ikx} dx = [f e^{−ikx}]_{−∞}^{∞} + ik ∫ f(x) e^{−ikx} dx = ik f̂(k)
-
-(boundary terms vanish). So differentiation in x multiplies the transform by ik in this convention.
-
-## Convolution
-
-(f ∗ g)(x) = ∫_{−∞}^{∞} f(y) g(x − y) dy
-
-Compute the transform: ∫∫ f(y) g(x−y) e^{−ikx} dy dx. Set u = x − y in the x-integral:
-
-∫ f(y) e^{−iky} dy · ∫ g(u) e^{−iku} du = f̂(k) ĝ(k)
-
-Thus convolution in space ↔ product in frequency.
-
-## Check yourself
-
-What is the transform of f(x − 2) + f(x + 2) in terms of f̂(k)?
-''',
-            keyTakeaways: [
-              'A shift by x_0 multiplies f̂ by e^{−ik x_0}.',
-              'f\' transforms to ik f̂ when boundary terms vanish.',
-              'Convolution transforms to a product f̂ ĝ.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m6-u3-q1',
-                question: 'The Fourier transform of f(x − x_0) is',
-                options: [
-                  'f̂(k − x_0)',
-                  'e^{−ik x_0} f̂(k)',
-                  'f̂(k)/x_0',
-                  'ik f̂(k)',
-                ],
-                correctIndex: 1,
-                explanation: 'Translations become phase factors in k-space.',
-              ),
-              QuizQuestion(
-                id: 'phy701-m6-u3-q2',
-                question: 'The transform of f ∗ g is',
-                options: [
-                  'f̂ + ĝ',
-                  'f̂ ĝ',
-                  'f̂ / ĝ',
-                  'f̂\' ĝ\'',
-                ],
-                correctIndex: 1,
-                explanation: 'Convolution theorem: transforms multiply.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m6-u4',
-            title: 'Parseval and Plancherel',
-            content: r'''
-## Learning goal
-
-Prove the energy identity linking ∫|f|² to the spectrum, for both series and transforms.
-
-## Parseval for orthonormal series
-
-If {φ_n} is orthonormal on an interval I and f = Σ c_n φ_n in L²,
-
-∫_I |f|² = Σ |c_n|²
-
-Proof sketch: expand ∫ (Σ c_n φ_n)(Σ c_m^* φ_m^*) and use ∫ φ_n φ_m^* = δ_{nm}.
-
-For complex Fourier modes on (−L, L) with the normalization of c_n used earlier, one obtains the corresponding form relating (1/(2L))∫|f|² to Σ |c_n|² (constants fixed by the exact convention).
-
-## Plancherel for the transform
-
-Using the inversion formula and the same type of expansion,
-
-∫_{−∞}^{∞} |f(x)|² dx = (1/(2π)) ∫_{−∞}^{∞} |f̂(k)|² dk
-
-in the convention of the previous units. This is unitarity of the Fourier transform on L² up to the 2π normalization.
-
-## Uncertainty intuition
-
-If f concentrates in a small spatial region, |f̂| must spread in k so that the Plancherel integral still matches — the quantitative form of "short pulses need broad bandwidth."
-
-## Check yourself
-
-If f is scaled to f(ax) with a > 1 (compressed in x), how does Plancherel force the spectrum to change?
-''',
-            keyTakeaways: [
-              'Parseval: mean-square size of f equals sum of |c_n|² for orthonormal expansions.',
-              'Plancherel: ∫|f|² = (1/(2π)) ∫|f̂|² in our convention.',
-              'Spatial concentration forces spectral spread.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m6-u4-q1',
-                question: 'Plancherel relates',
-                options: [
-                  'Only arg(f̂) to f',
-                  '∫|f|² to an integral of |f̂|²',
-                  'Zeros of f only',
-                  'Taylor series only',
-                ],
-                correctIndex: 1,
-                explanation: 'Plancherel is the L² energy identity between space and frequency.',
-              ),
-            ],
-          ),
+          skeletonUnit(id: 'phy701-m6-u1', title: 'Trigonometric & Complex Fourier Series'),
+          skeletonUnit(id: 'phy701-m6-u2', title: 'The Continuous Limit'),
+          skeletonUnit(id: 'phy701-m6-u3', title: 'Operational Theorems'),
+          skeletonUnit(id: 'phy701-m6-u4', title: 'Energy Conservation'),
         ],
       ),
-      Module(
+      skeletonModule(
         id: 'phy701-m7',
         title: 'Complex Analysis, Residue Calculus, and Green\'s Functions',
-        summary:
-            'Residue theorem, worked contour idea, Green\'s functions, and explicit 1D jump construction.',
+        summary: 'Complex Analysis, Residue Calculus, and Green\'s Functions',
         units: [
-          Unit(
-            id: 'phy701-m7-u1',
-            title: 'Cauchy and residue theorems',
-            content: r'''
-## Learning goal
-
-State Cauchy's theorem, define residues via Laurent series, compute residues at poles of order m, and state the residue theorem.
-
-## Cauchy's theorem
-
-If f is holomorphic in a simply connected domain containing a simple closed positively oriented contour C and its interior, then
-
-∮_C f(z) dz = 0
-
-(Proof idea: Green's theorem in the plane plus Cauchy–Riemann equations ⇒ the integrand is a perfect derivative in 2D form.)
-
-## Laurent series and residue
-
-About an isolated singularity z_0,
-
-f(z) = Σ_{n=−∞}^{∞} a_n (z − z_0)^n
-
-The **residue** is a_{−1} = Res(f; z_0).
-
-Reason: when integrating term by term over a small circle, ∮ (z−z_0)^n dz = 2πi if n = −1 and 0 otherwise.
-
-## Practical residue formulas
-
-Simple pole:
-
-Res(f; z_0) = lim_{z→z_0} (z − z_0) f(z)
-
-Pole of order m:
-
-Res(f; z_0) = (1/(m−1)!) lim_{z→z_0} d^{m−1}/dz^{m−1} [ (z − z_0)^m f(z) ]
-
-## Residue theorem
-
-If f is holomorphic on and inside C except for isolated singularities z_k inside C,
-
-∮_C f dz = 2πi Σ_k Res(f; z_k)
-
-## Example
-
-Res(1/z; 0) = 1, so ∮_{|z|=1} dz/z = 2πi.
-
-## Check yourself
-
-Find Res(e^z / z²; 0) using the order-2 formula.
-''',
-            keyTakeaways: [
-              'Cauchy: integral of holomorphic f over a simple closed curve vanishes.',
-              'Residue = Laurent coefficient a_{−1}.',
-              '∮ f = 2πi × sum of enclosed residues.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m7-u1-q1',
-                question: 'The residue at an isolated singularity is the coefficient of',
-                options: [
-                  '(z−z_0)^2 in the Taylor series',
-                  '(z−z_0)^{−1} in the Laurent series',
-                  'The constant term only',
-                  'e^z always',
-                ],
-                correctIndex: 1,
-                explanation: 'Res = a_{−1}, the coefficient of 1/(z−z_0).',
-              ),
-              QuizQuestion(
-                id: 'phy701-m7-u1-q2',
-                question: '∮_C f dz equals',
-                options: [
-                  '0 always, even with poles inside',
-                  '2πi times the sum of residues inside C',
-                  'The maximum of |f|',
-                  'f\'(0) only',
-                ],
-                correctIndex: 1,
-                explanation: 'That is the residue theorem.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m7-u2',
-            title: 'Real integrals via contours: worked pattern',
-            content: r'''
-## Learning goal
-
-Evaluate a model real integral using a semicircular contour, residues, and a vanishing-arc argument.
-
-## Model integral
-
-I = ∫_{−∞}^{∞} dx / (x² + 1) = π
-
-(We will recover this with residues.)
-
-## Complex function
-
-Set f(z) = 1/(z² + 1) = 1/[(z−i)(z+i)]. Poles at z = ±i; both simple.
-
-## Contour
-
-For R > 1, let C_R be the line from −R to R plus the upper semicircle Γ_R. Only z = i lies inside C_R.
-
-Res(f; i) = lim_{z→i} (z−i)/(z²+1) = 1/(2i)
-
-∮_{C_R} f dz = 2πi · (1/(2i)) = π
-
-## Arc vanishes
-
-On Γ_R, |z| = R, |z²+1| ≥ R² − 1, so |f(z)| ≤ 1/(R²−1). Length of Γ_R is πR, so
-
-|∫_{Γ_R} f dz| ≤ πR /(R²−1) → 0 as R → ∞
-
-## Conclusion
-
-∫_{−∞}^{∞} dx/(x²+1) + 0 = π, so I = π.
-
-## Jordan's lemma (role for Fourier-type integrals)
-
-For integrals ∫ R(x) e^{ix} dx, one multiplies by e^{iz} and closes where e^{iz} decays (upper half-plane for the +ix convention). Jordan's lemma gives conditions under which the arc still vanishes even though |e^{iz}| is not tiny everywhere on the arc.
-
-## Check yourself
-
-Why was the upper half-plane chosen for 1/(z²+1) rather than the lower?
-''',
-            keyTakeaways: [
-              'Close a contour enclosing known poles; apply the residue theorem.',
-              'Prove the arc contribution vanishes as R → ∞.',
-              'The line integral becomes the real improper integral in the limit.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m7-u2-q1',
-                question: 'For ∫ dx/(x²+1) via the upper half-plane, the relevant residue is at',
-                options: [
-                  'z = −i',
-                  'z = i',
-                  'z = 0',
-                  'z = ∞ only',
-                ],
-                correctIndex: 1,
-                explanation: 'Only z = i lies in the upper half-plane.',
-              ),
-              QuizQuestion(
-                id: 'phy701-m7-u2-q2',
-                question: 'The integral ∫_{−∞}^{∞} dx/(x²+1) equals',
-                options: [
-                  '0',
-                  '1',
-                  'π',
-                  '2π',
-                ],
-                correctIndex: 2,
-                explanation: 'Residue calculation gives π.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m7-u3',
-            title: 'Green\'s functions as impulse responses',
-            content: r'''
-## Learning goal
-
-Define the Green's function of a linear differential operator and show how general sources are solved by superposition.
-
-## Definition
-
-Let L be a linear differential operator in the variable x. A **Green's function** G(x, x') satisfies
-
-L_x G(x, x') = δ(x − x')
-
-together with prescribed homogeneous boundary conditions in x (matching the BVP of interest).
-
-## Superposition
-
-If L u = f and interchange of L and integration is justified,
-
-u(x) = ∫ G(x, x') f(x') dx'
-
-Because
-
-L_x u = ∫ L_x G(x, x') f(x') dx' = ∫ δ(x − x') f(x') dx' = f(x)
-
-## Impulse response reading
-
-G(·, x') is the response at position x to a unit point source at x'. Linearity builds any f as a continuum of weighted deltas.
-
-## Check yourself
-
-If the operator and boundary conditions are translation invariant on ℝ, why can one write G(x, x') = g(x − x')?
-''',
-            keyTakeaways: [
-              'L_x G(x,x\') = δ(x−x\') defines the Green\'s function.',
-              'u = ∫ G f solves L u = f by superposition.',
-              'G is the linear system\'s impulse response.',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m7-u3-q1',
-                question: 'The defining equation for G is',
-                options: [
-                  'L G = 0 everywhere',
-                  'L_x G(x,x\') = δ(x−x\')',
-                  'G = f',
-                  'G\'\' = G',
-                ],
-                correctIndex: 1,
-                explanation: 'G is the fundamental solution for L.',
-              ),
-            ],
-          ),
-          Unit(
-            id: 'phy701-m7-u4',
-                title: 'Jump construction: explicit 1D Green\'s function',
-            content: r'''
-## Learning goal
-
-Construct G for −d²/dx² on [0, 1] with Dirichlet ends, including continuity, derivative jump, and explicit formulas.
-
-## Problem
-
-Solve
-
-− d²G/dx² = δ(x − x'),    0 < x, x' < 1
-
-G(0, x') = G(1, x') = 0
-
-## Homogeneous solutions
-
-For x ≠ x', G_xx = 0, so G is linear on each side.
-
-Left solution satisfying G(0, x') = 0:
-
-G(x, x') = A(x') x    for x < x'
-
-Right solution satisfying G(1, x') = 0:
-
-G(x, x') = B(x') (1 − x)    for x > x'
-
-## Continuity at x = x'
-
-A x' = B (1 − x')
-
-## Jump from integrating the ODE
-
-Integrate −G_xx = δ from x'−ε to x'+ε:
-
-−[G_x]_{x'−}^{x'+} = 1 ⇒ G_x(x'+) − G_x(x'−) = −1
-
-Now G_x = A on the left and G_x = −B on the right, so
-
-−B − A = −1 ⇒ A + B = 1
-
-## Solve for A, B
-
-From A x' = B(1−x') and A + B = 1:
-
-A x' = (1 − A)(1 − x') ⇒ A x' = 1 − x' − A + A x' ⇒ 0 = 1 − x' − A
-
-Thus A = 1 − x',    B = x'
-
-Wait — check: A + B = 1 − x' + x' = 1. Continuity: A x' = (1−x') x' and B(1−x') = x'(1−x'). Good.
-
-## Explicit Green function
-
-G(x, x') = (1 − x') x    for x ≤ x'
-
-G(x, x') = x' (1 − x)    for x ≥ x'
-
-Equivalently G(x, x') = x_<(1 − x_>) with x_< = min(x,x'), x_> = max(x,x').
-
-## Check yourself
-
-Verify by differentiating in x (distributionally) that −G_xx = δ(x−x') and that boundary values vanish.
-''',
-            keyTakeaways: [
-              'Build G from left/right homogeneous solutions matching each boundary.',
-              'G continuous at x\'; derivative jumps by an amount fixed by the delta.',
-              'For −d²/dx² on [0,1] with G=0 at ends: G = x_<(1−x_>).',
-            ],
-            quiz: [
-              QuizQuestion(
-                id: 'phy701-m7-u4-q1',
-                question: 'For −G\'\' = δ on [0,1] with G(0)=G(1)=0, G(x,x\') equals',
-                options: [
-                  '1 always',
-                  'x_<(1 − x_>)',
-                  'δ(x−x\')',
-                  'x + x\'',
-                ],
-                correctIndex: 1,
-                explanation: 'The jump construction produces G = x_<(1−x_>).',
-              ),
-              QuizQuestion(
-                id: 'phy701-m7-u4-q2',
-                question: 'Across x = x\', G itself is',
-                options: [
-                  'Discontinuous',
-                  'Continuous, while G_x jumps',
-                  'C^∞ with no feature',
-                  'Infinite',
-                ],
-                correctIndex: 1,
-                explanation: 'Second-order operators: G continuous, derivative jumps.',
-              ),
-            ],
-          ),
+          skeletonUnit(id: 'phy701-m7-u1', title: 'Cauchy\'s Residue Theorem'),
+          skeletonUnit(id: 'phy701-m7-u2', title: 'Contour Integration'),
+          skeletonUnit(id: 'phy701-m7-u3', title: 'Impulse Response Theory'),
+          skeletonUnit(id: 'phy701-m7-u4', title: 'Construction Rules'),
         ],
       ),
     ],
