@@ -1,40 +1,68 @@
 # Content writing progress & roadmap
 
-**Rules:** one course · one module · master-prompt depth · update after every step.
+**Rules (mandatory):**
+1. One course at a time
+2. One module prompt at a time, numeric order
+3. Full master-prompt depth — no thin stand-ins
+4. No UI / Nova / theme edits for content work
+5. No ASCII schematics; no SVG code blocks in lessons
+6. Prefer Unicode math; clean quizzes + keyTakeaways
+7. Update this file after every step
+8. Course audit after last module of each course
+
+**CI:** GitHub Actions APK workflow (trigger on push).
+
+---
 
 ## Roadmap
 
-| Course | Status |
-|--------|--------|
-| PHY 701 Mathematical Methods | **COMPLETE** |
-| PHY 702 Electromagnetism | **COMPLETE** |
-| PHY 703 Analytical Mechanics | **COMPLETE** |
-| **PHY 704 Quantum Physics** | **COMPLETE** |
-| PHY 705 Intro Solid State Electronics | Pending ← next |
-| PHY 706 … 799 | Pending |
+| # | Course | File | Modules | Status |
+|---|--------|------|---------|--------|
+| 1 | PHY 701 Mathematical Methods | `phy701_content.dart` | 7 | **COMPLETE** |
+| 2 | PHY 703 Analytical Mechanics | `phy703_content.dart` | 9 | **COMPLETE** |
+| 3 | PHY 702 Electromagnetism | `phy702_content.dart` | 8 | **COMPLETE** |
+| 4 | PHY 704 Quantum Physics | `phy704_content.dart` | 8 | **COMPLETE** |
+| 5 | PHY 705 Intro Solid State Electronics | `phy705_content.dart` | 8 | Pending ← next |
+| 6 | PHY 707 Digital Electronics | `phy707_content.dart` | 8 | Pending |
+| 7 | PHY 709 Devices Design & Fabrication | `phy709_content.dart` | 8 | Pending |
+| 8 | PHY 706 Measurement & Instrumentation | `phy706_content.dart` | 8 | Pending |
+| 9 | PHY 710 Vacuum & Thin Films | `phy710_content.dart` | 8 | Pending |
+| 10 | PHY 708 Nuclear & Particle | `phy708_content.dart` | 8 | Pending |
+| 11 | PHY 712 Energy Conversion & Storage | `phy712_content.dart` | 8 | Pending |
+| 12 | PHY 799 PGD Research Project | `phy799_content.dart` | 4 | Pending |
 
-## PHY 704 — COMPLETE (8/8)
+Prompt packs: `content_prompts/PHY###/`  
+Authoring rules: `CONTENT_AUTHORING.md`
 
-| Module | Status |
-|--------|--------|
-| 01 State vectors & operators | Done |
-| 02 Angular momentum & spin | Done |
-| 03 Perturbation theory | Done |
-| 04 Scattering | Done |
-| 05 Green’s functions & partial waves | Done |
-| 06 Atomic / molecular / solid-state | Done |
-| 07 Nuclear quantum models | Done |
-| **08 Quantum statistical mechanics** | **Done** |
+---
 
-### Module 08 checklist
-- [x] Classical vs quantum statistics
-- [x] Fermi–Dirac; Fermi energy
-- [x] Bose–Einstein; BEC
+## Completed course audits
 
-### Course audit PHY 704
-- [x] All 8 module prompts covered
-- [x] No skeletonModule / skeletonUnit left
-- [x] No ASCII schematics; UI untouched
-- [x] Quizzes + takeaways present
+### PHY 701 — COMPLETE
+- Modules 01–07 filled; 0 skeletons
+- ODEs/SL, Laplace, PDE, special functions, Dirac, Fourier, residues/Green
 
-**Next course:** PHY 705 Module 01 only.
+### PHY 703 — COMPLETE
+- Modules 01–09 filled; 0 skeletons
+- Conservative forces → continuum waves
+
+### PHY 702 — COMPLETE
+- Modules 01–08 filled; 0 skeletons
+- Coulomb → Maxwell & spherical waves
+
+### PHY 704 — COMPLETE
+- Modules 01–08 filled; 0 skeletons
+- State vectors → quantum statistical mechanics
+
+---
+
+## Diagnostics snapshot (latest)
+
+| Check | Result |
+|-------|--------|
+| phy701–704 skeletons | 0 |
+| Brace/paren balance | OK |
+| sample_courses wiring | All buildPhy###() present |
+| Remaining courses | Still skeleton shells (expected) |
+
+**Next step:** PHY 705 Module 01 only (read `00_Master` + `01_Module1_*.txt` first).
