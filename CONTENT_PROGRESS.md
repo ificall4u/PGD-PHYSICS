@@ -6,21 +6,35 @@
 
 | Course | Status |
 |--------|--------|
-| PHY 701–703 | **COMPLETE** |
-| **PHY 704 Quantum Physics** | **In progress 7/8** |
-| Remaining | Pending |
+| PHY 701 Mathematical Methods | **COMPLETE** |
+| PHY 702 Electromagnetism | **COMPLETE** |
+| PHY 703 Analytical Mechanics | **COMPLETE** |
+| **PHY 704 Quantum Physics** | **COMPLETE** |
+| PHY 705 Intro Solid State Electronics | Pending ← next |
+| PHY 706 … 799 | Pending |
 
-## PHY 704
+## PHY 704 — COMPLETE (8/8)
 
 | Module | Status |
 |--------|--------|
-| 01–06 | Done |
-| **07 Nuclear quantum models** | **Done** |
-| 08 Quantum statistical mechanics | Pending ← next |
+| 01 State vectors & operators | Done |
+| 02 Angular momentum & spin | Done |
+| 03 Perturbation theory | Done |
+| 04 Scattering | Done |
+| 05 Green’s functions & partial waves | Done |
+| 06 Atomic / molecular / solid-state | Done |
+| 07 Nuclear quantum models | Done |
+| **08 Quantum statistical mechanics** | **Done** |
 
-### Module 07 checklist
-- [x] Nuclear force / potential well
-- [x] Alpha decay by tunneling (Gamow)
-- [x] Shell model and magic numbers
+### Module 08 checklist
+- [x] Classical vs quantum statistics
+- [x] Fermi–Dirac; Fermi energy
+- [x] Bose–Einstein; BEC
 
-**Next:** PHY 704 Module 08 only, then course audit.
+### Course audit PHY 704
+- [x] All 8 module prompts covered
+- [x] No skeletonModule / skeletonUnit left
+- [x] No ASCII schematics; UI untouched
+- [x] Quizzes + takeaways present
+
+**Next course:** PHY 705 Module 01 only.

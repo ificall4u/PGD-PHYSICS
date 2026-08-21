@@ -1171,14 +1171,152 @@ Why does a closed nuclear shell correlate with extra stability?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy704-m8',
         title: 'Introduction to Quantum Statistical Mechanics',
-        summary: 'Introduction to Quantum Statistical Mechanics',
+        summary:
+            'Classical vs quantum statistics, Fermi–Dirac and Fermi energy, Bose–Einstein and BEC.',
         units: [
-          skeletonUnit(id: 'phy704-m8-u1', title: 'Classical vs. Quantum Statistics'),
-          skeletonUnit(id: 'phy704-m8-u2', title: 'Fermi-Dirac Statistics'),
-          skeletonUnit(id: 'phy704-m8-u3', title: 'Bose-Einstein Statistics'),
+          Unit(
+            id: 'phy704-m8-u1',
+            title: 'Classical vs quantum statistics',
+            content: r'''
+## Learning goal
+
+Contrast Maxwell–Boltzmann counting for distinguishable classical particles with quantum statistics for indistinguishable identical particles.
+
+## Classical (Maxwell–Boltzmann)
+
+In classical statistical mechanics one often treats particles as distinguishable (or corrects approximately). The distribution of energies in a dilute gas at high temperature approaches the Maxwell–Boltzmann form: occupation of a state can be any number, with weight e^{−E/kT}.
+
+## Quantum indistinguishability
+
+Identical quantum particles are truly indistinguishable. Swapping two particles does not create a new state — the many-body wavefunction is symmetric (bosons) or antisymmetric (fermions). Counting of microstates changes, and so do the equilibrium distributions.
+
+## When classical is enough
+
+When occupation numbers are much less than 1 (high T, low density), quantum and classical counting nearly agree. Degenerate quantum gases appear when many particles compete for few states — electrons in metals, ultracold atoms, photons in cavities.
+
+## Check yourself
+
+Why does “which electron is which” not make sense for two electrons in an atom?
+''',
+            keyTakeaways: [
+              'Classical MB statistics approximate distinguishable or dilute particles.',
+              'Identical quantum particles are indistinguishable; wavefunctions are sym/antisym.',
+              'Quantum statistics matter when state occupations are not ≪ 1.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m8-u1-q1',
+                question: 'Identical quantum particles are',
+                options: [
+                  'Always distinguishable by path labels',
+                  'Indistinguishable; states are symmetric or antisymmetric under exchange',
+                  'Never subject to statistics',
+                  'Only classical billiard balls',
+                ],
+                correctIndex: 1,
+                explanation: 'Indistinguishability plus spin selects Bose or Fermi statistics.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m8-u2',
+            title: 'Fermi–Dirac statistics',
+            content: r'''
+## Learning goal
+
+State the Fermi–Dirac distribution for fermions, define the Fermi energy, and describe the T → 0 filled Fermi sea.
+
+## Fermions and exclusion
+
+Fermions (half-integer spin: electrons, protons, neutrons) obey the Pauli principle: at most one particle per full quantum state (including spin). The average occupation of a state of energy E is
+
+f_FD(E) = 1 / (e^{(E−μ)/kT} + 1)
+
+where μ is the chemical potential.
+
+## Fermi energy
+
+At absolute zero, fermions fill the lowest states up to an energy E_F (the **Fermi energy**). States below E_F are occupied; states above are empty. A sharp Fermi surface in metals sits at E_F.
+
+## Finite temperature
+
+Temperature softens the step at E_F over a width ~ kT. Only electrons near the Fermi surface participate easily in low-energy excitations — why the electronic heat capacity of metals is linear in T and small compared with a classical guess.
+
+## Check yourself
+
+At T = 0, can two electrons occupy the exact same full set of quantum numbers?
+''',
+            keyTakeaways: [
+              'Fermi–Dirac: f = 1/(e^{(E−μ)/kT} + 1).',
+              'T = 0: states filled up to Fermi energy E_F.',
+              'Only electrons near E_F dominate low-energy response in metals.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m8-u2-q1',
+                question: 'At absolute zero, fermions fill states',
+                options: [
+                  'Randomly at all energies',
+                  'From the bottom up to the Fermi energy E_F',
+                  'Only one state in the universe',
+                  'According to Bose condensation only',
+                ],
+                correctIndex: 1,
+                explanation: 'The T = 0 Fermi sea is filled up to E_F.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m8-u3',
+            title: 'Bose–Einstein statistics',
+            content: r'''
+## Learning goal
+
+State the Bose–Einstein distribution and describe Bose–Einstein condensation as macroscopic occupation of the ground state.
+
+## Bosons
+
+Bosons (integer spin: photons, ⁴He atoms, many ultracold alkali atoms) have symmetric wavefunctions and **no** exclusion principle. Many particles may occupy one single-particle state. The average occupation is
+
+f_BE(E) = 1 / (e^{(E−μ)/kT} − 1)
+
+(with μ ≤ lowest energy, and special treatment for photons where N is not fixed).
+
+## Bose–Einstein condensate (BEC)
+
+When a gas of bosons is cooled so that the thermal de Broglie wavelength becomes comparable to interparticle spacing, a macroscopic number of particles can enter the ground state — a **Bose–Einstein condensate**. The system behaves in part like a single coherent “matter wave” (superfluidity and interference phenomena).
+
+## Photons
+
+Thermal photons (blackbody radiation) are bosons with μ = 0; Planck’s spectrum is the BE distribution applied to electromagnetic modes.
+
+## Check yourself
+
+How does the +1 in FD versus the −1 in BE reflect exclusion versus unlimited occupation?
+''',
+            keyTakeaways: [
+              'Bose–Einstein: f = 1/(e^{(E−μ)/kT} − 1).',
+              'Bosons can macroscopically occupy one state (BEC).',
+              'Photons follow BE statistics with μ = 0 (Planck spectrum).',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m8-u3-q1',
+                question: 'A Bose–Einstein condensate involves',
+                options: [
+                  'No particles in the ground state',
+                  'Macroscopic occupation of a single quantum state by bosons',
+                  'Only fermions filling a Fermi sea',
+                  'Classical distinguishable particles only',
+                ],
+                correctIndex: 1,
+                explanation: 'BEC is macroscopic ground-state occupation for bosons.',
+              ),
+            ],
+          ),
         ],
       ),
     ],
