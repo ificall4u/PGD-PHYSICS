@@ -7,26 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–704 | **COMPLETE** |
-| **PHY 705 Intro Solid State Electronics** | **In progress 1/8** |
-| PHY 706–799 | Pending |
+| **PHY 705** | **In progress 2/8** |
+| Remaining | Pending |
 
 ## PHY 705
 
 | Module | Status |
 |--------|--------|
-| **01 Conduction metals/semiconductors** | **Done** |
-| 02 Energy barriers & charge motion | Pending ← next |
-| 03 Hall effect | Pending |
-| 04 Electronic emission | Pending |
-| 05 PN junctions / solar cells | Pending |
-| 06 BJT | Pending |
-| 07 FET | Pending |
-| 08 Thin films & IC manufacture | Pending |
+| 01 Conduction | Done |
+| **02 Barriers & charge motion** | **Done** |
+| 03 Hall effect | Pending ← next |
+| 04–08 | Pending |
 
-### Module 01 checklist
-- [x] Drude free-electron picture
-- [x] σ = n e² τ / m
-- [x] Band / gap theater intuition
-- [x] Metal vs semiconductor vs insulator; electrons & holes
+### Module 02 checklist
+- [x] Barriers / work function
+- [x] Drift in E; mobility
+- [x] Lorentz magnetic force
+- [x] Cyclotron circle / helix
 
-**Next:** PHY 705 Module 02 only.
+**Next:** PHY 705 Module 03 only.

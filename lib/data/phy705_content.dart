@@ -213,15 +213,194 @@ Why does a full valence band with a large gap above it conduct poorly even thoug
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy705-m2',
         title: 'Energy Barriers and Charge Motion in Fields',
-        summary: 'Energy Barriers and Charge Motion in Fields',
+        summary:
+            'Potential barriers and work function, drift in E fields, Lorentz force in B, cyclotron motion.',
         units: [
-          skeletonUnit(id: 'phy705-m2-u1', title: 'Physical Meaning of Energy Barriers'),
-          skeletonUnit(id: 'phy705-m2-u2', title: 'Motion in Electric Fields'),
-          skeletonUnit(id: 'phy705-m2-u3', title: 'Motion in Magnetic Fields'),
-          skeletonUnit(id: 'phy705-m2-u4', title: 'Cyclotron Motion'),
+          Unit(
+            id: 'phy705-m2-u1',
+            title: 'Physical meaning of energy barriers',
+            content: r'''
+## Learning goal
+
+Explain potential energy barriers with a ball-and-hill picture and introduce the work function as a barrier for electrons leaving a metal.
+
+## Ball and hill
+
+A ball needs enough kinetic energy to roll over a hill. If its energy is below the hilltop, classically it rolls back. The hill is a **potential energy barrier** V(x). In electronics, electrons face similar barriers at surfaces, junctions, and insulating gaps.
+
+## Work function
+
+The **work function** φ is the minimum energy needed to remove an electron from a metal into vacuum just outside the surface. It is a barrier height set by how tightly the metal holds its electrons. Different metals have different φ — important for thermionic emission and contact potentials (later modules).
+
+## Quantum note
+
+Even below the barrier top, quantum tunneling can allow some transmission (as in alpha decay or thin oxide barriers). For this module, the classical barrier picture is the starting intuition.
+
+## Check yourself
+
+If you increase an electron’s kinetic energy toward a fixed barrier height, what happens to its chance of classically surmounting the barrier?
+''',
+            keyTakeaways: [
+              'Barriers are regions of high potential energy that impede charge motion.',
+              'Work function: minimum energy to extract an electron from a metal.',
+              'Classical surmounting needs energy above the barrier; tunneling is a quantum correction.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m2-u1-q1',
+                question: 'The work function of a metal is',
+                options: [
+                  'Its melting point only',
+                  'The minimum energy to remove an electron into vacuum',
+                  'Always zero',
+                  'The same as Planck\'s constant',
+                ],
+                correctIndex: 1,
+                explanation: 'φ measures the surface barrier for electron emission.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m2-u2',
+            title: 'Motion in electric fields',
+            content: r'''
+## Learning goal
+
+Describe acceleration and drift of charge carriers in an applied electric field.
+
+## Force and acceleration
+
+A carrier with charge q in field E feels F = q E. Free acceleration a = q E / m would grow without bound, but in a solid, scattering resets the velocity on the timescale τ (Module 1).
+
+## Drift velocity
+
+Average velocity along the field (for holes) or against it (for electrons) is the **drift velocity** v_d = μ E, where μ is the **mobility**. Current density J = σ E with σ = n e μ for a single carrier type (related to Drude: μ = e τ / m).
+
+## Direction
+
+Electrons (q < 0) accelerate opposite E; conventional current is defined in the direction positive charge would move.
+
+## Check yourself
+
+If mobility rises at fixed E, what happens to drift speed?
+''',
+            keyTakeaways: [
+              'F = qE accelerates carriers between scattering events.',
+              'Drift velocity v_d = μ E; σ linked to n and μ.',
+              'Electrons drift opposite the E-field direction.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m2-u2-q1',
+                question: 'Drift velocity in the linear regime is related to field by',
+                options: [
+                  'v_d = E / μ',
+                  'v_d = μ E',
+                  'v_d independent of E always',
+                  'v_d = 0 always in metals',
+                ],
+                correctIndex: 1,
+                explanation: 'v_d = μ E defines mobility μ.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m2-u3',
+            title: 'Motion in magnetic fields',
+            content: r'''
+## Learning goal
+
+State the magnetic part of the Lorentz force and the steering-wheel intuition for curved paths.
+
+## Lorentz magnetic force
+
+F_B = q (v × B)
+
+The force is perpendicular to both velocity and magnetic field. It changes direction of motion, not speed (no work).
+
+## Steering analogy
+
+Like a steering force always sideways to the motion, a magnetic field bends trajectories without speeding the particle up or slowing it down.
+
+## Right-hand rule
+
+For positive q: fingers along v, sweep toward B, thumb gives F. Electrons reverse the force direction relative to that rule for positive charges.
+
+## Check yourself
+
+If v is parallel to B, what is F_B?
+''',
+            keyTakeaways: [
+              'F_B = q(v × B) is perpendicular to v and to B.',
+              'Magnetic forces steer charges without changing |v|.',
+              'Sign of q flips the deflection direction.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m2-u3-q1',
+                question: 'The magnetic force q(v × B) is always',
+                options: [
+                  'Parallel to v',
+                  'Perpendicular to v',
+                  'Independent of B',
+                  'Zero if q is nonzero and v is nonzero and perpendicular to B — wait, no that is false',
+                ],
+                correctIndex: 1,
+                explanation: 'Cross product is perpendicular to v; magnetic force does no work.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m2-u4',
+            title: 'Cyclotron motion',
+            content: r'''
+## Learning goal
+
+Explain circular and helical paths when a charge moves in a uniform magnetic field.
+
+## Perpendicular velocity
+
+If v is perpendicular to uniform B, |F| = |q| v B provides centripetal force:
+
+|q| v B = m v² / R ⇒ R = m v / (|q| B)
+
+The particle moves in a circle of cyclotron radius R. Angular frequency ω_c = |q| B / m (cyclotron frequency).
+
+## Parallel component
+
+Velocity parallel to B is unchanged. Combined with circular motion → **helix** along the field lines.
+
+## Relevance
+
+Cyclotron motion appears in Hall-effect geometries, magnetoresistance, and vacuum devices; it is the same structure as in PHY 702 Module 7, now aimed at carriers in solids and beams.
+
+## Check yourself
+
+If B doubles at fixed v_perp, what happens to R?
+''',
+            keyTakeaways: [
+              'Uniform B, v ⊥ B: circle with R = mv/(|q|B).',
+              'ω_c = |q|B/m.',
+              'Parallel velocity + circular motion ⇒ helix.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m2-u4-q1',
+                question: 'The cyclotron radius R for v perpendicular to B is',
+                options: [
+                  'R = |q| B / m v',
+                  'R = m v / (|q| B)',
+                  'R = m / |q| only',
+                  'Independent of B',
+                ],
+                correctIndex: 1,
+                explanation: 'Centripetal balance gives R = mv/(|q|B).',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
