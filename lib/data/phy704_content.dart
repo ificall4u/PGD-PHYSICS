@@ -735,14 +735,160 @@ If the potential is exactly zero, what should every phase shift δ_ℓ be?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy704-m5',
         title: 'Green\'s Function & Partial Wave Analysis',
-        summary: 'Green\'s Function & Partial Wave Analysis',
+        summary:
+            'Green\'s functions as impulse response, partial-wave decomposition, optical theorem.',
         units: [
-          skeletonUnit(id: 'phy704-m5-u1', title: 'The Impulse-Response Intuition (Green\'s Functions)'),
-          skeletonUnit(id: 'phy704-m5-u2', title: 'Partial Wave Method'),
-          skeletonUnit(id: 'phy704-m5-u3', title: 'Optical Theorem'),
+          Unit(
+            id: 'phy704-m5-u1',
+            title: 'Impulse-response intuition (Green\'s functions)',
+            content: r'''
+## Learning goal
+
+Introduce Green’s functions as the response to a point source, used to build solutions of inhomogeneous wave or Schrödinger equations.
+
+## Bell and hammer analogy
+
+Strike a bell with a tiny localized hammer tap and record how it rings. If you know the response to every possible tap location and time, you can synthesize the response to a complicated driving force by adding up many tiny taps — superposition.
+
+A **Green’s function** G is that idealized response: the field produced by a unit impulse (a delta-function source).
+
+## Inhomogeneous equation
+
+Schematically, if an operator L acts on the wavefunction,
+
+L ψ = s
+
+with source s, then
+
+ψ(x) = ∫ G(x, x′) s(x′) dx′
+
+when L_x G(x, x′) = δ(x − x′) (with chosen boundary conditions, e.g. outgoing waves in scattering).
+
+## Scattering use
+
+In scattering, the Lippmann–Schwinger equation writes the full wave as the incident wave plus an integral of the Green’s function times Vψ — a compact way to organize Born series and formal scattering theory.
+
+## Check yourself
+
+Why must one specify boundary conditions (e.g. outgoing waves) when choosing G for scattering?
+''',
+            keyTakeaways: [
+              'G is the response to a delta-function source.',
+              'Solutions of Lψ = s are integrals of G against s.',
+              'Scattering uses outgoing-wave Green’s functions in integral equations.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m5-u1-q1',
+                question: 'A Green\'s function G(x, x′) represents',
+                options: [
+                  'Only the temperature of the lab',
+                  'The response at x to a unit impulse at x′',
+                  'The mass of the particle only',
+                  'A random number',
+                ],
+                correctIndex: 1,
+                explanation: 'By definition L_x G = δ(x − x′) with suitable boundary conditions.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m5-u2',
+            title: 'Partial wave method',
+            content: r'''
+## Learning goal
+
+Explain decomposing a scattering wave into angular momentum components (s-wave, p-wave, …) and solving radial problems for each ℓ.
+
+## Why partial waves
+
+Central potentials conserve angular momentum. An incident plane wave can be expanded as a sum of spherical waves labelled by ℓ = 0, 1, 2, … (s, p, d, …). Each ℓ evolves independently in a radial Schrödinger equation with an effective potential including the centrifugal barrier ℓ(ℓ+1)ℏ²/(2mr²).
+
+## What one computes
+
+For each ℓ one finds the radial solution and reads off the phase shift δ_ℓ (Module 4). The scattering amplitude becomes a sum over ℓ of terms involving (e^{2iδ_ℓ} − 1) and Legendre polynomials P_ℓ(cos θ) — the standard partial-wave series.
+
+## Practical power
+
+At low energy only the lowest ℓ (often s-wave) contribute significantly, so a few phase shifts approximate the whole angular distribution.
+
+## Check yourself
+
+Why does the centrifugal barrier suppress high-ℓ scattering at very low energy?
+''',
+            keyTakeaways: [
+              'Partial waves: expand scattering in ℓ components for central V.',
+              'Each ℓ has its own radial problem and phase shift δ_ℓ.',
+              'Low energy: few partial waves dominate.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m5-u2-q1',
+                question: 'In the partial-wave method for a central potential, different ℓ',
+                options: [
+                  'Always mix strongly in the radial equation',
+                  'Separate into independent radial problems',
+                  'Are undefined',
+                  'Only apply to photons',
+                ],
+                correctIndex: 1,
+                explanation: 'Central forces conserve angular momentum; ℓ channels decouple.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m5-u3',
+            title: 'Optical theorem',
+            content: r'''
+## Learning goal
+
+State the optical theorem: total cross section is determined by the imaginary part of the forward scattering amplitude.
+
+## Statement
+
+σ_total = (4π / k) Im f(θ = 0)
+
+where k is the wave number and f(0) is the scattering amplitude in the exact forward direction.
+
+## Intuition
+
+Removing particles from the forward beam (shadow) requires destructive interference between the incident wave and the forward scattered wave. That interference is tied to Im f(0). Probability conservation (unitarity) turns this observation into the exact optical theorem.
+
+## Partial-wave form
+
+In terms of phase shifts,
+
+σ_total = (4π / k²) Σ_ℓ (2ℓ + 1) sin² δ_ℓ
+
+which is consistent with the optical theorem once f(0) is written as a partial-wave sum.
+
+## Check yourself
+
+If all phase shifts vanish, what does the optical theorem say about σ_total?
+''',
+            keyTakeaways: [
+              'Optical theorem: σ_total = (4π/k) Im f(0).',
+              'Forward scattering and total removal from the beam are linked by unitarity.',
+              'Partial-wave series for σ_total involves sin² δ_ℓ.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m5-u3-q1',
+                question: 'The optical theorem relates total cross section to',
+                options: [
+                  'Only the real part of f at 90°',
+                  'The imaginary part of the forward scattering amplitude',
+                  'The mass of the Sun',
+                  'Electric charge only',
+                ],
+                correctIndex: 1,
+                explanation: 'σ_total = (4π/k) Im f(0).',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
