@@ -1097,15 +1097,200 @@ Where is most of the energy “located” for a parallel-plate capacitor with a 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy702-m6',
         title: 'Faraday\'s Law of Induction & Lenz\'s Law',
-        summary: 'Faraday\'s Law of Induction & Lenz\'s Law',
+        summary:
+            'Induction experiments, Faraday\'s law, Lenz\'s law, generators transformers cooktops.',
         units: [
-          skeletonUnit(id: 'phy702-m6-u1', title: 'Electromagnetic Induction Discovery'),
-          skeletonUnit(id: 'phy702-m6-u2', title: 'Faraday\'s Law'),
-          skeletonUnit(id: 'phy702-m6-u3', title: 'Lenz\'s Law (Nature\'s Inertia)'),
-          skeletonUnit(id: 'phy702-m6-u4', title: 'Practical Applications'),
+          Unit(
+            id: 'phy702-m6-u1',
+            title: 'Electromagnetic induction discovery',
+            content: r'''
+## Learning goal
+
+Describe the basic induction experiment: a changing magnetic situation in a circuit produces an electric current or voltage even with no chemical battery in the loop.
+
+## Classic observations
+
+- Push a bar magnet into a coil of wire connected to a galvanometer: the meter flicks while the magnet moves.
+- Pull the magnet out: the meter flicks the other way.
+- Hold the magnet still: no steady current.
+
+A **changing** magnetic environment through the loop is essential. Steady B through a stationary circuit does not induce a continuous current.
+
+## Relative motion
+
+Moving the coil instead of the magnet works too. What matters is relative motion that changes the magnetic flux through the circuit (next unit).
+
+## Check yourself
+
+Why does a magnet sitting motionless inside a loop produce no induced current (ideal resistance, steady B)?
+''',
+            keyTakeaways: [
+              'Changing magnetic conditions through a circuit induce voltage/current.',
+              'Steady flux through a stationary loop does not drive continuous current.',
+              'Relative motion of magnet and coil is a common way to change flux.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m6-u1-q1',
+                question: 'A steady magnet at rest inside a stationary loop produces',
+                options: [
+                  'A large continuous current always',
+                  'No continuous induced current',
+                  'Only electric charge creation from nothing',
+                  'Infinite flux always',
+                ],
+                correctIndex: 1,
+                explanation: 'Induction requires changing flux, not merely nonzero B.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m6-u2',
+            title: 'Faraday\'s law',
+            content: r'''
+## Learning goal
+
+State Faraday’s law and translate every symbol into plain English.
+
+## Magnetic flux
+
+For a magnetic field through a surface bounded by a circuit,
+
+Φ_B = ∫_S B · dA
+
+For uniform B perpendicular to area A, Φ_B = B A. More generally, orientation and nonuniformity enter through the integral.
+
+## Faraday’s law
+
+The induced emf around a closed loop is
+
+ℰ = − dΦ_B / dt
+
+## Symbol translation
+
+- ℰ — electromotive force around the loop (work per unit charge available to drive current)
+- Φ_B — magnetic flux through a surface edged by the loop
+- d/dt — rate of change with time
+- minus sign — direction fixed by Lenz’s law (next unit)
+
+Flux can change because B changes, the area changes, or the orientation changes (or the circuit moves).
+
+## Check yourself
+
+If flux through a loop increases steadily with time, what can you say about ℰ?
+''',
+            keyTakeaways: [
+              'Φ_B = ∫ B · dA is the magnetic flux.',
+              'Faraday: ℰ = −dΦ_B/dt.',
+              'Any mechanism that changes flux can induce emf.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m6-u2-q1',
+                question: 'Faraday\'s law states that induced emf equals',
+                options: [
+                  'Φ_B only',
+                  '−dΦ_B/dt',
+                  'B · A with no time derivative',
+                  'μ₀ I_enc only',
+                ],
+                correctIndex: 1,
+                explanation: 'ℰ = −dΦ_B/dt.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m6-u3',
+            title: 'Lenz\'s law (nature\'s inertia)',
+            content: r'''
+## Learning goal
+
+State Lenz’s law and connect the opposing induced current to energy conservation.
+
+## Statement
+
+The induced current (or the direction of ℰ) is such that the magnetic field it produces **opposes the change** in flux that caused it.
+
+## Examples
+
+- Magnet’s north pole approaches a loop: flux “into” the loop increases; induced current creates its own field that tries to push the magnet back (repel).
+- Magnet withdrawn: induced effects try to maintain the flux (attract the retreating magnet).
+
+## Energy conservation
+
+If the induced current helped the change rather than opposing it, you could amplify flux with no work and extract unlimited energy. Opposition means you must do mechanical work to push the magnet in (against magnetic drag), and that work shows up as electrical energy in the circuit (and heat in resistors).
+
+## Check yourself
+
+When you pull a magnet away from a conducting loop, does the loop attract or repel the magnet, and why?
+''',
+            keyTakeaways: [
+              'Induced effects oppose the change in flux (Lenz).',
+              'Opposition enforces energy conservation.',
+              'The minus sign in Faraday\'s law encodes Lenz\'s direction.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m6-u3-q1',
+                question: 'Lenz\'s law says the induced current',
+                options: [
+                  'Always maximizes flux change',
+                  'Opposes the change in flux that produced it',
+                  'Is independent of flux',
+                  'Violates energy conservation',
+                ],
+                correctIndex: 1,
+                explanation: 'Induced effects fight the change in Φ_B.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m6-u4',
+            title: 'Practical applications',
+            content: r'''
+## Learning goal
+
+Connect Faraday and Lenz to generators, transformers, and induction cooktops at a conceptual level.
+
+## Generators
+
+A coil rotates in a magnetic field (or magnets rotate past coils). The flux through the coil varies periodically with time, so ℰ is alternating. Mechanical work turns the rotor; electrical energy is delivered to the load.
+
+## Transformers
+
+An alternating current in a primary coil produces a changing flux in a shared core. That changing flux links a secondary coil and induces an alternating emf. The turns ratio sets the voltage step-up or step-down (ideal transformer relation).
+
+## Induction cooktops
+
+A coil under the cooktop surface carries high-frequency alternating current. The changing B induces eddy currents in a conducting pot. Resistive heating in the pot cooks the food; the cooktop surface itself need not get as hot as a traditional element.
+
+## Check yourself
+
+Why does a transformer fail to step voltage for steady DC on the primary (after initial transients die)?
+''',
+            keyTakeaways: [
+              'Generators: mechanical rotation → changing flux → emf.',
+              'Transformers: changing flux shared between coils → secondary emf.',
+              'Induction cooktops: eddy currents from changing B heat the pan.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m6-u4-q1',
+                question: 'A transformer requires on the primary',
+                options: [
+                  'Only steady DC forever',
+                  'Time-varying current (typically AC) to produce changing flux',
+                  'No current at all',
+                  'Only permanent magnets with no coils',
+                ],
+                correctIndex: 1,
+                explanation: 'Changing flux is required for continuous induction in the secondary.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
