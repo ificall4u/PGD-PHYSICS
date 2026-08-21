@@ -752,15 +752,188 @@ In a PMT, why does a chain of dynodes amplify the signal so dramatically?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy705-m5',
         title: 'PN Junction Diodes and Solar Cells',
-        summary: 'PN Junction Diodes and Solar Cells',
+        summary:
+            'Doping, PN junction and depletion region, diode I–V action, photovoltaic solar cells.',
         units: [
-          skeletonUnit(id: 'phy705-m5-u1', title: 'N-type & P-type Doping'),
-          skeletonUnit(id: 'phy705-m5-u2', title: 'PN Junction Formation'),
-          skeletonUnit(id: 'phy705-m5-u3', title: 'Diode Action (The Turnstile)'),
-          skeletonUnit(id: 'phy705-m5-u4', title: 'Solar Cells & Photovoltaic Effect'),
+          Unit(
+            id: 'phy705-m5-u1',
+            title: 'N-type and P-type doping',
+            content: r'''
+## Learning goal
+
+Explain how adding donor or acceptor impurities turns pure silicon into n-type or p-type material.
+
+## Intrinsic silicon
+
+Pure Si has four valence electrons and a full covalent lattice. Thermal energy creates equal numbers of free electrons and holes — few carriers at room temperature.
+
+## N-type (donors)
+
+Replace some Si atoms with phosphorus (five valence electrons). Four electrons bond in the lattice; the fifth is weakly bound and easily becomes a free **electron**. Phosphorus is a **donor**. Majority carriers: electrons; minority: holes.
+
+## P-type (acceptors)
+
+Replace some Si with boron (three valence electrons). A missing bond acts as a **hole** that can move when electrons hop into it. Boron is an **acceptor**. Majority carriers: holes; minority: electrons.
+
+## Check yourself
+
+Why does a small fraction of dopant atoms change conductivity dramatically compared with pure Si?
+''',
+            keyTakeaways: [
+              'Donors (e.g. P) add mobile electrons → n-type.',
+              'Acceptors (e.g. B) add mobile holes → p-type.',
+              'Majority vs minority carriers defined by doping type.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m5-u1-q1',
+                question: 'Phosphorus doped into silicon typically produces',
+                options: [
+                  'P-type material (hole majority)',
+                  'N-type material (electron majority)',
+                  'A perfect insulator always',
+                  'Only nuclear radiation',
+                ],
+                correctIndex: 1,
+                explanation: 'Group-V donors contribute extra electrons.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m5-u2',
+            title: 'PN junction formation',
+            content: r'''
+## Learning goal
+
+Describe diffusion of carriers across a PN boundary, recombination, and formation of the depletion region.
+
+## Contact
+
+When p-type and n-type regions meet, electrons diffuse from n → p and holes from p → n (down their concentration gradients). They recombine near the junction.
+
+## Depletion region
+
+Recombination leaves behind charged ions: positive donor ions on the n side and negative acceptor ions on the p side. That charged **depletion region** (space-charge region) is depleted of free carriers — a “no-man’s land” for mobile charge.
+
+## Built-in field
+
+The ion charge creates a built-in electric field pointing from n toward p, which opposes further diffusion. Equilibrium: diffusion current balanced by drift in the built-in field. A built-in potential barrier forms.
+
+## Check yourself
+
+Which side of the junction has exposed positive ion charge in the depletion region?
+''',
+            keyTakeaways: [
+              'Diffusion of majority carriers across the junction leads to recombination.',
+              'Depletion region: fixed ion charge, few free carriers.',
+              'Built-in field / potential barrier reaches equilibrium with diffusion.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m5-u2-q1',
+                question: 'The depletion region of a PN junction is characterized by',
+                options: [
+                  'Very high free-carrier density',
+                  'Space charge from ionized donors/acceptors and few free carriers',
+                  'Zero electric field always',
+                  'Only metallic conduction',
+                ],
+                correctIndex: 1,
+                explanation: 'Uncovered ions create the barrier; free carriers are depleted.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m5-u3',
+            title: 'Diode action (the turnstile)',
+            content: r'''
+## Learning goal
+
+Explain forward vs reverse bias as lowering or raising the junction barrier — the one-way turnstile behaviour of a diode.
+
+## Forward bias
+
+Positive voltage on p relative to n reduces the built-in barrier. Majority carriers inject across the junction → large current. The turnstile opens.
+
+## Reverse bias
+
+Positive voltage on n relative to p increases the barrier. Majority flow is blocked; only a small minority-carrier reverse saturation current flows (ideally). The turnstile closes.
+
+## I–V picture
+
+Exponential rise of current in forward bias (Shockley diode equation structure); small nearly constant reverse current until breakdown at large reverse voltage.
+
+## Check yourself
+
+In forward bias, is the depletion region typically wider or narrower than at zero bias?
+''',
+            keyTakeaways: [
+              'Forward bias lowers the barrier → easy current.',
+              'Reverse bias raises the barrier → little current.',
+              'Diode acts as an electrical one-way turnstile.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m5-u3-q1',
+                question: 'Forward bias of a PN diode',
+                options: [
+                  'Widens the barrier and blocks all current always',
+                  'Lowers the barrier and allows large majority-carrier current',
+                  'Removes the semiconductor',
+                  'Only affects magnetic properties',
+                ],
+                correctIndex: 1,
+                explanation: 'Forward bias reduces the built-in potential barrier.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m5-u4',
+            title: 'Solar cells and the photovoltaic effect',
+            content: r'''
+## Learning goal
+
+Explain how light generates electron–hole pairs and how the junction field separates them to produce power.
+
+## Photon absorption
+
+A photon with energy above the semiconductor gap creates an electron–hole pair. In or near the depletion region, the built-in field sweeps electrons toward the n side and holes toward the p side.
+
+## Photocurrent and voltage
+
+Separated carriers drive current in an external circuit (photocurrent). Open-circuit voltage builds until forward bias of the junction balances the photocurrent — the solar cell I–V curve sits in the power-generating quadrant.
+
+## Efficiency notes
+
+Not every photon is absorbed usefully; recombination and optical losses matter. Design aims to absorb light near the junction and collect carriers before they recombine.
+
+## Check yourself
+
+Why must the photon energy exceed the semiconductor band gap for efficient pair generation in this picture?
+''',
+            keyTakeaways: [
+              'Light creates electron–hole pairs (if hf > gap).',
+              'Junction field separates carriers → photocurrent.',
+              'Solar cell delivers power in the fourth I–V quadrant.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m5-u4-q1',
+                question: 'In a solar cell, the depletion-region field primarily',
+                options: [
+                  'Creates photons',
+                  'Separates photogenerated electrons and holes',
+                  'Removes the band gap',
+                  'Stops all current always',
+                ],
+                correctIndex: 1,
+                explanation: 'Built-in field sweeps carriers apart to produce terminal current.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

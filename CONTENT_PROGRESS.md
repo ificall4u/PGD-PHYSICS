@@ -7,22 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–704 | **COMPLETE** |
-| **PHY 705** | **In progress 4/8** |
+| **PHY 705** | **In progress 5/8** |
 | Remaining | Pending |
 
 ## PHY 705
 
 | Module | Status |
 |--------|--------|
-| 01–03 | Done |
-| **04 Electronic emission** | **Done** |
-| 05 PN junctions / solar cells | Pending ← next |
-| 06–08 | Pending |
+| 01–04 | Done |
+| **05 PN junctions / solar cells** | **Done** |
+| 06 BJT | Pending ← next |
+| 07–08 | Pending |
 
-### Module 04 checklist
-- [x] Work function as barrier
-- [x] Photoelectric: K_max = hf − φ
-- [x] Thermionic / Richardson intuition
-- [x] Secondary emission; PMT idea
+### Module 05 checklist
+- [x] N-type / P-type doping
+- [x] Depletion region and built-in field
+- [x] Forward / reverse diode action
+- [x] Photovoltaic separation of carriers
 
-**Next:** PHY 705 Module 05 only.
+**Next:** PHY 705 Module 06 only.
