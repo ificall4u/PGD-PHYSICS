@@ -541,15 +541,198 @@ Why does a continuum (density of states ρ) appear in the golden rule rather tha
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy704-m4',
         title: 'Quantum Scattering Theory',
-        summary: 'Quantum Scattering Theory',
+        summary:
+            'Scattering intuition, differential and total cross sections, Born approximation, phase shifts.',
         units: [
-          skeletonUnit(id: 'phy704-m4-u1', title: 'What is Quantum Scattering?'),
-          skeletonUnit(id: 'phy704-m4-u2', title: 'Cross-Sections (Differential vs. Total)'),
-          skeletonUnit(id: 'phy704-m4-u3', title: 'Born Approximation'),
-          skeletonUnit(id: 'phy704-m4-u4', title: 'Phase Shifts'),
+          Unit(
+            id: 'phy704-m4-u1',
+            title: 'What is quantum scattering?',
+            content: r'''
+## Learning goal
+
+Define scattering as learning about a target from how a beam of particles is deflected, including the quantum wave aspect.
+
+## Marble-in-the-dark analogy
+
+You cannot see an object in a dark room, but you can throw marbles and watch where they bounce. The pattern of deflections encodes the size and shape of the obstacle. Scattering experiments in physics do the same with atoms, nuclei, or potential wells — using electrons, neutrons, or other probes.
+
+## Quantum version
+
+The “marbles” are quantum particles with wavefunctions. An incoming plane wave (or wave packet) hits a localized potential V(r) and emerges as a distorted wave: still mostly forward-going, plus a scattered outgoing wave. Detectors at large distance measure intensity versus angle.
+
+## Elastic scattering
+
+In elastic scattering the particle’s energy is unchanged; only direction changes. Inelastic processes (excitation, reactions) open additional channels; this module focuses on the elastic potential-scattering picture.
+
+## Check yourself
+
+Why is the angular pattern of scattered particles more informative than only counting how many hit a single detector?
+''',
+            keyTakeaways: [
+              'Scattering probes a target via the deflection pattern of a beam.',
+              'Quantum scattering uses wavefunctions: incident + scattered waves.',
+              'Elastic scattering conserves the projectile energy.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m4-u1-q1',
+                question: 'In a scattering experiment one primarily learns about the target from',
+                options: [
+                  'The colour of the laboratory walls',
+                  'How the beam is deflected (angular distribution)',
+                  'Only the total mass of the Earth',
+                  'Random numbers unrelated to the beam',
+                ],
+                correctIndex: 1,
+                explanation: 'Angular and energy patterns encode the interaction with the target.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m4-u2',
+            title: 'Cross-sections (differential vs total)',
+            content: r'''
+## Learning goal
+
+Define differential and total cross sections as effective areas measuring scattering probability.
+
+## Effective area picture
+
+Even a pointlike interaction can be assigned an effective area: if the beam has flux F (particles per unit time per unit area), and the number of scattering events per unit time is N, then
+
+σ = N / F
+
+has units of area — the **total cross section**. Larger σ means the target is “easier to hit.”
+
+## Differential cross section
+
+Scattering depends on angle. The **differential cross section** dσ/dΩ is defined so that
+
+(dσ/dΩ) dΩ = (number per time into solid angle dΩ) / flux
+
+Integrating over all solid angles recovers the total cross section:
+
+σ = ∫ (dσ/dΩ) dΩ
+
+## Quantum link
+
+In quantum mechanics dσ/dΩ is proportional to |f(θ, φ)|² where f is the scattering amplitude appearing in the asymptotic wavefunction.
+
+## Check yourself
+
+If dσ/dΩ is isotropic (same in all directions), how is σ related to the value of dσ/dΩ?
+''',
+            keyTakeaways: [
+              'Total cross section σ has units of area: event rate = flux × σ.',
+              'dσ/dΩ describes angular distribution of scattering.',
+              'σ = ∫ (dσ/dΩ) dΩ.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m4-u2-q1',
+                question: 'The total cross section σ is obtained from the differential cross section by',
+                options: [
+                  'Differentiating with respect to angle',
+                  'Integrating dσ/dΩ over solid angle',
+                  'Setting it to zero',
+                  'Multiplying by ℏ only',
+                ],
+                correctIndex: 1,
+                explanation: 'σ = ∫ (dσ/dΩ) dΩ over 4π steradians (or the relevant sphere).',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m4-u3',
+            title: 'Born approximation',
+            content: r'''
+## Learning goal
+
+State the idea of the Born approximation: treat the incident wave as only weakly disturbed when computing the scattered amplitude.
+
+## High-energy / weak-potential intuition
+
+If the potential is weak or the particle is fast, the wave inside the scattering region is nearly the undisturbed incident plane wave. One can approximate the source of scattered waves using that incident wave rather than the exact distorted wave.
+
+## Result (structure)
+
+The first Born scattering amplitude is proportional to the Fourier transform of the potential V(r) at momentum transfer q = k_out − k_in. So measuring dσ/dΩ roughly maps the shape of V in momentum space.
+
+## Limitations
+
+Strong potentials, resonances, or low energies can invalidate the simple Born picture — then one needs partial waves, exact numerical solution, or higher-order Born terms.
+
+## Check yourself
+
+Why does replacing the true wave by the incident plane wave inside V simplify the calculation?
+''',
+            keyTakeaways: [
+              'Born: use incident wave as approximation inside the potential.',
+              'Amplitude related to Fourier transform of V (momentum transfer).',
+              'Best for weak potentials or high energy; fails near strong resonances.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m4-u3-q1',
+                question: 'The Born approximation is most reliable when',
+                options: [
+                  'The potential is extremely strong and energy is near zero always',
+                  'The potential is weak or the energy is high so the wave is little distorted',
+                  'There is no potential at all and nothing to compute',
+                  'Spin is ignored for a different reason',
+                ],
+                correctIndex: 1,
+                explanation: 'Small distortion justifies using the incident wave in the integral for f.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m4-u4',
+            title: 'Phase shifts',
+            content: r'''
+## Learning goal
+
+Explain phase shifts as the lag or advance that a radial partial wave acquires because of the potential compared with a free wave.
+
+## Partial-wave idea (preview)
+
+One expands the scattering wave in angular momentum components (partial waves) labelled by ℓ. Outside the potential each radial wave looks like a free spherical wave but shifted in phase.
+
+## Phase shift δ_ℓ
+
+The asymptotic radial wave for angular momentum ℓ behaves like sin(kr − ℓπ/2 + δ_ℓ) instead of sin(kr − ℓπ/2). The extra **phase shift** δ_ℓ is caused by the potential: attractive wells typically pull wave crests inward (positive δ_ℓ in standard convention); repulsive barriers push them out.
+
+## Link to scattering
+
+The scattering amplitude and cross sections can be written entirely in terms of the set {δ_ℓ}. A resonance often appears as a phase shift rising rapidly through π/2.
+
+## Check yourself
+
+If the potential is exactly zero, what should every phase shift δ_ℓ be?
+''',
+            keyTakeaways: [
+              'Phase shift δ_ℓ measures how much the ℓ-th radial wave is shifted by V.',
+              'Asymptotic free waves are recovered when all δ_ℓ = 0.',
+              'Cross sections and resonances are encoded in the δ_ℓ’s.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m4-u4-q1',
+                question: 'A phase shift δ_ℓ describes',
+                options: [
+                  'Only the mass of the target',
+                  'How the potential shifts the asymptotic radial wave for angular momentum ℓ',
+                  'The colour of scattered light only',
+                  'Time reversal exclusively',
+                ],
+                correctIndex: 1,
+                explanation: 'δ_ℓ is the extra phase in the ℓ partial wave due to scattering.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

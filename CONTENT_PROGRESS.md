@@ -7,21 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–703 | **COMPLETE** |
-| **PHY 704 Quantum Physics** | **In progress 3/8** |
+| **PHY 704 Quantum Physics** | **In progress 4/8** |
 | Remaining | Pending |
 
 ## PHY 704
 
 | Module | Status |
 |--------|--------|
-| 01–02 | Done |
-| **03 Perturbation theory** | **Done** |
-| 04 Scattering | Pending ← next |
-| 05–08 | Pending |
+| 01–03 | Done |
+| **04 Scattering** | **Done** |
+| 05 Green’s functions & partial waves | Pending ← next |
+| 06–08 | Pending |
 
-### Module 03 checklist
-- [x] Perturbation concept; Ĥ = Ĥ₀ + V̂
-- [x] Nondegenerate E⁽¹⁾; degenerate subspace diagonalization
-- [x] Time-dependent transitions; Fermi’s golden rule
+### Module 04 checklist
+- [x] Scattering intuition (probe target by deflections)
+- [x] Differential vs total cross section
+- [x] Born approximation idea
+- [x] Phase shifts δ_ℓ
 
-**Next:** PHY 704 Module 04 only.
+**Next:** PHY 704 Module 05 only.
