@@ -1,32 +1,27 @@
 # Content writing progress & roadmap
 
-**Rules:** one course · one module · master-prompt depth · no UI edits · no ASCII schematics · update after every step.
+**Rules:** one course · one module · master-prompt depth · update after every step.
 
 ## Roadmap
 
 | Course | Status |
 |--------|--------|
-| PHY 701, 702, 703 | **COMPLETE** |
-| **PHY 704 Quantum Physics** | **In progress 1/8** |
-| PHY 705 … 799 | Pending |
+| PHY 701–703 | **COMPLETE** |
+| **PHY 704 Quantum Physics** | **In progress 2/8** |
+| Remaining | Pending |
 
 ## PHY 704
 
 | Module | Status |
 |--------|--------|
-| **01 State vectors & operators** | **Done** |
-| 02 Angular momentum & spin | Pending ← next |
-| 03 Perturbation theory | Pending |
-| 04 Scattering | Pending |
-| 05 Green’s functions & partial waves | Pending |
-| 06 Atomic / molecular / solid-state | Pending |
-| 07 Nuclear quantum models | Pending |
-| 08 Quantum statistical mechanics intro | Pending |
+| 01 State vectors & operators | Done |
+| **02 Angular momentum & spin** | **Done** |
+| 03 Perturbation theory | Pending ← next |
+| 04–08 | Pending |
 
-### Module 01 checklist
-- [x] |ψ⟩ as list of possibilities
-- [x] Operators; eigenstates / eigenvalues
-- [x] ψ(x); Born rule |ψ|²
-- [x] Schrödinger equation in plain English
+### Module 02 checklist
+- [x] Orbital L; m_ℓ and √[ℓ(ℓ+1)] ℏ
+- [x] Spin-1/2; Stern–Gerlach two beams
+- [x] j = ℓ ± 1/2 addition for electron
 
-**Next:** PHY 704 Module 02 only.
+**Next:** PHY 704 Module 03 only.

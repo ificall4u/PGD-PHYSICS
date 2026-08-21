@@ -219,14 +219,162 @@ Does the Schrödinger equation replace the need for Born’s rule, or does it wo
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy704-m2',
         title: 'Quantum Angular Momentum & Intrinsic Spin',
-        summary: 'Quantum Angular Momentum & Intrinsic Spin',
+        summary:
+            'Orbital angular momentum quantization, spin and Stern–Gerlach, addition of angular momenta.',
         units: [
-          skeletonUnit(id: 'phy704-m2-u1', title: 'Orbital Angular Momentum'),
-          skeletonUnit(id: 'phy704-m2-u2', title: 'Quantum Spin (Intrinsic Angular Momentum)'),
-          skeletonUnit(id: 'phy704-m2-u3', title: 'Addition of Angular Momentum'),
+          Unit(
+            id: 'phy704-m2-u1',
+            title: 'Orbital angular momentum',
+            content: r'''
+## Learning goal
+
+Introduce orbital angular momentum as the quantum version of L = r × p and state the basic quantization of magnitude and z-component.
+
+## Classical reminder
+
+Classically L = r × p for a particle about an origin. In atoms, orbital motion of electrons about the nucleus is described by a quantum angular momentum operator with the same symbol structure but non-commuting components.
+
+## Quantization (what measurements find)
+
+When you measure the component of orbital angular momentum along a chosen axis (usually called z), the allowed results are
+
+L_z = m ℓ ℏ,    m_ℓ = −ℓ, −ℓ+1, …, ℓ
+
+where ℓ = 0, 1, 2, … is the orbital angular momentum quantum number. The magnitude is tied to
+
+|L| → √[ℓ(ℓ+1)] ℏ
+
+(not ℓℏ). Different m_ℓ label different orientations of the same ℓ multiplet.
+
+## Spatial wavefunctions
+
+Orbital angular momentum eigenfunctions involve spherical harmonics Y_{ℓ m}(θ, φ) in the angular part of the wavefunction — the shapes behind s, p, d orbitals in chemistry language (ℓ = 0, 1, 2, …).
+
+## Check yourself
+
+How many different m_ℓ values exist for a given ℓ?
+''',
+            keyTakeaways: [
+              'Orbital L is quantized: L_z = m_ℓ ℏ with |m_ℓ| ≤ ℓ.',
+              'Magnitude related to √[ℓ(ℓ+1)] ℏ.',
+              'Angular wavefunctions involve spherical harmonics Y_{ℓ m}.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m2-u1-q1',
+                question: 'Allowed values of L_z for orbital angular momentum are',
+                options: [
+                  'Any real number',
+                  'm_ℓ ℏ with m_ℓ = −ℓ … ℓ in steps of 1',
+                  'Only zero',
+                  'Only ±ℏ always',
+                ],
+                correctIndex: 1,
+                explanation: 'm_ℓ runs from −ℓ to ℓ in integer steps.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m2-u2',
+            title: 'Quantum spin (intrinsic angular momentum)',
+            content: r'''
+## Learning goal
+
+Describe spin as an intrinsic angular momentum (not a literal billiard-ball rotation) and use the Stern–Gerlach experiment as evidence for two discrete spin outcomes for silver atoms (electrons).
+
+## Not a tiny spinning ball
+
+Electron spin is an intrinsic quantum degree of freedom. Picturing a hard ball spinning fails (surface speeds would be unphysical, and spin-1/2 is not explained by ordinary orbital motion). Treat spin as an internal “magnetic fingerprint” with its own operators S and quantum numbers.
+
+## Spin-1/2
+
+For electrons, protons, neutrons the spin quantum number is s = 1/2. Along z the measured components are
+
+S_z = ± (1/2) ℏ
+
+often called spin up and spin down. There is no third outcome along that axis.
+
+## Stern–Gerlach experiment
+
+A beam of silver atoms (effective unpaired electron spin) passes through an inhomogeneous magnetic field. Instead of a continuous smear of deflections, the beam splits into **two** discrete spots — direct evidence that the magnetic moment (and underlying spin component) is quantized into two values, not a classical continuum of orientations.
+
+## Check yourself
+
+Why does a continuous classical magnetic moment distribution fail to explain two sharp Stern–Gerlach spots?
+''',
+            keyTakeaways: [
+              'Spin is intrinsic angular momentum, not literal billiard-ball rotation.',
+              'Electrons: s = 1/2; S_z = ±ℏ/2.',
+              'Stern–Gerlach: discrete two-beam split for spin-1/2 systems.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m2-u2-q1',
+                question: 'In the Stern–Gerlach experiment with silver atoms, the beam',
+                options: [
+                  'Does not deflect at all',
+                  'Splits into two discrete beams',
+                  'Forms a continuous fan only',
+                  'Stops completely',
+                ],
+                correctIndex: 1,
+                explanation: 'Two spots correspond to two spin component values.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m2-u3',
+            title: 'Addition of angular momentum',
+            content: r'''
+## Learning goal
+
+State how orbital and spin angular momenta combine into total angular momentum for an electron, and what quantum numbers label the combined system.
+
+## Combining L and S
+
+An electron has orbital angular momentum (quantum number ℓ) and spin (s = 1/2). The total angular momentum J = L + S is also quantized. The allowed values of the total angular momentum quantum number j run in steps of 1 between |ℓ − s| and ℓ + s.
+
+For s = 1/2:
+
+j = ℓ + 1/2    or    j = ℓ − 1/2
+
+(except ℓ = 0, where only j = 1/2 exists).
+
+## Spectroscopic meaning
+
+Fine structure in atoms is organized by these combined quantum numbers: levels with the same n and ℓ but different j split slightly because of spin–orbit coupling (interaction between the electron’s magnetic moment and the magnetic field related to its orbital motion).
+
+## Multiple particles (preview)
+
+For several angular momenta, addition rules generalize: one combines stepwise and finds multiplets labelled by total quantum numbers. Clebsch–Gordan coefficients relate product basis states |ℓ m_ℓ; s m_s⟩ to total-|j m_j⟩ states — bookkeeping for “which ways the arrows can add.”
+
+## Check yourself
+
+For a p electron (ℓ = 1, s = 1/2), what are the possible j values?
+''',
+            keyTakeaways: [
+              'Total J = L + S; for s = 1/2, j = ℓ ± 1/2 (with care at ℓ = 0).',
+              'Combined quantum numbers label fine-structure levels.',
+              'Addition rules organize multi-angular-momentum systems.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m2-u3-q1',
+                question: 'For ℓ = 1 and s = 1/2, possible j values are',
+                options: [
+                  'Only j = 0',
+                  'j = 1/2 and j = 3/2',
+                  'j = 2 and j = 3 only',
+                  'Any real j',
+                ],
+                correctIndex: 1,
+                explanation: 'j runs from |ℓ−s| to ℓ+s: 1/2 and 3/2.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
