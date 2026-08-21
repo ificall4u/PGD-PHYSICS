@@ -403,14 +403,161 @@ If B doubles at fixed v_perp, what happens to R?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy705-m3',
         title: 'The Hall Effect & Charge Carrier Diagnostics',
-        summary: 'The Hall Effect & Charge Carrier Diagnostics',
+        summary:
+            'Hall effect intuition, Hall voltage from force balance, carrier density and sign (n vs p).',
         units: [
-          skeletonUnit(id: 'phy705-m3-u1', title: 'The Hall Effect Intuition'),
-          skeletonUnit(id: 'phy705-m3-u2', title: 'Hall Voltage Derivation'),
-          skeletonUnit(id: 'phy705-m3-u3', title: 'Carrier Concentration & Sign Determination'),
+          Unit(
+            id: 'phy705-m3-u1',
+            title: 'Hall effect intuition',
+            content: r'''
+## Learning goal
+
+Build a physical picture of charge pile-up on the sides of a current-carrying sample in a perpendicular magnetic field.
+
+## Crowded hallway analogy
+
+People walk down a hallway (current). A sideways “wind” (magnetic force) pushes them toward one wall. They crowd that wall until the pressure of the crowd pushes back as hard as the wind — a steady sideways imbalance.
+
+In a semiconductor bar, carriers drifting with the current feel a magnetic force q(v × B) toward one face. Charge accumulates there until the **Hall electric field** pushes back and balances the magnetic force.
+
+## Geometry
+
+Typical setup: current along +x, magnetic field along +z, Hall field along ±y (sign depending on carrier sign).
+
+## Check yourself
+
+If there were no sideways charge pile-up, would the magnetic force alone keep deflecting carriers forever toward one edge?
+''',
+            keyTakeaways: [
+              'Perpendicular B deflects drifting carriers to one side.',
+              'Charge accumulation builds a transverse Hall electric field.',
+              'Steady state: magnetic force balanced by electric force from that field.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m3-u1-q1',
+                question: 'In the Hall effect, carriers are pushed sideways by',
+                options: [
+                  'Gravity only',
+                  'The magnetic part of the Lorentz force',
+                  'Only temperature gradients always',
+                  'Nuclear forces',
+                ],
+                correctIndex: 1,
+                explanation: 'q(v × B) deflects carriers across the sample.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m3-u2',
+            title: 'Hall voltage derivation',
+            content: r'''
+## Learning goal
+
+Balance electric and magnetic forces on carriers to obtain the Hall field and Hall voltage.
+
+## Force balance
+
+In steady state for carriers of charge q and drift speed v_d:
+
+|q| E_H = |q| v_d B
+
+so
+
+E_H = v_d B
+
+(magnitudes; signs fixed by geometry and carrier sign).
+
+## Hall voltage
+
+If the sample width (along the Hall direction) is w,
+
+V_H = E_H w = v_d B w
+
+## Link to current
+
+Current density J_x = n q v_d (for a single carrier type with density n). Then v_d = J_x / (n q) and
+
+E_H = J_x B / (n q)
+
+The Hall coefficient R_H = 1/(n q) (for one carrier type) appears in E_y = R_H J_x B_z.
+
+## Check yourself
+
+If current density doubles at fixed B and n, what happens to E_H?
+''',
+            keyTakeaways: [
+              'Balance: E_H = v_d B.',
+              'V_H = E_H w across the sample width.',
+              'E_H = J B / (n q) for a single carrier type.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m3-u2-q1',
+                question: 'In steady state Hall balance, E_H equals',
+                options: [
+                  'v_d / B',
+                  'v_d B',
+                  'B / v_d',
+                  '0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'Electric force qE_H balances magnetic force q v_d B.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m3-u3',
+            title: 'Carrier concentration and sign determination',
+            content: r'''
+## Learning goal
+
+Use the sign of V_H to distinguish n-type from p-type material and extract carrier density from |V_H|.
+
+## Sign of carriers
+
+Electrons (negative) and holes (positive) deflect toward opposite faces for the same current and B directions. The polarity of the Hall voltage reveals the **dominant carrier sign**:
+
+- One polarity → n-type (electron majority)
+- Opposite polarity → p-type (hole majority)
+
+This is a standard laboratory diagnostic for semiconductors.
+
+## Concentration
+
+From |E_H| = |J| B / (|n q|),
+
+|n| = |J| B / (|q| |E_H|)
+
+Measuring J, B, and V_H (hence E_H) yields the majority carrier density. Combined with conductivity σ = n |q| μ, one also extracts mobility μ.
+
+## Check yourself
+
+Why does the Hall polarity reverse when the majority carrier type switches from electrons to holes?
+''',
+            keyTakeaways: [
+              'Hall polarity diagnoses n-type vs p-type.',
+              'Carrier density from |n| = |J|B / (|q||E_H|).',
+              'With σ, Hall data also give mobility.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m3-u3-q1',
+                question: 'The sign of the Hall voltage primarily indicates',
+                options: [
+                  'The sample temperature only',
+                  'Whether majority carriers are positive or negative',
+                  'The nuclear composition only',
+                  'Optical colour only',
+                ],
+                correctIndex: 1,
+                explanation: 'Opposite carrier charges deflect to opposite sides.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
