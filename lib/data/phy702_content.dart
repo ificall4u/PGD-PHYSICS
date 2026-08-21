@@ -1293,15 +1293,204 @@ Why does a transformer fail to step voltage for steady DC on the primary (after 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy702-m7',
         title: 'Motion of Charges in Electric and Magnetic Fields',
-        summary: 'Motion of Charges in Electric and Magnetic Fields',
+        summary:
+            'Lorentz force, motion in pure E, motion in pure B, velocity selector and mass spectrometer.',
         units: [
-          skeletonUnit(id: 'phy702-m7-u1', title: 'Lorentz Force Law'),
-          skeletonUnit(id: 'phy702-m7-u2', title: 'Motion in Pure Electric Field'),
-          skeletonUnit(id: 'phy702-m7-u3', title: 'Motion in Pure Magnetic Field'),
-          skeletonUnit(id: 'phy702-m7-u4', title: 'Velocity Selector & Mass Spectrometer Applications'),
+          Unit(
+            id: 'phy702-m7-u1',
+            title: 'Lorentz force law',
+            content: r'''
+## Learning goal
+
+State the Lorentz force law and explain each term: electric part and magnetic part.
+
+## The law
+
+A particle with charge q, velocity v, in fields E and B experiences
+
+F = q (E + v × B)
+
+## Electric term: q E
+
+Independent of velocity. Parallel (or anti-parallel) to E for positive (negative) q. Does work on the charge when the particle moves parallel to E: changes kinetic energy.
+
+## Magnetic term: q (v × B)
+
+Perpendicular to both v and B (right-hand rule for the cross product, then sign of q). Magnitude q |v| |B| sin θ. Because F_B is always perpendicular to v, the magnetic force does **no work**: it changes direction of motion, not speed.
+
+## Check yourself
+
+If v is parallel to B and E = 0, what is the magnetic force?
+''',
+            keyTakeaways: [
+              'F = q(E + v × B).',
+              'qE can change kinetic energy; q(v × B) cannot (perpendicular to v).',
+              'Direction of v × B from the right-hand rule.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m7-u1-q1',
+                question: 'The magnetic part of the Lorentz force is always',
+                options: [
+                  'Parallel to v',
+                  'Perpendicular to v',
+                  'Independent of B',
+                  'Zero if v is nonzero',
+                ],
+                correctIndex: 1,
+                explanation: 'v × B is perpendicular to v, so magnetic force does no work.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m7-u2',
+            title: 'Motion in a pure electric field',
+            content: r'''
+## Learning goal
+
+Describe the trajectory of a charge in a uniform electric field with no magnetic field — the projectile analogy.
+
+## Setup
+
+Uniform E, say in the −y direction (like near-Earth gravity for a positive mass). Initial velocity with a component across the field.
+
+## Acceleration
+
+a = (q/m) E — constant acceleration parallel to E. No acceleration perpendicular to E from the electric force alone.
+
+## Trajectory
+
+In coordinates: uniform motion in the direction of the initial velocity component perpendicular to E; constant acceleration along E. The path is a **parabola**, exactly analogous to a ball thrown in a uniform gravitational field.
+
+## Energy
+
+Speed changes: the field does work. Kinetic energy increases when the charge moves in the direction of the force qE.
+
+## Check yourself
+
+If a positive charge enters a region of uniform E pointing down, with initial velocity horizontal, which way does its path curve?
+''',
+            keyTakeaways: [
+              'Uniform E ⇒ constant acceleration a = (q/m) E.',
+              'Trajectory is parabolic when there is a transverse initial velocity.',
+              'Electric fields change the speed of the particle.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m7-u2-q1',
+                question: 'In a pure uniform electric field, the path of a charge with transverse initial velocity is typically',
+                options: [
+                  'A perfect circle',
+                  'A parabola',
+                  'A straight line at constant speed always',
+                  'A random walk',
+                ],
+                correctIndex: 1,
+                explanation: 'Constant acceleration like projectile motion yields a parabola.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m7-u3',
+            title: 'Motion in a pure magnetic field',
+            content: r'''
+## Learning goal
+
+Show that a charge in a uniform B field moves in a circle or helix, with magnetic force providing the centripetal force.
+
+## Perpendicular velocity only
+
+If v is perpendicular to uniform B, |F| = q v B (constant). Direction always perpendicular to v, so the force is centripetal.
+
+q v B = m v² / R ⇒ R = m v / (q B)
+
+Cyclotron frequency (angular): ω = q B / m (independent of speed in classical nonrelativistic mechanics).
+
+Path: circle of radius R in the plane perpendicular to B.
+
+## Parallel component
+
+Velocity parallel to B is unchanged (F_B has no parallel component). Combined with circular motion in the perpendicular plane → **helix** along the field lines.
+
+## Speed
+
+|v| is constant because F_B ⊥ v. Only direction changes.
+
+## Check yourself
+
+If you double B while keeping v_perp fixed, what happens to the cyclotron radius R?
+''',
+            keyTakeaways: [
+              'Uniform B, v ⊥ B: circular motion with R = mv/(qB).',
+              'ω = qB/m (cyclotron frequency).',
+              'Parallel velocity + circular motion ⇒ helix; |v| constant.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m7-u3-q1',
+                question: 'The cyclotron radius in uniform B (v perpendicular to B) is',
+                options: [
+                  'R = q B / m v',
+                  'R = m v / (q B)',
+                  'R = m / q only',
+                  'Independent of v',
+                ],
+                correctIndex: 1,
+                explanation: 'Centripetal force qvB = mv²/R gives R = mv/(qB).',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m7-u4',
+            title: 'Velocity selector and mass spectrometer',
+            content: r'''
+## Learning goal
+
+Combine E and B to select speed, then use magnetic bending to separate masses.
+
+## Velocity selector
+
+Crossed uniform E and B (perpendicular). Force balance for straight-line motion:
+
+q E = q v B ⇒ v = E / B
+
+Only particles with this speed pass undeflected; others curve out of the beam.
+
+## Mass spectrometer (concept)
+
+Ions of charge q and mass m, often after a velocity selector so v is known, enter a region of uniform B. They bend in a semicircle of radius
+
+R = m v / (q B)
+
+Detecting where they hit gives R, hence m (for known q, v, B). Different masses separate spatially.
+
+## Check yourself
+
+In the velocity selector, if E is increased while B is fixed, what happens to the selected speed?
+''',
+            keyTakeaways: [
+              'Velocity selector: v = E/B for undeflected particles in crossed fields.',
+              'Mass spectrometer: R = mv/(qB) separates masses after speed selection.',
+              'Both applications use the Lorentz force structure directly.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m7-u4-q1',
+                question: 'In a velocity selector with crossed E and B, the selected speed is',
+                options: [
+                  'v = B/E',
+                  'v = E/B',
+                  'v = E B',
+                  'v = 0 only',
+                ],
+                correctIndex: 1,
+                explanation: 'Balance qE = qvB gives v = E/B.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
