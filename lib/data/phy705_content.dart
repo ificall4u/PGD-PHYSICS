@@ -560,15 +560,196 @@ Why does the Hall polarity reverse when the majority carrier type switches from 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy705-m4',
         title: 'Photoelectric, Thermionic, and Secondary Electronic Emission',
-        summary: 'Photoelectric, Thermionic, and Secondary Electronic Emission',
+        summary:
+            'Work function, photoelectric effect, thermionic emission, secondary emission and applications.',
         units: [
-          skeletonUnit(id: 'phy705-m4-u1', title: 'Work Function'),
-          skeletonUnit(id: 'phy705-m4-u2', title: 'Photoelectric Emission'),
-          skeletonUnit(id: 'phy705-m4-u3', title: 'Thermionic Emission'),
-          skeletonUnit(id: 'phy705-m4-u4', title: 'Secondary Emission & Applications'),
+          Unit(
+            id: 'phy705-m4-u1',
+            title: 'Work function',
+            content: r'''
+## Learning goal
+
+Define the work function as the energy “ticket price” an electron must pay to leave a metal into vacuum.
+
+## Ticket-price picture
+
+Inside a metal, electrons are bound. To escape into the vacuum just outside, an electron needs at least energy φ — the **work function**. Below that, it cannot classically leave (though tunneling can matter for very strong fields).
+
+## Typical scale
+
+Work functions are a few electron volts (eV), depending on the metal and surface condition. Cleanliness, crystal face, and coatings change φ — important in real devices.
+
+## Role in emission
+
+Photoelectric, thermionic, and field emission all compare the energy supplied (photon, heat, or field-assisted tunneling) against this barrier height φ.
+
+## Check yourself
+
+If two metals have different work functions, which one emits electrons more easily for the same extra energy input, all else equal?
+''',
+            keyTakeaways: [
+              'Work function φ: minimum energy to extract an electron into vacuum.',
+              'φ is a few eV and surface-dependent.',
+              'All vacuum emission processes are measured against φ.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m4-u1-q1',
+                question: 'The work function is best described as',
+                options: [
+                  'The melting temperature',
+                  'The minimum energy to remove an electron from the metal to vacuum',
+                  'Always equal to 1 MeV',
+                  'The same as the Fermi energy only',
+                ],
+                correctIndex: 1,
+                explanation: 'φ is the surface barrier height for electron escape.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m4-u2',
+            title: 'Photoelectric emission',
+            content: r'''
+## Learning goal
+
+State Einstein’s photoelectric equation and the photon picture of light ejecting electrons.
+
+## Photon picture
+
+Light of frequency f comes in energy packets (photons) of energy hf (h = Planck’s constant). One photon can give its energy to one electron.
+
+## Einstein’s equation
+
+Maximum kinetic energy of an emitted electron:
+
+K_max = hf − φ
+
+Emission requires hf > φ (threshold frequency f₀ = φ/h). Intensity affects how many electrons are emitted, not K_max for a given f (in the basic model).
+
+## Why this mattered
+
+Classical wave theory expected intensity, not frequency, to set electron energy. Experiments showed a frequency threshold and K_max linear in f — decisive evidence for photons.
+
+## Check yourself
+
+If frequency is below threshold, can raising intensity alone produce photoelectrons in the basic Einstein model?
+''',
+            keyTakeaways: [
+              'Photons of energy hf knock out electrons.',
+              'K_max = hf − φ; threshold f₀ = φ/h.',
+              'Intensity → number of electrons; frequency → energy per electron.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m4-u2-q1',
+                question: 'Einstein\'s photoelectric equation is',
+                options: [
+                  'K_max = φ − hf',
+                  'K_max = hf − φ',
+                  'K_max = hf + φ',
+                  'K_max independent of f',
+                ],
+                correctIndex: 1,
+                explanation: 'Photon energy minus work function leaves kinetic energy.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m4-u3',
+            title: 'Thermionic emission',
+            content: r'''
+## Learning goal
+
+Describe thermionic emission as heat-driven escape of electrons over the work-function barrier (Richardson–Dushman intuition).
+
+## Boiling off electrons
+
+Heating a metal increases the fraction of electrons with enough thermal energy to surmount φ. Electrons “boil” into vacuum — thermionic emission (historically linked to the Edison effect in hot-filament tubes).
+
+## Current density (intuition)
+
+Emission current density rises steeply with temperature, roughly as
+
+J ∝ T² e^{−φ / kT}
+
+(Richardson–Dushman form). The exponential dominates: small changes in T or φ cause large changes in emission.
+
+## Applications
+
+Vacuum-tube cathodes, electron guns, and some sensors rely on controlled thermionic emission from heated filaments or coated cathodes.
+
+## Check yourself
+
+Why does lowering φ (e.g. with special cathode coatings) greatly increase emission at the same temperature?
+''',
+            keyTakeaways: [
+              'Thermionic emission: thermal energy overcomes φ.',
+              'J grows roughly as T² exp(−φ/kT).',
+              'Used in vacuum-tube cathodes and electron guns.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m4-u3-q1',
+                question: 'Thermionic emission is primarily driven by',
+                options: [
+                  'Cooling the metal to absolute zero',
+                  'Heating so electrons can surmount the work function',
+                  'Only magnetic fields with no heat',
+                  'Nuclear decay only',
+                ],
+                correctIndex: 1,
+                explanation: 'Heat populates high-energy tail above φ.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m4-u4',
+            title: 'Secondary emission and applications',
+            content: r'''
+## Learning goal
+
+Explain secondary emission as electrons ejected by impact of energetic primary electrons, and name key applications.
+
+## Mechanism
+
+A primary electron (or other energetic particle) strikes a surface and transfers energy to electrons in the material. Some of those electrons escape as **secondary electrons**. The yield δ = (secondaries)/(primaries) depends on energy, angle, and material.
+
+## Photomultiplier tubes (PMTs)
+
+Light → photoelectron at a photocathode → acceleration into a dynode chain. Each impact multiplies the electron number via secondary emission → large detectable pulse from a single photon-level event.
+
+## Other uses
+
+Secondary emission matters in vacuum tubes, some electron multipliers, and surface analysis. Unwanted secondary emission can also cause noise or charging in devices.
+
+## Check yourself
+
+In a PMT, why does a chain of dynodes amplify the signal so dramatically?
+''',
+            keyTakeaways: [
+              'Secondary emission: impact ejects additional electrons from a surface.',
+              'Yield depends on primary energy and material.',
+              'Photomultipliers use cascaded secondary emission for huge gain.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m4-u4-q1',
+                question: 'Secondary emission refers to',
+                options: [
+                  'Emission caused only by heating',
+                  'Electrons ejected when energetic primaries strike a surface',
+                  'Nuclear fission fragments only',
+                  'Photon emission from LEDs only',
+                ],
+                correctIndex: 1,
+                explanation: 'Primary impact knocks out secondary electrons.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
