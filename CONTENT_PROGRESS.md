@@ -1,40 +1,32 @@
 # Content writing progress & roadmap
 
-**Rules:** one course · one module · master-prompt depth · update after every step.
+**Rules:** one course · one module · master-prompt depth · no UI edits · no ASCII schematics · update after every step.
 
 ## Roadmap
 
 | Course | Status |
 |--------|--------|
-| PHY 701 Mathematical Methods | **COMPLETE** |
-| PHY 703 Analytical Mechanics | **COMPLETE** |
-| **PHY 702 Electromagnetism** | **COMPLETE** |
-| PHY 704 Quantum Physics | Pending ← next |
+| PHY 701, 702, 703 | **COMPLETE** |
+| **PHY 704 Quantum Physics** | **In progress 1/8** |
 | PHY 705 … 799 | Pending |
 
-## PHY 702 — COMPLETE (8/8)
+## PHY 704
 
 | Module | Status |
 |--------|--------|
-| 01 Coulomb | Done |
-| 02 Fields & Gauss | Done |
-| 03 Potential / Poisson / Laplace | Done |
-| 04 Magnetostatics | Done |
-| 05 EM energy | Done |
-| 06 Faraday & Lenz | Done |
-| 07 Lorentz & particle motion | Done |
-| **08 Maxwell & waves** | **Done** |
+| **01 State vectors & operators** | **Done** |
+| 02 Angular momentum & spin | Pending ← next |
+| 03 Perturbation theory | Pending |
+| 04 Scattering | Pending |
+| 05 Green’s functions & partial waves | Pending |
+| 06 Atomic / molecular / solid-state | Pending |
+| 07 Nuclear quantum models | Pending |
+| 08 Quantum statistical mechanics intro | Pending |
 
-### Module 08 checklist
-- [x] Displacement current / capacitor paradox
-- [x] Four Maxwell equations + plain English
-- [x] EM waves; c = 1/√(μ₀ϵ₀)
-- [x] Spherical waves; 1/r amplitude
+### Module 01 checklist
+- [x] |ψ⟩ as list of possibilities
+- [x] Operators; eigenstates / eigenvalues
+- [x] ψ(x); Born rule |ψ|²
+- [x] Schrödinger equation in plain English
 
-### Course audit PHY 702
-- [x] All 8 module prompts covered
-- [x] No skeletonModule / skeletonUnit left
-- [x] No ASCII schematics; UI untouched
-- [x] Quizzes + takeaways present
-
-**Next course:** PHY 704 Module 01 only.
+**Next:** PHY 704 Module 02 only.
