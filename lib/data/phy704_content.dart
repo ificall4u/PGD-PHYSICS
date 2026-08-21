@@ -1031,14 +1031,144 @@ Why does a completely filled band (with a gap above it) not conduct electricity 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy704-m7',
         title: 'Quantum Models in Nuclear Physics',
-        summary: 'Quantum Models in Nuclear Physics',
+        summary:
+            'Nuclear force as a short-range well, alpha decay by tunneling, nuclear shell model and magic numbers.',
         units: [
-          skeletonUnit(id: 'phy704-m7-u1', title: 'Nuclear Forces & Potential Wells'),
-          skeletonUnit(id: 'phy704-m7-u2', title: 'Alpha Decay & Quantum Tunneling'),
-          skeletonUnit(id: 'phy704-m7-u3', title: 'The Nuclear Shell Model'),
+          Unit(
+            id: 'phy704-m7-u1',
+            title: 'Nuclear forces and potential wells',
+            content: r'''
+## Learning goal
+
+Describe the strong nuclear force as short-ranged and attractive at nuclear distances, often modelled by a deep narrow potential well for nucleons.
+
+## Strong force facts
+
+Nucleons (protons and neutrons) bind via the strong interaction. Compared with Coulomb repulsion between protons, the strong force is much stronger at ~1 fm distances but falls off rapidly beyond a few femtometres — short range.
+
+## Well model
+
+A simple teaching model treats a nucleon in a nucleus as moving in an average potential well (depth tens of MeV, width of nuclear radius). Bound states of that well approximate nuclear energy levels. More refined forces depend on spin and isospin; the well picture is the first step.
+
+## Saturation
+
+Because the force is short-ranged, a nucleon mainly feels nearest neighbours — nuclear binding energy per nucleon saturates rather than growing without bound as size increases (liquid-drop intuition alongside the shell model).
+
+## Check yourself
+
+Why does a long-range 1/r attraction (like gravity unbound) fail as a model for the nuclear force between nucleons?
+''',
+            keyTakeaways: [
+              'Strong force: strong at fm scales, short range.',
+              'Average potential well models bound nucleon states.',
+              'Short range helps explain saturation of binding.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m7-u1-q1',
+                question: 'The strong nuclear force between nucleons is',
+                options: [
+                  'Long-range like gravity in free space',
+                  'Short-ranged and strong at nuclear distances',
+                  'Identical to Coulomb force',
+                  'Always repulsive only',
+                ],
+                correctIndex: 1,
+                explanation: 'Nuclear force is strong but drops quickly beyond a few fm.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m7-u2',
+            title: 'Alpha decay and quantum tunneling',
+            content: r'''
+## Learning goal
+
+Explain alpha decay as quantum tunneling of a preformed alpha particle through the Coulomb barrier (Gamow picture).
+
+## Setup
+
+An alpha particle (⁴He nucleus) inside a heavy nucleus feels a deep attractive nuclear potential at short range and a repulsive Coulomb barrier outside. Classically, if its energy is below the barrier top, it cannot escape.
+
+## Tunneling
+
+Quantum mechanically the alpha’s wavefunction penetrates the barrier. There is a nonzero probability to appear outside — **tunneling**. The escape rate is extremely sensitive to barrier height and width, explaining huge variation in alpha lifetimes.
+
+## Gamow theory (idea)
+
+Gamow modelled decay as formation of an alpha inside × tunneling probability through the Coulomb barrier. The logarithm of the decay constant relates nearly linearly to 1/√Q (Geiger–Nuttall trend): higher available energy Q → thinner effective barrier → faster decay.
+
+## Check yourself
+
+If the alpha’s energy increases (thinner barrier), does the half-life tend to increase or decrease?
+''',
+            keyTakeaways: [
+              'Alpha decay: tunneling through the Coulomb barrier.',
+              'Classically forbidden energies still allow quantum escape.',
+              'Gamow + Geiger–Nuttall: lifetime highly sensitive to Q-value.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m7-u2-q1',
+                question: 'In the Gamow picture, alpha particles leave the nucleus primarily by',
+                options: [
+                  'Classical climbing over a low barrier always',
+                  'Quantum tunneling through the Coulomb barrier',
+                  'Ignoring electromagnetism completely',
+                  'Only beta decay processes',
+                ],
+                correctIndex: 1,
+                explanation: 'Sub-barrier escape is a tunneling phenomenon.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m7-u3',
+            title: 'The nuclear shell model',
+            content: r'''
+## Learning goal
+
+Describe the nuclear shell model: nucleons in quantized orbits, magic numbers, and shell closures analogous to electron shells.
+
+## Independent-particle idea
+
+Despite dense packing, a useful approximation treats each nucleon as moving in an average potential produced by the others, with quantized energy levels and quantum numbers — a **shell model** for the nucleus.
+
+## Magic numbers
+
+Nuclei with certain proton or neutron numbers (2, 8, 20, 28, 50, 82, 126, …) are especially stable or abundant — **magic numbers**. They correspond to closed shells in the nuclear potential (with strong spin–orbit coupling needed to get the right sequence).
+
+## Spin–orbit coupling
+
+A large nuclear spin–orbit term splits levels and rearranges the order so that the observed magic numbers appear. Closed shells mean large energy gaps to the next orbit — analogous to noble-gas electron configurations.
+
+## Check yourself
+
+Why does a closed nuclear shell correlate with extra stability?
+''',
+            keyTakeaways: [
+              'Shell model: nucleons in quantized orbits of a mean field.',
+              'Magic numbers mark closed shells and extra stability.',
+              'Strong spin–orbit coupling is essential for the correct magic numbers.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m7-u3-q1',
+                question: 'Magic numbers in nuclear physics refer to',
+                options: [
+                  'Random integers with no structure',
+                  'Nucleon counts that close shells and enhance stability',
+                  'Only the charge of the electron',
+                  'Temperatures of stars only',
+                ],
+                correctIndex: 1,
+                explanation: 'Closed proton or neutron shells occur at magic numbers.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
