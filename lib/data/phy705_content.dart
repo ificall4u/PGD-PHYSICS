@@ -936,15 +936,191 @@ Why must the photon energy exceed the semiconductor band gap for efficient pair 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy705-m6',
         title: 'Bipolar Junction Transistors (BJT)',
-        summary: 'Bipolar Junction Transistors (BJT)',
+        summary:
+            'NPN/PNP structure, current gain beta, cutoff/active/saturation, common-emitter picture.',
         units: [
-          skeletonUnit(id: 'phy705-m6-u1', title: 'BJT Architecture'),
-          skeletonUnit(id: 'phy705-m6-u2', title: 'Current Amplification Mechanism'),
-          skeletonUnit(id: 'phy705-m6-u3', title: 'Operating Regions'),
-          skeletonUnit(id: 'phy705-m6-u4', title: 'Common Emitter Configuration'),
+          Unit(
+            id: 'phy705-m6-u1',
+            title: 'BJT architecture',
+            content: r'''
+## Learning goal
+
+Describe NPN and PNP sandwich structures: emitter, base, and collector.
+
+## Three layers
+
+A BJT is two PN junctions sharing a thin middle region:
+
+- **Emitter** — heavily doped; injects carriers
+- **Base** — thin and lightly doped; controls the flow
+- **Collector** — collects carriers that cross the base
+
+**NPN:** n-emitter / p-base / n-collector  
+**PNP:** p-emitter / n-base / p-collector  
+
+## Faucet analogy
+
+The base terminal is like a faucet handle: a small adjustment of base current (or voltage) opens or closes a much larger flow from collector to emitter. The emitter is the supply side; the collector is the outlet side in the usual active-region story for NPN.
+
+## Check yourself
+
+Why must the base be thin for efficient transistor action?
+''',
+            keyTakeaways: [
+              'BJT: emitter–base–collector sandwich (NPN or PNP).',
+              'Base is thin and lightly doped relative to the emitter.',
+              'Base acts like a control valve for a larger collector current.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m6-u1-q1',
+                question: 'In an NPN BJT the middle layer is',
+                options: [
+                  'N-type collector only',
+                  'P-type base',
+                  'Metal only',
+                  'Vacuum',
+                ],
+                correctIndex: 1,
+                explanation: 'NPN means n–p–n: p-type base in the middle.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m6-u2',
+            title: 'Current amplification mechanism',
+            content: r'''
+## Learning goal
+
+Explain how a small base current controls a large collector current and define β = I_C / I_B.
+
+## Injection and collection
+
+In active-region NPN bias, the emitter–base junction is forward biased: electrons inject from emitter into base. Most diffuse across the thin base and are swept into the reverse-biased collector–base junction — forming **collector current** I_C.
+
+A small fraction recombines in the base or flows out the base terminal as **base current** I_B. Because the base is thin and lightly doped, recombination is small → I_C ≫ I_B.
+
+## Current gain
+
+β (beta) = I_C / I_B
+
+Typical small-signal values might be tens to hundreds. Also α = I_C / I_E with I_E = I_C + I_B and β = α/(1−α).
+
+## Check yourself
+
+If β = 100 and I_B = 10 μA, what is I_C?
+''',
+            keyTakeaways: [
+              'Emitter injects; most carriers reach the collector.',
+              'Small base current → large collector current.',
+              'β = I_C / I_B is the common-emitter current gain.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m6-u2-q1',
+                question: 'The common-emitter current gain β is',
+                options: [
+                  'I_B / I_C',
+                  'I_C / I_B',
+                  'I_E only',
+                  'Always 1',
+                ],
+                correctIndex: 1,
+                explanation: 'β = I_C / I_B.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m6-u3',
+            title: 'Operating regions',
+            content: r'''
+## Learning goal
+
+Distinguish cutoff, active, and saturation regions of BJT operation.
+
+## Cutoff
+
+Both junctions effectively off (emitter–base not forward conducting). I_C ≈ 0 — the switch is **OFF**.
+
+## Active (forward-active)
+
+Emitter–base forward, collector–base reverse. Linear control: I_C ≈ β I_B — the **amplifying** region used for analog gain.
+
+## Saturation
+
+Both junctions forward biased; the transistor is fully ON as a switch. V_CE is small; I_C is set more by the external circuit than by β I_B. Digital switching often uses cutoff ↔ saturation.
+
+## Check yourself
+
+Which region is preferred for linear amplification, and which pair of regions for on/off switching?
+''',
+            keyTakeaways: [
+              'Cutoff: switch OFF, essentially no collector current.',
+              'Active: amplification, I_C ≈ β I_B.',
+              'Saturation: switch ON, low V_CE.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m6-u3-q1',
+                question: 'Linear amplification with I_C ≈ β I_B occurs in the',
+                options: [
+                  'Cutoff region only',
+                  'Forward-active region',
+                  'Breakdown only',
+                  'When the device is unpowered',
+                ],
+                correctIndex: 1,
+                explanation: 'Active region provides controlled current gain.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m6-u4',
+            title: 'Common-emitter configuration',
+            content: r'''
+## Learning goal
+
+Describe the common-emitter setup and the physical meaning of input and output characteristics.
+
+## Common emitter
+
+Emitter is the shared reference for input and output. Input: base–emitter port. Output: collector–emitter port. This configuration provides both current and voltage gain and is the most familiar textbook amplifier connection.
+
+## Input characteristic
+
+I_B vs V_BE looks like a forward diode curve: little current until V_BE ≈ 0.7 V (silicon), then steep rise.
+
+## Output characteristic
+
+Family of curves I_C vs V_CE for fixed I_B values. In the active region, I_C is nearly flat vs V_CE (slight slope from Early effect) and steps up as I_B steps up — visual proof of current control. Saturation appears at low V_CE where curves bend down toward the origin.
+
+## Check yourself
+
+On the output family of curves, what does a higher I_B curve mean for I_C in the active region?
+''',
+            keyTakeaways: [
+              'Common emitter: shared emitter; input at base, output at collector.',
+              'Input curve resembles a diode I–V.',
+              'Output family shows I_C controlled by I_B in the active region.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m6-u4-q1',
+                question: 'In common-emitter output curves, raising I_B in the active region',
+                options: [
+                  'Lowers I_C to zero always',
+                  'Raises the I_C level of the curve',
+                  'Removes V_CE',
+                  'Has no effect ever',
+                ],
+                correctIndex: 1,
+                explanation: 'Higher base current yields higher collector current when active.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

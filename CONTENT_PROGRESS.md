@@ -7,22 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–704 | **COMPLETE** |
-| **PHY 705** | **In progress 5/8** |
+| **PHY 705** | **In progress 6/8** |
 | Remaining | Pending |
 
 ## PHY 705
 
 | Module | Status |
 |--------|--------|
-| 01–04 | Done |
-| **05 PN junctions / solar cells** | **Done** |
-| 06 BJT | Pending ← next |
-| 07–08 | Pending |
+| 01–05 | Done |
+| **06 BJT** | **Done** |
+| 07 FET | Pending ← next |
+| 08 Thin films & IC | Pending |
 
-### Module 05 checklist
-- [x] N-type / P-type doping
-- [x] Depletion region and built-in field
-- [x] Forward / reverse diode action
-- [x] Photovoltaic separation of carriers
+### Module 06 checklist
+- [x] NPN/PNP emitter–base–collector
+- [x] β = I_C/I_B mechanism
+- [x] Cutoff / active / saturation
+- [x] Common-emitter characteristics
 
-**Next:** PHY 705 Module 06 only.
+**Next:** PHY 705 Module 07 only.
