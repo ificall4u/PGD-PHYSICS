@@ -377,14 +377,168 @@ For a p electron (ℓ = 1, s = 1/2), what are the possible j values?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy704-m3',
         title: 'Quantum Perturbation Theory',
-        summary: 'Quantum Perturbation Theory',
+        summary:
+            'Perturbation idea, time-independent corrections (nondegenerate and degenerate), time-dependent transitions and Fermi\'s golden rule.',
         units: [
-          skeletonUnit(id: 'phy704-m3-u1', title: 'The Concept of Perturbation'),
-          skeletonUnit(id: 'phy704-m3-u2', title: 'Time-Independent Perturbation Theory (Non-Degenerate & Degenerate)'),
-          skeletonUnit(id: 'phy704-m3-u3', title: 'Time-Dependent Perturbation Theory'),
+          Unit(
+            id: 'phy704-m3-u1',
+            title: 'The concept of perturbation',
+            content: r'''
+## Learning goal
+
+Motivate perturbation theory as controlled approximation when a hard problem is a small change away from a solvable one.
+
+## Guitar-string / bumpy-road picture
+
+A perfect guitar string has known vibration frequencies. A small bump or uneven tension shifts those frequencies slightly. Rather than solving the messy exact string from scratch, you start from the perfect solution and compute the small shifts.
+
+A slightly bumpy road still looks like a flat road plus small corrections to the path. Perturbation theory is that idea for quantum Hamiltonians.
+
+## Split the Hamiltonian
+
+Write
+
+Ĥ = Ĥ₀ + V̂
+
+where Ĥ₀ is solvable (known eigenvalues Eₙ⁽⁰⁾ and eigenstates |n⁽⁰⁾⟩) and V̂ is a small perturbation. “Small” means the shifts it causes are modest compared with unperturbed energy spacings (with care in degenerate cases).
+
+## Goal
+
+Approximate the true energies and states as series:
+
+Eₙ ≈ Eₙ⁽⁰⁾ + Eₙ⁽¹⁾ + Eₙ⁽²⁾ + …
+
+|n⟩ ≈ |n⁽⁰⁾⟩ + |n⁽¹⁾⟩ + …
+
+order by order in the strength of V̂.
+
+## Check yourself
+
+Why is it useful that Ĥ₀ is solvable even if Ĥ is not?
+''',
+            keyTakeaways: [
+              'Perturbation theory starts from a solvable Ĥ₀ and adds a small V̂.',
+              'Corrections to energies and states are computed order by order.',
+              'Analogies: slightly imperfect string or slightly bumpy road.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m3-u1-q1',
+                question: 'In perturbation theory one splits',
+                options: [
+                  'Only the wavefunction into charge and mass',
+                  'Ĥ = Ĥ₀ + V̂ with Ĥ₀ solvable and V̂ small',
+                  'Time into past and future only',
+                  'Spin from charge always',
+                ],
+                correctIndex: 1,
+                explanation: 'The method expands around a known unperturbed problem.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m3-u2',
+            title: 'Time-independent perturbation theory',
+            content: r'''
+## Learning goal
+
+State the first-order energy correction for nondegenerate levels and outline what changes when levels are degenerate.
+
+## Nondegenerate first-order energy
+
+If the unperturbed level Eₙ⁽⁰⁾ is nondegenerate (only one independent state at that energy), the first-order correction is the expectation value of the perturbation in the unperturbed state:
+
+Eₙ⁽¹⁾ = ⟨n⁽⁰⁾| V̂ |n⁽⁰⁾⟩
+
+Derivation sketch: expand Ĥ|n⟩ = Eₙ|n⟩, insert series for Eₙ and |n⟩, collect first-order terms, and take the inner product with ⟨n⁽⁰⁾|. Off-diagonal pieces drop when states are orthonormal and Ĥ₀-eigenstates.
+
+## First-order state correction (idea)
+
+The state picks up admixtures of other unperturbed states m ≠ n:
+
+|n⁽¹⁾⟩ ∝ Σ_{m≠n} |m⁽⁰⁾⟩ ⟨m⁽⁰⁾|V̂|n⁽⁰⁾⟩ / (Eₙ⁽⁰⁾ − Eₘ⁽⁰⁾)
+
+Energy denominators say nearby levels mix more strongly.
+
+## Degenerate perturbation theory
+
+If several unperturbed states share the same E⁽⁰⁾, the simple formula can fail (division by zero in denominators; ambiguous basis). One must diagonalize the perturbation V̂ inside the degenerate subspace first. The eigenvalues of that small matrix are the first-order splittings; the eigenvectors are the “correct” zeroth-order states.
+
+## Check yourself
+
+Why does a vanishing energy denominator signal that nondegenerate theory is insufficient?
+''',
+            keyTakeaways: [
+              'Nondegenerate: Eₙ⁽¹⁾ = ⟨n⁽⁰⁾|V̂|n⁽⁰⁾⟩.',
+              'States mix with other levels weighted by matrix elements over energy gaps.',
+              'Degenerate case: diagonalize V̂ inside the degenerate subspace first.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m3-u2-q1',
+                question: 'The first-order energy correction in nondegenerate perturbation theory is',
+                options: [
+                  'Always zero',
+                  '⟨n⁽⁰⁾|V̂|n⁽⁰⁾⟩',
+                  'Only the kinetic energy',
+                  'Independent of V̂',
+                ],
+                correctIndex: 1,
+                explanation: 'It is the expectation value of the perturbation in the unperturbed state.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m3-u3',
+            title: 'Time-dependent perturbation theory',
+            content: r'''
+## Learning goal
+
+Describe transitions driven by a time-dependent perturbation and state the role of Fermi’s golden rule for transition rates.
+
+## Time-dependent V
+
+Many real influences vary in time: a light pulse, a radio-frequency field, a sudden switching of a potential. Write V̂ = V̂(t). The system may start in an eigenstate of Ĥ₀ and later be found in another — a **transition**.
+
+## Transition amplitudes
+
+Time-dependent perturbation theory expands the state in the unperturbed basis with time-dependent coefficients. To first order, the amplitude to go from i to f involves an integral of e^{iω_{fi}t} times the matrix element ⟨f|V̂(t)|i⟩ — resonant when the driving frequencies match the Bohr frequency ω_{fi} = (E_f − E_i)/ℏ.
+
+## Fermi’s golden rule
+
+For a perturbation that is turned on for a long time or is broadly present (with a continuum of final states), the **transition rate** (probability per unit time) takes the form
+
+Γ_{i→f} = (2π/ℏ) |⟨f|V̂|i⟩|² ρ(E_f)
+
+where ρ is the density of final states at the energy fixed by conservation. That is **Fermi’s golden rule** — the workhorse for absorption, emission, and scattering estimates.
+
+## Check yourself
+
+Why does a continuum (density of states ρ) appear in the golden rule rather than a single final level only?
+''',
+            keyTakeaways: [
+              'Time-dependent V drives transitions between unperturbed levels.',
+              'Resonance when driving matches Bohr frequencies.',
+              'Fermi\'s golden rule: rate ∝ |matrix element|² × density of states.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m3-u3-q1',
+                question: 'Fermi\'s golden rule gives',
+                options: [
+                  'Only static energy shifts',
+                  'A transition rate involving |⟨f|V|i⟩|² and a density of states',
+                  'Classical trajectories only',
+                  'The value of c',
+                ],
+                correctIndex: 1,
+                explanation: 'It estimates probability per unit time for transitions into a continuum.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

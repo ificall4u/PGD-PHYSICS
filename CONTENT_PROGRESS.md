@@ -7,21 +7,21 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–703 | **COMPLETE** |
-| **PHY 704 Quantum Physics** | **In progress 2/8** |
+| **PHY 704 Quantum Physics** | **In progress 3/8** |
 | Remaining | Pending |
 
 ## PHY 704
 
 | Module | Status |
 |--------|--------|
-| 01 State vectors & operators | Done |
-| **02 Angular momentum & spin** | **Done** |
-| 03 Perturbation theory | Pending ← next |
-| 04–08 | Pending |
+| 01–02 | Done |
+| **03 Perturbation theory** | **Done** |
+| 04 Scattering | Pending ← next |
+| 05–08 | Pending |
 
-### Module 02 checklist
-- [x] Orbital L; m_ℓ and √[ℓ(ℓ+1)] ℏ
-- [x] Spin-1/2; Stern–Gerlach two beams
-- [x] j = ℓ ± 1/2 addition for electron
+### Module 03 checklist
+- [x] Perturbation concept; Ĥ = Ĥ₀ + V̂
+- [x] Nondegenerate E⁽¹⁾; degenerate subspace diagonalization
+- [x] Time-dependent transitions; Fermi’s golden rule
 
-**Next:** PHY 704 Module 03 only.
+**Next:** PHY 704 Module 04 only.
