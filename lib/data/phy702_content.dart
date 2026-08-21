@@ -1493,15 +1493,219 @@ In the velocity selector, if E is increased while B is fixed, what happens to th
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy702-m8',
         title: 'Maxwell\'s Equations and Spherical Wave Propagation',
-        summary: 'Maxwell\'s Equations and Spherical Wave Propagation',
+        summary:
+            'Displacement current, four Maxwell equations in plain English, EM waves, spherical waves.',
         units: [
-          skeletonUnit(id: 'phy702-m8-u1', title: 'The Missing Link'),
-          skeletonUnit(id: 'phy702-m8-u2', title: 'The Four Maxwell Equations Unified'),
-          skeletonUnit(id: 'phy702-m8-u3', title: 'Electromagnetic Waves'),
-          skeletonUnit(id: 'phy702-m8-u4', title: 'Introduction to Spherical Waves'),
+          Unit(
+            id: 'phy702-m8-u1',
+            title: 'The missing link: displacement current',
+            content: r'''
+## Learning goal
+
+See why the magnetostatic form of Ampere’s law is incomplete when electric fields change, and introduce Maxwell’s displacement current.
+
+## Problem with charging a capacitor
+
+While a capacitor charges, conduction current arrives on one plate and leaves the other, but no conduction current crosses the gap. An Amperian loop whose surface is pierced by the wire encloses current I; a surface that balloons through the gap encloses zero conduction current. The left side ∮ B · dl cannot depend on which surface you choose — so something is missing.
+
+## Displacement current
+
+Maxwell’s fix: treat the changing electric flux in the gap as a **displacement current**
+
+I_d = ϵ₀ dΦ_E / dt
+
+that contributes to Ampere’s law just like ordinary current. In differential form one adds μ₀ ϵ₀ ∂E/∂t to the source of curl B.
+
+## Ampere–Maxwell law
+
+∮ B · dl = μ₀ (I_enc + ϵ₀ dΦ_E / dt)
+
+Steady currents: the extra term vanishes and ordinary Ampere is recovered. Changing E: the extra term restores consistency.
+
+## Check yourself
+
+During the charging of a capacitor, is there a magnetic field between the plates even though no conduction current flows there?
+''',
+            keyTakeaways: [
+              'Plain Ampere fails for a charging capacitor (surface ambiguity).',
+              'Displacement current I_d = ϵ₀ dΦ_E/dt repairs the law.',
+              'Ampere–Maxwell: ∮ B · dl = μ₀(I_enc + ϵ₀ dΦ_E/dt).',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m8-u1-q1',
+                question: 'Maxwell\'s displacement current is proportional to',
+                options: [
+                  'Steady B only',
+                  'The rate of change of electric flux',
+                  'Mass only',
+                  'Temperature only',
+                ],
+                correctIndex: 1,
+                explanation: 'I_d = ϵ₀ dΦ_E/dt.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m8-u2',
+            title: 'The four Maxwell equations unified',
+            content: r'''
+## Learning goal
+
+List the four Maxwell equations in integral form and state each in plain conversational English.
+
+## The four laws
+
+**1. Gauss’s law for electricity**
+
+∮ E · dA = Q_enc / ϵ₀
+
+English: The net electric flux out of a closed surface measures the charge inside.
+
+**2. Gauss’s law for magnetism**
+
+∮ B · dA = 0
+
+English: The net magnetic flux out of any closed surface is zero — no magnetic monopoles; field lines never end.
+
+**3. Faraday’s law**
+
+∮ E · dl = − dΦ_B / dt
+
+English: A changing magnetic flux through a loop drives an electric field around the loop.
+
+**4. Ampere–Maxwell law**
+
+∮ B · dl = μ₀ I_enc + μ₀ ϵ₀ dΦ_E / dt
+
+English: Magnetic field around a loop is caused by electric current through the loop and by changing electric flux through the loop.
+
+## Unity
+
+Together these equations govern all classical electromagnetic fields. They couple E and B whenever either changes in time, which is the seed of electromagnetic waves.
+
+## Check yourself
+
+Which equation forbids isolated magnetic north poles?
+''',
+            keyTakeaways: [
+              'Four integral Maxwell equations: Gauss E, Gauss B, Faraday, Ampere–Maxwell.',
+              'Each has a clear plain-English meaning.',
+              'Time-varying terms couple E and B.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m8-u2-q1',
+                question: '∮ B · dA = 0 expresses',
+                options: [
+                  'Existence of magnetic monopoles',
+                  'Absence of net magnetic monopoles (no isolated poles)',
+                  'Faraday induction only',
+                  'Ohm\'s law',
+                ],
+                correctIndex: 1,
+                explanation: 'Magnetic Gauss law: net magnetic flux through any closed surface vanishes.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m8-u3',
+            title: 'Electromagnetic waves',
+            content: r'''
+## Learning goal
+
+Explain how a changing E produces B and a changing B produces E, allowing a self-sustaining wave in empty space.
+
+## Mutual generation
+
+- Faraday: changing B → curling E
+- Ampere–Maxwell (no conduction current): changing E → curling B
+
+A disturbance in which E and B oscillate and feed each other can propagate without a material medium.
+
+## Wave speed
+
+In vacuum the wave equations derived from Maxwell’s equations yield speed
+
+c = 1 / √(μ₀ ϵ₀)
+
+which matches the speed of light. Light is an electromagnetic wave.
+
+## Structure of a plane wave
+
+In a plane EM wave, E and B are perpendicular to each other and to the propagation direction, oscillate in phase, and |E|/|B| = c in SI units for a plane wave in vacuum.
+
+## Check yourself
+
+Why can electromagnetic waves travel through vacuum while sound waves cannot?
+''',
+            keyTakeaways: [
+              'Changing E sources B; changing B sources E.',
+              'Vacuum waves travel at c = 1/√(μ₀ ϵ₀).',
+              'Light is electromagnetic radiation.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m8-u3-q1',
+                question: 'The speed of electromagnetic waves in vacuum is',
+                options: [
+                  'μ₀ ϵ₀',
+                  '1/√(μ₀ ϵ₀)',
+                  '√(μ₀ ϵ₀)',
+                  'Arbitrary',
+                ],
+                correctIndex: 1,
+                explanation: 'c = 1/√(μ₀ ϵ₀) from Maxwell\'s equations.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy702-m8-u4',
+            title: 'Introduction to spherical waves',
+            content: r'''
+## Learning goal
+
+Contrast plane waves with spherical waves from a localized source and state the r⁻¹ amplitude fall-off for the wave field.
+
+## Plane vs spherical
+
+A plane wave has flat wavefronts and constant amplitude (idealization of a source very far away). A localized source (antenna, lamp) sends out **spherical** wavefronts that expand like ripples on a pond.
+
+## Amplitude and energy
+
+Energy conservation on expanding spheres of area 4πr² implies intensity (power per area) falls as 1/r². For the wave fields themselves, amplitude typically falls as 1/r (because intensity involves amplitude squared).
+
+## Far-field radiation
+
+Far from a small source, the radiation fields look locally like plane waves on each patch of the sphere, but the overall pattern is spherical with 1/r amplitude decay.
+
+## Check yourself
+
+If you double the distance from a small isotropic source, by about what factor does intensity fall?
+''',
+            keyTakeaways: [
+              'Spherical waves expand from a localized source.',
+              'Intensity ~ 1/r²; field amplitude ~ 1/r in the radiation zone.',
+              'Far away, each patch of the wavefront resembles a plane wave.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy702-m8-u4-q1',
+                question: 'For spherical waves from a small source, field amplitude in the radiation zone typically falls as',
+                options: [
+                  '1/r²',
+                  '1/r',
+                  'r',
+                  'Constant with r',
+                ],
+                correctIndex: 1,
+                explanation: 'Amplitude ~ 1/r so that intensity ~ 1/r².',
+              ),
+            ],
+          ),
         ],
       ),
     ],
