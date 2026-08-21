@@ -7,21 +7,21 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–703 | **COMPLETE** |
-| **PHY 704 Quantum Physics** | **In progress 5/8** |
+| **PHY 704 Quantum Physics** | **In progress 6/8** |
 | Remaining | Pending |
 
 ## PHY 704
 
 | Module | Status |
 |--------|--------|
-| 01–04 | Done |
-| **05 Green’s functions & partial waves** | **Done** |
-| 06 Atomic / molecular / solid-state | Pending ← next |
-| 07–08 | Pending |
+| 01–05 | Done |
+| **06 Atomic / molecular / solid-state** | **Done** |
+| 07 Nuclear quantum models | Pending ← next |
+| 08 Quantum statistical mechanics | Pending |
 
-### Module 05 checklist
-- [x] Green’s function as impulse response
-- [x] Partial-wave method; δ_ℓ
-- [x] Optical theorem σ_total ∝ Im f(0)
+### Module 06 checklist
+- [x] Pauli exclusion; multi-electron filling
+- [x] Covalent bonding; bonding/antibonding
+- [x] Energy bands; metals vs insulators
 
-**Next:** PHY 704 Module 06 only.
+**Next:** PHY 704 Module 07 only.

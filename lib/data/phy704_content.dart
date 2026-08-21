@@ -891,14 +891,144 @@ If all phase shifts vanish, what does the optical theorem say about σ_total?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy704-m6',
         title: 'Quantum Models in Atomic, Molecular, and Solid-State Physics',
-        summary: 'Quantum Models in Atomic, Molecular, and Solid-State Physics',
+        summary:
+            'Pauli exclusion in multi-electron atoms, covalent bonding, energy bands in solids.',
         units: [
-          skeletonUnit(id: 'phy704-m6-u1', title: 'Multi-Electron Atoms & The Exclusion Principle'),
-          skeletonUnit(id: 'phy704-m6-u2', title: 'Molecular Bonding'),
-          skeletonUnit(id: 'phy704-m6-u3', title: 'Energy Bands in Solids'),
+          Unit(
+            id: 'phy704-m6-u1',
+            title: 'Multi-electron atoms and the exclusion principle',
+            content: r'''
+## Learning goal
+
+State the Pauli exclusion principle and use it to organize electrons in atoms (shells and the periodic table idea).
+
+## Identical fermions
+
+Electrons are identical fermions (spin-1/2). The **Pauli exclusion principle** says no two identical fermions can occupy the same quantum state. In an atom, a full single-electron state label includes n, ℓ, m_ℓ, and m_s — so at most two electrons (opposite spins) share the same orbital (n, ℓ, m_ℓ).
+
+## Building multi-electron atoms
+
+Approximate independent electrons in an effective potential (nuclear attraction screened by other electrons). Fill orbitals in order of increasing energy, respecting exclusion and Hund’s rules for open shells. That filling pattern underlies the periodic table: closed shells are especially stable; chemical behaviour repeats when outer configurations repeat.
+
+## Beyond hydrogen
+
+Electron–electron repulsion and exchange (from antisymmetry of the many-electron wavefunction) shift levels and split terms — the qualitative structure still begins with exclusion plus ordered filling.
+
+## Check yourself
+
+Why cannot three electrons all sit in the same 1s orbital with the same spin?
+''',
+            keyTakeaways: [
+              'Pauli: no two identical fermions in the same quantum state.',
+              'Atomic orbitals fill with at most two electrons per orbital (opposite spins).',
+              'Exclusion + filling order → shell structure and periodic trends.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m6-u1-q1',
+                question: 'The Pauli exclusion principle states that',
+                options: [
+                  'All particles may share any state freely',
+                  'No two identical fermions occupy the same quantum state',
+                  'Only bosons exist in atoms',
+                  'Energy is never quantized',
+                ],
+                correctIndex: 1,
+                explanation: 'Identical fermions cannot share a full set of quantum numbers.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m6-u2',
+            title: 'Molecular bonding',
+            content: r'''
+## Learning goal
+
+Describe covalent bonding as electron sharing between nuclei, with tunneling/overlap of atomic orbitals lowering energy in bonding combinations.
+
+## Two potential wells
+
+Each atom is an attractive well for electrons. When two nuclei approach, their wells overlap. An electron can be shared — its wavefunction spreads over both centres.
+
+## Bonding and antibonding
+
+Combining atomic orbitals produces molecular orbitals: a **bonding** combination (constructive overlap, lower energy, density between nuclei) and an **antibonding** combination (node between nuclei, higher energy). Filling bonding orbitals (as in H₂) stabilizes the molecule — a covalent bond.
+
+## Tunneling picture
+
+From one well to the other, the electron amplitude tunnels through the barrier region between nuclei. Delocalization lowers kinetic energy in the bonding state and is central to the quantum origin of the bond.
+
+## Check yourself
+
+Why does putting both electrons of H₂ into the bonding orbital (with opposite spins) lower the energy relative to two separate H atoms?
+''',
+            keyTakeaways: [
+              'Covalent bonds: electrons shared between nuclei via overlapping orbitals.',
+              'Bonding vs antibonding molecular orbitals from constructive/destructive overlap.',
+              'Delocalization / tunneling lowers energy in the bonding state.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m6-u2-q1',
+                question: 'A covalent bond is best described quantum-mechanically as',
+                options: [
+                  'Only classical electrostatics with no wave overlap',
+                  'Electron sharing via overlapping orbitals (bonding combination)',
+                  'Permanent magnets sticking together',
+                  'Exclusion of all electrons from the molecule',
+                ],
+                correctIndex: 1,
+                explanation: 'Shared electron density in bonding orbitals stabilizes the molecule.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy704-m6-u3',
+            title: 'Energy bands in solids',
+            content: r'''
+## Learning goal
+
+Explain how discrete atomic levels broaden into bands when many atoms form a crystal, and relate filled vs empty bands to insulators and metals.
+
+## From levels to bands
+
+N isolated atoms each have the same discrete electron levels. As atoms are brought into a crystal, overlap splits each level into N closely spaced levels — for macroscopic N these form essentially continuous **energy bands** separated by **gaps**.
+
+## Valence and conduction bands
+
+The highest band that is occupied in the ground state is the valence band; the next empty band is the conduction band. If a gap separates a full valence band from an empty conduction band, the solid is an insulator (or semiconductor if the gap is modest). If a band is only partly filled, electrons can move into nearby states and the solid behaves as a metal.
+
+## Bloch idea (seed)
+
+Electrons in a periodic lattice are described by Bloch waves — labelled by a crystal momentum k — with energy E(k) forming the band structure used throughout solid-state physics.
+
+## Check yourself
+
+Why does a completely filled band (with a gap above it) not conduct electricity easily at low temperature?
+''',
+            keyTakeaways: [
+              'Many overlapping atoms turn discrete levels into bands.',
+              'Filled valence + gap + empty conduction → insulator/semiconductor.',
+              'Partly filled bands → metallic conduction.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy704-m6-u3-q1',
+                question: 'Energy bands in a solid arise because',
+                options: [
+                  'Atoms never interact',
+                  'Overlap of many atomic levels splits them into quasi-continuous bands',
+                  'Gravity quantizes charge',
+                  'Only nuclear forces act on electrons',
+                ],
+                correctIndex: 1,
+                explanation: 'Coupling of N atoms splits each level into N sublevels → bands.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
