@@ -7,20 +7,20 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705, 707 | **COMPLETE** |
-| **PHY 709** | **In progress 6/8** |
+| **PHY 709** | **In progress 7/8** |
 | Remaining | Pending |
 
 ## PHY 709
 
 | Module | Status |
 |--------|--------|
-| 01–05 | Done |
-| **06 PN / LED fabrication** | **Done** |
-| 07 Transistor fabrication | Pending ← next |
-| 08 Interconnects & packaging | Pending |
+| 01–06 | Done |
+| **07 Transistor fabrication** | **Done** |
+| 08 Interconnects & packaging | Pending ← next |
 
-### Module 06 checklist
-- [x] Silicon PN diode process flow
-- [x] Direct-gap LED materials & epitaxy
+### Module 07 checklist
+- [x] MOSFET STI, gate, self-aligned S/D
+- [x] BJT collector/base/emitter
+- [x] CMOS n-well process idea
 
-**Next:** PHY 709 Module 07 only.
+**Next:** PHY 709 Module 08 only, then course audit.

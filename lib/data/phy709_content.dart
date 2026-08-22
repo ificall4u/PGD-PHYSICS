@@ -968,14 +968,152 @@ What does “direct band gap” buy you for an LED that silicon lacks?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy709-m7',
         title: 'Transistor Physical Manufacturing (MOSFET & BJT)',
-        summary: 'Transistor Physical Manufacturing (MOSFET & BJT)',
+        summary:
+            'MOSFET process layers, BJT double-diffused structure, CMOS n-well flow.',
         units: [
-          skeletonUnit(id: 'phy709-m7-u1', title: 'MOSFET Layer-by-Layer Fabrication'),
-          skeletonUnit(id: 'phy709-m7-u2', title: 'BJT Layer-by-Layer Fabrication'),
-          skeletonUnit(id: 'phy709-m7-u3', title: 'CMOS Fabrication Process (N-Well Process)'),
+          Unit(
+            id: 'phy709-m7-u1',
+            title: 'MOSFET layer-by-layer fabrication',
+            content: r'''
+## Learning goal
+
+Outline a simplified n-MOSFET flow: isolation, gate stack, and self-aligned source/drain.
+
+## Isolation
+
+Devices on a shared wafer must not leak into each other. **Shallow trench isolation (STI)** etches trenches between active areas and fills them with oxide so neighbouring transistors are electrically separated.
+
+## Gate stack
+
+Grow a thin gate dielectric (historically SiO₂; advanced nodes use high-k stacks). Deposit polysilicon (or metal gate stacks in modern flows) and pattern the **gate electrode** by lithography and etch.
+
+## Self-aligned source/drain
+
+With the gate already in place, implant donors for n-MOS source and drain. The gate acts as a mask — implants land only beside the gate, automatically aligned. Spacer dielectrics and anneals complete junctions. This **self-alignment** is a cornerstone of dense MOS manufacturing.
+
+## Check yourself
+
+Why does implanting source/drain after gate patterning automatically align the channel length to the gate?
+''',
+            keyTakeaways: [
+              'STI isolates active transistor regions.',
+              'Gate dielectric + gate electrode are formed before S/D implant.',
+              'Self-aligned S/D implants use the gate as a mask.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m7-u1-q1',
+                question: 'Self-aligned source/drain implantation means',
+                options: [
+                  'Dopants are placed randomly without masks',
+                  'The gate blocks implant so S/D form only beside the gate',
+                  'No doping is used',
+                  'Only the backside is implanted',
+                ],
+                correctIndex: 1,
+                explanation: 'The patterned gate defines where ions cannot enter.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m7-u2',
+            title: 'BJT layer-by-layer fabrication',
+            content: r'''
+## Learning goal
+
+Describe a classic double-diffused NPN structure: collector, base, and emitter regions.
+
+## Collector
+
+Often start with an n-type collector region (epitaxial layer on a substrate or doped well). This large region collects electrons in NPN active operation.
+
+## Base
+
+Diffuse or implant acceptors to form a thin **p-type base** in the collector. Base width must stay controlled — too wide kills gain; too narrow risks punch-through.
+
+## Emitter
+
+Heavy n-type doping into the base forms the **emitter**. The emitter–base junction injects carriers; the base–collector junction collects them. “Double-diffused” refers to sequential formation of base and emitter by diffusion (modern flows also use implant).
+
+## Contacts
+
+Metal contacts to emitter, base, and collector complete the three-terminal device.
+
+## Check yourself
+
+Which BJT region is typically thinnest and most critical for high current gain?
+''',
+            keyTakeaways: [
+              'NPN: n-collector, p-base, heavy n-emitter.',
+              'Base width is critical for transistor action.',
+              'Sequential doping defines the three regions.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m7-u2-q1',
+                question: 'In a classic NPN BJT process, the base is',
+                options: [
+                  'N-type only always',
+                  'A thin p-type region between emitter and collector',
+                  'Made of pure metal',
+                  'Identical to the package plastic',
+                ],
+                correctIndex: 1,
+                explanation: 'NPN structure is n–p–n with a thin p base.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m7-u3',
+            title: 'CMOS fabrication (n-well process)',
+            content: r'''
+## Learning goal
+
+Explain how both NMOS and PMOS are built on one chip using an n-well (or related twin-well) approach.
+
+## Why both types
+
+CMOS logic needs n-channel and p-channel MOSFETs. NMOS sits in a p-type region; PMOS needs an n-type body — often an **n-well** diffused or implanted into a p-type substrate.
+
+## Simplified flow idea
+
+1. Form n-wells where PMOS will live.  
+2. STI isolation.  
+3. Grow gate oxide; deposit and pattern gates (shared poly/metal gate patterning).  
+4. Masked implants: n+ source/drain for NMOS; p+ source/drain for PMOS (and well ties).  
+5. Dielectrics, contacts, and metal interconnects.
+
+## Result
+
+Complementary transistors side by side enable low-static-power logic (PHY 705/707 CMOS ideas realized in silicon process steps).
+
+## Check yourself
+
+Why does a PMOS transistor need an n-type well in a p-type starting wafer?
+''',
+            keyTakeaways: [
+              'CMOS = NMOS + PMOS on one substrate.',
+              'N-well provides the body for PMOS on p-substrate.',
+              'Separate masked implants create n+ and p+ source/drain regions.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m7-u3-q1',
+                question: 'In a basic n-well CMOS process, the n-well is used mainly to',
+                options: [
+                  'Host PMOS transistors',
+                  'Replace all metal layers',
+                  'Avoid all doping',
+                  'Only grow oxide',
+                ],
+                correctIndex: 0,
+                explanation: 'PMOS needs an n-type body region — the n-well.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
