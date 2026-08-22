@@ -1000,15 +1000,188 @@ If a T flip-flop has T tied to 1, what does Q do on every clock edge?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy707-m6',
         title: 'Registers and Counters',
-        summary: 'Registers and Counters',
+        summary:
+            'Shift registers, ripple counters, synchronous counters, clocks and timers applications.',
         units: [
-          skeletonUnit(id: 'phy707-m6-u1', title: 'Shift Registers'),
-          skeletonUnit(id: 'phy707-m6-u2', title: 'Asynchronous (Ripple) Counters'),
-          skeletonUnit(id: 'phy707-m6-u3', title: 'Synchronous Counters'),
-          skeletonUnit(id: 'phy707-m6-u4', title: 'Real-world applications'),
+          Unit(
+            id: 'phy707-m6-u1',
+            title: 'Shift registers',
+            content: r'''
+## Learning goal
+
+Describe a shift register as a chain of flip-flops that moves bits along on each clock.
+
+## Chain of D flip-flops
+
+Connect Q of each stage to D of the next, share one clock. On every active edge, each bit shifts one position. A new bit can enter the first stage; the last stage emits a serial stream.
+
+## Serial ↔ parallel
+
+- **SIPO:** serial in, parallel out — collect bits then read all Qs at once  
+- **PISO:** parallel load, then shift out serially  
+- **SISO / PIPO:** other useful combinations  
+
+## Use
+
+Communication links, LED drivers, delay lines, and temporary storage of multi-bit words.
+
+## Check yourself
+
+After four clocks, where is the bit that entered a 4-bit SIPO shift register on the first clock?
+''',
+            keyTakeaways: [
+              'Shift register: cascade of flip-flops sharing a clock.',
+              'Each edge moves data one stage along the chain.',
+              'Supports serial/parallel conversion patterns.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m6-u1-q1',
+                question: 'In a simple shift register, bits move',
+                options: [
+                  'Only when power is removed',
+                  'From stage to stage on each clock edge',
+                  'Randomly without a clock',
+                  'Only through resistors',
+                ],
+                correctIndex: 1,
+                explanation: 'Clocked transfers shift the bit pattern along the chain.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m6-u2',
+            title: 'Asynchronous (ripple) counters',
+            content: r'''
+## Learning goal
+
+Build a binary count with toggled flip-flops where each stage is clocked by the previous stage’s output — and note the ripple delay problem.
+
+## Structure
+
+Wire T flip-flops (or JK with J=K=1) so the first is clocked by the external clock and each next stage is clocked by the Q of the previous stage. Each bit toggles at half the rate of the one before → binary up-count.
+
+## Ripple effect
+
+A change must propagate through successive stages. Intermediate patterns can be briefly wrong; total delay grows with the number of bits. At high clock rates this limits reliable decoding of all bits at once.
+
+## Check yourself
+
+Why might a fast system prefer not to decode a wide ripple counter’s outputs right after the clock?
+''',
+            keyTakeaways: [
+              'Ripple counter: each stage clocks the next.',
+              'Natural binary counting via successive divide-by-2.',
+              'Propagation “ripple” delays limit speed and clean decoding.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m6-u2-q1',
+                question: 'In a ripple counter, higher bits toggle',
+                options: [
+                  'At the same rate as the input clock always',
+                  'More slowly — after lower bits complete their cycles',
+                  'Never',
+                  'Only when asynchronous means simultaneous',
+                ],
+                correctIndex: 1,
+                explanation: 'Each stage divides frequency by 2; delay accumulates.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m6-u3',
+            title: 'Synchronous counters',
+            content: r'''
+## Learning goal
+
+Contrast synchronous counters where all flip-flops share one common clock, with combinational logic deciding which bits toggle.
+
+## Common clock
+
+Every stage receives the same clock edge. Toggle enables are computed from current state (e.g. toggle bit i when all lower bits are 1 for a binary up-counter). No ripple through clocks — only combinational delay for the enable logic.
+
+## Sequences
+
+- Binary up / down  
+- Modulo-N (reset or recycle after N states)  
+- Arbitrary state sequences with suitable next-state logic  
+
+## Advantage
+
+All bits update together; intermediate illegal counts from ripple are avoided (assuming the enable logic meets timing).
+
+## Check yourself
+
+What must the combinational logic compute for each T input in a synchronous binary up-counter?
+''',
+            keyTakeaways: [
+              'Synchronous: shared clock; enables from state logic.',
+              'Supports up/down and modulo-N designs cleanly.',
+              'Avoids multi-stage clock ripple.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m6-u3-q1',
+                question: 'A synchronous counter clocks',
+                options: [
+                  'Only the LSB from the MSB output',
+                  'All flip-flops from a common clock',
+                  'Nothing ever',
+                  'Only using asynchronous resets as clocks',
+                ],
+                correctIndex: 1,
+                explanation: 'Shared clock defines synchronous sequential design.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m6-u4',
+            title: 'Real-world applications',
+            content: r'''
+## Learning goal
+
+Connect counters and registers to clocks, timers, and event counting.
+
+## Digital clocks and timers
+
+Counters divide a stable oscillator (crystal) down to seconds, minutes, and hours. Cascaded modulo-60 and modulo-24 stages build clock calendars.
+
+## Event counters
+
+Each event pulse advances a counter — laboratory instrumentation, traffic counts, digital scorekeepers.
+
+## Embedded control
+
+Microcontrollers use timers/counters for PWM, baud-rate generation, and periodic interrupts — the same divide-and-count idea in silicon peripherals.
+
+## Check yourself
+
+Why is a stable frequency reference important before a chain of counters can keep accurate time?
+''',
+            keyTakeaways: [
+              'Counters divide timebase frequencies for clocks and timers.',
+              'Event counting accumulates external pulses.',
+              'Same blocks appear inside MCU timer peripherals.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m6-u4-q1',
+                question: 'A digital clock typically uses counters to',
+                options: [
+                  'Generate heat only',
+                  'Divide a reference oscillator into seconds and minutes',
+                  'Replace the need for any crystal',
+                  'Store analog music only',
+                ],
+                correctIndex: 1,
+                explanation: 'Frequency division by counting builds civil time units.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

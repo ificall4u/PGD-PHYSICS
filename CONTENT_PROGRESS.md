@@ -7,23 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705 | **COMPLETE** |
-| **PHY 707 Digital Electronics** | **In progress 5/8** |
+| **PHY 707 Digital Electronics** | **In progress 6/8** |
 | Remaining | Pending |
 
 ## PHY 707
 
 | Module | Status |
 |--------|--------|
-| 01–04 | Done |
-| **05 Flip-flops** | **Done** |
-| 06 Counters / registers | Pending ← next |
-| 07–08 | Pending |
+| 01–05 | Done |
+| **06 Registers & counters** | **Done** |
+| 07 Logic families | Pending ← next |
+| 08 DAC / ADC | Pending |
 
-### Module 05 checklist
-- [x] Feedback memory
-- [x] SR latch + illegal state
-- [x] Clocked / edge-triggered FF
-- [x] D flip-flop
-- [x] JK and T
+### Module 06 checklist
+- [x] Shift registers
+- [x] Ripple counters + delay issue
+- [x] Synchronous counters
+- [x] Clocks / timers / event counting
 
-**Next:** PHY 707 Module 06 only.
+**Next:** PHY 707 Module 07 only.
