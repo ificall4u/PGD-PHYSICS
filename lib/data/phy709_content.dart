@@ -549,14 +549,147 @@ Why does visible red light struggle to print the finest modern transistor gates 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy709-m4',
         title: 'Semiconductor Doping (Diffusion & Ion Implantation)',
-        summary: 'Semiconductor Doping (Diffusion & Ion Implantation)',
+        summary:
+            'Purpose of doping, thermal diffusion profiles, ion implantation and anneal.',
         units: [
-          skeletonUnit(id: 'phy709-m4-u1', title: 'Purpose of Doping'),
-          skeletonUnit(id: 'phy709-m4-u2', title: 'Thermal Diffusion ("Soaking in Dye")'),
-          skeletonUnit(id: 'phy709-m4-u3', title: 'Ion Implantation ("Firehosing Impurity Atoms")'),
+          Unit(
+            id: 'phy709-m4-u1',
+            title: 'Purpose of doping',
+            content: r'''
+## Learning goal
+
+State why controlled impurities turn intrinsic silicon into n-type or p-type device regions.
+
+## Intrinsic limitation
+
+Pure silicon has few thermally generated carriers. Useful transistors and diodes need designated n and p regions with set carrier densities.
+
+## Donors and acceptors
+
+- **Phosphorus / arsenic (donors):** extra valence electron → n-type (electron majority)  
+- **Boron (acceptors):** missing valence electron → p-type (hole majority)  
+
+Only parts-per-million to parts-per-billion level doping is enough to dominate carrier type — that is why starting wafers must be so pure.
+
+## Patterned doping
+
+Masks (oxide or resist) block dopants from some areas so sources, drains, wells, and emitters form only where intended.
+
+## Check yourself
+
+Why does a tiny boron concentration change silicon from nearly intrinsic to strongly p-type?
+''',
+            keyTakeaways: [
+              'Doping sets n-type or p-type majority carriers.',
+              'Donors add electrons; acceptors add holes.',
+              'Patterned doping defines device regions.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m4-u1-q1',
+                question: 'Boron is commonly used in silicon as',
+                options: [
+                  'A donor making n-type material',
+                  'An acceptor making p-type material',
+                  'A metal interconnect only',
+                  'A photoresist solvent',
+                ],
+                correctIndex: 1,
+                explanation: 'Group-III boron accepts electrons and creates holes.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m4-u2',
+            title: 'Thermal diffusion (“soaking in dye”)',
+            content: r'''
+## Learning goal
+
+Describe thermal diffusion as dopants seeping into hot silicon, with concentration highest at the surface and falling with depth.
+
+## Dye analogy
+
+A fabric soaks up dye more at the surface; deeper fibres get less colour. At high temperature, dopant atoms diffuse from a surface source into the silicon lattice. The **profile** is high near the surface and decreases with depth; **junction depth** is where doping crosses the background level.
+
+## Process knobs
+
+Temperature and time set how far and how much dopant enters. Oxide windows define lateral location. Pre-deposition + drive-in sequences shape the final profile.
+
+## Limits
+
+Diffusion is isotropic under the mask edge (lateral under-diffusion) and needs high temperature for long times — less ideal for ultra-shallow modern junctions.
+
+## Check yourself
+
+If you only increase diffusion time at fixed temperature, what happens to junction depth?
+''',
+            keyTakeaways: [
+              'Thermal diffusion drives dopants from a surface source into hot Si.',
+              'Concentration falls with depth; junction depth is a key metric.',
+              'Time and temperature control the profile; lateral spread occurs.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m4-u2-q1',
+                question: 'In thermal diffusion doping, junction depth mainly increases when',
+                options: [
+                  'Temperature and/or time increase',
+                  'The wafer is only cooled',
+                  'No dopant is present',
+                  'Lithography wavelength changes only',
+                ],
+                correctIndex: 0,
+                explanation: 'Hotter, longer diffusion drives impurities deeper.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m4-u3',
+            title: 'Ion implantation (“firehosing impurity atoms”)',
+            content: r'''
+## Learning goal
+
+Explain ion implantation as shooting accelerated dopant ions to a chosen depth, then annealing crystal damage.
+
+## Beam of ions
+
+Dopant atoms are ionized and accelerated to high energy, then directed at the wafer. Energy sets the **projected range** (depth of the peak); dose (ions/cm²) sets how many atoms arrive. Masks or resist block regions that should not be doped.
+
+## Crystal damage
+
+Energetic ions knock silicon atoms off lattice sites — implant damage. Devices need the lattice restored and dopants moved onto electrically active sites.
+
+## Thermal annealing
+
+A controlled heat cycle (furnace or rapid thermal anneal) repairs the crystal and activates dopants. Modern processes carefully limit diffusion during anneal to keep junctions shallow.
+
+## Check yourself
+
+What two implant parameters most directly set “how many” and “how deep” dopant atoms go?
+''',
+            keyTakeaways: [
+              'Implantation: accelerated ions, controlled dose and depth.',
+              'Causes lattice damage that must be annealed.',
+              'Enables precise, relatively low-temperature placement vs pure diffusion.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m4-u3-q1',
+                question: 'After ion implantation, thermal annealing is used to',
+                options: [
+                  'Add more random contamination',
+                  'Repair crystal damage and activate dopants',
+                  'Remove all silicon',
+                  'Skip lithography forever',
+                ],
+                correctIndex: 1,
+                explanation: 'Anneal restores the lattice and places dopants on active sites.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

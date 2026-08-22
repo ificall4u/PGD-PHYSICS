@@ -7,22 +7,21 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705, 707 | **COMPLETE** |
-| **PHY 709** | **In progress 3/8** |
+| **PHY 709** | **In progress 4/8** |
 | Remaining | Pending |
 
 ## PHY 709
 
 | Module | Status |
 |--------|--------|
-| 01–02 | Done |
-| **03 Photolithography** | **Done** |
-| 04 Doping | Pending ← next |
-| 05–08 | Pending |
+| 01–03 | Done |
+| **04 Doping** | **Done** |
+| 05 Etching | Pending ← next |
+| 06–08 | Pending |
 
-### Module 03 checklist
-- [x] Stencil / mask analogy
-- [x] Positive vs negative resist
-- [x] Coat–align–expose–develop pipeline
-- [x] Wavelength / EUV resolution drive
+### Module 04 checklist
+- [x] Purpose of n/p doping
+- [x] Thermal diffusion profiles
+- [x] Ion implantation + anneal
 
-**Next:** PHY 709 Module 04 only.
+**Next:** PHY 709 Module 05 only.
