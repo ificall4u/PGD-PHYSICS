@@ -368,15 +368,185 @@ Why can you not “oxidize” a pure nitride film into existence the same way yo
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy709-m3',
         title: 'Photolithography & Pattern Transfer',
-        summary: 'Photolithography & Pattern Transfer',
+        summary:
+            'Stencil analogy, positive/negative resist, lithography process steps, optical resolution limits.',
         units: [
-          skeletonUnit(id: 'phy709-m3-u1', title: 'The Stencil-Painting Analogy'),
-          skeletonUnit(id: 'phy709-m3-u2', title: 'Photoresist Chemistry'),
-          skeletonUnit(id: 'phy709-m3-u3', title: 'The Lithography Pipeline'),
-          skeletonUnit(id: 'phy709-m3-u4', title: 'Optical Resolution Limits'),
+          Unit(
+            id: 'phy709-m3-u1',
+            title: 'The stencil-painting analogy',
+            content: r'''
+## Learning goal
+
+Picture photolithography as printing a microscopic stencil on the wafer with light so later etch or implant hits only chosen regions.
+
+## Stencil idea
+
+A painter’s stencil blocks paint except where openings exist. In lithography, a **mask** (or reticle) and light-sensitive **photoresist** create a patterned protective layer. Openings in the developed resist define where the next process step acts.
+
+## Parallelism
+
+An entire wafer (or exposure field) is patterned in one optical step — millions of features at once — which is why optical lithography scales mass production.
+
+## Check yourself
+
+What does the resist stencil protect against in a typical etch step?
+''',
+            keyTakeaways: [
+              'Lithography prints a temporary stencil of photoresist.',
+              'Mask + light define where resist remains or is removed.',
+              'Parallel patterning enables high-volume chip manufacture.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m3-u1-q1',
+                question: 'Photolithography is best compared to',
+                options: [
+                  'Random sanding of the wafer',
+                  'Using light and resist as a microscopic stencil for later process steps',
+                  'Only melting the entire wafer',
+                  'Hand-drawing each transistor with a pen',
+                ],
+                correctIndex: 1,
+                explanation: 'Patterned resist selectively exposes regions to etch/implant/deposit.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m3-u2',
+            title: 'Photoresist chemistry',
+            content: r'''
+## Learning goal
+
+Contrast positive and negative photoresists after UV exposure.
+
+## Positive resist
+
+Exposure makes the resist **more soluble** in developer. Exposed regions wash away; unexposed regions remain as the stencil. Mask dark areas → resist stays (for positive resist process polarity).
+
+## Negative resist
+
+Exposure **cross-links / hardens** the resist. Exposed regions remain; unexposed wash away. Polarity of the transferred pattern is opposite to positive resist for the same mask.
+
+## Choice
+
+Process engineers pick polarity, resolution, and etch resistance to match the layer being patterned.
+
+## Check yourself
+
+With positive resist, do the bright (exposed) regions of the wafer keep resist or lose it after develop?
+''',
+            keyTakeaways: [
+              'Positive: exposed resist dissolves away.',
+              'Negative: exposed resist remains.',
+              'Polarity chooses how mask tone maps to wafer openings.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m3-u2-q1',
+                question: 'In positive photoresist, UV-exposed regions',
+                options: [
+                  'Become insoluble and always stay',
+                  'Become more soluble and wash away in developer',
+                  'Turn into metal',
+                  'Disappear before exposure',
+                ],
+                correctIndex: 1,
+                explanation: 'Positive resist is developed away where exposed.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m3-u3',
+            title: 'The lithography pipeline',
+            content: r'''
+## Learning goal
+
+List the main process steps from bare film to patterned resist openings.
+
+## Typical sequence
+
+1. **Clean** and prepare the surface.  
+2. **Spin-coat** liquid photoresist for a uniform thin film; soft-bake to drive off solvent.  
+3. **Align** the photomask/reticle to existing wafer marks.  
+4. **Expose** with UV (or EUV in advanced nodes) through the mask pattern.  
+5. **Develop** to create openings in the resist.  
+6. Hard-bake if needed; then **etch or implant**; finally **strip** remaining resist.
+
+## Alignment
+
+Each new layer must overlay previous layers within tight tolerances — a major engineering challenge as features shrink.
+
+## Check yourself
+
+Why is wafer-to-mask alignment critical when a chip has many patterned layers?
+''',
+            keyTakeaways: [
+              'Coat → align → expose → develop is the core loop.',
+              'Resist openings define etch/implant windows.',
+              'Overlay accuracy stacks across many layers.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m3-u3-q1',
+                question: 'Spin coating is used to',
+                options: [
+                  'Dope the wafer with ions',
+                  'Spread a uniform photoresist film on the wafer',
+                  'Slice the ingot',
+                  'Package the die',
+                ],
+                correctIndex: 1,
+                explanation: 'Rotation spreads resist into a controlled thickness film.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m3-u4',
+            title: 'Optical resolution limits',
+            content: r'''
+## Learning goal
+
+Relate printable feature size to wavelength and explain the drive toward UV and EUV light.
+
+## Diffraction limit (intuition)
+
+Light cannot be focused into arbitrarily small spots; the wavelength sets a scale for the finest printable lines. Shorter wavelength → finer potential resolution (with suitable optics and resist).
+
+## UV to EUV
+
+Mercury-lamp and laser UV wavelengths enabled micrometre then deep-submicron features. **Extreme ultraviolet (EUV)** (~13.5 nm class) is used in leading-edge nodes to print features far smaller than a virus — at great tool complexity and cost.
+
+## Not only wavelength
+
+Lens quality, illumination tricks, multiple patterning, and resist chemistry all push effective resolution beyond naive limits.
+
+## Check yourself
+
+Why does visible red light struggle to print the finest modern transistor gates compared with EUV?
+''',
+            keyTakeaways: [
+              'Shorter wavelength supports finer optical patterning.',
+              'Industry moved UV → DUV → EUV as features shrank.',
+              'Optics, multipatterning, and resist also set practical limits.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m3-u4-q1',
+                question: 'EUV lithography is used in advanced nodes mainly to',
+                options: [
+                  'Heat the wafer only',
+                  'Print smaller features using much shorter wavelength light',
+                  'Avoid all masks forever',
+                  'Grow crystals from melt',
+                ],
+                correctIndex: 1,
+                explanation: 'Shorter λ enables finer resolution in optical patterning.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
