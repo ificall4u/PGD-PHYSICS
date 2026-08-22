@@ -868,13 +868,104 @@ If an oxide etch is highly selective to silicon, what happens when the oxide cle
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy709-m6',
         title: 'Physical Fabrication of Diodes and Light Emitting Diodes (LEDs)',
-        summary: 'Physical Fabrication of Diodes and Light Emitting Diodes (LEDs)',
+        summary:
+            'Process flow for a silicon PN diode; LED materials, epitaxy, and device structure.',
         units: [
-          skeletonUnit(id: 'phy709-m6-u1', title: 'Step-by-Step PN Junction Diode Fabrication'),
-          skeletonUnit(id: 'phy709-m6-u2', title: 'LED Fabrication'),
+          Unit(
+            id: 'phy709-m6-u1',
+            title: 'Step-by-step PN junction diode fabrication',
+            content: r'''
+## Learning goal
+
+Walk through a simple silicon PN diode process from wafer to metallized contacts.
+
+## Starting wafer
+
+Begin with a p-type silicon substrate (boron-doped). This will form the p-side of the junction (or the anode region in a common discrete diode story).
+
+## Oxide and window
+
+Grow thermal SiO₂ as a mask. Photolithography opens a window where the n-region will be formed; etch oxide in the opening so silicon is exposed only there.
+
+## N-type doping
+
+Diffuse or implant donors (e.g. phosphorus) through the window. A PN junction forms at the boundary between the new n-region and the p-substrate. Anneal activates dopants and repairs implant damage if implantation was used.
+
+## Contacts
+
+Deposit metal (e.g. aluminium) and pattern it so electrodes contact the n-region and the substrate (or a backside contact). Alloy/anneal for ohmic behaviour. The result is a discrete or integrated diode structure.
+
+## Check yourself
+
+Why must the oxide window be open before donor doping if oxide is meant to block impurities?
+''',
+            keyTakeaways: [
+              'Oxide + lithography defines where the junction is formed.',
+              'Donor doping into p-substrate creates the PN boundary.',
+              'Metal contacts complete the diode terminals.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m6-u1-q1',
+                question: 'In a simple diode flow, the oxide window is opened so that',
+                options: [
+                  'The entire wafer is etched away',
+                  'Dopants enter only selected regions to form the junction',
+                  'Light is emitted from silicon efficiently',
+                  'No metal is ever needed',
+                ],
+                correctIndex: 1,
+                explanation: 'Patterned oxide acts as a diffusion/implant mask.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m6-u2',
+            title: 'LED fabrication',
+            content: r'''
+## Learning goal
+
+Explain why LEDs use direct-gap compound semiconductors and outline epitaxial LED structure.
+
+## Why not silicon?
+
+Silicon has an **indirect band gap**: efficient light emission requires phonon assistance and is weak. LEDs need materials where electrons and holes recombine **directly** with high probability of emitting a photon.
+
+## Compound semiconductors
+
+**GaAs**, **GaN**, and related alloys (AlGaAs, InGaN, …) provide direct gaps tuned by composition to red, green, blue, and beyond. Crystal layers are grown by **epitaxy** (e.g. MOCVD) on suitable substrates — atomic-layer control of thickness and composition.
+
+## Active region
+
+Quantum wells or active layers trap carriers so recombination happens where the optical design wants light. Doped p and n cladding regions inject carriers; a transparent or reflective contact extracts light. Packaging adds lenses and phosphors (e.g. blue LED + phosphor → white light).
+
+## Check yourself
+
+What does “direct band gap” buy you for an LED that silicon lacks?
+''',
+            keyTakeaways: [
+              'Efficient LEDs need direct-gap semiconductors, not Si.',
+              'GaAs/GaN families grown by epitaxy enable colour-tuned emission.',
+              'Quantum wells + carrier injection + optical extraction form the device.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m6-u2-q1',
+                question: 'Silicon is a poor LED material mainly because',
+                options: [
+                  'It is too pure',
+                  'It has an indirect band gap and emits light inefficiently',
+                  'It cannot be doped',
+                  'It melts at room temperature',
+                ],
+                correctIndex: 1,
+                explanation: 'Indirect-gap recombination rarely produces useful photons.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
