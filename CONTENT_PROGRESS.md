@@ -7,21 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705 | **COMPLETE** |
-| **PHY 707 Digital Electronics** | **In progress 3/8** |
+| **PHY 707 Digital Electronics** | **In progress 4/8** |
 | Remaining | Pending |
 
 ## PHY 707
 
 | Module | Status |
 |--------|--------|
-| 01–02 | Done |
-| **03 K-maps & Quine–McCluskey** | **Done** |
-| 04 Combinational mux/demux | Pending ← next |
-| 05–08 | Pending |
+| 01–03 | Done |
+| **04 Combinational / MUX / DEMUX** | **Done** |
+| 05 Flip-flops | Pending ← next |
+| 06–08 | Pending |
 
-### Module 03 checklist
-- [x] Goal of minimization
-- [x] K-map Gray adjacency and grouping
-- [x] Quine–McCluskey tabular idea
+### Module 04 checklist
+- [x] Combinational vs sequential
+- [x] MUX railway analogy; 2-to-1 equation
+- [x] DEMUX distribute
+- [x] Encoder/decoder; 7-segment idea
 
-**Next:** PHY 707 Module 04 only.
+**Next:** PHY 707 Module 05 only.

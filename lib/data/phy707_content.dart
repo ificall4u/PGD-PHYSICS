@@ -580,15 +580,192 @@ What is a prime implicant in one plain sentence?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy707-m4',
         title: 'Combinational Logic, Multiplexers, and Demultiplexers',
-        summary: 'Combinational Logic, Multiplexers, and Demultiplexers',
+        summary:
+            'Combinational logic definition, MUX, DEMUX, encoders and decoders including 7-segment idea.',
         units: [
-          skeletonUnit(id: 'phy707-m4-u1', title: 'Combinational Logic'),
-          skeletonUnit(id: 'phy707-m4-u2', title: 'Multiplexers (MUX - Data Selectors)'),
-          skeletonUnit(id: 'phy707-m4-u3', title: 'Demultiplexers (DEMUX - Data Distributors)'),
-          skeletonUnit(id: 'phy707-m4-u4', title: 'Encoders & Decoders'),
+          Unit(
+            id: 'phy707-m4-u1',
+            title: 'Combinational logic',
+            content: r'''
+## Learning goal
+
+Define combinational logic as circuits whose outputs depend only on current inputs — no memory of the past.
+
+## Definition
+
+In a **combinational** circuit, each output is a Boolean function of the present inputs alone. There are no feedback loops that store state, and no clocks required for the definition (though real gates have delay).
+
+## Contrast with sequential
+
+Sequential circuits (next modules) remember past inputs via latches and flip-flops. Combinational blocks are the “instant logic” pieces: adders, muxes, decoders, ALU slices.
+
+## Design flow
+
+Specify truth table or equations → minimize → implement with gates or standard cells → verify every input combination.
+
+## Check yourself
+
+If an output depends on which button was pressed last time, is that purely combinational?
+''',
+            keyTakeaways: [
+              'Combinational: outputs = function of current inputs only.',
+              'No internal memory state in the ideal model.',
+              'Building blocks: gates, mux, demux, encoder, decoder, adder, …',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m4-u1-q1',
+                question: 'A combinational circuit\'s outputs depend on',
+                options: [
+                  'Only the distant past',
+                  'Current inputs only (no stored state)',
+                  'Random noise only',
+                  'Temperature exclusively',
+                ],
+                correctIndex: 1,
+                explanation: 'No memory element in pure combinational logic.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m4-u2',
+            title: 'Multiplexers (MUX — data selectors)',
+            content: r'''
+## Learning goal
+
+Describe a multiplexer as selecting one of several data inputs onto a single output using select lines — the railway-switch picture.
+
+## Railway analogy
+
+Several tracks (data inputs) can feed one outgoing track. A lever (select lines) chooses which incoming track connects through.
+
+## 2-to-1 MUX
+
+Inputs D0, D1; select S; output Y.
+
+Y = S′ D0 + S D1
+
+When S = 0, Y follows D0; when S = 1, Y follows D1. Built from two AND gates, one NOT, and one OR (or equivalent).
+
+## 4-to-1 MUX
+
+Two select bits S1 S0 choose among D0–D3. One of four AND terms is enabled; OR combines them. Cascading 2-to-1 muxes also builds larger muxes.
+
+## Check yourself
+
+For a 2-to-1 MUX with S = 1, which data input appears at Y?
+''',
+            keyTakeaways: [
+              'MUX selects one of many data inputs onto one output.',
+              'Select lines encode which input is routed.',
+              '2-to-1: Y = S′D0 + S D1; larger muxes generalize.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m4-u2-q1',
+                question: 'A multiplexer',
+                options: [
+                  'Always adds numbers',
+                  'Routes one of several inputs to a single output under select control',
+                  'Stores bits indefinitely without power',
+                  'Only inverts signals',
+                ],
+                correctIndex: 1,
+                explanation: 'MUX is a data selector.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m4-u3',
+            title: 'Demultiplexers (DEMUX — data distributors)',
+            content: r'''
+## Learning goal
+
+Describe a demultiplexer as the reverse of a mux: one input steered to one of many outputs by select lines.
+
+## Picture
+
+One incoming track splits to several destinations; the select lever chooses the destination. Only one output path is active (in the basic binary DEMUX); others stay inactive (often 0).
+
+## Relation to decoder
+
+A demux with the data input tied to 1 acts like a decoder: select lines turn on exactly one output line. Decoders and demuxes are closely related blocks.
+
+## Use cases
+
+Routing a shared line to one of several destinations; enabling one device among many; building larger steering networks.
+
+## Check yourself
+
+How does a DEMUX differ from a MUX in the number of data inputs vs outputs?
+''',
+            keyTakeaways: [
+              'DEMUX: one data input → one of many outputs via selects.',
+              'Inverse steering role relative to MUX.',
+              'Tied-high data input → binary decoder behaviour.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m4-u3-q1',
+                question: 'A demultiplexer',
+                options: [
+                  'Merges many inputs into one output only',
+                  'Sends one input to one of several outputs chosen by selects',
+                  'Is identical to a resistor',
+                  'Cannot use select lines',
+                ],
+                correctIndex: 1,
+                explanation: 'DEMUX distributes one input to a selected output.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m4-u4',
+            title: 'Encoders and decoders',
+            content: r'''
+## Learning goal
+
+Define encoders and decoders and connect decoders to 7-segment displays.
+
+## Decoder
+
+n select (input) bits → up to 2ⁿ one-hot outputs (exactly one output active). Example: 2-to-4 and 3-to-8 decoders. Used for address decoding and seven-segment digit patterns when combined with further mapping.
+
+## Encoder
+
+Reverse idea: multiple inputs (often one-hot) → fewer bits encoding which input was active. Priority encoders handle multiple simultaneous inputs by ranking them.
+
+## 7-segment displays
+
+A binary digit (or BCD nibble) feeds a decoder/driver that lights the correct subset of seven segments (a–g) to draw 0–9. The decoder maps each code to a pattern of segment ON/OFF values — pure combinational logic.
+
+## Check yourself
+
+Why is a 3-to-8 decoder a natural fit for selecting one of eight memory chips?
+''',
+            keyTakeaways: [
+              'Decoder: n bits → one of 2ⁿ lines active.',
+              'Encoder: many lines → compact binary code.',
+              '7-segment drivers map codes to segment patterns combinationally.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m4-u4-q1',
+                question: 'A binary decoder typically',
+                options: [
+                  'Compresses many bits into heat only',
+                  'Activates one of 2ⁿ outputs from an n-bit code',
+                  'Stores analog voltages',
+                  'Replaces the need for any select input',
+                ],
+                correctIndex: 1,
+                explanation: 'n-to-2ⁿ decoding is the standard one-hot expansion.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
