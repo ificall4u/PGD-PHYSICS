@@ -1116,15 +1116,188 @@ Why does a PMOS transistor need an n-type well in a p-type starting wafer?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy709-m8',
         title: 'Interconnect Metallization, Wafer Dicing, and Chip Packaging',
-        summary: 'Interconnect Metallization, Wafer Dicing, and Chip Packaging',
+        summary:
+            'Multi-level metal interconnects, CMP planarization, dicing, packaging and wire bonding.',
         units: [
-          skeletonUnit(id: 'phy709-m8-u1', title: 'Metallization & Interconnects'),
-          skeletonUnit(id: 'phy709-m8-u2', title: 'Chemical Mechanical Planarization (CMP)'),
-          skeletonUnit(id: 'phy709-m8-u3', title: 'Wafer Dicing & Inspection'),
-          skeletonUnit(id: 'phy709-m8-u4', title: 'Packaging & Wire Bonding'),
+          Unit(
+            id: 'phy709-m8-u1',
+            title: 'Metallization and interconnects',
+            content: r'''
+## Learning goal
+
+Explain how metal wiring layers connect transistors into circuits using stacked interconnects.
+
+## Wiring the chip
+
+Transistors alone do nothing useful until they are connected. **Metallization** deposits and patterns conductive tracks — historically aluminium, widely copper in modern dual-damascene flows — that form local and global wires.
+
+## Multi-level stack
+
+One metal layer is rarely enough. Stacks of metal levels separated by **inter-layer dielectrics (ILD)** route signals and power in three dimensions. Vias (vertical plugs) link successive metal levels.
+
+## Back-end of line (BEOL)
+
+After front-end transistor formation, BEOL builds the interconnect “skyscraper” that dominates delay and power in advanced chips.
+
+## Check yourself
+
+Why do advanced chips use many metal layers instead of only one?
+''',
+            keyTakeaways: [
+              'Metal tracks wire transistors into circuits.',
+              'Multiple metal levels + vias + ILD form the interconnect stack.',
+              'BEOL follows front-end device fabrication.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m8-u1-q1',
+                question: 'Inter-layer dielectrics (ILD) in a chip are used to',
+                options: [
+                  'Dope the substrate only',
+                  'Electrically separate successive metal wiring levels',
+                  'Replace transistors',
+                  'Grow the silicon boule',
+                ],
+                correctIndex: 1,
+                explanation: 'ILD insulates stacked metal layers from each other.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m8-u2',
+            title: 'Chemical mechanical planarization (CMP)',
+            content: r'''
+## Learning goal
+
+Describe CMP as polishing the wafer flat between process steps so later lithography stays in focus.
+
+## Drywall-sanding analogy
+
+After depositing and patterning rough films, the surface looks like uneven drywall. **CMP** uses a chemical slurry and mechanical pad to polish the wafer globally flat.
+
+## Why it matters
+
+Lithography depth of focus is tiny. Without planarization, upper metal layers cannot print reliably. CMP enables many interconnect levels.
+
+## Damascene copper
+
+Copper is often patterned by depositing into etched trenches/vias then CMP-polishing away excess — dual-damascene integration.
+
+## Check yourself
+
+What goes wrong optically if each metal level leaves large topography for the next exposure?
+''',
+            keyTakeaways: [
+              'CMP flattens the wafer chemically and mechanically.',
+              'Essential for multi-level interconnect lithography.',
+              'Key to copper damascene metallization.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m8-u2-q1',
+                question: 'CMP in semiconductor processing is primarily used to',
+                options: [
+                  'Implant dopants',
+                  'Planarize surfaces between process steps',
+                  'Dice the wafer',
+                  'Bond gold wires only',
+                ],
+                correctIndex: 1,
+                explanation: 'Chemical-mechanical polish yields a flat surface for subsequent layers.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m8-u3',
+            title: 'Wafer dicing and inspection',
+            content: r'''
+## Learning goal
+
+Explain testing on the wafer, then cutting the wafer into individual dies.
+
+## Wafer test
+
+Before cutting, automated probes test circuits. Bad dies are mapped so they are not packaged — saving assembly cost.
+
+## Dicing
+
+Diamond saws or laser/stealth dicing separate the wafer along scribe streets into individual **dies** (chips). Clean, controlled cuts avoid chipping active circuitry.
+
+## Handling
+
+Bare dies are fragile; subsequent steps mount them into packages that provide mechanical strength and electrical leads.
+
+## Check yourself
+
+Why test before dicing and packaging rather than only after final assembly?
+''',
+            keyTakeaways: [
+              'Wafer probe identifies good vs bad dies.',
+              'Dicing separates dies along scribe lines.',
+              'Only good dies proceed to costly packaging when possible.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m8-u3-q1',
+                question: 'Wafer dicing',
+                options: [
+                  'Grows a new crystal',
+                  'Cuts the wafer into individual chip dies',
+                  'Deposits gate oxide',
+                  'Replaces metallization',
+                ],
+                correctIndex: 1,
+                explanation: 'Dicing singulates dies from the completed wafer.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m8-u4',
+            title: 'Packaging and wire bonding',
+            content: r'''
+## Learning goal
+
+Describe mounting a die in a package and connecting it with wire bonds (or advanced alternatives).
+
+## Package roles
+
+The package protects the die from moisture and handling, spreads heat, and provides pins/balls that match circuit boards.
+
+## Wire bonding
+
+Fine gold or copper wires bond from die pads to leadframe or substrate lands. Alternative advanced methods include flip-chip bumps and through-silicon vias in stacked packages.
+
+## Seal and finish
+
+Encapsulation (mold compound or ceramic lid), marking, and final test produce the component sold to board assemblers — the end of the classic fab-to-packaging chain.
+
+## Check yourself
+
+What functions does the package provide beyond “holding the silicon”?
+''',
+            keyTakeaways: [
+              'Package: protection, heat, and board-level connections.',
+              'Wire bonds (or bumps) link die pads to leads.',
+              'Final test qualifies the finished component.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m8-u4-q1',
+                question: 'Wire bonding in packaging connects',
+                options: [
+                  'Nothing electrical',
+                  'Die bond pads to package leads or substrate',
+                  'Only the cooling fan',
+                  'The crystal puller to the saw',
+                ],
+                correctIndex: 1,
+                explanation: 'Bonds provide the electrical path from die to outside world.',
+              ),
+            ],
+          ),
         ],
       ),
     ],
