@@ -6,23 +6,42 @@
 
 | Course | Status |
 |--------|--------|
-| PHY 701–705 | **COMPLETE** |
-| **PHY 707 Digital Electronics** | **In progress 7/8** |
-| Remaining | Pending |
+| PHY 701 Mathematical Methods | **COMPLETE** |
+| PHY 702 Electromagnetism | **COMPLETE** |
+| PHY 703 Analytical Mechanics | **COMPLETE** |
+| PHY 704 Quantum Physics | **COMPLETE** |
+| PHY 705 Intro Solid State Electronics | **COMPLETE** |
+| **PHY 707 Digital Electronics** | **COMPLETE** |
+| PHY 709 Devices Design & Fabrication | Pending ← next |
+| PHY 706 Measurement & Instrumentation | Pending |
+| PHY 710 Vacuum & Thin Films | Pending |
+| PHY 708 Nuclear & Particle | Pending |
+| PHY 712 Energy Conversion & Storage | Pending |
+| PHY 799 PGD Research Project | Pending |
 
-## PHY 707
+## PHY 707 — COMPLETE (8/8)
 
 | Module | Status |
 |--------|--------|
-| 01–06 | Done |
-| **07 Logic families** | **Done** |
-| 08 DAC / ADC | Pending ← next |
+| 01 Logic gates & truth tables | Done |
+| 02 Boolean algebra & De Morgan | Done |
+| 03 K-maps & Quine–McCluskey | Done |
+| 04 Combinational / MUX / DEMUX | Done |
+| 05 Flip-flops | Done |
+| 06 Registers & counters | Done |
+| 07 Logic families | Done |
+| **08 DAC / ADC** | **Done** |
 
-### Module 07 checklist
-- [x] Logic family concept
-- [x] DTL / TTL
-- [x] CMOS low static power
-- [x] NMOS / ECL niche roles
-- [x] Noise margin, delay, power
+### Module 08 checklist
+- [x] Analog vs digital
+- [x] DAC weighted + R-2R
+- [x] Flash vs SAR ADC
+- [x] Sampling / Nyquist / quantization
 
-**Next:** PHY 707 Module 08 only, then course audit.
+### Course audit PHY 707
+- [x] All 8 module prompts covered
+- [x] No skeletonModule / skeletonUnit left
+- [x] No ASCII schematics; UI untouched
+- [x] Quizzes + takeaways present
+
+**Next course:** PHY 709 Module 01 only.

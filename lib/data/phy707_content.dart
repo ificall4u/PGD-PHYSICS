@@ -1396,15 +1396,188 @@ If clock frequency doubles and all else is equal, what happens to dynamic power 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy707-m8',
         title: 'Analog-Digital Interfacing (DAC and ADC)',
-        summary: 'Analog-Digital Interfacing (DAC and ADC)',
+        summary:
+            'Analog vs digital, DAC (weighted and R-2R), ADC (flash and SAR), sampling and quantization.',
         units: [
-          skeletonUnit(id: 'phy707-m8-u1', title: 'The Real World vs. Digital World'),
-          skeletonUnit(id: 'phy707-m8-u2', title: 'Digital-to-Analog Conversion (DAC)'),
-          skeletonUnit(id: 'phy707-m8-u3', title: 'Analog-to-Digital Conversion (ADC)'),
-          skeletonUnit(id: 'phy707-m8-u4', title: 'Sampling & Quantization'),
+          Unit(
+            id: 'phy707-m8-u1',
+            title: 'The real world vs the digital world',
+            content: r'''
+## Learning goal
+
+Contrast continuous analog quantities with discrete digital representations.
+
+## Analog
+
+Temperature, sound pressure, and sensor voltages vary smoothly. Between any two values there are others — a continuum.
+
+## Digital
+
+Computation and storage use finite bit patterns: only specific levels (ideally two per bit). To process the real world in a microcontroller, we must **sample** in time and **quantize** in amplitude.
+
+## Interface role
+
+DACs turn bit patterns into voltages or currents; ADCs turn voltages into bit patterns. They are the bridges between physics and binary logic.
+
+## Check yourself
+
+Is a 16-bit recording of a song still analog at the speaker, or digital inside the file?
+''',
+            keyTakeaways: [
+              'Analog: continuous physical quantities.',
+              'Digital: discrete bit patterns.',
+              'ADC/DAC bridge the two domains.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m8-u1-q1',
+                question: 'An analog signal is characterized by',
+                options: [
+                  'Only two allowed values ever',
+                  'Continuous range of values',
+                  'Being stored only as ASCII text',
+                  'Never interacting with sensors',
+                ],
+                correctIndex: 1,
+                explanation: 'Analog quantities vary continuously.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m8-u2',
+            title: 'Digital-to-analog conversion (DAC)',
+            content: r'''
+## Learning goal
+
+Explain binary-weighted resistor DACs and the R-2R ladder using only two resistor values.
+
+## Binary-weighted network
+
+Each bit switches a current or voltage contribution proportional to 1, 2, 4, 8, … (powers of two). Summing produces an analog level matching the binary code. Problem: many different precise resistor values are hard to match on a chip.
+
+## R-2R ladder
+
+A ladder network using only resistances R and 2R creates successive voltage division by two at each stage. Bits switch nodes of the ladder; the output still weights bits binary-style. Manufacturing likes having only two resistor values to match.
+
+## Result
+
+More bits → finer steps (higher resolution), requiring tighter matching and lower noise.
+
+## Check yourself
+
+Why is an R-2R ladder easier to build accurately than a full set of binary-weighted resistors?
+''',
+            keyTakeaways: [
+              'DAC maps digital codes to analog voltages/currents.',
+              'Weighted resistors: simple idea, hard matching.',
+              'R-2R: binary weights with only R and 2R.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m8-u2-q1',
+                question: 'An R-2R ladder DAC is popular because',
+                options: [
+                  'It needs infinitely many resistor values',
+                  'It builds binary weights using only two resistor values',
+                  'It cannot produce analog output',
+                  'It only works with optical signals',
+                ],
+                correctIndex: 1,
+                explanation: 'Matched R and 2R networks realize binary division cleanly.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m8-u3',
+            title: 'Analog-to-digital conversion (ADC)',
+            content: r'''
+## Learning goal
+
+Contrast flash ADCs (speed) with successive-approximation ADCs (binary search).
+
+## Flash ADC
+
+A bank of comparators compares the input against a resistor-string ladder of thresholds in parallel. Encoder logic outputs the binary code. Extremely fast; hardware cost grows exponentially with bits (2ⁿ − 1 comparators).
+
+## SAR ADC (balance scale)
+
+**Successive approximation** guesses the MSB first, tests with an internal DAC, then refines lower bits — a **binary search** for the code that best matches the input. Moderate speed, excellent efficiency for many embedded uses.
+
+## Other types (awareness)
+
+Pipeline, sigma-delta, dual-slope — each optimizes different speed/resolution/power corners.
+
+## Check yourself
+
+Why does an 8-bit flash ADC need far more comparators than an 8-bit SAR?
+''',
+            keyTakeaways: [
+              'Flash: parallel comparators — fastest, most hardware.',
+              'SAR: binary-search bit trials — efficient workhorse.',
+              'Architecture chosen by speed, resolution, and power needs.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m8-u3-q1',
+                question: 'A successive-approximation ADC finds the code by',
+                options: [
+                  'Only one comparison ever',
+                  'Binary-search style bit decisions using an internal DAC',
+                  'Avoiding all digital logic',
+                  'Measuring only temperature',
+                ],
+                correctIndex: 1,
+                explanation: 'SAR refines the digital estimate bit by bit.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m8-u4',
+            title: 'Sampling and quantization',
+            content: r'''
+## Learning goal
+
+State the sampling idea behind the Nyquist criterion and what quantization does to amplitude.
+
+## Sampling in time
+
+An ADC measures the analog waveform at discrete instants. If samples are too infrequent, fast wiggles are missed or look like slower ones (**aliasing**). The **Nyquist** idea: to represent a signal that contains frequencies up to B hertz, you need more than 2B samples per second (with ideal filters). Practical systems sample faster and filter anti-alias carefully.
+
+## Quantization in amplitude
+
+Each sample is rounded to the nearest allowed digital level. The error is **quantization noise**. More bits → smaller steps → less quantization error.
+
+## Together
+
+Sampling + quantization turn a continuous waveform into a finite list of numbers a computer can store and process.
+
+## Check yourself
+
+If you only care about audio up to 20 kHz, why do CDs sample at 44.1 kHz rather than 20 kHz?
+''',
+            keyTakeaways: [
+              'Sample often enough to capture the highest frequency of interest (Nyquist).',
+              'Quantization maps voltage to finite codes; more bits → finer steps.',
+              'Aliasing and quantization error are the main information losses.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m8-u4-q1',
+                question: 'The Nyquist idea says that to represent frequencies up to B you need a sampling rate',
+                options: [
+                  'Much less than B always',
+                  'Greater than 2B (with appropriate filtering)',
+                  'Exactly equal to B only never more',
+                  'Independent of B always',
+                ],
+                correctIndex: 1,
+                explanation: 'More than two samples per cycle of the highest frequency are required in the ideal theorem.',
+              ),
+            ],
+          ),
         ],
       ),
     ],
