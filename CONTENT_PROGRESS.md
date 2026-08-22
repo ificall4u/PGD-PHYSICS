@@ -7,22 +7,21 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–704 | **COMPLETE** |
-| **PHY 705** | **In progress 6/8** |
+| **PHY 705** | **In progress 7/8** |
 | Remaining | Pending |
 
 ## PHY 705
 
 | Module | Status |
 |--------|--------|
-| 01–05 | Done |
-| **06 BJT** | **Done** |
-| 07 FET | Pending ← next |
-| 08 Thin films & IC | Pending |
+| 01–06 | Done |
+| **07 FET / MOSFET** | **Done** |
+| 08 Thin films & IC fabrication | Pending ← next |
 
-### Module 06 checklist
-- [x] NPN/PNP emitter–base–collector
-- [x] β = I_C/I_B mechanism
-- [x] Cutoff / active / saturation
-- [x] Common-emitter characteristics
+### Module 07 checklist
+- [x] Voltage vs current control
+- [x] MOSFET gate–oxide–semiconductor stack
+- [x] Inversion channel and pinch-off
+- [x] MOSFET as CMOS logic switch
 
-**Next:** PHY 705 Module 07 only.
+**Next:** PHY 705 Module 08 only, then course audit.

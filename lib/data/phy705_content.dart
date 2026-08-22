@@ -1123,15 +1123,194 @@ On the output family of curves, what does a higher I_B curve mean for I_C in the
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy705-m7',
         title: 'Field-Effect Transistors (FET & MOSFET)',
-        summary: 'Field-Effect Transistors (FET & MOSFET)',
+        summary:
+            'Voltage vs current control, MOSFET structure, inversion channel and pinch-off, MOSFET as logic switch.',
         units: [
-          skeletonUnit(id: 'phy705-m7-u1', title: 'Voltage Control vs Current Control'),
-          skeletonUnit(id: 'phy705-m7-u2', title: 'MOSFET Architecture'),
-          skeletonUnit(id: 'phy705-m7-u3', title: 'Channel Formation & Pinch-off'),
-          skeletonUnit(id: 'phy705-m7-u4', title: 'MOSFET as Logic Switch'),
+          Unit(
+            id: 'phy705-m7-u1',
+            title: 'Voltage control vs current control',
+            content: r'''
+## Learning goal
+
+Contrast BJTs (current-controlled) with FETs (voltage/field-controlled).
+
+## BJT reminder
+
+In a BJT, base current I_B controls collector current I_C. The input port draws current; power is spent in the base circuit.
+
+## FET idea
+
+A **field-effect transistor** uses an electric field (set by a gate voltage) to control the conductivity of a semiconductor channel between source and drain. Ideally the gate draws negligible DC current — control is by voltage, not by a continuous input current.
+
+## Why it matters
+
+Voltage control with tiny gate current is ideal for dense digital logic and low static power (especially CMOS). FETs dominate modern integrated circuits.
+
+## Check yourself
+
+Which device family is naturally better for high input impedance amplifiers: BJT or FET, and why?
+''',
+            keyTakeaways: [
+              'BJT: current-controlled (I_B controls I_C).',
+              'FET: field/voltage-controlled (gate voltage controls channel).',
+              'Negligible DC gate current → high input impedance.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m7-u1-q1',
+                question: 'A defining feature of FETs compared with BJTs is',
+                options: [
+                  'Control by continuous large base current only',
+                  'Control of a channel by gate voltage / electric field',
+                  'Absence of any semiconductor',
+                  'Only optical operation',
+                ],
+                correctIndex: 1,
+                explanation: 'FETs modulate a channel with an electric field from the gate.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m7-u2',
+            title: 'MOSFET architecture',
+            content: r'''
+## Learning goal
+
+Describe the metal–oxide–semiconductor stack: gate, oxide insulator, and semiconductor channel region.
+
+## Layers
+
+- **Gate** — conductive electrode (metal or polysilicon)
+- **Oxide** — thin insulating SiO₂ (or high-k dielectric) under the gate
+- **Semiconductor** — body in which a conductive channel can form between **source** and **drain** terminals
+
+The oxide prevents DC gate current; the field from the gate still reaches the semiconductor.
+
+## Field-effect bridge analogy
+
+The gate voltage is like raising or lowering a drawbridge (the channel) between two riverbanks (source and drain). When the bridge is up (channel formed), current can flow; when down (no channel), the path is blocked.
+
+## Enhancement-mode n-MOSFET (typical)
+
+With gate voltage near zero, no n-channel exists in a p-type body — device off. Sufficient positive gate voltage attracts electrons to the surface → **inversion layer** n-channel → device can conduct from drain to source.
+
+## Check yourself
+
+What role does the thin oxide play electrically between gate and channel?
+''',
+            keyTakeaways: [
+              'MOSFET: gate / oxide / semiconductor stack plus source and drain.',
+              'Oxide isolates DC current but transmits electric field.',
+              'Gate voltage can form or suppress a conductive channel.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m7-u2-q1',
+                question: 'In a MOSFET the oxide layer primarily',
+                options: [
+                  'Shorts gate to drain always',
+                  'Insulates the gate while allowing field control of the channel',
+                  'Acts as the only conductor for drain current',
+                  'Removes the need for source and drain',
+                ],
+                correctIndex: 1,
+                explanation: 'Gate dielectric blocks DC current but transmits the controlling field.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m7-u3',
+            title: 'Channel formation and pinch-off',
+            content: r'''
+## Learning goal
+
+Explain inversion-layer formation under the gate and pinch-off when drain voltage is large.
+
+## Inversion channel
+
+Positive V_GS (n-MOS) bends the energy bands at the surface until the surface is inverted to n-type. That electron layer connects source to drain — the channel. Higher V_GS means more channel charge and higher conductance (above threshold).
+
+## Pinch-off
+
+With V_DS applied, the channel is not uniform: the voltage along the channel varies. At the drain end the effective gate-to-channel voltage is reduced. At high enough V_DS the channel is **pinched off** near the drain — the inversion layer thins to a point. Current still flows (carriers are swept through the depletion region) but saturates: further increase in V_DS does not raise I_D much (ideal saturation region).
+
+## Regions
+
+- Cutoff: V_GS below threshold — no channel  
+- Linear/triode: small V_DS — channel acts like a resistor controlled by V_GS  
+- Saturation: beyond pinch-off — I_D roughly set by V_GS  
+
+## Check yourself
+
+Why does increasing V_DS eventually stop increasing I_D strongly in saturation?
+''',
+            keyTakeaways: [
+              'Inversion layer under the gate forms the MOSFET channel.',
+              'Pinch-off near the drain causes current saturation.',
+              'Cutoff / linear / saturation regions for circuit design.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m7-u3-q1',
+                question: 'Pinch-off in a MOSFET refers to',
+                options: [
+                  'Destruction of the oxide always',
+                  'Narrowing of the channel near the drain at high V_DS leading to current saturation',
+                  'Removal of the source terminal',
+                  'Zero gate voltage only',
+                ],
+                correctIndex: 1,
+                explanation: 'High V_DS pinches the channel at the drain end; I_D saturates.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m7-u4',
+            title: 'MOSFET as logic switch',
+            content: r'''
+## Learning goal
+
+Connect MOSFET ON/OFF behaviour to digital logic building blocks in processors.
+
+## Binary switch
+
+Digital logic represents 0 and 1 with two voltage levels. A MOSFET can be driven fully OFF (cutoff) or strongly ON (low-resistance channel) — a near-ideal electronic switch controlled by the gate.
+
+## CMOS idea
+
+Complementary n-MOS and p-MOS transistors form gates (inverters, NAND, NOR) where one device pulls the output high and the other pulls low, with very small static current when the output is steady. Billions of such switches implement CPUs and memories.
+
+## Scaling
+
+Smaller transistors switch faster and pack denser, but face leakage, heat, and quantum tunneling through ultra-thin oxides — the engineering frontier of modern microelectronics.
+
+## Check yourself
+
+Why is low static gate current important when billions of transistors sit on one chip?
+''',
+            keyTakeaways: [
+              'MOSFET: voltage-controlled ON/OFF switch for logic levels.',
+              'CMOS pairs n- and p-devices for efficient digital gates.',
+              'Modern processors are vast networks of MOSFET switches.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m7-u4-q1',
+                question: 'In digital CMOS logic, MOSFETs primarily act as',
+                options: [
+                  'Only analog resistors never switching',
+                  'Electrically controlled switches implementing 0/1 levels',
+                  'Nuclear sensors',
+                  'Mechanical relays only',
+                ],
+                correctIndex: 1,
+                explanation: 'Logic gates are networks of MOSFET switches.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
