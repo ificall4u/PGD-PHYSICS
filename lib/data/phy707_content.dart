@@ -214,15 +214,220 @@ How many rows does a truth table for a 3-input AND gate have?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy707-m2',
         title: 'Boolean Algebra & De Morgan\'s Laws',
-        summary: 'Boolean Algebra & De Morgan\'s Laws',
+        summary:
+            'Boolean variables as switches, fundamental identities, commutative/associative/distributive laws, De Morgan.',
         units: [
-          skeletonUnit(id: 'phy707-m2-u1', title: 'Physical Logic Rules'),
-          skeletonUnit(id: 'phy707-m2-u2', title: 'Fundamental Laws of Boolean Algebra'),
-          skeletonUnit(id: 'phy707-m2-u3', title: 'Distributive, Associative, and Commutative Laws'),
-          skeletonUnit(id: 'phy707-m2-u4', title: 'De Morgan\'s Laws'),
+          Unit(
+            id: 'phy707-m2-u1',
+            title: 'Physical logic rules',
+            content: r'''
+## Learning goal
+
+Treat Boolean 0 and 1 and variables as open/closed switch states that combine with AND, OR, and NOT.
+
+## Constants and variables
+
+- **0** — switch open / wire LOW / false  
+- **1** — switch closed / wire HIGH / true  
+- Variable **A** — a signal that is either 0 or 1 at any moment  
+
+## Combining switches
+
+AND is series combination; OR is parallel; NOT is inversion. Boolean algebra is the algebra of these combinations — same results as truth tables, but with algebraic rewriting.
+
+## Check yourself
+
+If A is a switch, what does “A = 1” mean in the switch picture?
+''',
+            keyTakeaways: [
+              '0 and 1 are the two Boolean constants (open/closed, LOW/HIGH).',
+              'Variables stand for signals that take those values.',
+              'AND/OR/NOT match series, parallel, and invert operations.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m2-u1-q1',
+                question: 'In the switch analogy, Boolean 1 typically means',
+                options: [
+                  'Open switch / LOW',
+                  'Closed switch / HIGH',
+                  'Undefined always',
+                  'Alternating current only',
+                ],
+                correctIndex: 1,
+                explanation: '1 is the closed/ON/HIGH state in the usual positive-logic picture.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m2-u2',
+            title: 'Fundamental laws of Boolean algebra',
+            content: r'''
+## Learning goal
+
+State identity, null, idempotent, and inverse laws with circuit intuition.
+
+## Identity
+
+A · 1 = A (AND with closed switch in series does nothing)  
+A + 0 = A (OR with open switch in parallel does nothing)
+
+## Null (domination)
+
+A · 0 = 0 (series open kills the path)  
+A + 1 = 1 (parallel closed forces HIGH)
+
+## Idempotent
+
+A · A = A  
+A + A = A  
+
+Two identical switches in series or parallel act like one.
+
+## Inverse (complement)
+
+A · A′ = 0  
+A + A′ = 1  
+
+A and NOT A cannot both be 1; one of them is always 1 in OR.
+
+## Check yourself
+
+What is A + 1? What is A · 0?
+''',
+            keyTakeaways: [
+              'Identity: A·1 = A, A+0 = A.',
+              'Null: A·0 = 0, A+1 = 1.',
+              'Idempotent: A·A = A, A+A = A; inverse: A·A′ = 0, A+A′ = 1.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m2-u2-q1',
+                question: 'The identity law includes',
+                options: [
+                  'A · 0 = A',
+                  'A · 1 = A',
+                  'A + 1 = 0',
+                  'A · A′ = 1',
+                ],
+                correctIndex: 1,
+                explanation: 'AND with 1 leaves A unchanged.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m2-u3',
+            title: 'Commutative, associative, and distributive laws',
+            content: r'''
+## Learning goal
+
+Use commutative, associative, and distributive laws to rearrange and simplify expressions without changing behaviour.
+
+## Commutative
+
+A · B = B · A  
+A + B = B + A  
+
+Order of inputs to AND or OR does not matter.
+
+## Associative
+
+(A · B) · C = A · (B · C)  
+(A + B) + C = A + (B + C)  
+
+Grouping of the same operation does not matter.
+
+## Distributive
+
+A · (B + C) = (A · B) + (A · C)  
+A + (B · C) = (A + B) · (A + C)  
+
+(The second form is Boolean-specific and differs from ordinary algebra.)
+
+## Why simplify
+
+Fewer gates, fewer inputs, less delay and power — same truth table.
+
+## Check yourself
+
+Expand A · (B + C) using the distributive law.
+''',
+            keyTakeaways: [
+              'AND and OR are commutative and associative.',
+              'Both distributive forms hold in Boolean algebra.',
+              'Algebraic rewriting preserves the truth table when laws are applied correctly.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m2-u3-q1',
+                question: 'A · (B + C) equals',
+                options: [
+                  'A + B + C',
+                  '(A · B) + (A · C)',
+                  'A · B · C',
+                  '0 always',
+                ],
+                correctIndex: 1,
+                explanation: 'Distributive law of AND over OR.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m2-u4',
+            title: 'De Morgan\'s laws',
+            content: r'''
+## Learning goal
+
+State both De Morgan laws and interpret them in plain English.
+
+## Law 1
+
+(A · B)′ = A′ + B′  
+
+“NOT (A AND B)” means you failed to have both — so you lack A **or** lack B (or both).
+
+## Law 2
+
+(A + B)′ = A′ · B′  
+
+“NOT (A OR B)” means neither is true — so NOT A **and** NOT B.
+
+## Pie and cake
+
+Not having both pie and cake = no pie OR no cake.  
+Not having pie or cake (neither available) = no pie AND no cake.
+
+## Circuit use
+
+De Morgan converts AND–OR structures into NAND/NOR-friendly forms and moves bubbles on gate symbols systematically.
+
+## Check yourself
+
+Apply De Morgan to (A + B)′.
+''',
+            keyTakeaways: [
+              '(A·B)′ = A′ + B′.',
+              '(A+B)′ = A′ · B′.',
+              'De Morgan swaps AND/OR and complements each literal.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m2-u4-q1',
+                question: '(A · B)′ equals',
+                options: [
+                  'A′ · B′',
+                  'A′ + B′',
+                  'A + B',
+                  'A · B',
+                ],
+                correctIndex: 1,
+                explanation: 'De Morgan: negate and swap AND for OR.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
