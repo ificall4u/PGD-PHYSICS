@@ -1184,16 +1184,216 @@ Why is a stable frequency reference important before a chain of counters can kee
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy707-m7',
         title: 'Physical Implementation & Logic Families',
-        summary: 'Physical Implementation & Logic Families',
+        summary:
+            'Logic families overview, DTL/TTL, CMOS, NMOS/ECL, noise margin delay and power metrics.',
         units: [
-          skeletonUnit(id: 'phy707-m7-u1', title: 'What is a Logic Family?'),
-          skeletonUnit(id: 'phy707-m7-u2', title: 'DTL (Diode-Transistor Logic) & TTL (Transistor-Transistor Logic)'),
-          skeletonUnit(id: 'phy707-m7-u3', title: 'CMOS (Complementary Metal-Oxide-Semiconductor)'),
-          skeletonUnit(id: 'phy707-m7-u4', title: 'NMOS & ECL (Emitter-Coupled Logic)'),
-          skeletonUnit(id: 'phy707-m7-u5', title: 'Key Electrical Metrics'),
+          Unit(
+            id: 'phy707-m7-u1',
+            title: 'What is a logic family?',
+            content: r'''
+## Learning goal
+
+Define a logic family as a consistent way of building gates from electronic devices that share voltage levels and electrical characteristics.
+
+## From abstract gates to silicon
+
+AND, OR, and NOT are abstract. A **logic family** specifies how those functions are implemented with transistors, diodes, and resistors, and which voltages mean 0 and 1.
+
+## Why families matter
+
+Gates from the same family interconnect cleanly (levels, fan-out, speed). Mixing families may need level shifters. Choosing a family trades speed, power, density, and cost.
+
+## Check yourself
+
+Why might two chips both labelled “NAND” still be electrically incompatible?
+''',
+            keyTakeaways: [
+              'Logic family = physical recipe for gates + shared electrical rules.',
+              'Same family → compatible levels and drive.',
+              'Choice balances speed, power, and density.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m7-u1-q1',
+                question: 'A logic family primarily specifies',
+                options: [
+                  'Only the colour of the package',
+                  'How gates are built and which electrical levels represent 0 and 1',
+                  'The brand of solder only',
+                  'Analog radio protocols exclusively',
+                ],
+                correctIndex: 1,
+                explanation: 'Implementation technology and signalling conventions define the family.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m7-u2',
+            title: 'DTL and TTL',
+            content: r'''
+## Learning goal
+
+Sketch the historical path from diode–transistor logic to transistor–transistor logic using BJTs.
+
+## DTL
+
+**Diode–transistor logic** uses diode networks for AND/OR-like combining and a BJT for inversion/gain. Workable but limited speed and integration density by modern standards.
+
+## TTL
+
+**Transistor–transistor logic** replaces input diode networks with multi-emitter BJT structures and saturated BJT switching. Classic 5 V TTL dominated mid-era digital hardware (7400-series culture). Faster and more integrated than DTL, still bipolar and relatively power-hungry compared with CMOS.
+
+## Check yourself
+
+What device type is the main switching element in classic TTL?
+''',
+            keyTakeaways: [
+              'DTL: diodes + BJT gain stage.',
+              'TTL: BJT-based, multi-emitter inputs, 5 V classic era.',
+              'Bipolar families: solid speed, higher static power than CMOS.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m7-u2-q1',
+                question: 'Classic TTL gates are based primarily on',
+                options: [
+                  'Only vacuum tubes',
+                  'Bipolar junction transistors',
+                  'Only optical switches',
+                  'Mechanical relays exclusively',
+                ],
+                correctIndex: 1,
+                explanation: 'TTL is a bipolar transistor logic family.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m7-u3',
+            title: 'CMOS',
+            content: r'''
+## Learning goal
+
+Explain complementary MOS logic: n- and p-channel MOSFET pairs and why static power is nearly zero.
+
+## Complementary pair
+
+A basic CMOS inverter uses a p-MOS pull-up and an n-MOS pull-down. When the input is LOW, p-MOS is on and n-MOS off → output HIGH. When input is HIGH, the opposite → output LOW. Only one path is strongly on in steady state.
+
+## Static power
+
+In ideal steady state no DC path from supply to ground exists through the complementary pair → **near-zero static power**. Energy is used mainly when switching (charging capacitances). That is why CMOS dominates microprocessors and dense digital ICs.
+
+## Check yourself
+
+Why does a pure n-MOS load logic tend to waste more static power than complementary CMOS?
+''',
+            keyTakeaways: [
+              'CMOS: complementary p-MOS and n-MOS networks.',
+              'Steady state: no DC path → tiny static power.',
+              'Dominant technology for modern digital chips.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m7-u3-q1',
+                question: 'CMOS is valued in large digital chips largely because',
+                options: [
+                  'It always draws maximum DC current',
+                  'Static power is very low when not switching',
+                  'It cannot implement inverters',
+                  'It requires vacuum tubes',
+                ],
+                correctIndex: 1,
+                explanation: 'Complementary structure avoids DC paths in steady states.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m7-u4',
+            title: 'NMOS and ECL',
+            content: r'''
+## Learning goal
+
+Place NMOS and ECL as specialized families: density vs ultimate speed.
+
+## NMOS
+
+n-channel MOS logic (historically important) used n-MOS transistors with load devices. Good density for its era but continuous current in some states — higher static power than CMOS, which largely superseded it for general logic.
+
+## ECL
+
+**Emitter-coupled logic** keeps BJTs out of heavy saturation, steering current between branches. Very fast, used in niche high-speed systems, at the cost of high static power and specialized levels.
+
+## Check yourself
+
+If you needed the absolute lowest propagation delay regardless of power, which specialized bipolar style was historically chosen?
+''',
+            keyTakeaways: [
+              'NMOS: historically dense MOS logic; more static power than CMOS.',
+              'ECL: ultra-fast non-saturated bipolar switching.',
+              'Speed/power trade-offs drive family choice.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m7-u4-q1',
+                question: 'ECL is known for',
+                options: [
+                  'Lowest possible power always',
+                  'Very high speed using non-saturated current steering',
+                  'Being identical to CMOS',
+                  'Only optical computing',
+                ],
+                correctIndex: 1,
+                explanation: 'Emitter-coupled logic targets high speed at high power cost.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m7-u5',
+            title: 'Key electrical metrics',
+            content: r'''
+## Learning goal
+
+Define noise margin, propagation delay, and power dissipation in plain language.
+
+## Noise margins
+
+How much noise can sit on a valid 0 or 1 before the next gate might misread it. Larger margins → more robust in electrically noisy environments.
+
+## Propagation delay
+
+Time from an input change until the output settles to the new valid level. Sets how fast a clock can run in synchronous systems (with setup constraints).
+
+## Power dissipation
+
+Static (idle) plus dynamic (switching, CV²f). CMOS shines on static power; every family pays dynamic cost when nodes toggle.
+
+## Check yourself
+
+If clock frequency doubles and all else is equal, what happens to dynamic power roughly?
+''',
+            keyTakeaways: [
+              'Noise margin: immunity to misreading levels.',
+              'Propagation delay: speed limit for logic paths.',
+              'Power: static + dynamic; CMOS minimizes static.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m7-u5-q1',
+                question: 'Propagation delay measures',
+                options: [
+                  'Only the cost of the chip package',
+                  'How long a gate takes to respond to an input change',
+                  'Magnetic field strength only',
+                  'Battery chemistry',
+                ],
+                correctIndex: 1,
+                explanation: 'Delay from input transition to valid output transition.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

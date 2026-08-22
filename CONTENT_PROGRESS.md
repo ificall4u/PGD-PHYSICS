@@ -7,22 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705 | **COMPLETE** |
-| **PHY 707 Digital Electronics** | **In progress 6/8** |
+| **PHY 707 Digital Electronics** | **In progress 7/8** |
 | Remaining | Pending |
 
 ## PHY 707
 
 | Module | Status |
 |--------|--------|
-| 01–05 | Done |
-| **06 Registers & counters** | **Done** |
-| 07 Logic families | Pending ← next |
-| 08 DAC / ADC | Pending |
+| 01–06 | Done |
+| **07 Logic families** | **Done** |
+| 08 DAC / ADC | Pending ← next |
 
-### Module 06 checklist
-- [x] Shift registers
-- [x] Ripple counters + delay issue
-- [x] Synchronous counters
-- [x] Clocks / timers / event counting
+### Module 07 checklist
+- [x] Logic family concept
+- [x] DTL / TTL
+- [x] CMOS low static power
+- [x] NMOS / ECL niche roles
+- [x] Noise margin, delay, power
 
-**Next:** PHY 707 Module 07 only.
+**Next:** PHY 707 Module 08 only, then course audit.
