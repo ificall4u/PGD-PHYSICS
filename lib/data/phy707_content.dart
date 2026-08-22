@@ -430,14 +430,154 @@ Apply De Morgan to (A + B)′.
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy707-m3',
         title: 'Circuit Minimization (Karnaugh Maps & Quine-McCluskey)',
-        summary: 'Circuit Minimization (Karnaugh Maps & Quine-McCluskey)',
+        summary:
+            'Why minimize logic, K-map grouping for 2–4 variables, Quine–McCluskey tabular idea.',
         units: [
-          skeletonUnit(id: 'phy707-m3-u1', title: 'The Goal of Minimization'),
-          skeletonUnit(id: 'phy707-m3-u2', title: 'Karnaugh Maps (K-Maps)'),
-          skeletonUnit(id: 'phy707-m3-u3', title: 'Quine-McCluskey (Tabular Method)'),
+          Unit(
+            id: 'phy707-m3-u1',
+            title: 'The goal of minimization',
+            content: r'''
+## Learning goal
+
+Explain why simpler Boolean expressions mean cheaper, cooler, and often faster hardware.
+
+## Cost and area
+
+Each gate and each gate input costs silicon area and design effort. Fewer literals and fewer product terms → fewer transistors.
+
+## Power and delay
+
+Fewer transitions and shorter logic depth reduce dynamic power and can shorten critical-path delay. Minimization is not only elegance — it is engineering economy.
+
+## Same function
+
+Minimization preserves the truth table: the simplified circuit must match the original outputs for every input pattern (including don’t-cares when specified).
+
+## Check yourself
+
+If two circuits implement the same truth table, why might the one with fewer gates still be preferred?
+''',
+            keyTakeaways: [
+              'Minimization cuts gates, area, power, and often delay.',
+              'The truth table (function) must stay the same.',
+              'Practical digital design routinely simplifies before implementation.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m3-u1-q1',
+                question: 'Logic minimization aims to',
+                options: [
+                  'Change the truth table randomly',
+                  'Reduce gate count/complexity while preserving the function',
+                  'Always add more gates',
+                  'Remove binary numbers from computing',
+                ],
+                correctIndex: 1,
+                explanation: 'Simplify implementation, not change the specified behaviour.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m3-u2',
+            title: 'Karnaugh maps (K-maps)',
+            content: r'''
+## Learning goal
+
+Use K-maps as a Gray-code grid of the truth table and group adjacent 1s to eliminate variables.
+
+## What a K-map is
+
+A K-map rearranges truth-table rows into a grid where **adjacent cells differ by only one bit** (Gray code order). Adjacent 1s correspond to terms that can merge by dropping the variable that changes.
+
+## Grouping rules
+
+- Group rectangular blocks of 1, 2, 4, 8, … cells (powers of two).  
+- Groups may wrap around edges (the map is toroidal in each dimension).  
+- Cover every 1 at least once; larger groups mean fewer literals.  
+- Don’t-care cells (X) may be included in groups if helpful, but need not be covered.
+
+## 2-, 3-, and 4-variable maps
+
+- 2 variables: 2×2 grid  
+- 3 variables: 2×4 grid  
+- 4 variables: 4×4 grid  
+
+Read each group as a product term: only variables that stay constant in the group appear; the bit value chooses A or A′.
+
+## Check yourself
+
+Why must group sizes be powers of two?
+''',
+            keyTakeaways: [
+              'K-map: Gray-code grid so adjacency = one-bit difference.',
+              'Group 1/2/4/8… ones; read constant variables as a product term.',
+              'Works smoothly up through 4 variables by hand.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m3-u2-q1',
+                question: 'Adjacent cells in a K-map differ by',
+                options: [
+                  'All bits always',
+                  'Exactly one bit (Gray-code adjacency)',
+                  'No relation to binary',
+                  'Two bits always only',
+                ],
+                correctIndex: 1,
+                explanation: 'Gray adjacency enables merging terms that differ in one variable.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m3-u3',
+            title: 'Quine–McCluskey (tabular method)',
+            content: r'''
+## Learning goal
+
+Describe Quine–McCluskey as a systematic tabular algorithm for prime implicants when K-maps become unwieldy.
+
+## When K-maps struggle
+
+With 5+ variables, drawing and seeing adjacencies by hand is hard. Quine–McCluskey does the same merging **algorithmically** on a computer or by careful tables.
+
+## Idea of the method
+
+1. List all minterms (where the function is 1).  
+2. Repeatedly combine pairs that differ by one bit; mark terms that combine.  
+3. Terms that never combine are **prime implicants**.  
+4. Choose a minimal set of prime implicants that cover all minterms (prime implicant chart).
+
+## Outcome
+
+A minimal sum-of-products (or dual product-of-sums) implementation — same goal as K-maps, scalable with automation.
+
+## Check yourself
+
+What is a prime implicant in one plain sentence?
+''',
+            keyTakeaways: [
+              'Quine–McCluskey: tabular, algorithmic minimization.',
+              'Combine minterms differing by one bit → prime implicants.',
+              'Cover chart selects a minimal set of prime implicants.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m3-u3-q1',
+                question: 'Quine–McCluskey is especially useful when',
+                options: [
+                  'There is only one variable',
+                  'Many variables make K-maps impractical by hand',
+                  'No truth table exists',
+                  'Analog voltages are required',
+                ],
+                correctIndex: 1,
+                explanation: 'The tabular method scales beyond convenient K-map size.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

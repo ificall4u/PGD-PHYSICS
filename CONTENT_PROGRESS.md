@@ -7,22 +7,21 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705 | **COMPLETE** |
-| **PHY 707 Digital Electronics** | **In progress 2/8** |
+| **PHY 707 Digital Electronics** | **In progress 3/8** |
 | Remaining | Pending |
 
 ## PHY 707
 
 | Module | Status |
 |--------|--------|
-| 01 Logic gates | Done |
-| **02 Boolean algebra & De Morgan** | **Done** |
-| 03 K-maps & Quine–McCluskey | Pending ← next |
-| 04–08 | Pending |
+| 01–02 | Done |
+| **03 K-maps & Quine–McCluskey** | **Done** |
+| 04 Combinational mux/demux | Pending ← next |
+| 05–08 | Pending |
 
-### Module 02 checklist
-- [x] 0/1 as switch states
-- [x] Identity, null, idempotent, inverse
-- [x] Commutative, associative, distributive
-- [x] De Morgan both forms
+### Module 03 checklist
+- [x] Goal of minimization
+- [x] K-map Gray adjacency and grouping
+- [x] Quine–McCluskey tabular idea
 
-**Next:** PHY 707 Module 03 only.
+**Next:** PHY 707 Module 04 only.
