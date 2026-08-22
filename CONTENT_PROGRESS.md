@@ -6,22 +6,42 @@
 
 | Course | Status |
 |--------|--------|
-| PHY 701–704 | **COMPLETE** |
-| **PHY 705** | **In progress 7/8** |
-| Remaining | Pending |
+| PHY 701 Mathematical Methods | **COMPLETE** |
+| PHY 702 Electromagnetism | **COMPLETE** |
+| PHY 703 Analytical Mechanics | **COMPLETE** |
+| PHY 704 Quantum Physics | **COMPLETE** |
+| **PHY 705 Intro Solid State Electronics** | **COMPLETE** |
+| PHY 707 Digital Electronics | Pending ← next |
+| PHY 709 Devices Design & Fabrication | Pending |
+| PHY 706 Measurement & Instrumentation | Pending |
+| PHY 710 Vacuum & Thin Films | Pending |
+| PHY 708 Nuclear & Particle | Pending |
+| PHY 712 Energy Conversion & Storage | Pending |
+| PHY 799 PGD Research Project | Pending |
 
-## PHY 705
+## PHY 705 — COMPLETE (8/8)
 
 | Module | Status |
 |--------|--------|
-| 01–06 | Done |
-| **07 FET / MOSFET** | **Done** |
-| 08 Thin films & IC fabrication | Pending ← next |
+| 01 Conduction metals/semiconductors | Done |
+| 02 Barriers & charge motion | Done |
+| 03 Hall effect | Done |
+| 04 Electronic emission | Done |
+| 05 PN junctions / solar cells | Done |
+| 06 BJT | Done |
+| 07 FET / MOSFET | Done |
+| **08 Thin films & IC fabrication** | **Done** |
 
-### Module 07 checklist
-- [x] Voltage vs current control
-- [x] MOSFET gate–oxide–semiconductor stack
-- [x] Inversion channel and pinch-off
-- [x] MOSFET as CMOS logic switch
+### Module 08 checklist
+- [x] Thin films; PVD/CVD
+- [x] Photolithography
+- [x] Doping & etching
+- [x] Crystal → wafer → chip flow
 
-**Next:** PHY 705 Module 08 only, then course audit.
+### Course audit PHY 705
+- [x] All 8 module prompts covered
+- [x] No skeletonModule / skeletonUnit left
+- [x] No ASCII schematics; UI untouched
+- [x] Quizzes + takeaways present
+
+**Next course:** PHY 707 Module 01 only.

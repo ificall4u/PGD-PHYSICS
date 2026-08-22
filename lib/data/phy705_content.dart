@@ -1313,15 +1313,193 @@ Why is low static gate current important when billions of transistors sit on one
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy705-m8',
         title: 'Thin Films and Integrated Circuit (IC) Fabrication',
-        summary: 'Thin Films and Integrated Circuit (IC) Fabrication',
+        summary:
+            'Thin-film deposition, photolithography, doping and etching, IC flow from crystal to chip.',
         units: [
-          skeletonUnit(id: 'phy705-m8-u1', title: 'What is a Thin Film?'),
-          skeletonUnit(id: 'phy705-m8-u2', title: 'Photolithography (Micro-printing)'),
-          skeletonUnit(id: 'phy705-m8-u3', title: 'Doping & Etching'),
-          skeletonUnit(id: 'phy705-m8-u4', title: 'IC Assembly'),
+          Unit(
+            id: 'phy705-m8-u1',
+            title: 'What is a thin film?',
+            content: r'''
+## Learning goal
+
+Define thin films as controlled layers on a substrate and introduce PVD and CVD at an intuitive level.
+
+## Thin film
+
+A **thin film** is a layer of material — from nanometres to micrometres thick — deposited on a substrate (often silicon). Modern chips stack many patterned films: oxides, metals, nitrides, and semiconductors.
+
+## PVD (physical vapour deposition)
+
+Material is physically transferred to the wafer: evaporation (heat until vapour condenses on the wafer) or sputtering (energetic ions knock atoms off a target onto the wafer). Good for metals and many compounds.
+
+## CVD (chemical vapour deposition)
+
+Gases react chemically at the surface to grow a solid film (e.g. polysilicon, SiO₂, Si₃N₄). Composition and conformity into trenches are tuned by chemistry and temperature.
+
+## Check yourself
+
+Why might a process engineer choose CVD instead of simple evaporation for coating a deep narrow trench?
+''',
+            keyTakeaways: [
+              'Thin films: engineered layers on a substrate.',
+              'PVD: physical transfer (evaporation, sputtering).',
+              'CVD: film grown from chemical gas reactions at the surface.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m8-u1-q1',
+                question: 'CVD grows a film primarily by',
+                options: [
+                  'Only mechanical rolling of metal foil',
+                  'Chemical reactions of precursor gases at the wafer surface',
+                  'Magnetic levitation only',
+                  'Avoiding all deposition',
+                ],
+                correctIndex: 1,
+                explanation: 'CVD is chemical vapour deposition from gas-phase precursors.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m8-u2',
+            title: 'Photolithography (micro-printing)',
+            content: r'''
+## Learning goal
+
+Explain photolithography as transferring a mask pattern onto the wafer with light-sensitive photoresist — like precision photographic printing.
+
+## Steps (simplified)
+
+1. Coat the wafer with **photoresist** (light-sensitive polymer).  
+2. Expose through a **mask** (or reticle) with UV light — pattern of clear and opaque regions.  
+3. Develop: remove either exposed or unexposed resist (positive/negative resist).  
+4. The remaining resist protects regions during the next etch or implant; then resist is stripped.
+
+## Why light
+
+Optical projection prints features far smaller than a human hair across an entire wafer in parallel — the foundation of mass-producing billions of identical transistors.
+
+## Check yourself
+
+What is the role of the mask in photolithography?
+''',
+            keyTakeaways: [
+              'Photoresist + masked exposure + develop transfers a pattern.',
+              'Resist acts as a stencil for etch or implant.',
+              'Optical lithography enables parallel micro-scale printing on wafers.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m8-u2-q1',
+                question: 'Photolithography transfers patterns using',
+                options: [
+                  'Only mechanical stamping with ink',
+                  'Light exposure of photoresist through a mask, then develop',
+                  'Random heating without pattern',
+                  'Nuclear radiation only',
+                ],
+                correctIndex: 1,
+                explanation: 'Masked optical exposure patterns the resist.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m8-u3',
+            title: 'Doping and etching',
+            content: r'''
+## Learning goal
+
+Describe how doping defines transistor regions and how etching removes material to form structures and interconnect paths.
+
+## Doping
+
+- **Thermal diffusion** — dopants enter from a vapour or glass source at high temperature and diffuse in.  
+- **Ion implantation** — accelerated dopant ions are driven into the wafer with controlled dose and depth, then annealed to activate and repair damage.
+
+Patterned resist or oxide hard masks select where dopants enter (source/drain, wells, etc.).
+
+## Etching
+
+- **Wet etch** — liquid chemicals dissolve exposed material (can be isotropic).  
+- **Dry etch** (plasma/RIE) — energetic ions and reactive species etch more directionally — critical for fine vertical profiles.
+
+Etch removes oxide, silicon, or metal where resist does not protect — shaping trenches, gates, and wire tracks.
+
+## Check yourself
+
+Why is directional (anisotropic) dry etch preferred for tall narrow features?
+''',
+            keyTakeaways: [
+              'Implantation/diffusion place dopants in selected regions.',
+              'Wet vs dry etch: chemical bath vs plasma for pattern transfer.',
+              'Anisotropic etch enables fine vertical structures.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m8-u3-q1',
+                question: 'Ion implantation is used to',
+                options: [
+                  'Only polish the wafer optically',
+                  'Introduce controlled doses of dopant ions into selected regions',
+                  'Remove the need for any mask',
+                  'Grow the silicon crystal from melt only',
+                ],
+                correctIndex: 1,
+                explanation: 'Implantation places dopants with controlled energy and dose.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy705-m8-u4',
+            title: 'IC assembly from crystal to chip',
+            content: r'''
+## Learning goal
+
+Outline the flow from single-crystal silicon to a finished integrated circuit with millions or billions of transistors.
+
+## Crystal growth
+
+Ultra-pure silicon is melted and a single crystal is pulled (Czochralski process). The ingot is sawed into wafers and polished to a mirror finish — the starting substrate.
+
+## Front-end processing
+
+Repeated cycles of film deposition, photolithography, etch, and doping build transistors and isolation in the silicon — the “front end” of the line.
+
+## Back-end interconnect
+
+Multiple levels of metal wiring and insulating dielectrics connect transistors into circuits. Planarization keeps the surface flat for the next layer.
+
+## Packaging
+
+The wafer is tested, diced into chips, and packaged with leads or bumps so the die can be mounted on a board — the IC you place in a product.
+
+## Check yourself
+
+Why is single-crystal starting material preferred over polycrystalline silicon for high-performance transistors?
+''',
+            keyTakeaways: [
+              'Czochralski growth → wafers as the substrate.',
+              'Front-end: transistors via lithography, dope, etch, films.',
+              'Back-end: metal interconnects; then dice and package.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy705-m8-u4-q1',
+                question: 'The Czochralski process is used to',
+                options: [
+                  'Package finished chips only',
+                  'Grow large single-crystal silicon ingots for wafers',
+                  'Print newspapers',
+                  'Measure Hall voltage only',
+                ],
+                correctIndex: 1,
+                explanation: 'CZ pulling grows the single-crystal silicon used for wafers.',
+              ),
+            ],
+          ),
         ],
       ),
     ],
