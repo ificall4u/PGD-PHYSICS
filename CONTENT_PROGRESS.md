@@ -7,22 +7,23 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705 | **COMPLETE** |
-| **PHY 707 Digital Electronics** | **In progress 4/8** |
+| **PHY 707 Digital Electronics** | **In progress 5/8** |
 | Remaining | Pending |
 
 ## PHY 707
 
 | Module | Status |
 |--------|--------|
-| 01–03 | Done |
-| **04 Combinational / MUX / DEMUX** | **Done** |
-| 05 Flip-flops | Pending ← next |
-| 06–08 | Pending |
+| 01–04 | Done |
+| **05 Flip-flops** | **Done** |
+| 06 Counters / registers | Pending ← next |
+| 07–08 | Pending |
 
-### Module 04 checklist
-- [x] Combinational vs sequential
-- [x] MUX railway analogy; 2-to-1 equation
-- [x] DEMUX distribute
-- [x] Encoder/decoder; 7-segment idea
+### Module 05 checklist
+- [x] Feedback memory
+- [x] SR latch + illegal state
+- [x] Clocked / edge-triggered FF
+- [x] D flip-flop
+- [x] JK and T
 
-**Next:** PHY 707 Module 05 only.
+**Next:** PHY 707 Module 06 only.

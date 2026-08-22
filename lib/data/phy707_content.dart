@@ -768,16 +768,236 @@ Why is a 3-to-8 decoder a natural fit for selecting one of eight memory chips?
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy707-m5',
         title: 'Sequential Logic & Memory (Flip-Flops)',
-        summary: 'Sequential Logic & Memory (Flip-Flops)',
+        summary:
+            'Feedback memory, SR latch, clocking, D flip-flop, JK and T flip-flops.',
         units: [
-          skeletonUnit(id: 'phy707-m5-u1', title: 'Memory in Circuits'),
-          skeletonUnit(id: 'phy707-m5-u2', title: 'SR Latch (Set-Reset)'),
-          skeletonUnit(id: 'phy707-m5-u3', title: 'Clocked Flip-Flops'),
-          skeletonUnit(id: 'phy707-m5-u4', title: 'D Flip-Flop (Data/Delay)'),
-          skeletonUnit(id: 'phy707-m5-u5', title: 'JK & T Flip-Flops'),
+          Unit(
+            id: 'phy707-m5-u1',
+            title: 'Memory in circuits',
+            content: r'''
+## Learning goal
+
+Explain how feedback lets a circuit depend on the past — the essence of sequential logic.
+
+## Combinational limit
+
+Pure gates without loops forget the past: outputs track inputs only. To remember, the circuit needs a state that persists.
+
+## Feedback
+
+Connecting outputs back to inputs creates loops. The circuit can settle into a stable pattern that remains even after the original forcing input is removed — **memory**.
+
+## Sequential logic
+
+Outputs depend on current inputs **and** current state (history). Clocks often coordinate when state is allowed to change (synchronous design).
+
+## Check yourself
+
+Why can a loop of gates hold a value that is no longer present at any external input?
+''',
+            keyTakeaways: [
+              'Memory requires state, often via feedback.',
+              'Sequential outputs depend on inputs and past state.',
+              'Clocks commonly synchronize state updates.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m5-u1-q1',
+                question: 'Sequential logic differs from combinational logic by',
+                options: [
+                  'Never using gates',
+                  'Depending on past state as well as current inputs',
+                  'Avoiding binary values',
+                  'Only analog voltages',
+                ],
+                correctIndex: 1,
+                explanation: 'State/memory is the defining addition.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m5-u2',
+            title: 'SR latch (set–reset)',
+            content: r'''
+## Learning goal
+
+Describe the SR latch with cross-coupled NOR or NAND gates, including the forbidden input combination.
+
+## Cross-coupled pair
+
+Two NOR gates (or two NAND gates) with cross feedback form a bistable circuit: it holds Q = 1 or Q = 0 until told to change.
+
+## Set and reset
+
+- **Set (S):** force Q to 1  
+- **Reset (R):** force Q to 0  
+- **Hold:** both inactive — remember previous Q  
+
+## Illegal state
+
+For the NOR SR latch, S = R = 1 is invalid: both outputs driven in a conflicting way; releasing may cause a race. Designers avoid that input combination (NAND SR has a related forbidden case depending on active level).
+
+## Check yourself
+
+After Set makes Q = 1, if both S and R go inactive, what should Q do?
+''',
+            keyTakeaways: [
+              'SR latch: cross-coupled gates store one bit.',
+              'Set forces 1; Reset forces 0; idle holds.',
+              'Avoid the illegal S=R=1 (NOR) combination.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m5-u2-q1',
+                question: 'An SR latch is primarily used to',
+                options: [
+                  'Add floating-point numbers',
+                  'Store one bit with set and reset controls',
+                  'Replace the power supply',
+                  'Generate radio waves only',
+                ],
+                correctIndex: 1,
+                explanation: 'It is a basic 1-bit bistable memory element.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m5-u3',
+            title: 'Clocked flip-flops',
+            content: r'''
+## Learning goal
+
+Introduce the clock as a shared heartbeat that times when sequential elements may change state.
+
+## Why clock?
+
+Without coordination, cascading latches can be transparent at the wrong time and race. A **clock** signal defines instants (edges) or windows (levels) when state updates are allowed.
+
+## Flip-flop vs latch
+
+- **Latch:** often level-sensitive (transparent while enable is active)  
+- **Flip-flop:** edge-triggered (samples inputs on rising or falling clock edge)
+
+Edge-triggered flip-flops are the standard building block of synchronous digital systems.
+
+## Check yourself
+
+What problem does a common clock help prevent in a chain of memory elements?
+''',
+            keyTakeaways: [
+              'Clock synchronizes when state may change.',
+              'Flip-flops are typically edge-triggered.',
+              'Synchronous design uses one timing reference for registers.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m5-u3-q1',
+                question: 'Edge-triggered flip-flops update state',
+                options: [
+                  'Continuously at all times randomly',
+                  'On a clock edge (rising or falling as designed)',
+                  'Only when power is removed',
+                  'Never',
+                ],
+                correctIndex: 1,
+                explanation: 'The defining sample moment is the active clock edge.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m5-u4',
+            title: 'D flip-flop (data/delay)',
+            content: r'''
+## Learning goal
+
+Present the D flip-flop as the standard 1-bit register cell: Q follows D at the clock edge.
+
+## Behaviour
+
+On the active clock edge, Q becomes equal to D. Between edges, Q holds its value regardless of D (ideally).
+
+## Use
+
+Pipelines, shift registers, finite-state machines, and the storage cells behind much of “register” storage in digital chips. Chaining D flip-flops with a shared clock builds multi-bit registers.
+
+## Setup and hold (awareness)
+
+D must be stable a little before (setup) and after (hold) the clock edge so the sampling is reliable — timing rules of real hardware.
+
+## Check yourself
+
+If D changes long after the clock edge, when does Q next update?
+''',
+            keyTakeaways: [
+              'D FF: Q ← D at the active clock edge; then hold.',
+              'Basic 1-bit synchronous memory cell.',
+              'Registers are arrays of D flip-flops.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m5-u4-q1',
+                question: 'A D flip-flop on its active clock edge',
+                options: [
+                  'Ignores D always',
+                  'Copies D to Q',
+                  'Clears the power rail',
+                  'Multiplies D by 2',
+                ],
+                correctIndex: 1,
+                explanation: 'Q becomes D at the triggering edge.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy707-m5-u5',
+            title: 'JK and T flip-flops',
+            content: r'''
+## Learning goal
+
+Describe JK as an SR-like element without the illegal state, and T as a toggle flip-flop.
+
+## JK flip-flop
+
+Inputs J and K:
+
+- J=1, K=0 → set  
+- J=0, K=1 → reset  
+- J=0, K=0 → hold  
+- J=1, K=1 → **toggle** Q  
+
+The toggle case replaces the illegal SR combination with a defined behaviour.
+
+## T flip-flop
+
+Single input T: when T=1 at the clock edge, Q toggles; when T=0, Q holds. Equivalent to a JK with J=K=T. Natural for binary counters (each bit toggles when lower bits overflow).
+
+## Check yourself
+
+If a T flip-flop has T tied to 1, what does Q do on every clock edge?
+''',
+            keyTakeaways: [
+              'JK: set/reset/hold/toggle — no illegal SR pair.',
+              'T: toggle when T=1; foundation of binary counting.',
+              'Both are edge-triggered sequential primitives.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy707-m5-u5-q1',
+                question: 'When J=K=1, a JK flip-flop',
+                options: [
+                  'Enters an undefined illegal state always like basic NOR SR',
+                  'Toggles Q on the active clock edge',
+                  'Destroys the chip',
+                  'Ignores the clock forever',
+                ],
+                correctIndex: 1,
+                explanation: 'JK defines J=K=1 as toggle.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
