@@ -7,21 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705, 707 | **COMPLETE** |
-| **PHY 709** | **In progress 4/8** |
+| **PHY 709** | **In progress 5/8** |
 | Remaining | Pending |
 
 ## PHY 709
 
 | Module | Status |
 |--------|--------|
-| 01–03 | Done |
-| **04 Doping** | **Done** |
-| 05 Etching | Pending ← next |
-| 06–08 | Pending |
+| 01–04 | Done |
+| **05 Etching** | **Done** |
+| 06 PN / LED fabrication | Pending ← next |
+| 07–08 | Pending |
 
-### Module 04 checklist
-- [x] Purpose of n/p doping
-- [x] Thermal diffusion profiles
-- [x] Ion implantation + anneal
+### Module 05 checklist
+- [x] Etch as subtractive transfer
+- [x] Wet isotropic undercut
+- [x] Dry RIE anisotropic profiles
+- [x] Selectivity
 
-**Next:** PHY 709 Module 05 only.
+**Next:** PHY 709 Module 06 only.

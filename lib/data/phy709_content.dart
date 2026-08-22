@@ -692,15 +692,180 @@ What two implant parameters most directly set “how many” and “how deep” 
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy709-m5',
         title: 'Etching Processes (Subtractive Manufacturing)',
-        summary: 'Etching Processes (Subtractive Manufacturing)',
+        summary:
+            'Etch as subtractive patterning, wet isotropic etch, dry RIE anisotropic etch, selectivity.',
         units: [
-          skeletonUnit(id: 'phy709-m5-u1', title: 'What is Etching?'),
-          skeletonUnit(id: 'phy709-m5-u2', title: 'Wet Chemical Etching'),
-          skeletonUnit(id: 'phy709-m5-u3', title: 'Dry Plasma Etching (Reactive Ion Etching - RIE)'),
-          skeletonUnit(id: 'phy709-m5-u4', title: 'Selective Etching'),
+          Unit(
+            id: 'phy709-m5-u1',
+            title: 'What is etching?',
+            content: r'''
+## Learning goal
+
+Define etching as controlled removal of material where the resist (or hard mask) does not protect the surface.
+
+## Subtractive step
+
+After lithography opens windows in resist, etch removes the exposed film — oxide, nitride, metal, or silicon — transferring the pattern into a permanent layer. Unprotected material is consumed; masked material remains.
+
+## Endpoint
+
+Etch must stop at the right depth (time, endpoint detection, or etch-stop layers) so underlying structures survive.
+
+## Check yourself
+
+What would happen if etch continued long after the target film was gone?
+''',
+            keyTakeaways: [
+              'Etch removes material in resist openings.',
+              'Transfers the lithographic pattern into a hard layer.',
+              'Over-etch can damage underlying films.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m5-u1-q1',
+                question: 'In IC fabrication, etching is primarily',
+                options: [
+                  'Adding unlimited metal everywhere',
+                  'Selective removal of exposed material according to a mask',
+                  'Growing crystals from melt only',
+                  'Skipping all patterning',
+                ],
+                correctIndex: 1,
+                explanation: 'Etch is the classic subtractive pattern-transfer step.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m5-u2',
+            title: 'Wet chemical etching',
+            content: r'''
+## Learning goal
+
+Describe wet etch in liquid chemistries and the isotropic undercut problem.
+
+## Liquid baths
+
+Wafers are immersed in or sprayed with chemical solutions that dissolve the target film (e.g. HF-based chemistry for SiO₂). Simple and cheap for some layers.
+
+## Isotropic etch
+
+Many wet etches attack equally in all directions. Under the edge of the mask the film is undercut — features widen and profiles become rounded. Fine, dense patterns suffer.
+
+## Use today
+
+Still used for cleans, some blanket etches, and non-critical geometries; replaced by dry etch for most critical small features.
+
+## Check yourself
+
+Why does isotropic undercutting limit the minimum spacing between lines?
+''',
+            keyTakeaways: [
+              'Wet etch uses liquid chemistry to dissolve films.',
+              'Often isotropic → undercut under the mask.',
+              'Limited for the finest modern geometries.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m5-u2-q1',
+                question: 'Isotropic wet etching tends to',
+                options: [
+                  'Carve only perfectly vertical walls always',
+                  'Undercut beneath the mask as it etches sideways',
+                  'Deposit metal',
+                  'Avoid all chemicals',
+                ],
+                correctIndex: 1,
+                explanation: 'Equal etch rate in all directions undercuts the stencil.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m5-u3',
+            title: 'Dry plasma etching (RIE)',
+            content: r'''
+## Learning goal
+
+Explain reactive ion etching as directional plasma etch for vertical sidewalls.
+
+## Plasma environment
+
+A low-pressure gas is ionized into a plasma. Reactive species chemically attack the film; energetic ions provide a directional physical component — like anisotropic “micro-sandblasting” combined with chemistry.
+
+## Anisotropic profiles
+
+Ion directionality yields steep, nearly vertical sidewalls with minimal undercut — essential for dense transistors and interconnect trenches.
+
+## RIE / plasma etch family
+
+Many named processes (RIE, ICP-RIE, etc.) tune chemistry, power, and pressure for different materials and aspect ratios.
+
+## Check yourself
+
+What physical ingredient of RIE helps produce vertical walls unlike a purely wet isotropic etch?
+''',
+            keyTakeaways: [
+              'Dry/plasma etch combines chemistry with directional ions.',
+              'Anisotropic profiles enable fine vertical structures.',
+              'Workhorse for modern pattern transfer.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m5-u3-q1',
+                question: 'Reactive ion etching is valued for',
+                options: [
+                  'Only isotropic undercutting',
+                  'Directional, anisotropic etching with steep sidewalls',
+                  'Avoiding all vacuum equipment',
+                  'Growing oxide from steam only',
+                ],
+                correctIndex: 1,
+                explanation: 'Ion-assisted directionality yields anisotropic profiles.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m5-u4',
+            title: 'Selective etching',
+            content: r'''
+## Learning goal
+
+Define selectivity as etching one material much faster than another so processes stop cleanly on an underlayer.
+
+## Selectivity ratio
+
+Chemistries are chosen so, for example, oxide etches quickly while silicon or nitride etches slowly — or the reverse. High selectivity protects underlying layers and allows over-etch margin to clear residue.
+
+## Process design
+
+Masks, etch stops, and endpoint detection work together with selectivity. Poor selectivity forces tighter timing and risks damage.
+
+## Check yourself
+
+If an oxide etch is highly selective to silicon, what happens when the oxide clears and silicon is exposed?
+''',
+            keyTakeaways: [
+              'Selectivity: preferential etch rate of target vs other films.',
+              'Protects underlayers and allows process margin.',
+              'Central to robust multi-layer fabrication.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m5-u4-q1',
+                question: 'High etch selectivity means',
+                options: [
+                  'All materials etch at identical rates always',
+                  'The target film etches much faster than underlying or mask materials',
+                  'No etch occurs',
+                  'Only optical reflection changes',
+                ],
+                correctIndex: 1,
+                explanation: 'Selective chemistry removes the intended film preferentially.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(
