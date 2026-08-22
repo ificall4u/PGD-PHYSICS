@@ -189,15 +189,183 @@ Why can a process that is chemically perfect still fail if the room air is ordin
           ),
         ],
       ),
-      skeletonModule(
+            Module(
         id: 'phy709-m2',
         title: 'Thermal Oxidation & Insulating Films',
-        summary: 'Thermal Oxidation & Insulating Films',
+        summary:
+            'SiO2 as insulator, dry/wet thermal oxidation, Deal–Grove intuition, CVD for other films.',
         units: [
-          skeletonUnit(id: 'phy709-m2-u1', title: 'Silicon Dioxide (SiO2) as a Physical Barrier'),
-          skeletonUnit(id: 'phy709-m2-u2', title: 'Thermal Oxidation ("Baking Silicon")'),
-          skeletonUnit(id: 'phy709-m2-u3', title: 'Deal-Grove Model Intuition'),
-          skeletonUnit(id: 'phy709-m2-u4', title: 'Chemical Vapor Deposition (CVD)'),
+          Unit(
+            id: 'phy709-m2-u1',
+            title: 'Silicon dioxide (SiO2) as a physical barrier',
+            content: r'''
+## Learning goal
+
+Explain why SiO₂ is the classic insulator and “protective skin” for silicon technology.
+
+## Natural partner of silicon
+
+Silicon reacts with oxygen to form silicon dioxide — chemically analogous to a controlled, useful “rust.” SiO₂ is an excellent electrical insulator, bonds well to Si, and can be grown with high quality at the Si/SiO₂ interface.
+
+## Roles in chips
+
+Gate dielectrics (historically), field isolation, implant masks, and protective passivation all used SiO₂ extensively. Even when high-k materials replace pure SiO₂ at the gate, oxide-based interfaces remain central.
+
+## Check yourself
+
+Why is a high-quality insulator between gate and channel essential for a MOSFET?
+''',
+            keyTakeaways: [
+              'SiO₂ is a stable, excellent insulator on silicon.',
+              'It serves isolation, masking, and (historically) gate dielectric roles.',
+              'Interface quality with Si is a key technology advantage.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m2-u1-q1',
+                question: 'Silicon dioxide in IC technology is primarily valued as',
+                options: [
+                  'A metallic conductor',
+                  'An electrical insulator and process-friendly film on Si',
+                  'A doping gas',
+                  'A packaging plastic only',
+                ],
+                correctIndex: 1,
+                explanation: 'SiO₂ isolates and protects while integrating cleanly with silicon.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m2-u2',
+            title: 'Thermal oxidation (“baking silicon”)',
+            content: r'''
+## Learning goal
+
+Contrast dry and wet thermal oxidation for growing SiO₂ from the silicon wafer itself.
+
+## Dry oxidation
+
+Silicon + dry O₂ gas at high temperature grows dense, high-quality oxide relatively slowly. Preferred historically for thin **gate oxides** where integrity and interface quality matter most.
+
+## Wet oxidation
+
+Silicon + steam (H₂O) grows oxide much faster. Useful for thicker field oxides and isolation layers where speed and thickness matter more than ultimate thin-film perfection.
+
+## Consumes silicon
+
+Oxidation converts surface silicon into oxide — the wafer surface is partly consumed as the film grows (important for dimensional control).
+
+## Check yourself
+
+Which process would you choose for a thick isolation oxide if process time is limited: dry or wet?
+''',
+            keyTakeaways: [
+              'Dry O₂: slower, denser, high-quality thin oxides.',
+              'Wet steam: faster, thicker isolation oxides.',
+              'Thermal oxide grows by consuming surface silicon.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m2-u2-q1',
+                question: 'Wet thermal oxidation compared with dry typically',
+                options: [
+                  'Is always slower',
+                  'Grows oxide faster — useful for thick layers',
+                  'Cannot form SiO₂',
+                  'Uses only nitrogen gas',
+                ],
+                correctIndex: 1,
+                explanation: 'Steam oxidation rates are much higher than dry O₂.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m2-u3',
+            title: 'Deal–Grove model intuition',
+            content: r'''
+## Learning goal
+
+Picture oxide growth as oxidant diffusing through existing oxide to react at the Si interface — the Deal–Grove story.
+
+## Snow-cover analogy
+
+Early snow falls on bare ground quickly. As the pack thickens, new snow must “work through” the existing layer — growth at the ground slows. Similarly, oxidant species must diffuse through already-grown SiO₂ to reach the Si surface and react.
+
+## Two regimes
+
+- Thin oxide / early times: reaction at the interface can limit rate  
+- Thick oxide: diffusion through the layer dominates — growth slows as thickness increases  
+
+Deal–Grove equations formalize this; the intuition is enough to predict why thick oxides take disproportionately longer.
+
+## Check yourself
+
+Why does doubling the desired oxide thickness more than double the oxidation time in the thick-film regime?
+''',
+            keyTakeaways: [
+              'Oxidant diffuses through existing oxide to the Si interface.',
+              'Thick films become diffusion-limited and grow more slowly.',
+              'Deal–Grove captures reaction + diffusion limits.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m2-u3-q1',
+                question: 'In the Deal–Grove picture for thick oxides, growth is limited mainly by',
+                options: [
+                  'Light wavelength',
+                  'Diffusion of oxidant through the existing oxide',
+                  'Magnetic fields',
+                  'Packaging tape',
+                ],
+                correctIndex: 1,
+                explanation: 'Oxidant must diffuse farther as the film thickens.',
+              ),
+            ],
+          ),
+          Unit(
+            id: 'phy709-m2-u4',
+            title: 'Chemical vapour deposition (CVD)',
+            content: r'''
+## Learning goal
+
+Explain when CVD is used instead of thermal oxidation to deposit films such as polysilicon or silicon nitride.
+
+## Not everything can be thermally grown
+
+Thermal oxidation only grows SiO₂ from silicon. Layers like polysilicon gates, silicon nitride, and many metals need **deposition** onto the wafer.
+
+## CVD idea
+
+Precursor gases flow into a reactor and react at the heated wafer surface, leaving a solid film. Temperature, pressure, and chemistry control thickness, composition, and how well the film covers steps (conformality).
+
+## Complement to oxidation
+
+Oxidation for high-quality SiO₂ from the substrate; CVD for additional engineered layers in the full process flow.
+
+## Check yourself
+
+Why can you not “oxidize” a pure nitride film into existence the same way you grow SiO₂ from Si?
+''',
+            keyTakeaways: [
+              'CVD deposits films from gas-phase chemistry on the wafer.',
+              'Used for poly-Si, nitride, and many non-thermal-oxide layers.',
+              'Complements thermal oxidation in full process flows.',
+            ],
+            quiz: [
+              QuizQuestion(
+                id: 'phy709-m2-u4-q1',
+                question: 'CVD is chosen when',
+                options: [
+                  'Only thermal SiO₂ from the substrate is required always',
+                  'A film must be deposited that cannot be grown by oxidizing the silicon wafer alone',
+                  'No solid film is wanted',
+                  'Lithography is forbidden',
+                ],
+                correctIndex: 1,
+                explanation: 'Many critical films are deposited, not thermally grown from Si.',
+              ),
+            ],
+          ),
         ],
       ),
       skeletonModule(

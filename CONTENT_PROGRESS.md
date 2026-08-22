@@ -7,26 +7,22 @@
 | Course | Status |
 |--------|--------|
 | PHY 701–705, 707 | **COMPLETE** |
-| **PHY 709 Devices Design & Fabrication** | **In progress 1/8** |
+| **PHY 709** | **In progress 2/8** |
 | Remaining | Pending |
 
 ## PHY 709
 
 | Module | Status |
 |--------|--------|
-| **01 Silicon wafers & preparation** | **Done** |
-| 02 Thermal oxidation & films | Pending ← next |
-| 03 Photolithography | Pending |
-| 04 Doping | Pending |
-| 05 Etching | Pending |
-| 06 PN / LED fabrication | Pending |
-| 07 Transistor fabrication | Pending |
-| 08 Interconnects & packaging | Pending |
+| 01 Wafer preparation | Done |
+| **02 Thermal oxidation & films** | **Done** |
+| 03 Photolithography | Pending ← next |
+| 04–08 | Pending |
 
-### Module 01 checklist
-- [x] Sand → electronic-grade Si
-- [x] Czochralski single-crystal growth
-- [x] Slice, polish, CMP
-- [x] Cleanroom rationale
+### Module 02 checklist
+- [x] SiO₂ as insulator
+- [x] Dry vs wet oxidation
+- [x] Deal–Grove diffusion intuition
+- [x] CVD for deposited films
 
-**Next:** PHY 709 Module 02 only.
+**Next:** PHY 709 Module 03 only.
